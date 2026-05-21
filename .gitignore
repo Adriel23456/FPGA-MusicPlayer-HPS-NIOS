@@ -1,0 +1,104 @@
+# =============================================================
+# Quartus Prime .gitignore
+# Keeps only the files needed to rebuild the project from scratch
+# =============================================================
+
+# ---- Quartus generated directories ----
+db/
+incremental_db/
+output_files/
+simulation/
+greybox_tmp/
+hps_isw_handoff/
+hps_sdram*/
+.qsys_edit/
+
+# ---- Platform Designer / Qsys generated ----
+*.sopcinfo
+*_generation_script*
+*_inst.v
+*_inst.vhd
+*_bb.v
+
+# ---- NIOS II / Eclipse build artifacts ----
+software/*/obj/
+software/*/Debug/
+software/*/Release/
+software/*_bsp/
+*.elf
+*.objdump
+*.map
+
+# ---- Quartus user/session files ----
+*.qws
+*.qdf
+*.qpf.bak
+*.qsf.bak
+*.smsg
+*.rpt
+*.summary
+*.pin
+*.jdi
+*.jdi.tmp
+*.jditmp
+*.sld
+*.done
+*.qmsg
+*.txt.bak
+
+# ---- Programmer chain files (user-specific) ----
+*.cdf
+
+# ---- Pin model / debug dumps ----
+c5_pin_model_dump.txt
+*.pin_model_dump.txt
+
+# ---- Backup & editor files ----
+*.bak
+*.orig
+*.swp
+*~
+.vscode/
+.idea/
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Synthesis / build outputs ----
+*.qar
+*.sof
+*.pof
+*.rbf
+*.jam
+*.jbc
+*.svf
+*.jic
+*.map.rpt
+*.fit.rpt
+*.asm.rpt
+*.sta.rpt
+
+# =============================================================
+# !! Explicit KEEP rules (override the above when needed) !!
+# =============================================================
+
+# Always keep source HDL
+!*.sv
+!*.v
+!*.vhd
+!*.vhdl
+
+# Always keep Quartus core project files
+!*.qpf
+!*.qsf
+!*.sdc
+!*.qip
+!*.ip
+!*.qsys
+!*.tcl
+
+# Keep documentation
+!README*
+!*.md
