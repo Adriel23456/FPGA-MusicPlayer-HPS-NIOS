@@ -1,0 +1,611 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu
+Z1 !s110 1779633654
+!i10b 1
+!s100 _J=VJXUTUg@EDkK7@A0M^0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IJF5h^PS?`7hQ4>I;9b6Gi3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1779621131
+Z5 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v
+Z6 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v
+!i122 15
+L0 2855 2824
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1779633654.000000
+Z9 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v|
+Z10 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v|-work|cpu|
+!i113 1
+Z11 o-work cpu
+Z12 tCvgOpt 0
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk
+R1
+!i10b 1
+!s100 OU=TgLT3aXo_hd]0zhBYR2
+R2
+IZaPdfdi@nY@QIe7`eB[[?1
+R3
+R0
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v
+!i122 16
+L0 21 141
+R7
+r1
+!s85 0
+31
+R8
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v|-work|cpu|
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_debug_slave_sysclk
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck
+R1
+!i10b 1
+!s100 zKkBLc1OFZXXQf3EikX8H3
+R2
+I_zU^IPeoAnK`WRMVb6zlj0
+R3
+R0
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v
+!i122 17
+L0 21 234
+R7
+r1
+!s85 0
+31
+R8
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v|-work|cpu|
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_debug_slave_tck
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper
+R1
+!i10b 1
+!s100 6?>9Pe0EQT6S<DL]`YUAo1
+R2
+IjRD<Q4Z4zM2ooZmojl_Hb2
+R3
+R0
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v
+!i122 18
+L0 21 206
+R7
+r1
+!s85 0
+31
+R8
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v|-work|cpu|
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_debug_slave_wrapper
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_avalon_reg
+R1
+!i10b 1
+!s100 ]j2F9Okdg280LUDk125g_1
+R2
+IH`L<Bgd5IYdHm:;;dk2jm3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 2044 83
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_avalon_reg
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci
+R1
+!i10b 1
+!s100 N@UFI^[M7RJK_E=HkdG;F0
+R2
+IcijC8jeNJATHc[@d9SER<0
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 2383 462
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_break
+R1
+!i10b 1
+!s100 8b5SE^Tz;`S1`[^E3j:<h2
+R2
+Ibj5n0F^g0NST<E3JECo7Z3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 308 283
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_break
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_compute_input_tm_cnt
+R1
+!i10b 1
+!s100 0^V8BTcgOH>[3Ieof^hZF1
+R2
+I79I0TiI`4A=oeFj?TiBK;2
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1286 62
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_compute_input_tm_cnt
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_dbrk
+R1
+!i10b 1
+!s100 Dc_TjSF56UiaP4i5ZP^kn0
+R2
+IC8ne=ab>Kz:HShLTFhT6O2
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 808 177
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_dbrk
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_debug
+R1
+!i10b 1
+!s100 ZZ1e>BgK8;_OJGR^UK2jO3
+R2
+In;@AoWkclR:2cmc`^Y3=h2
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 153 145
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_debug
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_dtrace
+R1
+!i10b 1
+!s100 5JYj0EGQDE9_LHoRPKkZA0
+R2
+I[2HVb_JCNQQFm<@UKK8Zl2
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1204 72
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_dtrace
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_fifo
+R1
+!i10b 1
+!s100 07_WBDR`SVU2T^J07?[5Z3
+R2
+IAh]?B346Y20@Q9eKoN@U60
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1448 476
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_fifo
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_fifo_cnt_inc
+R1
+!i10b 1
+!s100 <:ak1gE7i0OLTk7f8mJhN1
+R2
+I1S_cmjEXL]PgA5<GF]=GG1
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1401 37
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_fifo_cnt_inc
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_fifo_wrptr_inc
+R1
+!i10b 1
+!s100 _Sn=9S6LV988h77ocY3M33
+R2
+IM4oRo3_am9lFA?;O2lEXb0
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1358 33
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_fifo_wrptr_inc
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_im
+R1
+!i10b 1
+!s100 nmZL:A8gbCa;U431YbiQn1
+R2
+IX8e5NVe[2mYk`>77]ELhc2
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1957 60
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_im
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_itrace
+R1
+!i10b 1
+!s100 [;ahEY@]gXJ2dI2]U[jFR0
+R2
+I1C7cnX^hL<5J=m>CHe:IM3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 995 131
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_itrace
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_pib
+R1
+!i10b 1
+!s100 O3Y8Z2?Xe^bmlW_5[3NOW2
+R2
+ICU>ZMBI63`JP;::i[OTSJ0
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1934 13
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_pib
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_td_mode
+R1
+!i10b 1
+!s100 LJDi_le53akYd8FHezd^73
+R2
+I7jPOFDa`ian_4j7dULO7o0
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 1136 58
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_td_mode
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_oci_xbrk
+R1
+!i10b 1
+!s100 LAKB@G1P5l?0bPOchdigh2
+R2
+I^ha0IhnRQiB:[z;66P1PV3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 601 197
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_oci_xbrk
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_ocimem
+R1
+!i10b 1
+!s100 B]K_O[82Y0GNJ:zBM:`UW0
+R2
+I^GF<;723V`7KjGEj;E;b?3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 2202 171
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_ocimem
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_nios2_performance_monitors
+R1
+!i10b 1
+!s100 n64YIK]:N7BTCS83TAni12
+R2
+IO2S6UXbTQCQUNnFFlcD@n3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 2027 7
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_nios2_performance_monitors
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_sp_ram_module
+R1
+!i10b 1
+!s100 BdEL6Zo2fCa8`QZTH6b9Q1
+R2
+IQe]R_hgdO2PJ@dNJO6Q]?2
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 2137 55
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_ociram_sp_ram_module
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_register_bank_a_module
+R1
+!i10b 1
+!s100 @I69iADbhSJ]>i6GJ?]gF0
+R2
+I_NgjBHR;L[?kX?I[oA<Do0
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 21 56
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_register_bank_a_module
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_register_bank_b_module
+R1
+!i10b 1
+!s100 LLAgS1NlmVoijTJVhSE:o0
+R2
+I8b4V?l64di]]QiC1gULJ]3
+R3
+R0
+R4
+R5
+R6
+!i122 15
+L0 87 56
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_register_bank_b_module
+vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench
+R1
+!i10b 1
+!s100 k<QXhiG;A<F6R23[d9o050
+R2
+IinXPd`P0T6f72=dmG5NLT0
+R3
+R0
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v
+!i122 19
+L0 21 635
+R7
+r1
+!s85 0
+31
+R8
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v|-work|cpu|
+!i113 1
+R11
+R12
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i_cpu_test_bench

@@ -1,0 +1,35 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_CPU_NIOS_II
+!s110 1779633655
+!i10b 1
+!s100 P_THn@Z:S:7j`]jjNG<T60
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IIX8_0cV4YR36Z[1dj2KH01
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1779621107
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II.v
+!i122 3
+L0 9 59
+OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1779633655.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II.v|-work|CPU_NIOS_II|
+!i113 1
+o-work CPU_NIOS_II
+tCvgOpt 0
+n@music@player@platform@design_@c@p@u_@n@i@o@s_@i@i

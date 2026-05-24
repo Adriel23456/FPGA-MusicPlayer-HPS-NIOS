@@ -38,6 +38,7 @@ int main(void)
 {
     vga_clear_screen();
     vga_put_string(36, 29, "Hello World!");  // roughly centered
+    alt_putstr("Hello from Nios II!\n");
 
     while (1);
     return 0;

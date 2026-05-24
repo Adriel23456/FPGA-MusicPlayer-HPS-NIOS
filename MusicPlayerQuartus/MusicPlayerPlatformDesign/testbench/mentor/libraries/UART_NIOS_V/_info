@@ -1,0 +1,131 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_UART_NIOS_V
+Z1 !s110 1779633655
+!i10b 1
+!s100 l8JJSKACiV=@ZecU2_Q=<1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IYG1JERe;OSeAbiP<1G<J50
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1779621109
+Z5 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_V.v
+Z6 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_V.v
+!i122 3
+L0 331 257
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1779633655.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_V.v|
+Z9 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_V.v|-work|UART_NIOS_V|
+!i113 1
+Z10 o-work UART_NIOS_V
+Z11 tCvgOpt 0
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@v
+vMusicPlayerPlatformDesign_UART_NIOS_V_scfifo_r
+R1
+!i10b 1
+!s100 F1_7S6n;Ylj2EVJ32PH5;0
+R2
+IQFBLIV:3DSg<L^R[l[Gbg3
+R3
+R0
+R4
+R5
+R6
+!i122 3
+L0 243 78
+R7
+r1
+!s85 0
+31
+R8
+Z12 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_V.v|
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@v_scfifo_r
+vMusicPlayerPlatformDesign_UART_NIOS_V_scfifo_w
+R1
+!i10b 1
+!s100 YJ<0D14]LdCe3Zco5?XfL1
+R2
+I^Ski;>nGb1i]j88hOSgk_1
+R3
+R0
+R4
+R5
+R6
+!i122 3
+L0 78 76
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@v_scfifo_w
+vMusicPlayerPlatformDesign_UART_NIOS_V_sim_scfifo_r
+R1
+!i10b 1
+!s100 =KMH42ZIH2FSU5c5Lj9n33
+R2
+IbMm6><>_UAT7MCS^^TMoS0
+R3
+R0
+R4
+R5
+R6
+!i122 3
+L0 164 69
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@v_sim_scfifo_r
+vMusicPlayerPlatformDesign_UART_NIOS_V_sim_scfifo_w
+R1
+!i10b 1
+!s100 V4MiCYM<f_a_?_WJCA9ig3
+R2
+IGn7YSRcRHb64GJbWoA4O33
+R3
+R0
+R4
+R5
+R6
+!i122 3
+L0 21 47
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@v_sim_scfifo_w

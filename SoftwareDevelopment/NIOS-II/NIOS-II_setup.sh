@@ -88,7 +88,9 @@ mkdir -p "$SW_ROOT/app/src"
 mkdir -p "$SW_ROOT/app/lib"
 mkdir -p "$SW_ROOT/app/include"
 
-if [ ! -f "$SW_ROOT/app/main.c" ] && [ -z "$(ls "$SW_ROOT/app"/*.c 2>/dev/null)" ]; then
+# Only create main.c if NO .c files exist anywhere in the app tree
+EXISTING_C=$(find "$SW_ROOT/app" -name "*.c" 2>/dev/null | head -1)
+if [ -z "$EXISTING_C" ]; then
 cat > "$SW_ROOT/app/main.c" << 'CEOF'
 #include <sys/alt_stdio.h>
 
@@ -98,7 +100,10 @@ int main(void) {
     return 0;
 }
 CEOF
-    echo "[OK] main.c written."
+    echo "[OK] main.c written (no existing source files found)."
+else
+    echo "[OK] Existing source files detected -- leaving them untouched:"
+    find "$SW_ROOT/app" -name "*.c" | while read f; do echo "  $f"; done
 fi
 
 echo "[OK] Directory structure ready."
@@ -286,6 +291,71 @@ sed -i "s|__SOPCINFO__|$SOPCINFO|g" "$SCRIPT_DIR/rebuild_bsp.sh"
 sed -i "s|__CPU_NAME__|$CPU_NAME|g" "$SCRIPT_DIR/rebuild_bsp.sh"
 sed -i "s|__SW_ROOT__|$SW_ROOT|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
 sed -i "s|__GCC_PATH__|$GCC_PATH|g" "$SCRIPT_DIR/rebuild_bsp.sh"
+
+# ==============================================================
+# run_sim.sh
+# ==============================================================
+cat > "$SCRIPT_DIR/run_sim.sh" << 'SHEOF'
+#!/bin/bash
+SOC_NAME="__SOC_NAME__"
+ELF="__SW_ROOT__/app/main.elf"
+BSP_DIR="__SW_ROOT__/bsp"
+SOPCINFO_DIR="$(dirname "__SOPCINFO__")"
+MENTOR="$SOPCINFO_DIR/$SOC_NAME/testbench/mentor"
+SUBMODULES="$SOPCINFO_DIR/$SOC_NAME/testbench/${SOC_NAME}_tb/simulation/submodules"
+export PATH=$PATH:__GCC_PATH__
+
+to_win() { echo "$1" | sed 's|/mnt/\([a-z]\)/|\1:/|'; }
+
+echo "============================================================"
+echo " Nios II -- Run Simulation"
+echo "============================================================"
+echo ""
+
+if [ ! -f "$ELF" ]; then
+    echo "ERROR: $ELF not found. Run ./build.sh first."
+    exit 1
+fi
+
+echo "[1/3] Copying ELF to mentor folder..."
+mkdir -p "$MENTOR"
+cp "$ELF" "$MENTOR/main.elf"
+[ $? -ne 0 ] && echo "ERROR: Copy failed" && exit 1
+echo "  Copied to: $MENTOR/main.elf"
+
+echo ""
+echo "[2/3] Reading RAM base address from bsp/system.h..."
+RAM_BASE=$(grep "RAM_NIOS_V_BASE\|RAM_BASE" "$BSP_DIR/system.h" | grep "#define" | awk '{print $3}' | head -1)
+if [ -z "$RAM_BASE" ]; then
+    echo "ERROR: Could not find RAM base in $BSP_DIR/system.h"
+    exit 1
+fi
+echo "  RAM_BASE = $RAM_BASE"
+
+echo ""
+echo "[3/3] Converting ELF to HEX for ModelSim..."
+elf2hex.exe --input="$(to_win "$MENTOR/main.elf")" \
+        --output="$(to_win "$SUBMODULES/${SOC_NAME}_RAM.hex")" \
+        --width=32 \
+        --base=$RAM_BASE \
+        --end=0x7ffff
+[ $? -ne 0 ] && echo "ERROR: elf2hex conversion failed" && exit 1
+
+echo ""
+echo "============================================================"
+echo " DONE! Now open ModelSim and run:"
+echo "============================================================"
+echo "   cd {$(to_win "$MENTOR")}"
+echo "   do msim_setup.tcl"
+echo "   add wave /${SOC_NAME}_tb/*"
+echo "   ld_debug"
+echo "   run 2.5ms"
+echo "============================================================"
+SHEOF
+sed -i "s|__SOC_NAME__|$SOC_NAME|g" "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|__SW_ROOT__|$SW_ROOT|g"   "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|__SOPCINFO__|$SOPCINFO|g" "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|__GCC_PATH__|$GCC_PATH|g" "$SCRIPT_DIR/run_sim.sh"
 
 # ==============================================================
 # Set permissions

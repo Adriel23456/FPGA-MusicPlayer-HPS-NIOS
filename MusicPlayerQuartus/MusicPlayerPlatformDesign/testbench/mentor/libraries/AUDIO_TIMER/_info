@@ -1,0 +1,35 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_AUDIO_TIMER
+!s110 1779633655
+!i10b 1
+!s100 HRQ3m`eTXT@XJObNKzXLj0
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IV?=zH2Ndm_UVXWEWdn0GZ0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1779621106
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_TIMER.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_TIMER.v
+!i122 3
+L0 21 190
+OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1779633655.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_TIMER.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_TIMER.v|-work|AUDIO_TIMER|
+!i113 1
+o-work AUDIO_TIMER
+tCvgOpt 0
+n@music@player@platform@design_@a@u@d@i@o_@t@i@m@e@r
