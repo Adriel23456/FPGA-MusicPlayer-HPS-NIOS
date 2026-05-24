@@ -6,8 +6,19 @@
 # ---- Quartus generated directories ----
 db/
 incremental_db/
-output_files/
+# Ignore everything in output_files
+output_files/*
+
+# But keep UVM / TB source files
+!output_files/tb*.sv
+!output_files/uvm*.sv
+
+# Ignore personal files
+personal*
+personal**/
+
 simulation/
+work/
 greybox_tmp/
 hps_isw_handoff/
 hps_sdram*/

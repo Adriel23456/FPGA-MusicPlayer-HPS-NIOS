@@ -1,0 +1,21 @@
+Download links:
+------------------------
+(Eclipse)
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-18-1-windows
+
+(Quartus Prime Lite 22.1.2) + (Cyclone V device support)
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-22-1-2-windows
+
+(ModelSim)
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-20-1-1-windows
+
+Also execute this in powershell (admin privileges):
+------------------------
+wsl --install -d Ubuntu-18.04
+#To verify it
+wsl -l -v
+------------------------
+
+Set up the model sim direction in Quartus (Tools -> Options):
+ModelSim + QuestaSim = C:/intelFPGA/20.1/modelsim_ase/win32aloem
+
