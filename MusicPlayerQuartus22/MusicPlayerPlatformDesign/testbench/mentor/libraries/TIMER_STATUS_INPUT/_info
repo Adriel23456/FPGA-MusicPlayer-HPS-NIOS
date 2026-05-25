@@ -1,0 +1,35 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_TIMER_STATUS_INPUT
+!s110 1779713135
+!i10b 1
+!s100 bHTU88cchM0^<1?XdB@X81
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IQ4k2WHM?YeFh^XMkf;QaG0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1779711367
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_STATUS_INPUT.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_STATUS_INPUT.v
+!i122 0
+L0 21 38
+OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1779713135.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_STATUS_INPUT.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_STATUS_INPUT.v|-work|TIMER_STATUS_INPUT|
+!i113 1
+o-work TIMER_STATUS_INPUT
+tCvgOpt 0
+n@music@player@platform@design_@t@i@m@e@r_@s@t@a@t@u@s_@i@n@p@u@t

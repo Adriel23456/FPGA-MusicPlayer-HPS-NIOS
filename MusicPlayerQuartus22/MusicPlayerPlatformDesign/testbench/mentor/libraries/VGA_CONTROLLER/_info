@@ -1,0 +1,58 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+valtera_up_avalon_video_vga_timing
+!s110 1779713134
+!i10b 1
+!s100 2lAbcALc[PAg8P6UJ;XMC0
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I]0OWz9VR`:YLhb1=Q?`Oj2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1779711367
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v
+!i122 0
+L0 28 293
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1779713134.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v|-work|VGA_CONTROLLER|
+!i113 1
+Z5 o-work VGA_CONTROLLER
+Z6 tCvgOpt 0
+vMusicPlayerPlatformDesign_VGA_CONTROLLER
+!s110 1779713135
+!i10b 1
+!s100 HiiHn[bh1VjdOmL6I=RgD1
+R1
+IN7R>IeEkIKU4KK[^`hG3c1
+R2
+R0
+R3
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CONTROLLER.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CONTROLLER.v
+!i122 1
+L0 28 259
+R4
+r1
+!s85 0
+31
+!s108 1779713135.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CONTROLLER.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CONTROLLER.v|-work|VGA_CONTROLLER|
+!i113 1
+R5
+R6
+n@music@player@platform@design_@v@g@a_@c@o@n@t@r@o@l@l@e@r

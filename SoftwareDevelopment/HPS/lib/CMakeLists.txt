@@ -1,6 +1,0 @@
-#include_directories(${CMAKE_SOURCE_DIR}/include)
-#add_library(audio SHARED libaudio.c)
-#target_link_libraries(audio process)
-#set_target_properties(audio PROPERTIES VERSION 5.0.0 SOVERSION 5)
-#install(TARGETS audio DESTINATION lib)
-#install(FILES ${CMAKE_SOURCE_DIR}/include/hardware/libaudio.h DESTINATION include/hardware)

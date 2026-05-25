@@ -1,0 +1,131 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_UART_NIOS_II
+Z1 !s110 1779713135
+!i10b 1
+!s100 ;N94>4mkeE_QmzWX@A?J>1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IL_NJ[f7iJeK;PEi;ze85z0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1779711367
+Z5 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_II.v
+Z6 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_II.v
+!i122 0
+L0 331 257
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1779713135.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_II.v|
+Z9 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_II.v|-work|UART_NIOS_II|
+!i113 1
+Z10 o-work UART_NIOS_II
+Z11 tCvgOpt 0
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@i@i
+vMusicPlayerPlatformDesign_UART_NIOS_II_scfifo_r
+R1
+!i10b 1
+!s100 iNANQUi8:8>:Y6QgG:FOT3
+R2
+ILKjO=4C7NX_Ok5Nf4PU]i3
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 243 78
+R7
+r1
+!s85 0
+31
+R8
+Z12 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_UART_NIOS_II.v|
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@i@i_scfifo_r
+vMusicPlayerPlatformDesign_UART_NIOS_II_scfifo_w
+R1
+!i10b 1
+!s100 WSOG7YbM2`FJmj3`0@1l>0
+R2
+IcdYjV7TmjL<^7?;n3>=n^2
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 78 76
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@i@i_scfifo_w
+vMusicPlayerPlatformDesign_UART_NIOS_II_sim_scfifo_r
+R1
+!i10b 1
+!s100 1SYm>O_X0JH=S9RO566eL2
+R2
+ILBWMi[<l]@kLhNl:dDM@c3
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 164 69
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@i@i_sim_scfifo_r
+vMusicPlayerPlatformDesign_UART_NIOS_II_sim_scfifo_w
+R1
+!i10b 1
+!s100 XV6kM_g0>AijkZ;J^<;L@1
+R2
+IJj^9g7zjgS?9a[_:Hb=b:0
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 21 47
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+n@music@player@platform@design_@u@a@r@t_@n@i@o@s_@i@i_sim_scfifo_w

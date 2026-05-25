@@ -1,0 +1,138 @@
+=============================
+QUARTUS DOWNLOAD LINKS
+Covers: Quartus 22.1 (Nios II) and Quartus 25.1 (Nios V)
+=============================
+
+
+======================================
+# ─────────────────────────────────────────────
+# SECTION A: QUARTUS 22.1 — NIOS II
+# Fix the nios2_command_shell.sh script
+# ─────────────────────────────────────────────
+Quartus Prime 22.1.2 (QuartusLiteSetup-22.1std.2.922-windows.exe)
++
+Cyclone V device support
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-22-1-2-windows
+
+(ModelSim)
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-20-1-1-windows
+
+
+
+# ─────────────────────────────────────────────
+# SECTION B: QUARTUS 25.1 — NIOS V
+# No additional script fixes needed.
+# The wsl symlink fix above is sufficient.
+# WSL1 works perfectly for Quartus 25.1.
+# ─────────────────────────────────────────────
+Quartus Prime 25.1 (QuartusLiteSetup-25.1std.0.1129-windows.exe)
++
+Ashling RiscFree IDE for Altera
++
+Cyclone V device support
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-25-1-windows
+
+(ModelSim)
+https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-20-1-1-windows
+======================================
+
+
+
+
+
+
+
+
+
+
+=============================
+QUARTUS WSL SETUP TUTORIAL
+Covers: Quartus 22.1 (Nios II) and Quartus 25.1 (Nios V)
+=============================
+
+IN POWERSHELL (Admin privileges):
+------------------------
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+# Reboot when prompted
+
+wsl --install -d Ubuntu
+wsl --set-version Ubuntu 1
+wsl --set-default Ubuntu
+
+# Verify
+wsl --list --verbose
+# Must show: * Ubuntu   Stopped   1
+------------------------
+
+
+OPEN UBUNTU FROM START MENU:
+------------------------
+sudo apt update
+sudo apt install -y make dos2unix build-essential
+
+# Fix WSL interop binary conflict
+# The Ubuntu 'wsl' package installs a conflicting Wsman tool.
+# Replace it with a symlink to the real WSL Windows binary:
+sudo ln -sf /mnt/c/Windows/System32/wsl.exe /usr/local/bin/wsl
+hash -r
+
+# Verify it points to the correct binary
+wsl --version
+# Must show: WSL version: 2.x.x (NOT "Wsman Shell commandLine")
+------------------------
+
+
+# ─────────────────────────────────────────────
+# SECTION A: QUARTUS 22.1 — NIOS II
+# Fix the nios2_command_shell.sh script
+# ─────────────────────────────────────────────
+------------------------
+cp /mnt/c/intelFPGA_lite/22.1std/nios2eds/nios2_command_shell.sh ~/nios2_command_shell.sh
+
+# Remove the broken wsl check
+sed -i 's/if \[ -z \$(which wsl 2> \/dev\/null) \]; then/if false; then/g' ~/nios2_command_shell.sh
+sed -i 's/if \[ -z \$(which wsl 2> \/dev\/null) \] || /if [ /g' ~/nios2_command_shell.sh
+
+# Fix syntax error on the combined check line
+sed -i 's/if \[ \[ -z \$(which make/if [ -z $(which make/g' ~/nios2_command_shell.sh
+
+# Verify lines 25-45 look correct
+sed -n '25,45p' ~/nios2_command_shell.sh
+------------------------
+
+# Copy fixed script back (In PowerShell Admin):
+------------------------
+Copy-Item "\\wsl.localhost\Ubuntu\home\<YOUR_USERNAME>\nios2_command_shell.sh" -Destination "C:\intelFPGA_lite\22.1std\nios2eds\nios2_command_shell.sh" -Force
+------------------------
+
+
+# ─────────────────────────────────────────────
+# SECTION B: QUARTUS 25.1 — NIOS V
+# No additional script fixes needed.
+# The wsl symlink fix above is sufficient.
+# WSL1 works perfectly for Quartus 25.1.
+# ─────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────
+# DNS FIX (only if WSL has no internet access)
+# ─────────────────────────────────────────────
+------------------------
+sudo rm -f /etc/resolv.conf
+sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+sudo bash -c 'echo "[network]" >> /etc/wsl.conf'
+sudo bash -c 'echo "generateResolvConf = false" >> /etc/wsl.conf'
+------------------------
+# Then from PowerShell Admin:
+------------------------
+wsl --shutdown
+wsl
+------------------------
+=============================
+
+Set up the model sim direction in Quartus (Tools -> Options):
+ModelSim + QuestaSim = C:/intelFPGA/20.1/modelsim_ase/win32aloem
+
+And we dont use Eclipse, we use the NIOS II Command Shell, for compilation for NIOS II (Bare-Metal)!! (NIOS-II_Workflow.md)
+
+Also remember to run the TCL scripts for 'Fitter (Plave & Route)' when compiling hardware.
