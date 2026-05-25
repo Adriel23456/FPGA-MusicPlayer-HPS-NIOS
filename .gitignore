@@ -17,15 +17,11 @@ output_files/*
 personal*
 personal**/
 
-simulation/
 work/
 greybox_tmp/
-hps_isw_handoff/
-hps_sdram*/
 .qsys_edit/
 
 # ---- Platform Designer / Qsys generated ----
-*.sopcinfo
 *_generation_script*
 *_inst.v
 *_inst.vhd
