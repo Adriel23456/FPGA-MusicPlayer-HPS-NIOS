@@ -1,5 +1,6 @@
 
 module MusicPlayerPlatformDesign (
+	audio_clk_export_clk,
 	audio_config_export_SDAT,
 	audio_config_export_SCLK,
 	audio_export_BCLK,
@@ -7,19 +8,10 @@ module MusicPlayerPlatformDesign (
 	audio_export_DACLRCK,
 	buttons_input_export,
 	clk_clk,
-	reset_reset_n,
-	switch_input_export,
-	timer_ctrl_output_export,
-	timer_status_input_export,
-	vga_clk_clk,
-	vga_outputs_CLK,
-	vga_outputs_HS,
-	vga_outputs_VS,
-	vga_outputs_BLANK,
-	vga_outputs_SYNC,
-	vga_outputs_R,
-	vga_outputs_G,
-	vga_outputs_B,
+	hps_arm_h2f_mpu_events_eventi,
+	hps_arm_h2f_mpu_events_evento,
+	hps_arm_h2f_mpu_events_standbywfe,
+	hps_arm_h2f_mpu_events_standbywfi,
 	hps_io_hps_io_emac0_inst_TX_CLK,
 	hps_io_hps_io_emac0_inst_TXD0,
 	hps_io_hps_io_emac0_inst_TXD1,
@@ -56,11 +48,21 @@ module MusicPlayerPlatformDesign (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	hps_arm_h2f_mpu_events_eventi,
-	hps_arm_h2f_mpu_events_evento,
-	hps_arm_h2f_mpu_events_standbywfe,
-	hps_arm_h2f_mpu_events_standbywfi);	
+	reset_reset_n,
+	switch_input_export,
+	timer_ctrl_output_export,
+	timer_status_input_export,
+	vga_clk_clk,
+	vga_outputs_CLK,
+	vga_outputs_HS,
+	vga_outputs_VS,
+	vga_outputs_BLANK,
+	vga_outputs_SYNC,
+	vga_outputs_R,
+	vga_outputs_G,
+	vga_outputs_B);	
 
+	output		audio_clk_export_clk;
 	inout		audio_config_export_SDAT;
 	output		audio_config_export_SCLK;
 	input		audio_export_BCLK;
@@ -68,19 +70,10 @@ module MusicPlayerPlatformDesign (
 	input		audio_export_DACLRCK;
 	input	[3:0]	buttons_input_export;
 	input		clk_clk;
-	input		reset_reset_n;
-	input		switch_input_export;
-	output	[1:0]	timer_ctrl_output_export;
-	input	[1:0]	timer_status_input_export;
-	input		vga_clk_clk;
-	output		vga_outputs_CLK;
-	output		vga_outputs_HS;
-	output		vga_outputs_VS;
-	output		vga_outputs_BLANK;
-	output		vga_outputs_SYNC;
-	output	[7:0]	vga_outputs_R;
-	output	[7:0]	vga_outputs_G;
-	output	[7:0]	vga_outputs_B;
+	input		hps_arm_h2f_mpu_events_eventi;
+	output		hps_arm_h2f_mpu_events_evento;
+	output	[1:0]	hps_arm_h2f_mpu_events_standbywfe;
+	output	[1:0]	hps_arm_h2f_mpu_events_standbywfi;
 	output		hps_io_hps_io_emac0_inst_TX_CLK;
 	output		hps_io_hps_io_emac0_inst_TXD0;
 	output		hps_io_hps_io_emac0_inst_TXD1;
@@ -117,8 +110,17 @@ module MusicPlayerPlatformDesign (
 	output		memory_mem_odt;
 	output		memory_mem_dm;
 	input		memory_oct_rzqin;
-	input		hps_arm_h2f_mpu_events_eventi;
-	output		hps_arm_h2f_mpu_events_evento;
-	output	[1:0]	hps_arm_h2f_mpu_events_standbywfe;
-	output	[1:0]	hps_arm_h2f_mpu_events_standbywfi;
+	input		reset_reset_n;
+	input		switch_input_export;
+	output	[1:0]	timer_ctrl_output_export;
+	input	[1:0]	timer_status_input_export;
+	input		vga_clk_clk;
+	output		vga_outputs_CLK;
+	output		vga_outputs_HS;
+	output		vga_outputs_VS;
+	output		vga_outputs_BLANK;
+	output		vga_outputs_SYNC;
+	output	[7:0]	vga_outputs_R;
+	output	[7:0]	vga_outputs_G;
+	output	[7:0]	vga_outputs_B;
 endmodule

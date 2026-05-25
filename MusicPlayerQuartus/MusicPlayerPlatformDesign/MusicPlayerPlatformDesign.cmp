@@ -1,5 +1,6 @@
 	component MusicPlayerPlatformDesign is
 		port (
+			audio_clk_export_clk              : out   std_logic;                                        -- clk
 			audio_config_export_SDAT          : inout std_logic                     := 'X';             -- SDAT
 			audio_config_export_SCLK          : out   std_logic;                                        -- SCLK
 			audio_export_BCLK                 : in    std_logic                     := 'X';             -- BCLK

@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.05.24.20:21:17</td>
+    <td class="l">2026.05.24.21:48:54</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -302,7 +302,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <table>
        <tr>
         <td class="parametername">AUTO_GENERATION_ID</td>
-        <td class="parametervalue">1779675677</td>
+        <td class="parametervalue">1779680934</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_UNIQUE_ID</td>
@@ -347,6 +347,81 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <tr>
         <td class="parametername">deviceFamily</td>
         <td class="parametervalue">Cyclone V</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_MusicPlayerPlatformDesign_inst_AUDIO_CLOCK"> </a>
+  <div>
+   <hr/>
+   <h2>MusicPlayerPlatformDesign_inst_AUDIO_CLOCK</h2>altera_up_avalon_audio_pll v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="main" rowspan="4">MusicPlayerPlatformDesign_inst_AUDIO_CLOCK</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;ref_clk</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;ref_reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">gui_refclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">refclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">audio_clk_freq</td>
+        <td class="parametervalue">12.288</td>
+       </tr>
+       <tr>
+        <td class="parametername">device_family</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE</td>
+        <td class="parametervalue">5CSEMA5F31C6</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_SPEEDGRADE</td>
+        <td class="parametervalue">6</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
        </tr>
        <tr>
         <td class="parametername">generateLegacySim</td>
@@ -819,7 +894,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_MusicPlayerPlatformDesign_inst_clk_bfm">MusicPlayerPlatformDesign_inst_clk_bfm</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="60">MusicPlayerPlatformDesign_inst_CLK</td>
+      <td class="main" rowspan="65">MusicPlayerPlatformDesign_inst_CLK</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk_in</td>
@@ -1092,6 +1167,32 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;reset1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_AUDIO_CLOCK">MusicPlayerPlatformDesign_inst_AUDIO_CLOCK</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;ref_clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;ref_reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -4421,7 +4522,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.00 seconds</td>
-    <td class="r">rendering took 0.04 seconds</td>
+    <td class="r">rendering took 0.03 seconds</td>
    </tr>
   </table>
  </body>

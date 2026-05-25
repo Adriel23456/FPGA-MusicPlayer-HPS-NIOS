@@ -4,6 +4,7 @@
 
 `timescale 1 ps / 1 ps
 module MusicPlayerPlatformDesign (
+		output wire        audio_clk_export_clk,              //       audio_clk_export.clk
 		inout  wire        audio_config_export_SDAT,          //    audio_config_export.SDAT
 		output wire        audio_config_export_SCLK,          //                       .SCLK
 		input  wire        audio_export_BCLK,                 //           audio_export.BCLK
@@ -202,6 +203,13 @@ module MusicPlayerPlatformDesign (
 	wire         rst_controller_001_reset_out_reset;                                     // rst_controller_001:reset_out -> [VGA_CHAR_BUFFER:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset]
 	wire         rst_controller_002_reset_out_reset;                                     // rst_controller_002:reset_out -> mm_interconnect_0:HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
 	wire         hps_arm_h2f_reset_reset;                                                // HPS_ARM:h2f_rst_n -> rst_controller_002:reset_in0
+
+	MusicPlayerPlatformDesign_AUDIO_CLOCK audio_clock (
+		.ref_clk_clk        (clk_clk),              //      ref_clk.clk
+		.ref_reset_reset    (~reset_reset_n),       //    ref_reset.reset
+		.audio_clk_clk      (audio_clk_export_clk), //    audio_clk.clk
+		.reset_source_reset ()                      // reset_source.reset
+	);
 
 	MusicPlayerPlatformDesign_AUDIO_CONFIG audio_config (
 		.clk         (clk_clk),                                                           //                    clk.clk

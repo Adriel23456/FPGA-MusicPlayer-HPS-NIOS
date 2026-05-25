@@ -9,6 +9,14 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element AUDIO_CLOCK
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
    element AUDIO_CONFIG
    {
       datum _sortIndex
@@ -255,6 +263,11 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface
+   name="audio_clk_export"
+   internal="AUDIO_CLOCK.audio_clk"
+   type="clock"
+   dir="start" />
+ <interface
    name="audio_config_export"
    internal="AUDIO_CONFIG.external_interface"
    type="conduit"
@@ -303,6 +316,17 @@
    internal="VGA_CONTROLLER.external_interface"
    type="conduit"
    dir="end" />
+ <module
+   name="AUDIO_CLOCK"
+   kind="altera_up_avalon_audio_pll"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="audio_clk_freq" value="12.288" />
+  <parameter name="device_family" value="Cyclone V" />
+  <parameter name="gui_refclk" value="50.0" />
+ </module>
  <module
    name="AUDIO_CONFIG"
    kind="altera_up_avalon_audio_and_video_config"
@@ -364,8 +388,8 @@
    kind="altera_nios2_gen2"
    version="22.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -1405,6 +1429,7 @@
    version="22.1"
    start="CLK.clk"
    end="HPS_ARM.h2f_lw_axi_clock" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_CLOCK.ref_clk" />
  <connection
    kind="clock"
    version="22.1"
@@ -1450,6 +1475,11 @@
    end="AUDIO_TIMER.irq">
   <parameter name="irqNumber" value="3" />
  </connection>
+ <connection
+   kind="reset"
+   version="22.1"
+   start="CLK.clk_reset"
+   end="AUDIO_CLOCK.ref_reset" />
  <connection
    kind="reset"
    version="22.1"
