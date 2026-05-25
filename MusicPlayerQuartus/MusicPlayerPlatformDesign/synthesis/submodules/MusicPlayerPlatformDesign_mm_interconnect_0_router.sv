@@ -49,14 +49,14 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router_default_decode
                DEFAULT_RD_CHANNEL = -1,
                DEFAULT_DESTID = 4 
    )
-  (output [84 - 81 : 0] default_destination_id,
+  (output [104 - 101 : 0] default_destination_id,
    output [12-1 : 0] default_wr_channel,
    output [12-1 : 0] default_rd_channel,
    output [12-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[84 - 81 : 0];
+    DEFAULT_DESTID[104 - 101 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
@@ -93,7 +93,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [98-1 : 0]    sink_data,
+    input  [129-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,7 +102,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [98-1    : 0] src_data,
+    output reg [129-1    : 0] src_data,
     output reg [12-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
@@ -112,18 +112,18 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 55;
+    localparam PKT_ADDR_H = 65;
     localparam PKT_ADDR_L = 36;
-    localparam PKT_DEST_ID_H = 84;
-    localparam PKT_DEST_ID_L = 81;
-    localparam PKT_PROTECTION_H = 88;
-    localparam PKT_PROTECTION_L = 86;
-    localparam ST_DATA_W = 98;
+    localparam PKT_DEST_ID_H = 104;
+    localparam PKT_DEST_ID_L = 101;
+    localparam PKT_PROTECTION_H = 119;
+    localparam PKT_PROTECTION_L = 117;
+    localparam ST_DATA_W = 129;
     localparam ST_CHANNEL_W = 12;
     localparam DECODER_TYPE = 0;
 
-    localparam PKT_TRANS_WRITE = 58;
-    localparam PKT_TRANS_READ  = 59;
+    localparam PKT_TRANS_WRITE = 68;
+    localparam PKT_TRANS_READ  = 69;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;
@@ -230,50 +230,50 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
 
     // ( 0x83020 .. 0x83030 )
     if ( {address[RG:PAD4],{PAD4{1'b0}}} == 20'h83020   ) begin
-            src_channel = 12'b000000000010;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
-    end
-
-    // ( 0x83030 .. 0x83040 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 20'h83030   ) begin
-            src_channel = 12'b000000000001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
-    end
-
-    // ( 0x83040 .. 0x83050 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 20'h83040   ) begin
             src_channel = 12'b010000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
 
-    // ( 0x83050 .. 0x83060 )
-    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 20'h83050  && read_transaction  ) begin
+    // ( 0x83030 .. 0x83040 )
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 20'h83030  && read_transaction  ) begin
             src_channel = 12'b001000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
     end
 
-    // ( 0x83060 .. 0x83070 )
-    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 20'h83060   ) begin
+    // ( 0x83040 .. 0x83050 )
+    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 20'h83040   ) begin
             src_channel = 12'b000100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end
 
-    // ( 0x83070 .. 0x83080 )
-    if ( {address[RG:PAD9],{PAD9{1'b0}}} == 20'h83070   ) begin
+    // ( 0x83050 .. 0x83060 )
+    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 20'h83050   ) begin
             src_channel = 12'b000010000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 
+    // ( 0x83060 .. 0x83070 )
+    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 20'h83060   ) begin
+            src_channel = 12'b000000000010;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
+    end
+
+    // ( 0x83070 .. 0x83080 )
+    if ( {address[RG:PAD9],{PAD9{1'b0}}} == 20'h83070   ) begin
+            src_channel = 12'b000000000001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
+    end
+
     // ( 0x83080 .. 0x83088 )
     if ( {address[RG:PAD10],{PAD10{1'b0}}} == 20'h83080   ) begin
-            src_channel = 12'b000000001000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 11;
+            src_channel = 12'b000000010000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
     end
 
     // ( 0x83088 .. 0x83090 )
     if ( {address[RG:PAD11],{PAD11{1'b0}}} == 20'h83088   ) begin
-            src_channel = 12'b000000010000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
+            src_channel = 12'b000000001000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 11;
     end
 
 end

@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 valtera_up_av_config_auto_init
-Z1 !s110 1779633656
+Z1 !s110 1779675934
 !i10b 1
 !s100 hPOzPWQk8ngWb5:l6ROQS2
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IYTPBHmG>@mE3`9FB=mBfE2
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z4 w1779621106
+Z4 w1779675684
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init.v
-!i122 47
+!i122 107
 L0 29 146
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1779633656.000000
+Z6 !s108 1779675934.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init.v|-work|AUDIO_CONFIG|
 !i113 1
@@ -43,7 +43,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_d5m.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_d5m.v
-!i122 49
+!i122 109
 L0 28 118
 R5
 r1
@@ -66,7 +66,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_dc2.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_dc2.v
-!i122 48
+!i122 108
 L0 28 126
 R5
 r1
@@ -89,7 +89,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_lcm.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_lcm.v
-!i122 50
+!i122 110
 L0 28 117
 R5
 r1
@@ -112,7 +112,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ltm.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ltm.v
-!i122 51
+!i122 111
 L0 28 97
 R5
 r1
@@ -125,7 +125,7 @@ R6
 R7
 R8
 valtera_up_av_config_auto_init_ob_adv7180
-Z9 !s110 1779633657
+Z9 !s110 1779675935
 !i10b 1
 !s100 m8>LE8i7PgN=HXn2RBM?e3
 R2
@@ -135,13 +135,13 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7180.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7180.v
-!i122 57
+!i122 117
 L0 28 173
 R5
 r1
 !s85 0
 31
-R6
+Z10 !s108 1779675935.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7180.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7180.v|-work|AUDIO_CONFIG|
 !i113 1
@@ -158,20 +158,20 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7181.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7181.v
-!i122 58
+!i122 118
 L0 28 122
 R5
 r1
 !s85 0
 31
-Z10 !s108 1779633657.000000
+R10
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7181.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_adv7181.v|-work|AUDIO_CONFIG|
 !i113 1
 R7
 R8
 valtera_up_av_config_auto_init_ob_audio
-R1
+R9
 !i10b 1
 !s100 [e?2:Nnz<CE][UFG2;BK20
 R2
@@ -181,13 +181,13 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_audio.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_audio.v
-!i122 56
+!i122 116
 L0 28 99
 R5
 r1
 !s85 0
 31
-R6
+R10
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_audio.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_audio.v|-work|AUDIO_CONFIG|
 !i113 1
@@ -204,7 +204,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de10_standard.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de10_standard.v
-!i122 55
+!i122 115
 Z11 L0 29 111
 R5
 r1
@@ -227,7 +227,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de1_soc.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de1_soc.v
-!i122 52
+!i122 112
 R11
 R5
 r1
@@ -250,7 +250,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de2_115.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de2_115.v
-!i122 53
+!i122 113
 R11
 R5
 r1
@@ -273,7 +273,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de2i_150.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_auto_init_ob_de2i_150.v
-!i122 54
+!i122 114
 R11
 R5
 r1
@@ -296,13 +296,13 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_serial_bus_controller.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_serial_bus_controller.v
-!i122 45
+!i122 105
 L0 29 271
 R5
 r1
 !s85 0
 31
-R6
+!s108 1779675933.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_serial_bus_controller.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_av_config_serial_bus_controller.v|-work|AUDIO_CONFIG|
 !i113 1
@@ -319,7 +319,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_slow_clock_generator.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_slow_clock_generator.v
-!i122 46
+!i122 106
 L0 34 139
 R5
 r1
@@ -342,7 +342,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_CONFIG.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_CONFIG.v
-!i122 59
+!i122 119
 L0 35 436
 R5
 r1

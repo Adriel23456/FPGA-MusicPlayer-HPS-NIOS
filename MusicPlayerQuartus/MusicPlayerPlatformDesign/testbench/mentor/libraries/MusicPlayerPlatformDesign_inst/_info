@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 vMusicPlayerPlatformDesign
-!s110 1779633657
+!s110 1779675936
 !i10b 1
 !s100 ?MjLij189fo`X9P`fm8382
 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IEeX_lHRV37L]HbodoV:ke0
 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1779621106
+w1779675684
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign.v
-!i122 3
+!i122 7
 L0 6 533
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779633657.000000
+!s108 1779675936.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign.v|-work|MusicPlayerPlatformDesign_inst|
 !i113 1

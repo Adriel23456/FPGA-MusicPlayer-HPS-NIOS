@@ -10,28 +10,28 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 valtera_up_video_128_character_rom
-Z1 !s110 1779633655
+Z1 !s110 1779675932
 !i10b 1
 !s100 8C3?^gdczO;@:Mii`z8?o0
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IibZV88[KD3cJh5<3YCC>b2
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z4 w1779621109
+Z4 w1779675686
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_128_character_rom.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_128_character_rom.v
-!i122 9
+!i122 21
 L0 28 118
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779633654.000000
+Z6 !s108 1779675932.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_128_character_rom.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_128_character_rom.v|-work|VGA_CHAR_BUFFER|
 !i113 1
-Z6 o-work VGA_CHAR_BUFFER
-Z7 tCvgOpt 0
+Z7 o-work VGA_CHAR_BUFFER
+Z8 tCvgOpt 0
 valtera_up_video_fb_color_rom
 R1
 !i10b 1
@@ -43,18 +43,18 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_fb_color_rom.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_fb_color_rom.v
-!i122 10
+!i122 22
 L0 29 120
 R5
 r1
 !s85 0
 31
-Z8 !s108 1779633655.000000
+R6
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_fb_color_rom.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_fb_color_rom.v|-work|VGA_CHAR_BUFFER|
 !i113 1
-R6
 R7
+R8
 vMusicPlayerPlatformDesign_VGA_CHAR_BUFFER
 R1
 !i10b 1
@@ -66,16 +66,16 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CHAR_BUFFER.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CHAR_BUFFER.v
-!i122 11
+!i122 23
 L0 29 376
 R5
 r1
 !s85 0
 31
-R8
+R6
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CHAR_BUFFER.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CHAR_BUFFER.v|-work|VGA_CHAR_BUFFER|
 !i113 1
-R6
 R7
+R8
 n@music@player@platform@design_@v@g@a_@c@h@a@r_@b@u@f@f@e@r

@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 vMusicPlayerPlatformDesign_CPU_NIOS_II_cpu
-Z1 !s110 1779633654
+Z1 !s110 1779675931
 !i10b 1
 !s100 _J=VJXUTUg@EDkK7@A0M^0
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IJF5h^PS?`7hQ4>I;9b6Gi3
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z4 w1779621131
+Z4 w1779675702
 Z5 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v
 Z6 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v
-!i122 15
+!i122 35
 L0 2855 2824
 Z7 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1779633654.000000
+Z8 !s108 1779675931.000000
 Z9 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v|
 Z10 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v|-work|cpu|
 !i113 1
@@ -44,7 +44,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v
-!i122 16
+!i122 36
 L0 21 141
 R7
 r1
@@ -68,7 +68,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v
-!i122 17
+!i122 37
 L0 21 234
 R7
 r1
@@ -92,7 +92,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v
-!i122 18
+!i122 38
 L0 21 206
 R7
 r1
@@ -116,7 +116,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 2044 83
 R7
 r1
@@ -140,7 +140,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 2383 462
 R7
 r1
@@ -164,7 +164,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 308 283
 R7
 r1
@@ -188,7 +188,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1286 62
 R7
 r1
@@ -212,7 +212,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 808 177
 R7
 r1
@@ -236,7 +236,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 153 145
 R7
 r1
@@ -260,7 +260,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1204 72
 R7
 r1
@@ -284,7 +284,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1448 476
 R7
 r1
@@ -308,7 +308,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1401 37
 R7
 r1
@@ -332,7 +332,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1358 33
 R7
 r1
@@ -356,7 +356,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1957 60
 R7
 r1
@@ -380,7 +380,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 995 131
 R7
 r1
@@ -404,7 +404,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1934 13
 R7
 r1
@@ -428,7 +428,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 1136 58
 R7
 r1
@@ -452,7 +452,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 601 197
 R7
 r1
@@ -476,7 +476,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 2202 171
 R7
 r1
@@ -500,7 +500,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 2027 7
 R7
 r1
@@ -524,7 +524,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 2137 55
 R7
 r1
@@ -548,7 +548,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 21 56
 R7
 r1
@@ -572,7 +572,7 @@ R0
 R4
 R5
 R6
-!i122 15
+!i122 35
 L0 87 56
 R7
 r1
@@ -596,7 +596,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v
-!i122 19
+!i122 39
 L0 21 635
 R7
 r1

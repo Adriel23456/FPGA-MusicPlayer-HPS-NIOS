@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 vMusicPlayerPlatformDesign_TIMER_CTRL_OUTPUT
-!s110 1779633655
+!s110 1779675932
 !i10b 1
 !s100 ;=<L?H6hP9icQPD2lhcQk3
 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IdKL9f1XRbm@GnAcmLS1Zl1
 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1779621109
+w1779675686
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_CTRL_OUTPUT.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_CTRL_OUTPUT.v
-!i122 3
+!i122 7
 L0 21 46
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779633655.000000
+!s108 1779675932.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_CTRL_OUTPUT.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_TIMER_CTRL_OUTPUT.v|-work|TIMER_CTRL_OUTPUT|
 !i113 1

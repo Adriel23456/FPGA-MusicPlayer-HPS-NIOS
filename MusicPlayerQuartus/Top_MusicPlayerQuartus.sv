@@ -37,7 +37,49 @@ module Top_MusicPlayerQuartus #(
 
     // ── Filter_Decoder (standalone) ──────────────────────────────
     input  logic [1:0]  filter_sw,
-    output logic [6:0]  filter_seg_out
+    output logic [6:0]  filter_seg_out,
+
+    // ── HPS DDR3 (auto-assigned by Quartus, do NOT pin-plan) ────
+    output wire [12:0]  memory_mem_a,
+    output wire [2:0]   memory_mem_ba,
+    output wire         memory_mem_ck,
+    output wire         memory_mem_ck_n,
+    output wire         memory_mem_cke,
+    output wire         memory_mem_cs_n,
+    output wire         memory_mem_ras_n,
+    output wire         memory_mem_cas_n,
+    output wire         memory_mem_we_n,
+    output wire         memory_mem_reset_n,
+    inout  wire [7:0]   memory_mem_dq,
+    inout  wire         memory_mem_dqs,
+    inout  wire         memory_mem_dqs_n,
+    output wire         memory_mem_odt,
+    output wire         memory_mem_dm,
+    input  wire         memory_oct_rzqin,
+
+    // ── HPS Ethernet EMAC0 (auto-assigned by Quartus) ───────────
+    output wire         hps_io_hps_io_emac0_inst_TX_CLK,
+    output wire         hps_io_hps_io_emac0_inst_TXD0,
+    output wire         hps_io_hps_io_emac0_inst_TXD1,
+    output wire         hps_io_hps_io_emac0_inst_TXD2,
+    output wire         hps_io_hps_io_emac0_inst_TXD3,
+    input  wire         hps_io_hps_io_emac0_inst_RXD0,
+    inout  wire         hps_io_hps_io_emac0_inst_MDIO,
+    output wire         hps_io_hps_io_emac0_inst_MDC,
+    input  wire         hps_io_hps_io_emac0_inst_RX_CTL,
+    output wire         hps_io_hps_io_emac0_inst_TX_CTL,
+    input  wire         hps_io_hps_io_emac0_inst_RX_CLK,
+    input  wire         hps_io_hps_io_emac0_inst_RXD1,
+    input  wire         hps_io_hps_io_emac0_inst_RXD2,
+    input  wire         hps_io_hps_io_emac0_inst_RXD3,
+
+    // ── HPS SD Card (auto-assigned by Quartus) ───────────────────
+    inout  wire         hps_io_hps_io_sdio_inst_CMD,
+    inout  wire         hps_io_hps_io_sdio_inst_D0,
+    inout  wire         hps_io_hps_io_sdio_inst_D1,
+    output wire         hps_io_hps_io_sdio_inst_CLK,
+    inout  wire         hps_io_hps_io_sdio_inst_D2,
+    inout  wire         hps_io_hps_io_sdio_inst_D3
 );
 
     // ────────────────────────────────────────────────────────────
@@ -55,33 +97,79 @@ module Top_MusicPlayerQuartus #(
     logic [1:0] timer_status_wire;
 
     // ────────────────────────────────────────────────────────────
-    // Platform Design (Nios II version)
+    // Platform Design (NIOS II + HPS)
     // ────────────────────────────────────────────────────────────
     MusicPlayerPlatformDesign platform (
-        .clk_clk                     (clk),
-        .vga_clk_clk                 (clk_25mhz),
-        .reset_reset_n               (reset_reset_n),
+        .clk_clk                                (clk),
+        .vga_clk_clk                            (clk_25mhz),
+        .reset_reset_n                          (reset_reset_n),
 
-        .audio_config_export_SDAT    (audio_config_export_SDAT),
-        .audio_config_export_SCLK    (audio_config_export_SCLK),
-        .audio_export_BCLK           (audio_export_BCLK),
-        .audio_export_DACDAT         (audio_export_DACDAT),
-        .audio_export_DACLRCK        (audio_export_DACLRCK),
+        // Audio
+        .audio_config_export_SDAT               (audio_config_export_SDAT),
+        .audio_config_export_SCLK               (audio_config_export_SCLK),
+        .audio_export_BCLK                      (audio_export_BCLK),
+        .audio_export_DACDAT                    (audio_export_DACDAT),
+        .audio_export_DACLRCK                   (audio_export_DACLRCK),
 
-        .buttons_input_export        (buttons_input_export),
-        .switch_input_export         (switch_input_export),
+        // Buttons & Switches
+        .buttons_input_export                   (buttons_input_export),
+        .switch_input_export                    (switch_input_export),
 
-        .timer_ctrl_output_export    (timer_ctrl_wire),
-        .timer_status_input_export   (timer_status_wire),
+        // Timer
+        .timer_ctrl_output_export               (timer_ctrl_wire),
+        .timer_status_input_export              (timer_status_wire),
 
-        .vga_outputs_CLK             (vga_outputs_CLK),
-        .vga_outputs_HS              (vga_outputs_HS),
-        .vga_outputs_VS              (vga_outputs_VS),
-        .vga_outputs_BLANK           (vga_outputs_BLANK),
-        .vga_outputs_SYNC            (vga_outputs_SYNC),
-        .vga_outputs_R               (vga_outputs_R),
-        .vga_outputs_G               (vga_outputs_G),
-        .vga_outputs_B               (vga_outputs_B)
+        // VGA
+        .vga_outputs_CLK                        (vga_outputs_CLK),
+        .vga_outputs_HS                         (vga_outputs_HS),
+        .vga_outputs_VS                         (vga_outputs_VS),
+        .vga_outputs_BLANK                      (vga_outputs_BLANK),
+        .vga_outputs_SYNC                       (vga_outputs_SYNC),
+        .vga_outputs_R                          (vga_outputs_R),
+        .vga_outputs_G                          (vga_outputs_G),
+        .vga_outputs_B                          (vga_outputs_B),
+
+        // HPS DDR3
+        .memory_mem_a                           (memory_mem_a),
+        .memory_mem_ba                          (memory_mem_ba),
+        .memory_mem_ck                          (memory_mem_ck),
+        .memory_mem_ck_n                        (memory_mem_ck_n),
+        .memory_mem_cke                         (memory_mem_cke),
+        .memory_mem_cs_n                        (memory_mem_cs_n),
+        .memory_mem_ras_n                       (memory_mem_ras_n),
+        .memory_mem_cas_n                       (memory_mem_cas_n),
+        .memory_mem_we_n                        (memory_mem_we_n),
+        .memory_mem_reset_n                     (memory_mem_reset_n),
+        .memory_mem_dq                          (memory_mem_dq),
+        .memory_mem_dqs                         (memory_mem_dqs),
+        .memory_mem_dqs_n                       (memory_mem_dqs_n),
+        .memory_mem_odt                         (memory_mem_odt),
+        .memory_mem_dm                          (memory_mem_dm),
+        .memory_oct_rzqin                       (memory_oct_rzqin),
+
+        // HPS Ethernet
+        .hps_io_hps_io_emac0_inst_TX_CLK       (hps_io_hps_io_emac0_inst_TX_CLK),
+        .hps_io_hps_io_emac0_inst_TXD0         (hps_io_hps_io_emac0_inst_TXD0),
+        .hps_io_hps_io_emac0_inst_TXD1         (hps_io_hps_io_emac0_inst_TXD1),
+        .hps_io_hps_io_emac0_inst_TXD2         (hps_io_hps_io_emac0_inst_TXD2),
+        .hps_io_hps_io_emac0_inst_TXD3         (hps_io_hps_io_emac0_inst_TXD3),
+        .hps_io_hps_io_emac0_inst_RXD0         (hps_io_hps_io_emac0_inst_RXD0),
+        .hps_io_hps_io_emac0_inst_MDIO         (hps_io_hps_io_emac0_inst_MDIO),
+        .hps_io_hps_io_emac0_inst_MDC          (hps_io_hps_io_emac0_inst_MDC),
+        .hps_io_hps_io_emac0_inst_RX_CTL       (hps_io_hps_io_emac0_inst_RX_CTL),
+        .hps_io_hps_io_emac0_inst_TX_CTL       (hps_io_hps_io_emac0_inst_TX_CTL),
+        .hps_io_hps_io_emac0_inst_RX_CLK       (hps_io_hps_io_emac0_inst_RX_CLK),
+        .hps_io_hps_io_emac0_inst_RXD1         (hps_io_hps_io_emac0_inst_RXD1),
+        .hps_io_hps_io_emac0_inst_RXD2         (hps_io_hps_io_emac0_inst_RXD2),
+        .hps_io_hps_io_emac0_inst_RXD3         (hps_io_hps_io_emac0_inst_RXD3),
+
+        // HPS SD Card
+        .hps_io_hps_io_sdio_inst_CMD           (hps_io_hps_io_sdio_inst_CMD),
+        .hps_io_hps_io_sdio_inst_D0            (hps_io_hps_io_sdio_inst_D0),
+        .hps_io_hps_io_sdio_inst_D1            (hps_io_hps_io_sdio_inst_D1),
+        .hps_io_hps_io_sdio_inst_CLK           (hps_io_hps_io_sdio_inst_CLK),
+        .hps_io_hps_io_sdio_inst_D2            (hps_io_hps_io_sdio_inst_D2),
+        .hps_io_hps_io_sdio_inst_D3            (hps_io_hps_io_sdio_inst_D3)
     );
 
     // ────────────────────────────────────────────────────────────

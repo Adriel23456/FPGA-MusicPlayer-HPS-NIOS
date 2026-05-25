@@ -12,7 +12,7 @@ Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatfo
 valtera_conduit_bfm_0002
 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
 DXx25 altera_common_sv_packages 13 verbosity_pkg 0 22 Q7U7A=Jn<7B=GMPk?2Z`H3
-!s110 1779633657
+!s110 1779675936
 !i10b 1
 !s100 C^h1iNo3UOm0LQ>ZAE7Z_1
 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -20,16 +20,16 @@ IzP2`>6oJ2<_mQlA9^zEcI2
 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1779621106
+w1779675684
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_conduit_bfm_0002.sv
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_conduit_bfm_0002.sv
-!i122 3
+!i122 7
 L0 36 113
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779633657.000000
+!s108 1779675936.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_conduit_bfm_0002.sv|
 !s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_conduit_bfm_0002.sv|-L|altera_common_sv_packages|-work|MusicPlayerPlatformDesign_inst_audio_export_bfm|
 !i113 1

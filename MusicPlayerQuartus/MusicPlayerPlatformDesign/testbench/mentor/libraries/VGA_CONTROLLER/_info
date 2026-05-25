@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 valtera_up_avalon_video_vga_timing
-Z1 !s110 1779633654
+Z1 !s110 1779675932
 !i10b 1
 !s100 2lAbcALc[PAg8P6UJ;XMC0
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
 I]0OWz9VR`:YLhb1=Q?`Oj2
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z4 w1779621109
+Z4 w1779675686
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v
-!i122 6
+!i122 14
 L0 28 293
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1779633654.000000
+Z6 !s108 1779675932.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_avalon_video_vga_timing.v|-work|VGA_CONTROLLER|
 !i113 1
@@ -43,7 +43,7 @@ R0
 R4
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CONTROLLER.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_VGA_CONTROLLER.v
-!i122 7
+!i122 15
 L0 28 259
 R5
 r1

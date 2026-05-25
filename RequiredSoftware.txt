@@ -6,14 +6,60 @@ https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-editi
 (ModelSim)
 https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-20-1-1-windows
 
-Also execute this in powershell (admin privileges):
+This is a tutorial to set up ubuntu tools for Quartus on windows:
+=============================
+In powershell (admin privileges):
 ------------------------
-wsl --install -d Ubuntu-18.04
-#To verify it
-wsl -l -v
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+# Reboot when prompted
+
+
+wsl --install -d Ubuntu
+wsl --set-version Ubuntu 1
+wsl --set-default Ubuntu
+
+# Verify
+wsl --list --verbose
+# Must show: * Ubuntu   Stopped   1
+------------------------
+
+# Open Ubuntu from Start Menu (Should show as WSL in search bar):
+------------------------
+sudo apt update
+sudo apt install make dos2unix
+
+# Fix the nios2_command_shell.sh Script
+#In Ubuntu:
+# Copy script locally
+cp /mnt/c/intelFPGA_lite/22.1std/nios2eds/nios2_command_shell.sh ~/nios2_command_shell.sh
+
+# Remove the broken wsl check
+sed -i 's/if \[ -z \$(which wsl 2> \/dev\/null) \]; then/if false; then/g' ~/nios2_command_shell.sh
+sed -i 's/if \[ -z \$(which wsl 2> \/dev\/null) \] || /if [ /g' ~/nios2_command_shell.sh
+
+# Fix syntax error on the combined check line
+sed -i 's/if \[ \[ -z \$(which make/if [ -z $(which make/g' ~/nios2_command_shell.sh
+
+# Verify lines 25-45 look correct
+sed -n '25,45p' ~/nios2_command_shell.sh
+------------------------
+
+#PowerShell (Administrator)
+------------------------
+Copy-Item "\\wsl.localhost\Ubuntu\home\<YOUR_USERNAME>\nios2_command_shell.sh" -Destination "C:\intelFPGA_lite\22.1std\nios2eds\nios2_command_shell.sh" -Force
+------------------------
+
+#Finally in ubuntu:
+------------------------
+wsl --set-default Ubuntu
+wsl --list --verbose
+# Must show: * Ubuntu   Stopped   1
+------------------------
 ------------------------
 
 Set up the model sim direction in Quartus (Tools -> Options):
 ModelSim + QuestaSim = C:/intelFPGA/20.1/modelsim_ase/win32aloem
 
-And we dont use Eclipse, we use the NIOS II Command Shell, for compilation for NIOS II (Bare-Metal)
+And we dont use Eclipse, we use the NIOS II Command Shell, for compilation for NIOS II (Bare-Metal)!! (NIOS-II_Workflow.md)
+
+Also remember to run the TCL scripts for 'Fitter (Plave & Route)' when compiling hardware.

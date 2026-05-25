@@ -1,0 +1,228 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
+valtera_avalon_clock_source
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 DXx25 altera_common_sv_packages 13 verbosity_pkg 0 22 Q7U7A=Jn<7B=GMPk?2Z`H3
+Z3 !s110 1779675492
+!i10b 1
+!s100 5OHdn76hio^4>FPA^GXAY2
+Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Id=YU1hQd8F0oW_?^Kaji60
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+Z6 w1779673493
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_clock_source.sv
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_clock_source.sv
+!i122 9
+L0 23 70
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1779675491.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_clock_source.sv|
+!s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_clock_source.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+Z9 o-sv -L altera_common_sv_packages -work border
+Z10 tCvgOpt 0
+valtera_avalon_interrupt_sink
+R1
+R2
+Z11 !s110 1779675491
+!i10b 1
+!s100 _5_a=ilWkib>ajATQMNk23
+R4
+I[ID6G@a[dB>4iH1=@44:j1
+R5
+S1
+R0
+Z12 w1779673546
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_interrupt_sink.sv
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_interrupt_sink.sv
+!i122 8
+L0 30 109
+R7
+r1
+!s85 0
+31
+R8
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_interrupt_sink.sv|
+!s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_interrupt_sink.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+R9
+R10
+valtera_avalon_mm_slave_bfm
+R1
+R2
+Z13 DXx25 altera_common_sv_packages 13 avalon_mm_pkg 0 22 HIS<0;f1;:UhP>AMH9_la2
+DXx25 altera_common_sv_packages 20 avalon_utilities_pkg 0 22 `MzTTLaS;bn9k`djNF?0J3
+R11
+!i10b 1
+!s100 1IzGY[Z]4TR=?RH7D4kRT0
+R4
+I`h1?@og`YiPdM3R=?[3@k0
+R5
+S1
+R0
+R12
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_mm_slave_bfm.sv
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_mm_slave_bfm.sv
+!i122 7
+L0 36 1560
+R7
+r1
+!s85 0
+31
+R8
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_mm_slave_bfm.sv|
+!s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_mm_slave_bfm.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+R9
+R10
+valtera_avalon_reset_source
+R1
+R2
+R3
+!i10b 1
+!s100 YZ_P__eRL97SE0BUT;8dc2
+R4
+InVgR0O`z78^Q3D7OMNCTR3
+R5
+S1
+R0
+R6
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_reset_source.sv
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_reset_source.sv
+!i122 10
+L0 23 79
+R7
+r1
+!s85 0
+31
+Z14 !s108 1779675492.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_reset_source.sv|
+!s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_reset_source.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+R9
+R10
+vMusicPlayerPlatformDesign_HPS_ARM_hps_io_border
+R1
+R2
+R13
+DXx4 work 55 MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_sv_unit 0 22 4Q<m`jCHRP@5Af7z35P@^2
+R3
+R5
+r1
+!s85 0
+!i10b 1
+!s100 1V>G9oCSGRXRI:2fGcZg31
+Imb:oe5XE7>U<;1lFoAZKj1
+!s105 MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_sv_unit
+S1
+R0
+Z15 w1779673549
+Z16 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border.sv
+Z17 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border.sv
+!i122 13
+L0 19 86
+R7
+31
+R14
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border.sv|
+Z18 !s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+R9
+R10
+n@music@player@platform@design_@h@p@s_@a@r@m_hps_io_border
+vMusicPlayerPlatformDesign_HPS_ARM_hps_io_border_hps_io
+R1
+R2
+R3
+!i10b 1
+!s100 1DB3bHh3SS^do3N=@]bn^0
+R4
+Ia:45h[e^BM9nn1NBNER?V3
+R5
+S1
+R0
+R15
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_hps_io.sv
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_hps_io.sv
+!i122 12
+L0 36 700
+R7
+r1
+!s85 0
+31
+R14
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_hps_io.sv|
+!s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_hps_io.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+R9
+R10
+n@music@player@platform@design_@h@p@s_@a@r@m_hps_io_border_hps_io
+vMusicPlayerPlatformDesign_HPS_ARM_hps_io_border_memory
+R1
+R2
+R3
+!i10b 1
+!s100 74UM9Jf8CSR0@=:HW3Dhd0
+R4
+IjQa@421][VfW>N@7ClmM10
+R5
+S1
+R0
+R15
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_memory.sv
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_memory.sv
+!i122 11
+L0 36 491
+R7
+r1
+!s85 0
+31
+R14
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_memory.sv|
+!s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border_memory.sv|-L|altera_common_sv_packages|-work|border|
+!i113 1
+R9
+R10
+n@music@player@platform@design_@h@p@s_@a@r@m_hps_io_border_memory
+XMusicPlayerPlatformDesign_HPS_ARM_hps_io_border_sv_unit
+R1
+R2
+R13
+R3
+V4Q<m`jCHRP@5Af7z35P@^2
+r1
+!s85 0
+!i10b 1
+!s100 _nSzTR0>G[nK9^bWE6@[g3
+I4Q<m`jCHRP@5Af7z35P@^2
+!i103 1
+S1
+R0
+R15
+R16
+R17
+!i122 13
+L0 16 0
+R7
+31
+R14
+Z19 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_HPS_ARM_hps_io_border.sv|
+R18
+!i113 1
+R9
+R10
+n@music@player@platform@design_@h@p@s_@a@r@m_hps_io_border_sv_unit

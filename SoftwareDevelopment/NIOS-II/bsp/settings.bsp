@@ -2,12 +2,12 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>24/05/2026 08:13:20 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1779632000082</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>24/05/2026 08:24:12 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1779675852034</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\SoftwareDevelopment\NIOS-II\bsp</BspGeneratedLocation>
         <BspSettingsFile>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\SoftwareDevelopment\NIOS-II\bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\MusicPlayerQuartus\MusicPlayerPlatformDesign.sopcinfo</SopcDesignFile>
-        <SystemFileHash>3fd313fccc3455eb488711bfc67ab5d2b773a573cd84973912f5a6bc2ee3481</SystemFileHash>
+        <SystemFileHash>803c19ff6259a33029c29e8991d8d73a8137970f31a3ebe7e1ab648f886420</SystemFileHash>
         <JdiFile>default</JdiFile>
         <Cpu>CPU_NIOS_II</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
@@ -918,52 +918,52 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>AUDIO_CONFIG</slaveDescriptor>
+                <slaveDescriptor>TIMER_CTRL_OUTPUT</slaveDescriptor>
                 <addressRange>0x00083020 - 0x0008302F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>AUDIO_OUT</slaveDescriptor>
+                <slaveDescriptor>TIMER_STATUS_INPUT</slaveDescriptor>
                 <addressRange>0x00083030 - 0x0008303F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>TIMER_CTRL_OUTPUT</slaveDescriptor>
+                <slaveDescriptor>REG_SW_INPUT</slaveDescriptor>
                 <addressRange>0x00083040 - 0x0008304F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>TIMER_STATUS_INPUT</slaveDescriptor>
+                <slaveDescriptor>REG_BTN_INPUT</slaveDescriptor>
                 <addressRange>0x00083050 - 0x0008305F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>REG_SW_INPUT</slaveDescriptor>
+                <slaveDescriptor>AUDIO_CONFIG</slaveDescriptor>
                 <addressRange>0x00083060 - 0x0008306F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>REG_BTN_INPUT</slaveDescriptor>
+                <slaveDescriptor>AUDIO_OUT</slaveDescriptor>
                 <addressRange>0x00083070 - 0x0008307F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>VGA_CHAR_BUFFER_avalon_char_control_slave</slaveDescriptor>
+                <slaveDescriptor>UART_NIOS_V</slaveDescriptor>
                 <addressRange>0x00083080 - 0x00083087</addressRange>
                 <addressSpan>8</addressSpan>
-                <attributes/>
+                <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>UART_NIOS_V</slaveDescriptor>
+                <slaveDescriptor>VGA_CHAR_BUFFER_avalon_char_control_slave</slaveDescriptor>
                 <addressRange>0x00083088 - 0x0008308F</addressRange>
                 <addressSpan>8</addressSpan>
-                <attributes>printable</attributes>
+                <attributes/>
         </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>

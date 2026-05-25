@@ -10,23 +10,23 @@ z2
 cModel Technology
 Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign/testbench/mentor
 vMusicPlayerPlatformDesign_mm_interconnect_0_avalon_st_adapter
-!s110 1779633650
+!s110 1779675926
 !i10b 1
 !s100 n7eAdk7;CQ?2aPF;lFN@92
 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IF^NDNCiiAf`c<ki=S`a]_2
 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1779621132
+w1779675703
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0_avalon_st_adapter.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0_avalon_st_adapter.v
-!i122 3
+!i122 7
 L0 9 194
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779633650.000000
+!s108 1779675926.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0_avalon_st_adapter.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0_avalon_st_adapter.v|-work|avalon_st_adapter|
 !i113 1
