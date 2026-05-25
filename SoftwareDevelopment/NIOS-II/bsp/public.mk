@@ -86,7 +86,7 @@ ACDS_VERSION := 22.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := d:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign.sopcinfo
+SOPCINFO_FILE := d:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -330,18 +330,18 @@ ALT_CFLAGS += -mgpopt=global
 
 # Slave descriptor of STDERR character-mode device. This setting is used by the 
 # ALT_STDERR family of defines in system.h. none 
-# setting hal.stderr is UART_NIOS_V
-ELF_PATCH_FLAG  += --stderr_dev UART_NIOS_V
+# setting hal.stderr is UART_NIOS_II
+ELF_PATCH_FLAG  += --stderr_dev UART_NIOS_II
 
 # Slave descriptor of STDIN character-mode device. This setting is used by the 
 # ALT_STDIN family of defines in system.h. none 
-# setting hal.stdin is UART_NIOS_V
-ELF_PATCH_FLAG  += --stdin_dev UART_NIOS_V
+# setting hal.stdin is UART_NIOS_II
+ELF_PATCH_FLAG  += --stdin_dev UART_NIOS_II
 
 # Slave descriptor of STDOUT character-mode device. This setting is used by the 
 # ALT_STDOUT family of defines in system.h. none 
-# setting hal.stdout is UART_NIOS_V
-ELF_PATCH_FLAG  += --stdout_dev UART_NIOS_V
+# setting hal.stdout is UART_NIOS_II
+ELF_PATCH_FLAG  += --stdout_dev UART_NIOS_II
 
 
 #------------------------------------------------------------------------------

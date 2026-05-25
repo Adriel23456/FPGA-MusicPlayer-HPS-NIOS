@@ -7,7 +7,7 @@
 <td width="20%" bgcolor="#77BBFF">BSP Type:</td><td>hal</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">SOPC Design File:</td><td>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\MusicPlayerQuartus\MusicPlayerPlatformDesign.sopcinfo</td>
+<td width="20%" bgcolor="#77BBFF">SOPC Design File:</td><td>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\MusicPlayerQuartus22\MusicPlayerPlatformDesign.sopcinfo</td>
 </tr>
 <tr mode="wrap">
 <td width="20%" bgcolor="#77BBFF">Quartus JDI File:</td><td>default</td>
@@ -22,10 +22,10 @@
 <td width="20%" bgcolor="#77BBFF">BSP Version:</td><td>default</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>24/05/2026 10:09:16 PM</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>25/05/2026 06:33:25 AM</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1779682156743</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1779712405065</td>
 </tr>
 <tr mode="wrap">
 <td width="20%" bgcolor="#77BBFF">BSP Generated Location:</td><td>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\SoftwareDevelopment\NIOS-II\bsp</td>
@@ -38,16 +38,10 @@
 <th align="left" width="20%">Slave Descriptor</th><th align="left" width="40%">Address Range</th><th align="left" width="20%">Size</th><th align="left" width="20%">Attributes</th>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>VGA_CHAR_BUFFER_avalon_char_control_slave</td><td>0x00083088 - 0x0008308F</td><td>8</td><td class="listing">&nbsp;</td>
+<td>UART_NIOS_II</td><td>0x00083068 - 0x0008306F</td><td>8</td><td class="listing">printable</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>UART_NIOS_V</td><td>0x00083080 - 0x00083087</td><td>8</td><td class="listing">printable</td>
-</tr>
-<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>AUDIO_OUT</td><td>0x00083070 - 0x0008307F</td><td>16</td><td class="listing">&nbsp;</td>
-</tr>
-<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>AUDIO_CONFIG</td><td>0x00083060 - 0x0008306F</td><td>16</td><td class="listing">&nbsp;</td>
+<td>VGA_CHAR_BUFFER_avalon_char_control_slave</td><td>0x00083060 - 0x00083067</td><td>8</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>REG_BTN_INPUT</td><td>0x00083050 - 0x0008305F</td><td>16</td><td class="listing">&nbsp;</td>
@@ -62,13 +56,16 @@
 <td>TIMER_CTRL_OUTPUT</td><td>0x00083020 - 0x0008302F</td><td>16</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>AUDIO_TIMER</td><td>0x00083000 - 0x0008301F</td><td>32</td><td class="listing">timer</td>
+<td>AUDIO_OUT</td><td>0x00083010 - 0x0008301F</td><td>16</td><td class="listing">&nbsp;</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>AUDIO_CONFIG</td><td>0x00083000 - 0x0008300F</td><td>16</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>VGA_CHAR_BUFFER_avalon_char_buffer_slave</td><td>0x00080000 - 0x00081FFF</td><td>8192</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>RAM_NIOS_V</td><td>0x00040000 - 0x0007FFFF</td><td>262144</td><td class="listing">memory</td>
+<td>RAM_NIOS_II</td><td>0x00040000 - 0x0007FFFF</td><td>262144</td><td class="listing">memory</td>
 </tr>
 </table>
 <br>
@@ -87,22 +84,22 @@
 <th align="left" width="50%">Section</th><th align="left" width="50%">Region</th>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.text</td><td>RAM_NIOS_V</td>
+<td>.text</td><td>RAM_NIOS_II</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.rodata</td><td>RAM_NIOS_V</td>
+<td>.rodata</td><td>RAM_NIOS_II</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.rwdata</td><td>RAM_NIOS_V</td>
+<td>.rwdata</td><td>RAM_NIOS_II</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.bss</td><td>RAM_NIOS_V</td>
+<td>.bss</td><td>RAM_NIOS_II</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.heap</td><td>RAM_NIOS_V</td>
+<td>.heap</td><td>RAM_NIOS_II</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.stack</td><td>RAM_NIOS_V</td>
+<td>.stack</td><td>RAM_NIOS_II</td>
 </tr>
 </table>
 <h3>Settings</h3>
@@ -711,7 +708,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>RAM_NIOS_V</td>
+<td width="20%">Value:</td><td>RAM_NIOS_II</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>
@@ -765,7 +762,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>RAM_NIOS_V</td>
+<td width="20%">Value:</td><td>RAM_NIOS_II</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>
@@ -1980,7 +1977,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>UART_NIOS_V</td>
+<td width="20%">Value:</td><td>UART_NIOS_II</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>
@@ -2007,7 +2004,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>UART_NIOS_V</td>
+<td width="20%">Value:</td><td>UART_NIOS_II</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>
@@ -2034,7 +2031,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>UART_NIOS_V</td>
+<td width="20%">Value:</td><td>UART_NIOS_II</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>
@@ -2061,7 +2058,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>AUDIO_TIMER</td>
+<td width="20%">Value:</td><td>none</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>

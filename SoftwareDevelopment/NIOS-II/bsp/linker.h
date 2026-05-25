@@ -2,9 +2,9 @@
  * linker.h - Linker script mapping information
  *
  * Machine generated for CPU 'CPU_NIOS_II' in SOPC Builder design 'MusicPlayerPlatformDesign'
- * SOPC Builder design path: d:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign.sopcinfo
+ * SOPC Builder design path: d:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
  *
- * Generated: Sun May 24 22:09:17 CST 2026
+ * Generated: Mon May 25 06:33:25 CST 2026
  */
 
 /*
@@ -65,8 +65,8 @@
  *
  */
 
-#define RAM_NIOS_V_REGION_BASE 0x40020
-#define RAM_NIOS_V_REGION_SPAN 262112
+#define RAM_NIOS_II_REGION_BASE 0x40020
+#define RAM_NIOS_II_REGION_SPAN 262112
 #define RESET_REGION_BASE 0x40000
 #define RESET_REGION_SPAN 32
 
@@ -76,11 +76,11 @@
  *
  */
 
-#define ALT_EXCEPTIONS_DEVICE RAM_NIOS_V
-#define ALT_RESET_DEVICE RAM_NIOS_V
-#define ALT_RODATA_DEVICE RAM_NIOS_V
-#define ALT_RWDATA_DEVICE RAM_NIOS_V
-#define ALT_TEXT_DEVICE RAM_NIOS_V
+#define ALT_EXCEPTIONS_DEVICE RAM_NIOS_II
+#define ALT_RESET_DEVICE RAM_NIOS_II
+#define ALT_RODATA_DEVICE RAM_NIOS_II
+#define ALT_RWDATA_DEVICE RAM_NIOS_II
+#define ALT_TEXT_DEVICE RAM_NIOS_II
 
 
 /*

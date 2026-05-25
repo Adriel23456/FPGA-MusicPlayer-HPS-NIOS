@@ -1,0 +1,35 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+vMusicPlayerPlatformDesign_RAM_NIOS_II
+!s110 1779713135
+!i10b 1
+!s100 FBZAM84cm:9CHg@Ub@oOK2
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+I4zm1Q3ddZ;bFgGOY9X9f=3
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1779711366
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_RAM_NIOS_II.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_RAM_NIOS_II.v
+!i122 0
+L0 21 68
+OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1779713135.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_RAM_NIOS_II.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_RAM_NIOS_II.v|-work|RAM_NIOS_II|
+!i113 1
+o-work RAM_NIOS_II
+tCvgOpt 0
+n@music@player@platform@design_@r@a@m_@n@i@o@s_@i@i

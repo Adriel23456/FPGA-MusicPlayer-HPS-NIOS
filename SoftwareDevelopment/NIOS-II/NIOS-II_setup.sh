@@ -325,7 +325,7 @@ echo "  Copied to: $MENTOR/main.elf"
 
 echo ""
 echo "[2/3] Reading RAM base address from bsp/system.h..."
-RAM_BASE=$(grep "RAM_NIOS_V_BASE\|RAM_BASE" "$BSP_DIR/system.h" | grep "#define" | awk '{print $3}' | head -1)
+RAM_BASE=$(grep "_BASE" "$BSP_DIR/system.h" | grep "RAM_" | awk '{print $3}' | head -1)
 if [ -z "$RAM_BASE" ]; then
     echo "ERROR: Could not find RAM base in $BSP_DIR/system.h"
     exit 1

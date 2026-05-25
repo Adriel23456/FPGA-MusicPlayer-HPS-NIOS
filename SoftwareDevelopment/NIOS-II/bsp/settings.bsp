@@ -2,12 +2,12 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>24/05/2026 10:09:16 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1779682156743</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>25/05/2026 06:33:25 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1779712405065</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\SoftwareDevelopment\NIOS-II\bsp</BspGeneratedLocation>
         <BspSettingsFile>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\SoftwareDevelopment\NIOS-II\bsp\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\MusicPlayerQuartus\MusicPlayerPlatformDesign.sopcinfo</SopcDesignFile>
-        <SystemFileHash>aebfa2723f3593a88861d19e5fa05bdaf037891fe958ba7f2da681845717361</SystemFileHash>
+        <SopcDesignFile>D:\Escritorio\FPGA-MusicPlayer-HPS-NIOS\MusicPlayerQuartus22\MusicPlayerPlatformDesign.sopcinfo</SopcDesignFile>
+        <SystemFileHash>951e97ed10d1d6688f99ec241ff9f9ba1cbaad9609617b148411ea4666e7ae</SystemFileHash>
         <JdiFile>default</JdiFile>
         <Cpu>CPU_NIOS_II</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
@@ -15,7 +15,7 @@
                 <SettingName>hal.sys_clk_timer</SettingName>
                 <Identifier>ALT_SYS_CLK</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>AUDIO_TIMER</Value>
+                <Value>none</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of the system clock timer device. This device provides a periodic interrupt ("tick") and is typically required for RTOS use. This setting defines the value of ALT_SYS_CLK in system.h.</Description>
@@ -147,7 +147,7 @@
                 <SettingName>hal.linker.exception_stack_memory_region_name</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>RAM_NIOS_V</Value>
+                <Value>RAM_NIOS_II</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Name of the existing memory region that will be divided up to create the 'exception_stack' memory region. The selected region name will be adjusted automatically when the BSP is generated to create the 'exception_stack' memory region.</Description>
@@ -183,7 +183,7 @@
                 <SettingName>hal.linker.interrupt_stack_memory_region_name</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>RAM_NIOS_V</Value>
+                <Value>RAM_NIOS_II</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Name of the existing memory region that will be divided up to create the 'interrupt_stack' memory region. The selected region name will be adjusted automatically when the BSP is generated to create the 'interrupt_stack' memory region.</Description>
@@ -195,7 +195,7 @@
                 <SettingName>hal.stdin</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>UART_NIOS_V</Value>
+                <Value>UART_NIOS_II</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDIN character-mode device. This setting is used by the ALT_STDIN family of defines in system.h.</Description>
@@ -207,7 +207,7 @@
                 <SettingName>hal.stdout</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>UART_NIOS_V</Value>
+                <Value>UART_NIOS_II</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDOUT character-mode device. This setting is used by the ALT_STDOUT family of defines in system.h.</Description>
@@ -219,7 +219,7 @@
                 <SettingName>hal.stderr</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>UART_NIOS_V</Value>
+                <Value>UART_NIOS_II</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDERR character-mode device. This setting is used by the ALT_STDERR family of defines in system.h.</Description>
@@ -900,7 +900,7 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
-                <slaveDescriptor>RAM_NIOS_V</slaveDescriptor>
+                <slaveDescriptor>RAM_NIOS_II</slaveDescriptor>
                 <addressRange>0x00040000 - 0x0007FFFF</addressRange>
                 <addressSpan>262144</addressSpan>
                 <attributes>memory</attributes>
@@ -912,10 +912,16 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>AUDIO_TIMER</slaveDescriptor>
-                <addressRange>0x00083000 - 0x0008301F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes>timer</attributes>
+                <slaveDescriptor>AUDIO_CONFIG</slaveDescriptor>
+                <addressRange>0x00083000 - 0x0008300F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>AUDIO_OUT</slaveDescriptor>
+                <addressRange>0x00083010 - 0x0008301F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>TIMER_CTRL_OUTPUT</slaveDescriptor>
@@ -942,57 +948,45 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>AUDIO_CONFIG</slaveDescriptor>
-                <addressRange>0x00083060 - 0x0008306F</addressRange>
-                <addressSpan>16</addressSpan>
+                <slaveDescriptor>VGA_CHAR_BUFFER_avalon_char_control_slave</slaveDescriptor>
+                <addressRange>0x00083060 - 0x00083067</addressRange>
+                <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>AUDIO_OUT</slaveDescriptor>
-                <addressRange>0x00083070 - 0x0008307F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>UART_NIOS_V</slaveDescriptor>
-                <addressRange>0x00083080 - 0x00083087</addressRange>
+                <slaveDescriptor>UART_NIOS_II</slaveDescriptor>
+                <addressRange>0x00083068 - 0x0008306F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>VGA_CHAR_BUFFER_avalon_char_control_slave</slaveDescriptor>
-                <addressRange>0x00083088 - 0x0008308F</addressRange>
-                <addressSpan>8</addressSpan>
-                <attributes/>
-        </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>
-                <regionName>RAM_NIOS_V</regionName>
+                <regionName>RAM_NIOS_II</regionName>
                 <noLoad>false</noLoad>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.rodata</sectionName>
-                <regionName>RAM_NIOS_V</regionName>
+                <regionName>RAM_NIOS_II</regionName>
                 <noLoad>false</noLoad>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.rwdata</sectionName>
-                <regionName>RAM_NIOS_V</regionName>
+                <regionName>RAM_NIOS_II</regionName>
                 <noLoad>false</noLoad>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.bss</sectionName>
-                <regionName>RAM_NIOS_V</regionName>
+                <regionName>RAM_NIOS_II</regionName>
                 <noLoad>false</noLoad>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.heap</sectionName>
-                <regionName>RAM_NIOS_V</regionName>
+                <regionName>RAM_NIOS_II</regionName>
                 <noLoad>false</noLoad>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.stack</sectionName>
-                <regionName>RAM_NIOS_V</regionName>
+                <regionName>RAM_NIOS_II</regionName>
                 <noLoad>false</noLoad>
         </LinkerSection>
 </sch:Settings>

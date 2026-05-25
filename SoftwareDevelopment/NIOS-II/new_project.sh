@@ -1,5 +1,5 @@
 #!/bin/bash
-SOPCINFO="/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign.sopcinfo"
+SOPCINFO="/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
 SW_ROOT="/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
 CPU_NAME="CPU_NIOS_II"
 BSP_DIR="$SW_ROOT/bsp"

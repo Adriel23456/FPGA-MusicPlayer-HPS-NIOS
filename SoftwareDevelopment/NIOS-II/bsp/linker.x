@@ -2,9 +2,9 @@
  * linker.x - Linker script
  *
  * Machine generated for CPU 'CPU_NIOS_II' in SOPC Builder design 'MusicPlayerPlatformDesign'
- * SOPC Builder design path: d:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign.sopcinfo
+ * SOPC Builder design path: d:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
  *
- * Generated: Sun May 24 22:09:17 CST 2026
+ * Generated: Mon May 25 06:33:25 CST 2026
  */
 
 /*
@@ -51,11 +51,11 @@
 MEMORY
 {
     reset : ORIGIN = 0x40000, LENGTH = 32
-    RAM_NIOS_V : ORIGIN = 0x40020, LENGTH = 262112
+    RAM_NIOS_II : ORIGIN = 0x40020, LENGTH = 262112
 }
 
 /* Define symbols for each memory base-address */
-__alt_mem_RAM_NIOS_V = 0x40000;
+__alt_mem_RAM_NIOS_II = 0x40000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -111,7 +111,7 @@ SECTIONS
         KEEP (*(.exceptions.exit));
         KEEP (*(.exceptions));
         PROVIDE (__ram_exceptions_end = ABSOLUTE(.));
-    } > RAM_NIOS_V
+    } > RAM_NIOS_II
 
     PROVIDE (__flash_exceptions_start = LOADADDR(.exceptions));
 
@@ -207,7 +207,7 @@ SECTIONS
         PROVIDE (__DTOR_END__ = ABSOLUTE(.));
         KEEP (*(.jcr))
         . = ALIGN(4);
-    } > RAM_NIOS_V = 0x3a880100 /* NOP instruction (always in big-endian byte ordering) */
+    } > RAM_NIOS_II = 0x3a880100 /* NOP instruction (always in big-endian byte ordering) */
 
     .rodata :
     {
@@ -217,7 +217,7 @@ SECTIONS
         *(.rodata1)
         . = ALIGN(4);
         PROVIDE (__ram_rodata_end = ABSOLUTE(.));
-    } > RAM_NIOS_V
+    } > RAM_NIOS_II
 
     PROVIDE (__flash_rodata_start = LOADADDR(.rodata));
 
@@ -251,7 +251,7 @@ SECTIONS
         _edata = ABSOLUTE(.);
         PROVIDE (edata = ABSOLUTE(.));
         PROVIDE (__ram_rwdata_end = ABSOLUTE(.));
-    } > RAM_NIOS_V
+    } > RAM_NIOS_II
 
     PROVIDE (__flash_rwdata_start = LOADADDR(.rwdata));
 
@@ -282,7 +282,7 @@ SECTIONS
 
         . = ALIGN(4);
         __bss_end = ABSOLUTE(.);
-    } > RAM_NIOS_V
+    } > RAM_NIOS_II
 
     /*
      *
@@ -307,18 +307,18 @@ SECTIONS
      *
      */
 
-    .RAM_NIOS_V LOADADDR (.bss) + SIZEOF (.bss) : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
+    .RAM_NIOS_II LOADADDR (.bss) + SIZEOF (.bss) : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
     {
-        PROVIDE (_alt_partition_RAM_NIOS_V_start = ABSOLUTE(.));
-        *(.RAM_NIOS_V .RAM_NIOS_V. RAM_NIOS_V.*)
+        PROVIDE (_alt_partition_RAM_NIOS_II_start = ABSOLUTE(.));
+        *(.RAM_NIOS_II .RAM_NIOS_II. RAM_NIOS_II.*)
         . = ALIGN(4);
-        PROVIDE (_alt_partition_RAM_NIOS_V_end = ABSOLUTE(.));
+        PROVIDE (_alt_partition_RAM_NIOS_II_end = ABSOLUTE(.));
         _end = ABSOLUTE(.);
         end = ABSOLUTE(.);
         __alt_stack_base = ABSOLUTE(.);
-    } > RAM_NIOS_V
+    } > RAM_NIOS_II
 
-    PROVIDE (_alt_partition_RAM_NIOS_V_load_addr = LOADADDR(.RAM_NIOS_V));
+    PROVIDE (_alt_partition_RAM_NIOS_II_load_addr = LOADADDR(.RAM_NIOS_II));
 
     /*
      * Stabs debugging sections.

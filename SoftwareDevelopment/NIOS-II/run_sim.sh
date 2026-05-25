@@ -2,7 +2,7 @@
 SOC_NAME="MusicPlayerPlatformDesign"
 ELF="/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.elf"
 BSP_DIR="/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp"
-SOPCINFO_DIR="$(dirname "/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus/MusicPlayerPlatformDesign.sopcinfo")"
+SOPCINFO_DIR="$(dirname "/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo")"
 MENTOR="$SOPCINFO_DIR/$SOC_NAME/testbench/mentor"
 SUBMODULES="$SOPCINFO_DIR/$SOC_NAME/testbench/${SOC_NAME}_tb/simulation/submodules"
 export PATH=$PATH:/mnt/c/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-mingw32/bin
@@ -27,7 +27,7 @@ echo "  Copied to: $MENTOR/main.elf"
 
 echo ""
 echo "[2/3] Reading RAM base address from bsp/system.h..."
-RAM_BASE=$(grep "RAM_NIOS_V_BASE\|RAM_BASE" "$BSP_DIR/system.h" | grep "#define" | awk '{print $3}' | head -1)
+RAM_BASE=$(grep "_BASE" "$BSP_DIR/system.h" | grep "RAM_" | awk '{print $3}' | head -1)
 if [ -z "$RAM_BASE" ]; then
     echo "ERROR: Could not find RAM base in $BSP_DIR/system.h"
     exit 1

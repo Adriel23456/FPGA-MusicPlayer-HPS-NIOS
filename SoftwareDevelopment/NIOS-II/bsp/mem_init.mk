@@ -205,9 +205,9 @@ NIOS_ELF_FORMAT ?= elf32-littlenios2
 # Pre-Initialized Memory Descriptions
 #-------------------------------------
 
-# Memory: RAM_NIOS_V
-MEM_0 := MusicPlayerPlatformDesign_RAM_NIOS_V
-$(MEM_0)_NAME := RAM_NIOS_V
+# Memory: RAM_NIOS_II
+MEM_0 := MusicPlayerPlatformDesign_RAM_NIOS_II
+$(MEM_0)_NAME := RAM_NIOS_II
 $(MEM_0)_MEM_INIT_FILE_PARAM_NAME := INIT_FILE
 HEX_FILES += $(MEM_INIT_DIR)/$(MEM_0).hex
 MEM_INIT_INSTALL_FILES += $(MEM_INIT_INSTALL_DIR)/$(MEM_0).hex
@@ -218,14 +218,14 @@ HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).sym
 $(MEM_0)_START := 0x00040000
 $(MEM_0)_END := 0x0007ffff
 $(MEM_0)_SPAN := 0x00040000
-$(MEM_0)_HIERARCHICAL_PATH := RAM_NIOS_V
+$(MEM_0)_HIERARCHICAL_PATH := RAM_NIOS_II
 $(MEM_0)_WIDTH := 32
 $(MEM_0)_HEX_DATA_WIDTH := 32
 $(MEM_0)_ENDIANNESS := --little-endian-mem
 $(MEM_0)_CREATE_LANES := 0
 
-.PHONY: RAM_NIOS_V
-RAM_NIOS_V: check_elf_exists $(MEM_INIT_DIR)/$(MEM_0).hex $(HDL_SIM_DIR)/$(MEM_0).dat $(HDL_SIM_DIR)/$(MEM_0).sym
+.PHONY: RAM_NIOS_II
+RAM_NIOS_II: check_elf_exists $(MEM_INIT_DIR)/$(MEM_0).hex $(HDL_SIM_DIR)/$(MEM_0).dat $(HDL_SIM_DIR)/$(MEM_0).sym
 
 
 #END OF BSP SPECIFIC

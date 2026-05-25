@@ -6,7 +6,7 @@
 
 // ── VGA ──────────────────────────────────────────────────────
 #define CHAR_BUF_BASE       ((volatile char *) 0x00080000)
-#define CHAR_CTRL_BASE      ((volatile int *)  0x00083080)
+#define CHAR_CTRL_BASE      ((volatile int *)  0x00083060)
 #define CTRL_REG            0
 #define RESOL_REG           1
 #define VGA_RESET_GUARD_US  200000
@@ -61,12 +61,12 @@ static void vga_clear_line(int y)
 
 int main(void)
 {
+    alt_putstr("Hello from Nios II!\n");
     usleep(VGA_RESET_GUARD_US);
     vga_clear_screen();
 
     vga_put_string(30, 27, "Hello World!");
     vga_put_string(23, 29, "Waiting for audio init...");
-    alt_putstr("Hello from Nios II!\n");
 
     alt_up_av_config_dev *av_config =
         alt_up_av_config_open_dev(AUDIO_CONFIG_NAME);
