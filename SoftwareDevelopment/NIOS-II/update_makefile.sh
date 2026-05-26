@@ -1,33 +1,57 @@
 #!/bin/bash
-SW_ROOT="/mnt/d/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
-BSP_DIR="$SW_ROOT/bsp"
+
+set -e
+
+SW_ROOT="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
+
 APP_DIR="$SW_ROOT/app"
-export PATH=$PATH:/mnt/c/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-mingw32/bin
+BSP_DIR="$SW_ROOT/bsp"
 
-to_win() { echo "$1" | sed 's|/mnt/\([a-z]\)/|\1:/|'; }
+export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
+export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
+export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
 
-echo "=== Scanning source files ==="
-SRCS=""
-for f in "$APP_DIR"/*.c "$APP_DIR"/src/*.c "$APP_DIR"/lib/*.c; do
-    [ -f "$f" ] && SRCS="$SRCS $f"
-done
-SRCS="${SRCS# }"
-
-echo "Sources found:"
-for f in $SRCS; do echo "  $f"; done
+echo "============================================================"
+echo " Updating Application Makefile"
+echo "============================================================"
 echo ""
 
-WIN_SRCS=""
-for f in $SRCS; do
-    WIN_SRCS="$WIN_SRCS $(to_win "$f")"
+if ! command -v nios2-app-generate-makefile >/dev/null 2>&1; then
+    echo "ERROR:"
+    echo "  nios2-app-generate-makefile not found in PATH"
+    exit 1
+fi
+
+SRCS=()
+
+while IFS= read -r -d '' f; do
+    SRCS+=("$f")
+done < <(find "$APP_DIR" -type f -name "*.c" -print0)
+
+if [ ${#SRCS[@]} -eq 0 ]; then
+    echo "ERROR:"
+    echo "  No .c source files found."
+    exit 1
+fi
+
+echo "Sources found:"
+for f in "${SRCS[@]}"; do
+    echo "  $f"
 done
-WIN_SRCS="${WIN_SRCS# }"
 
-nios2-app-generate-makefile.exe \
-    --bsp-dir "$(to_win "$BSP_DIR")" \
-    --app-dir "$(to_win "$APP_DIR")" \
-    --src-files $WIN_SRCS \
-    --inc-rdir "$(to_win "$APP_DIR/include")"
-[ $? -ne 0 ] && echo "ERROR: Makefile regeneration failed" && exit 1
+echo ""
+echo "Generating Makefile..."
+echo ""
 
-echo "Done! Run ./build.sh to recompile."
+nios2-app-generate-makefile \
+    --bsp-dir "$BSP_DIR" \
+    --app-dir "$APP_DIR" \
+    --src-files "${SRCS[@]}" \
+    --inc-rdir "$APP_DIR/include"
+
+echo ""
+echo "Makefile updated successfully!"
+echo ""
+echo "Next step:"
+echo "  ./build.sh"
+

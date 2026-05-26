@@ -43,7 +43,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		output wire        HPS_ARM_h2f_axi_master_rlast,                                       //                                                             .rlast
 		output wire        HPS_ARM_h2f_axi_master_rvalid,                                      //                                                             .rvalid
 		input  wire        HPS_ARM_h2f_axi_master_rready,                                      //                                                             .rready
-		input  wire        clk_0_clk_clk,                                                      //                                                    clk_0_clk.clk
+		input  wire        CLK_clk_clk,                                                        //                                                      CLK_clk.clk
 		input  wire        VGA_CLOCK_BRIDGE_out_clk_clk,                                       //                                     VGA_CLOCK_BRIDGE_out_clk.clk
 		input  wire        CPU_NIOS_II_reset_reset_bridge_in_reset_reset,                      //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
 		input  wire        HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
@@ -1025,7 +1025,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_LINEWRAPBURSTS           (0),
 		.AV_REGISTERINCOMINGSIGNALS  (1)
 	) cpu_nios_ii_data_master_translator (
-		.clk                    (clk_0_clk_clk),                                                              //                       clk.clk
+		.clk                    (CLK_clk_clk),                                                                //                       clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                              //                     reset.reset
 		.uav_address            (cpu_nios_ii_data_master_translator_avalon_universal_master_0_address),       // avalon_universal_master_0.address
 		.uav_burstcount         (cpu_nios_ii_data_master_translator_avalon_universal_master_0_burstcount),    //                          .burstcount
@@ -1085,7 +1085,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_LINEWRAPBURSTS           (1),
 		.AV_REGISTERINCOMINGSIGNALS  (0)
 	) cpu_nios_ii_instruction_master_translator (
-		.clk                    (clk_0_clk_clk),                                                                     //                       clk.clk
+		.clk                    (CLK_clk_clk),                                                                       //                       clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                     //                     reset.reset
 		.uav_address            (cpu_nios_ii_instruction_master_translator_avalon_universal_master_0_address),       // avalon_universal_master_0.address
 		.uav_burstcount         (cpu_nios_ii_instruction_master_translator_avalon_universal_master_0_burstcount),    //                          .burstcount
@@ -1147,7 +1147,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_out_avalon_audio_slave_translator (
-		.clk                    (clk_0_clk_clk),                                       //                      clk.clk
+		.clk                    (CLK_clk_clk),                                         //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),       //                    reset.reset
 		.uav_address            (audio_out_avalon_audio_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_out_avalon_audio_slave_agent_m0_burstcount),    //                         .burstcount
@@ -1211,7 +1211,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_config_avalon_av_config_slave_translator (
-		.clk                    (clk_0_clk_clk),                                              //                      clk.clk
+		.clk                    (CLK_clk_clk),                                                //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),              //                    reset.reset
 		.uav_address            (audio_config_avalon_av_config_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_config_avalon_av_config_slave_agent_m0_burstcount),    //                         .burstcount
@@ -1403,7 +1403,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) uart_nios_ii_avalon_jtag_slave_translator (
-		.clk                    (clk_0_clk_clk),                                         //                      clk.clk
+		.clk                    (CLK_clk_clk),                                           //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),         //                    reset.reset
 		.uav_address            (uart_nios_ii_avalon_jtag_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (uart_nios_ii_avalon_jtag_slave_agent_m0_burstcount),    //                         .burstcount
@@ -1467,7 +1467,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) cpu_nios_ii_debug_mem_slave_translator (
-		.clk                    (clk_0_clk_clk),                                      //                      clk.clk
+		.clk                    (CLK_clk_clk),                                        //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),      //                    reset.reset
 		.uav_address            (cpu_nios_ii_debug_mem_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (cpu_nios_ii_debug_mem_slave_agent_m0_burstcount),    //                         .burstcount
@@ -1531,7 +1531,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) ram_nios_ii_s1_translator (
-		.clk                    (clk_0_clk_clk),                                 //                      clk.clk
+		.clk                    (CLK_clk_clk),                                   //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //                    reset.reset
 		.uav_address            (ram_nios_ii_s1_agent_m0_address),               // avalon_universal_slave_0.address
 		.uav_burstcount         (ram_nios_ii_s1_agent_m0_burstcount),            //                         .burstcount
@@ -1595,7 +1595,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) reg_btn_input_s1_translator (
-		.clk                    (clk_0_clk_clk),                                 //                      clk.clk
+		.clk                    (CLK_clk_clk),                                   //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //                    reset.reset
 		.uav_address            (reg_btn_input_s1_agent_m0_address),             // avalon_universal_slave_0.address
 		.uav_burstcount         (reg_btn_input_s1_agent_m0_burstcount),          //                         .burstcount
@@ -1659,7 +1659,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) reg_sw_input_s1_translator (
-		.clk                    (clk_0_clk_clk),                                 //                      clk.clk
+		.clk                    (CLK_clk_clk),                                   //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //                    reset.reset
 		.uav_address            (reg_sw_input_s1_agent_m0_address),              // avalon_universal_slave_0.address
 		.uav_burstcount         (reg_sw_input_s1_agent_m0_burstcount),           //                         .burstcount
@@ -1723,7 +1723,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) timer_status_input_s1_translator (
-		.clk                    (clk_0_clk_clk),                                 //                      clk.clk
+		.clk                    (CLK_clk_clk),                                   //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //                    reset.reset
 		.uav_address            (timer_status_input_s1_agent_m0_address),        // avalon_universal_slave_0.address
 		.uav_burstcount         (timer_status_input_s1_agent_m0_burstcount),     //                         .burstcount
@@ -1787,7 +1787,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) timer_ctrl_output_s1_translator (
-		.clk                    (clk_0_clk_clk),                                 //                      clk.clk
+		.clk                    (CLK_clk_clk),                                   //                      clk.clk
 		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //                    reset.reset
 		.uav_address            (timer_ctrl_output_s1_agent_m0_address),         // avalon_universal_slave_0.address
 		.uav_burstcount         (timer_ctrl_output_s1_agent_m0_burstcount),      //                         .burstcount
@@ -1877,7 +1877,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_READRESPONSE          (0),
 		.USE_WRITERESPONSE         (0)
 	) cpu_nios_ii_data_master_agent (
-		.clk                   (clk_0_clk_clk),                                                              //       clk.clk
+		.clk                   (CLK_clk_clk),                                                                //       clk.clk
 		.reset                 (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                              // clk_reset.reset
 		.av_address            (cpu_nios_ii_data_master_translator_avalon_universal_master_0_address),       //        av.address
 		.av_write              (cpu_nios_ii_data_master_translator_avalon_universal_master_0_write),         //          .write
@@ -1962,7 +1962,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ST_CHANNEL_W              (11),
 		.ID                        (2)
 	) hps_arm_h2f_axi_master_agent (
-		.aclk                   (clk_0_clk_clk),                                                       //              clk.clk
+		.aclk                   (CLK_clk_clk),                                                         //              clk.clk
 		.aresetn                (~HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), //        clk_reset.reset_n
 		.write_cp_valid         (hps_arm_h2f_axi_master_agent_write_cp_valid),                         //         write_cp.valid
 		.write_cp_data          (hps_arm_h2f_axi_master_agent_write_cp_data),                          //                 .data
@@ -2086,7 +2086,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_READRESPONSE          (0),
 		.USE_WRITERESPONSE         (0)
 	) cpu_nios_ii_instruction_master_agent (
-		.clk                   (clk_0_clk_clk),                                                                     //       clk.clk
+		.clk                   (CLK_clk_clk),                                                                       //       clk.clk
 		.reset                 (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                     // clk_reset.reset
 		.av_address            (cpu_nios_ii_instruction_master_translator_avalon_universal_master_0_address),       //        av.address
 		.av_write              (cpu_nios_ii_instruction_master_translator_avalon_universal_master_0_write),         //          .write
@@ -2153,7 +2153,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) audio_out_avalon_audio_slave_agent (
-		.clk                     (clk_0_clk_clk),                                                 //             clk.clk
+		.clk                     (CLK_clk_clk),                                                   //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                 //       clk_reset.reset
 		.m0_address              (audio_out_avalon_audio_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_out_avalon_audio_slave_agent_m0_burstcount),              //                .burstcount
@@ -2212,7 +2212,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_out_avalon_audio_slave_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                                 //       clk.clk
+		.clk               (CLK_clk_clk),                                                   //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                 // clk_reset.reset
 		.in_data           (audio_out_avalon_audio_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_out_avalon_audio_slave_agent_rf_source_valid),            //          .valid
@@ -2253,7 +2253,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_out_avalon_audio_slave_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                           //       clk.clk
+		.clk               (CLK_clk_clk),                                             //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),           // clk_reset.reset
 		.in_data           (audio_out_avalon_audio_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_out_avalon_audio_slave_agent_rdata_fifo_src_valid), //          .valid
@@ -2319,7 +2319,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) audio_config_avalon_av_config_slave_agent (
-		.clk                     (clk_0_clk_clk),                                                        //             clk.clk
+		.clk                     (CLK_clk_clk),                                                          //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                        //       clk_reset.reset
 		.m0_address              (audio_config_avalon_av_config_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_config_avalon_av_config_slave_agent_m0_burstcount),              //                .burstcount
@@ -2378,7 +2378,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_config_avalon_av_config_slave_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                                        //       clk.clk
+		.clk               (CLK_clk_clk),                                                          //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                        // clk_reset.reset
 		.in_data           (audio_config_avalon_av_config_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_config_avalon_av_config_slave_agent_rf_source_valid),            //          .valid
@@ -2419,7 +2419,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_config_avalon_av_config_slave_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                                  //       clk.clk
+		.clk               (CLK_clk_clk),                                                    //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                  // clk_reset.reset
 		.in_data           (audio_config_avalon_av_config_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_config_avalon_av_config_slave_agent_rdata_fifo_src_valid), //          .valid
@@ -2817,7 +2817,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) uart_nios_ii_avalon_jtag_slave_agent (
-		.clk                     (clk_0_clk_clk),                                                   //             clk.clk
+		.clk                     (CLK_clk_clk),                                                     //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                   //       clk_reset.reset
 		.m0_address              (uart_nios_ii_avalon_jtag_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (uart_nios_ii_avalon_jtag_slave_agent_m0_burstcount),              //                .burstcount
@@ -2876,7 +2876,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) uart_nios_ii_avalon_jtag_slave_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                                   //       clk.clk
+		.clk               (CLK_clk_clk),                                                     //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                   // clk_reset.reset
 		.in_data           (uart_nios_ii_avalon_jtag_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (uart_nios_ii_avalon_jtag_slave_agent_rf_source_valid),            //          .valid
@@ -2917,7 +2917,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) uart_nios_ii_avalon_jtag_slave_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                             //       clk.clk
+		.clk               (CLK_clk_clk),                                               //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),             // clk_reset.reset
 		.in_data           (uart_nios_ii_avalon_jtag_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (uart_nios_ii_avalon_jtag_slave_agent_rdata_fifo_src_valid), //          .valid
@@ -2983,7 +2983,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) cpu_nios_ii_debug_mem_slave_agent (
-		.clk                     (clk_0_clk_clk),                                                //             clk.clk
+		.clk                     (CLK_clk_clk),                                                  //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                //       clk_reset.reset
 		.m0_address              (cpu_nios_ii_debug_mem_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (cpu_nios_ii_debug_mem_slave_agent_m0_burstcount),              //                .burstcount
@@ -3042,7 +3042,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) cpu_nios_ii_debug_mem_slave_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                                //       clk.clk
+		.clk               (CLK_clk_clk),                                                  //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                // clk_reset.reset
 		.in_data           (cpu_nios_ii_debug_mem_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (cpu_nios_ii_debug_mem_slave_agent_rf_source_valid),            //          .valid
@@ -3083,7 +3083,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) cpu_nios_ii_debug_mem_slave_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                          //       clk.clk
+		.clk               (CLK_clk_clk),                                            //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),          // clk_reset.reset
 		.in_data           (cpu_nios_ii_debug_mem_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (cpu_nios_ii_debug_mem_slave_agent_rdata_fifo_src_valid), //          .valid
@@ -3149,7 +3149,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) ram_nios_ii_s1_agent (
-		.clk                     (clk_0_clk_clk),                                      //             clk.clk
+		.clk                     (CLK_clk_clk),                                        //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),      //       clk_reset.reset
 		.m0_address              (ram_nios_ii_s1_agent_m0_address),                    //              m0.address
 		.m0_burstcount           (ram_nios_ii_s1_agent_m0_burstcount),                 //                .burstcount
@@ -3208,7 +3208,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) ram_nios_ii_s1_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                   //       clk.clk
+		.clk               (CLK_clk_clk),                                     //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),   // clk_reset.reset
 		.in_data           (ram_nios_ii_s1_agent_rf_source_data),             //        in.data
 		.in_valid          (ram_nios_ii_s1_agent_rf_source_valid),            //          .valid
@@ -3249,7 +3249,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) ram_nios_ii_s1_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                 //       clk.clk
+		.clk               (CLK_clk_clk),                                   //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_data           (ram_nios_ii_s1_agent_rdata_fifo_src_data),      //        in.data
 		.in_valid          (ram_nios_ii_s1_agent_rdata_fifo_src_valid),     //          .valid
@@ -3315,7 +3315,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) reg_btn_input_s1_agent (
-		.clk                     (clk_0_clk_clk),                                     //             clk.clk
+		.clk                     (CLK_clk_clk),                                       //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),     //       clk_reset.reset
 		.m0_address              (reg_btn_input_s1_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (reg_btn_input_s1_agent_m0_burstcount),              //                .burstcount
@@ -3374,7 +3374,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) reg_btn_input_s1_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                     //       clk.clk
+		.clk               (CLK_clk_clk),                                       //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),     // clk_reset.reset
 		.in_data           (reg_btn_input_s1_agent_rf_source_data),             //        in.data
 		.in_valid          (reg_btn_input_s1_agent_rf_source_valid),            //          .valid
@@ -3415,7 +3415,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) reg_btn_input_s1_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                 //       clk.clk
+		.clk               (CLK_clk_clk),                                   //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_data           (reg_btn_input_s1_agent_rdata_fifo_src_data),    //        in.data
 		.in_valid          (reg_btn_input_s1_agent_rdata_fifo_src_valid),   //          .valid
@@ -3481,7 +3481,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) reg_sw_input_s1_agent (
-		.clk                     (clk_0_clk_clk),                                    //             clk.clk
+		.clk                     (CLK_clk_clk),                                      //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),    //       clk_reset.reset
 		.m0_address              (reg_sw_input_s1_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (reg_sw_input_s1_agent_m0_burstcount),              //                .burstcount
@@ -3540,7 +3540,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) reg_sw_input_s1_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                    //       clk.clk
+		.clk               (CLK_clk_clk),                                      //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),    // clk_reset.reset
 		.in_data           (reg_sw_input_s1_agent_rf_source_data),             //        in.data
 		.in_valid          (reg_sw_input_s1_agent_rf_source_valid),            //          .valid
@@ -3581,7 +3581,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) reg_sw_input_s1_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                 //       clk.clk
+		.clk               (CLK_clk_clk),                                   //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_data           (reg_sw_input_s1_agent_rdata_fifo_src_data),     //        in.data
 		.in_valid          (reg_sw_input_s1_agent_rdata_fifo_src_valid),    //          .valid
@@ -3647,7 +3647,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) timer_status_input_s1_agent (
-		.clk                     (clk_0_clk_clk),                                          //             clk.clk
+		.clk                     (CLK_clk_clk),                                            //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),          //       clk_reset.reset
 		.m0_address              (timer_status_input_s1_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (timer_status_input_s1_agent_m0_burstcount),              //                .burstcount
@@ -3706,7 +3706,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) timer_status_input_s1_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                          //       clk.clk
+		.clk               (CLK_clk_clk),                                            //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),          // clk_reset.reset
 		.in_data           (timer_status_input_s1_agent_rf_source_data),             //        in.data
 		.in_valid          (timer_status_input_s1_agent_rf_source_valid),            //          .valid
@@ -3747,7 +3747,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) timer_status_input_s1_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                    //       clk.clk
+		.clk               (CLK_clk_clk),                                      //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),    // clk_reset.reset
 		.in_data           (timer_status_input_s1_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (timer_status_input_s1_agent_rdata_fifo_src_valid), //          .valid
@@ -3813,7 +3813,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) timer_ctrl_output_s1_agent (
-		.clk                     (clk_0_clk_clk),                                         //             clk.clk
+		.clk                     (CLK_clk_clk),                                           //             clk.clk
 		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),         //       clk_reset.reset
 		.m0_address              (timer_ctrl_output_s1_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (timer_ctrl_output_s1_agent_m0_burstcount),              //                .burstcount
@@ -3872,7 +3872,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) timer_ctrl_output_s1_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                         //       clk.clk
+		.clk               (CLK_clk_clk),                                           //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),         // clk_reset.reset
 		.in_data           (timer_ctrl_output_s1_agent_rf_source_data),             //        in.data
 		.in_valid          (timer_ctrl_output_s1_agent_rf_source_valid),            //          .valid
@@ -3913,7 +3913,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) timer_ctrl_output_s1_agent_rdata_fifo (
-		.clk               (clk_0_clk_clk),                                   //       clk.clk
+		.clk               (CLK_clk_clk),                                     //       clk.clk
 		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),   // clk_reset.reset
 		.in_data           (timer_ctrl_output_s1_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (timer_ctrl_output_s1_agent_rdata_fifo_src_valid), //          .valid
@@ -3946,7 +3946,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (cpu_nios_ii_data_master_agent_cp_data),          //          .data
 		.sink_startofpacket (cpu_nios_ii_data_master_agent_cp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (cpu_nios_ii_data_master_agent_cp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                  //       clk.clk
+		.clk                (CLK_clk_clk),                                    //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),  // clk_reset.reset
 		.src_ready          (router_src_ready),                               //       src.ready
 		.src_valid          (router_src_valid),                               //          .valid
@@ -3962,7 +3962,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (hps_arm_h2f_axi_master_agent_write_cp_data),                         //          .data
 		.sink_startofpacket (hps_arm_h2f_axi_master_agent_write_cp_startofpacket),                //          .startofpacket
 		.sink_endofpacket   (hps_arm_h2f_axi_master_agent_write_cp_endofpacket),                  //          .endofpacket
-		.clk                (clk_0_clk_clk),                                                      //       clk.clk
+		.clk                (CLK_clk_clk),                                                        //       clk.clk
 		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_001_src_ready),                                               //       src.ready
 		.src_valid          (router_001_src_valid),                                               //          .valid
@@ -3978,7 +3978,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (hps_arm_h2f_axi_master_agent_read_cp_data),                          //          .data
 		.sink_startofpacket (hps_arm_h2f_axi_master_agent_read_cp_startofpacket),                 //          .startofpacket
 		.sink_endofpacket   (hps_arm_h2f_axi_master_agent_read_cp_endofpacket),                   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                                      //       clk.clk
+		.clk                (CLK_clk_clk),                                                        //       clk.clk
 		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_002_src_ready),                                               //       src.ready
 		.src_valid          (router_002_src_valid),                                               //          .valid
@@ -3994,7 +3994,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (cpu_nios_ii_instruction_master_agent_cp_data),          //          .data
 		.sink_startofpacket (cpu_nios_ii_instruction_master_agent_cp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (cpu_nios_ii_instruction_master_agent_cp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                         //       clk.clk
+		.clk                (CLK_clk_clk),                                           //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),         // clk_reset.reset
 		.src_ready          (router_003_src_ready),                                  //       src.ready
 		.src_valid          (router_003_src_valid),                                  //          .valid
@@ -4010,7 +4010,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (audio_out_avalon_audio_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (audio_out_avalon_audio_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_out_avalon_audio_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                       //       clk.clk
+		.clk                (CLK_clk_clk),                                         //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),       // clk_reset.reset
 		.src_ready          (router_004_src_ready),                                //       src.ready
 		.src_valid          (router_004_src_valid),                                //          .valid
@@ -4026,7 +4026,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (audio_config_avalon_av_config_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (audio_config_avalon_av_config_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_config_avalon_av_config_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                              //       clk.clk
+		.clk                (CLK_clk_clk),                                                //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
 		.src_ready          (router_005_src_ready),                                       //       src.ready
 		.src_valid          (router_005_src_valid),                                       //          .valid
@@ -4074,7 +4074,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (uart_nios_ii_avalon_jtag_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (uart_nios_ii_avalon_jtag_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (uart_nios_ii_avalon_jtag_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                         //       clk.clk
+		.clk                (CLK_clk_clk),                                           //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),         // clk_reset.reset
 		.src_ready          (router_008_src_ready),                                  //       src.ready
 		.src_valid          (router_008_src_valid),                                  //          .valid
@@ -4090,7 +4090,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (cpu_nios_ii_debug_mem_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (cpu_nios_ii_debug_mem_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (cpu_nios_ii_debug_mem_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                      //       clk.clk
+		.clk                (CLK_clk_clk),                                        //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),      // clk_reset.reset
 		.src_ready          (router_009_src_ready),                               //       src.ready
 		.src_valid          (router_009_src_valid),                               //          .valid
@@ -4106,7 +4106,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (ram_nios_ii_s1_agent_rp_data),                  //          .data
 		.sink_startofpacket (ram_nios_ii_s1_agent_rp_startofpacket),         //          .startofpacket
 		.sink_endofpacket   (ram_nios_ii_s1_agent_rp_endofpacket),           //          .endofpacket
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_010_src_ready),                          //       src.ready
 		.src_valid          (router_010_src_valid),                          //          .valid
@@ -4122,7 +4122,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (reg_btn_input_s1_agent_rp_data),                //          .data
 		.sink_startofpacket (reg_btn_input_s1_agent_rp_startofpacket),       //          .startofpacket
 		.sink_endofpacket   (reg_btn_input_s1_agent_rp_endofpacket),         //          .endofpacket
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_011_src_ready),                          //       src.ready
 		.src_valid          (router_011_src_valid),                          //          .valid
@@ -4138,7 +4138,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (reg_sw_input_s1_agent_rp_data),                 //          .data
 		.sink_startofpacket (reg_sw_input_s1_agent_rp_startofpacket),        //          .startofpacket
 		.sink_endofpacket   (reg_sw_input_s1_agent_rp_endofpacket),          //          .endofpacket
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_012_src_ready),                          //       src.ready
 		.src_valid          (router_012_src_valid),                          //          .valid
@@ -4154,7 +4154,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (timer_status_input_s1_agent_rp_data),           //          .data
 		.sink_startofpacket (timer_status_input_s1_agent_rp_startofpacket),  //          .startofpacket
 		.sink_endofpacket   (timer_status_input_s1_agent_rp_endofpacket),    //          .endofpacket
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_013_src_ready),                          //       src.ready
 		.src_valid          (router_013_src_valid),                          //          .valid
@@ -4170,7 +4170,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (timer_ctrl_output_s1_agent_rp_data),            //          .data
 		.sink_startofpacket (timer_ctrl_output_s1_agent_rp_startofpacket),   //          .startofpacket
 		.sink_endofpacket   (timer_ctrl_output_s1_agent_rp_endofpacket),     //          .endofpacket
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_014_src_ready),                          //       src.ready
 		.src_valid          (router_014_src_valid),                          //          .valid
@@ -4264,7 +4264,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.BURSTWRAP_CONST_VALUE     (0),
 		.ADAPTER_VERSION           ("13.1")
 	) ram_nios_ii_s1_burst_adapter (
-		.clk                   (clk_0_clk_clk),                                      //       cr0.clk
+		.clk                   (CLK_clk_clk),                                        //       cr0.clk
 		.reset                 (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),      // cr0_reset.reset
 		.sink0_valid           (cmd_mux_006_src_valid),                              //     sink0.valid
 		.sink0_data            (cmd_mux_006_src_data),                               //          .data
@@ -4281,7 +4281,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux cmd_demux (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready          (router_src_ready),                              //      sink.ready
 		.sink_channel        (router_src_channel),                            //          .channel
@@ -4358,7 +4358,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_001 cmd_demux_001 (
-		.clk                (clk_0_clk_clk),                                                      //       clk.clk
+		.clk                (CLK_clk_clk),                                                        //       clk.clk
 		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_001_src_ready),                                               //      sink.ready
 		.sink_channel       (router_001_src_channel),                                             //          .channel
@@ -4375,7 +4375,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_001 cmd_demux_002 (
-		.clk                (clk_0_clk_clk),                                                      //       clk.clk
+		.clk                (CLK_clk_clk),                                                        //       clk.clk
 		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_002_src_ready),                                               //      sink.ready
 		.sink_channel       (router_002_src_channel),                                             //          .channel
@@ -4392,7 +4392,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_003 cmd_demux_003 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_003_src_ready),                          //      sink.ready
 		.sink_channel       (router_003_src_channel),                        //          .channel
@@ -4415,7 +4415,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_src_ready),                             //       src.ready
 		.src_valid           (cmd_mux_src_valid),                             //          .valid
@@ -4432,7 +4432,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_001 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_001_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_001_src_valid),                         //          .valid
@@ -4483,7 +4483,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_004 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_004_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_004_src_valid),                         //          .valid
@@ -4500,7 +4500,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux_005 cmd_mux_005 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_005_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_005_src_valid),                         //          .valid
@@ -4523,7 +4523,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux_006 cmd_mux_006 (
-		.clk                 (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                 (CLK_clk_clk),                                                                     //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                   // clk_reset.reset
 		.src_ready           (cmd_mux_006_src_ready),                                                           //       src.ready
 		.src_valid           (cmd_mux_006_src_valid),                                                           //          .valid
@@ -4558,7 +4558,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_007 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_007_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_007_src_valid),                         //          .valid
@@ -4575,7 +4575,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_008 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_008_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_008_src_valid),                         //          .valid
@@ -4592,7 +4592,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_009 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_009_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_009_src_valid),                         //          .valid
@@ -4609,7 +4609,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_010 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_010_src_ready),                         //       src.ready
 		.src_valid           (cmd_mux_010_src_valid),                         //          .valid
@@ -4626,7 +4626,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_004_src_ready),                          //      sink.ready
 		.sink_channel       (router_004_src_channel),                        //          .channel
@@ -4643,7 +4643,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_001 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_005_src_ready),                          //      sink.ready
 		.sink_channel       (router_005_src_channel),                        //          .channel
@@ -4694,7 +4694,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_004 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_008_src_ready),                          //      sink.ready
 		.sink_channel       (router_008_src_channel),                        //          .channel
@@ -4711,7 +4711,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_003 rsp_demux_005 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_009_src_ready),                          //      sink.ready
 		.sink_channel       (router_009_src_channel),                        //          .channel
@@ -4734,7 +4734,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_006 rsp_demux_006 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_010_src_ready),                          //      sink.ready
 		.sink_channel       (router_010_src_channel),                        //          .channel
@@ -4769,7 +4769,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_007 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_011_src_ready),                          //      sink.ready
 		.sink_channel       (router_011_src_channel),                        //          .channel
@@ -4786,7 +4786,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_008 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_012_src_ready),                          //      sink.ready
 		.sink_channel       (router_012_src_channel),                        //          .channel
@@ -4803,7 +4803,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_009 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_013_src_ready),                          //      sink.ready
 		.sink_channel       (router_013_src_channel),                        //          .channel
@@ -4820,7 +4820,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_010 (
-		.clk                (clk_0_clk_clk),                                 //       clk.clk
+		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_014_src_ready),                          //      sink.ready
 		.sink_channel       (router_014_src_channel),                        //          .channel
@@ -4837,7 +4837,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_mux rsp_mux (
-		.clk                  (clk_0_clk_clk),                                 //       clk.clk
+		.clk                  (CLK_clk_clk),                                   //       clk.clk
 		.reset                (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready            (rsp_mux_src_ready),                             //       src.ready
 		.src_valid            (rsp_mux_src_valid),                             //          .valid
@@ -4914,7 +4914,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_mux_001 rsp_mux_001 (
-		.clk                 (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                 (CLK_clk_clk),                                                                     //       clk.clk
 		.reset               (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
 		.src_ready           (rsp_mux_001_src_ready),                                                           //       src.ready
 		.src_valid           (rsp_mux_001_src_valid),                                                           //          .valid
@@ -4931,7 +4931,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_mux_001 rsp_mux_002 (
-		.clk                 (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                 (CLK_clk_clk),                                                                     //       clk.clk
 		.reset               (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
 		.src_ready           (rsp_mux_002_src_ready),                                                           //       src.ready
 		.src_valid           (rsp_mux_002_src_valid),                                                           //          .valid
@@ -4948,7 +4948,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_mux_003 rsp_mux_003 (
-		.clk                 (clk_0_clk_clk),                                 //       clk.clk
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
 		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (rsp_mux_003_src_ready),                         //       src.ready
 		.src_valid           (rsp_mux_003_src_valid),                         //          .valid
@@ -5019,7 +5019,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.PACKING                       (0),
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter (
-		.clk                  (clk_0_clk_clk),                                                                                           //       clk.clk
+		.clk                  (CLK_clk_clk),                                                                                             //       clk.clk
 		.reset                (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                                           // clk_reset.reset
 		.in_valid             (cmd_demux_src2_valid),                                                                                    //      sink.valid
 		.in_channel           (cmd_demux_src2_channel),                                                                                  //          .channel
@@ -5085,7 +5085,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.PACKING                       (0),
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) hps_arm_h2f_axi_master_wr_to_ram_nios_ii_s1_cmd_width_adapter (
-		.clk                  (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
 		.reset                (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
 		.in_valid             (cmd_demux_001_src0_valid),                                                        //      sink.valid
 		.in_channel           (cmd_demux_001_src0_channel),                                                      //          .channel
@@ -5151,7 +5151,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.PACKING                       (0),
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) hps_arm_h2f_axi_master_rd_to_ram_nios_ii_s1_cmd_width_adapter (
-		.clk                  (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
 		.reset                (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
 		.in_valid             (cmd_demux_002_src0_valid),                                                        //      sink.valid
 		.in_channel           (cmd_demux_002_src0_channel),                                                      //          .channel
@@ -5283,7 +5283,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.PACKING                       (1),
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) ram_nios_ii_s1_to_hps_arm_h2f_axi_master_wr_rsp_width_adapter (
-		.clk                  (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
 		.reset                (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                   // clk_reset.reset
 		.in_valid             (rsp_demux_006_src1_valid),                                                        //      sink.valid
 		.in_channel           (rsp_demux_006_src1_channel),                                                      //          .channel
@@ -5349,7 +5349,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.PACKING                       (1),
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) ram_nios_ii_s1_to_hps_arm_h2f_axi_master_rd_rsp_width_adapter (
-		.clk                  (clk_0_clk_clk),                                                                   //       clk.clk
+		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
 		.reset                (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                   // clk_reset.reset
 		.in_valid             (rsp_demux_006_src2_valid),                                                        //      sink.valid
 		.in_channel           (rsp_demux_006_src2_channel),                                                      //          .channel
@@ -5378,7 +5378,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser (
-		.in_clk            (clk_0_clk_clk),                                     //        in_clk.clk
+		.in_clk            (CLK_clk_clk),                                       //        in_clk.clk
 		.in_reset          (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),     //  in_clk_reset.reset
 		.out_clk           (VGA_CLOCK_BRIDGE_out_clk_clk),                      //       out_clk.clk
 		.out_reset         (VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
@@ -5414,7 +5414,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	) crosser_001 (
 		.in_clk            (VGA_CLOCK_BRIDGE_out_clk_clk),                      //        in_clk.clk
 		.in_reset          (VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (clk_0_clk_clk),                                     //       out_clk.clk
+		.out_clk           (CLK_clk_clk),                                       //       out_clk.clk
 		.out_reset         (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),     // out_clk_reset.reset
 		.in_ready          (rsp_demux_003_src0_ready),                          //            in.ready
 		.in_valid          (rsp_demux_003_src0_valid),                          //              .valid
@@ -5446,7 +5446,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_002 (
-		.in_clk            (clk_0_clk_clk),                                                                                           //        in_clk.clk
+		.in_clk            (CLK_clk_clk),                                                                                             //        in_clk.clk
 		.in_reset          (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                                           //  in_clk_reset.reset
 		.out_clk           (VGA_CLOCK_BRIDGE_out_clk_clk),                                                                            //       out_clk.clk
 		.out_reset         (VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset),                                                       // out_clk_reset.reset
@@ -5482,7 +5482,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	) crosser_003 (
 		.in_clk            (VGA_CLOCK_BRIDGE_out_clk_clk),                                                                            //        in_clk.clk
 		.in_reset          (VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset),                                                       //  in_clk_reset.reset
-		.out_clk           (clk_0_clk_clk),                                                                                           //       out_clk.clk
+		.out_clk           (CLK_clk_clk),                                                                                             //       out_clk.clk
 		.out_reset         (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                                           // out_clk_reset.reset
 		.in_ready          (vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_ready),         //            in.ready
 		.in_valid          (vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_valid),         //              .valid
@@ -5520,7 +5520,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter (
-		.in_clk_0_clk   (clk_0_clk_clk),                                           // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                             // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),           // in_rst_0.reset
 		.in_0_data      (audio_out_avalon_audio_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_out_avalon_audio_slave_agent_rdata_fifo_out_valid), //         .valid
@@ -5549,7 +5549,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_001 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                                  // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                                    // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                  // in_rst_0.reset
 		.in_0_data      (audio_config_avalon_av_config_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_config_avalon_av_config_slave_agent_rdata_fifo_out_valid), //         .valid
@@ -5636,7 +5636,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_004 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                             // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                               // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),             // in_rst_0.reset
 		.in_0_data      (uart_nios_ii_avalon_jtag_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (uart_nios_ii_avalon_jtag_slave_agent_rdata_fifo_out_valid), //         .valid
@@ -5665,7 +5665,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_005 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                          // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                            // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),          // in_rst_0.reset
 		.in_0_data      (cpu_nios_ii_debug_mem_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (cpu_nios_ii_debug_mem_slave_agent_rdata_fifo_out_valid), //         .valid
@@ -5694,7 +5694,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_006 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                 // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                   // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
 		.in_0_data      (ram_nios_ii_s1_agent_rdata_fifo_out_data),      //     in_0.data
 		.in_0_valid     (ram_nios_ii_s1_agent_rdata_fifo_out_valid),     //         .valid
@@ -5723,7 +5723,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_007 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                 // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                   // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
 		.in_0_data      (reg_btn_input_s1_agent_rdata_fifo_out_data),    //     in_0.data
 		.in_0_valid     (reg_btn_input_s1_agent_rdata_fifo_out_valid),   //         .valid
@@ -5752,7 +5752,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_008 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                 // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                   // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
 		.in_0_data      (reg_sw_input_s1_agent_rdata_fifo_out_data),     //     in_0.data
 		.in_0_valid     (reg_sw_input_s1_agent_rdata_fifo_out_valid),    //         .valid
@@ -5781,7 +5781,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_009 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                    // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                      // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),    // in_rst_0.reset
 		.in_0_data      (timer_status_input_s1_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (timer_status_input_s1_agent_rdata_fifo_out_valid), //         .valid
@@ -5810,7 +5810,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_010 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                   // in_clk_0.clk
+		.in_clk_0_clk   (CLK_clk_clk),                                     // in_clk_0.clk
 		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),   // in_rst_0.reset
 		.in_0_data      (timer_ctrl_output_s1_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (timer_ctrl_output_s1_agent_rdata_fifo_out_valid), //         .valid

@@ -8,25 +8,25 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
 vMusicPlayerPlatformDesign_REG_SW_INPUT
-!s110 1779713135
+!s110 1779767573
 !i10b 1
 !s100 9hEaI5ZRWJ5fTzZ<D1NR40
 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IPJHgAPcQm0JY<UV6CXFb03
 VDg1SIo80bB@j0V0VzS_@n1
-R0
-w1779711367
+d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+w1779766498
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_REG_SW_INPUT.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_REG_SW_INPUT.v
-!i122 0
+!i122 1
 L0 21 60
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779713135.000000
+!s108 1779767573.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_REG_SW_INPUT.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_REG_SW_INPUT.v|-work|REG_SW_INPUT|
 !i113 1

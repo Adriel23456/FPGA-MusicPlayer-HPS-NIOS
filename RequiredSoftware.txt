@@ -136,3 +136,65 @@ ModelSim + QuestaSim = C:/intelFPGA/20.1/modelsim_ase/win32aloem
 And we dont use Eclipse, we use the NIOS II Command Shell, for compilation for NIOS II (Bare-Metal)!! (NIOS-II_Workflow.md)
 
 Also remember to run the TCL scripts for 'Fitter (Plave & Route)' when compiling hardware.
+
+=============================
+UBUNTU TROUBLESHOOTING
+=============================
+
+~/launch_modelsim.sh
+
+Contains:
+```
+echo ""
+echo "============================================================"
+echo " Open ModelSim with:"
+echo "============================================================"
+echo ""
+echo "cd \"$MENTOR\""
+echo "~/intelFPGA_lite/22.1std/modelsim_ase/bin/vsim"
+echo ""
+echo "Then inside ModelSim run:"
+echo ""
+echo "do msim_setup.tcl"
+echo "ld_debug"
+echo "add wave *"
+echo "run 2.5ms"
+echo ""
+echo "============================================================"
+```
+
+Also ModelSim requires this:
+```
+sudo dpkg --add-architecture i386
+sudo apt update
+
+sudo apt install -y \
+libc6:i386 \
+libstdc++6:i386 \
+libncurses5:i386 \
+zlib1g:i386 \
+libx11-6:i386 \
+libxext6:i386 \
+libxft2:i386 \
+libxrender1:i386 \
+libxtst6:i386 \
+libxi6:i386
+```
+
+Commands to solve JTAG on ubuntu:
+```
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+```
+sudo nano /etc/udev/rules.d/51-usbblaster.rules
+```
+Inside the file write the content (not the '-')
+------------------
+SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666"
+------------------
+
+Then you verify this with:
+~/intelFPGA_lite/22.1std/quartus/bin/jtagconfig

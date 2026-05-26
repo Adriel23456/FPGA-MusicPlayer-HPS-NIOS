@@ -8,65 +8,65 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
 vio_buf_opdrn
-Z1 !s110 1779713121
+Z0 !s110 1779767564
 !i10b 1
 !s100 2HTIL;R:JJRUmC8N3M;`Z3
-Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IP[YA<;ZL9?BJ:OO_7]nI42
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-R0
-Z4 w1689959812
-Z5 8C:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v
-Z6 FC:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v
-!i122 0
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IU9[5QPPc4ezLFEnO2hFE;1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+Z4 w1689907556
+Z5 8/home/adriel/intelFPGA_lite/22.1std/quartus/eda/sim_lib/sgate.v
+Z6 F/home/adriel/intelFPGA_lite/22.1std/quartus/eda/sim_lib/sgate.v
+!i122 1
 L0 249 22
 Z7 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1779713121.000000
-!s107 C:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v|
-Z9 !s90 -reportprogress|300|C:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v|-work|sgate_ver|
+Z8 !s108 1779767564.000000
+!s107 /home/adriel/intelFPGA_lite/22.1std/quartus/eda/sim_lib/sgate.v|
+Z9 !s90 -reportprogress|300|/home/adriel/intelFPGA_lite/22.1std/quartus/eda/sim_lib/sgate.v|-work|sgate_ver|
 !i113 1
 Z10 o-work sgate_ver
 Z11 tCvgOpt 0
 vio_buf_tri
-R1
+R0
 !i10b 1
 !s100 7EGd5F8OT7>7nWZQHnUiG2
+R1
+I^V`Ymno;3@TQ^45L=`W?43
 R2
-IODf4DeYaLIW4K@WjLY4F;3
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 221 23
 R7
 r1
 !s85 0
 31
 R8
-Z12 !s107 C:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v|
+Z12 !s107 /home/adriel/intelFPGA_lite/22.1std/quartus/eda/sim_lib/sgate.v|
 R9
 !i113 1
 R10
 R11
 vmux21
-R1
+R0
 !i10b 1
 !s100 2<7JGlGk==Q>BQ]QWE=^X0
+R1
+I]a>[4DeiXX65C5o`L6QM_3
 R2
-IiBTTj>2h[nz_Y58l6nmLo1
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 191 26
 R7
 r1
@@ -79,17 +79,17 @@ R9
 R10
 R11
 voper_add
-R1
+R0
 !i10b 1
 !s100 [=dzhe?D4`?JN7O>DE:Ya2
+R1
+IgdUdW1C[B1>V[KC;]4VC43
 R2
-IbbS]K_YT4PQHlb6@2N9MV3
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 19 74
 R7
 r1
@@ -102,17 +102,17 @@ R9
 R10
 R11
 voper_addsub
-R1
+R0
 !i10b 1
 !s100 dRSc1;eO9Ph@3IZjSFO0V2
+R1
+ICSYYY]=IIGiOTVJ:9hPmN0
 R2
-Ik2GZDze[Mj@KCdVLZW7Zk2
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 96 91
 R7
 r1
@@ -125,17 +125,17 @@ R9
 R10
 R11
 voper_bus_mux
-R1
+R0
 !i10b 1
 !s100 ?nWS9ekBL]_DaFQ5^Ezkn0
+R1
+IN1cEhdL[W4>>jlo3TLZj43
 R2
-I<_8ETVlYVH>?W?me[nn=k1
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 1073 59
 R7
 r1
@@ -148,17 +148,17 @@ R9
 R10
 R11
 voper_decoder
-R1
+R0
 !i10b 1
 !s100 M8fm8bmceMDV9PfTHRDG>3
+R1
+IPW5ngMYHgW`2H_f^9zPF;2
 R2
-I:]O3O@BDBC5bCY]W;^4FE0
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 1037 32
 R7
 r1
@@ -171,17 +171,17 @@ R9
 R10
 R11
 voper_div
-R1
+R0
 !i10b 1
 !s100 BWj5zDPa=Q2cRhAXTY@680
+R1
+I0jiaKz]h9gYJSA=W@kzV51
 R2
-Iz7BYHPDj53XhQa^7eBjGz0
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 395 85
 R7
 r1
@@ -194,17 +194,17 @@ R9
 R10
 R11
 voper_latch
-R1
+R0
 !i10b 1
 !s100 1?iMn;3iiL<D=g3QN5O>f0
+R1
+IY?]^=9m=n2GMjGE3E`4c41
 R2
-I2LC7j[ii[>JJ<cLh6IR8g1
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 1136 17
 R7
 r1
@@ -217,17 +217,17 @@ R9
 R10
 R11
 voper_left_shift
-R1
+R0
 !i10b 1
 !s100 Ia;?MBn5SMWk?FWg`;b`:1
+R1
+I:iZTbZ9J?5Z;=aCz:=<AA1
 R2
-I;7oOHIeb2I`lXajJE<G[n2
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 573 72
 R7
 r1
@@ -240,17 +240,17 @@ R9
 R10
 R11
 voper_less_than
-R1
+R0
 !i10b 1
 !s100 If1bDMKTm[nDU6FPY0<[h0
+R1
+IFB5B584N;1Uz[fi?Tcg5_2
 R2
-I8l68=QaTlb1Sn5:``=GEb2
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 854 88
 R7
 r1
@@ -263,17 +263,17 @@ R9
 R10
 R11
 voper_mod
-R1
+R0
 !i10b 1
 !s100 LFWX24c@Bm23FN66lEoIc2
+R1
+I?KliHXDJ<5RMH2l0;naNQ1
 R2
-IIWnL7:YmZ:UbgDzPjA>^k2
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 484 85
 R7
 r1
@@ -286,17 +286,17 @@ R9
 R10
 R11
 voper_mult
-R1
+R0
 !i10b 1
 !s100 7T;cgY3?zJLLE[b3W@31k1
+R1
+I?4>hHbX<4lK4SOaiVM2ZN0
 R2
-I7nC53Y9c5jjk2?KZ0QM5b2
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 275 68
 R7
 r1
@@ -309,17 +309,17 @@ R9
 R10
 R11
 voper_mux
-R1
+R0
 !i10b 1
 !s100 af8BPGhOhKYG:Q[bVQ4Yz3
+R1
+Id;2Pc?jYk:z?2K_H2:c=l2
 R2
-I>@b:`E0V=CaPS6]Q5GScY0
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 946 42
 R7
 r1
@@ -332,17 +332,17 @@ R9
 R10
 R11
 voper_right_shift
-R1
+R0
 !i10b 1
 !s100 <QG8P6T[a@C1SKe4hmk_=3
+R1
+Id9XiR7lO83U;UNgF==5o93
 R2
-Iz^5fD@A^KN=U3l?`@VlD`2
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 650 79
 R7
 r1
@@ -355,17 +355,17 @@ R9
 R10
 R11
 voper_rotate_left
-R1
+R0
 !i10b 1
 !s100 jS9A7HPK[jX1S@=cJ83nz3
+R1
+I0TA:kHmeS[9`l4=S]Rb@g2
 R2
-I2cI>ERQ=`;Xa>`6MQNY=?3
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 733 57
 R7
 r1
@@ -378,17 +378,17 @@ R9
 R10
 R11
 voper_rotate_right
-R1
+R0
 !i10b 1
 !s100 la6KJ@VFDlhNZ4SjIgF7;3
+R1
+I2ZNaPQfzM`@dmVnk3JZM?2
 R2
-Iof5Nid;;cBDHKWoboQ^9B3
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 794 56
 R7
 r1
@@ -401,17 +401,17 @@ R9
 R10
 R11
 voper_selector
-R1
+R0
 !i10b 1
 !s100 RMIDjPedQc82ikX8SiFoS0
+R1
+IhZB5;A6h^g5@GX_@0L`l>1
 R2
-I9_zJNF4DUeJQR4XeFSl^41
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 992 41
 R7
 r1
@@ -424,17 +424,17 @@ R9
 R10
 R11
 vtri_bus
-R1
+R0
 !i10b 1
 !s100 Hgj<4=XNL3Vc;3lUh^chP1
+R1
+IQ4dzRi<z0k8R[:F[=CzNY1
 R2
-I665WUhAP7hJO]con2:Yk[3
 R3
-R0
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 348 43
 R7
 r1

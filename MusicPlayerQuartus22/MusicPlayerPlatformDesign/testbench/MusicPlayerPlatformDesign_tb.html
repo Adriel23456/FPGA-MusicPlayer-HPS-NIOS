@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.05.25.06:15:58</td>
+    <td class="l">2026.05.25.21:34:52</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -77,7 +77,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div style="display:inline-block ; text-align:left">
     <table class="connectionboxes">
      <tr>
-      <td class="lefthandwire">&#160;&#160;MusicPlayerPlatformDesign_inst_clk_0&#160;</td>
+      <td class="lefthandwire">&#160;&#160;MusicPlayerPlatformDesign_inst_CLK&#160;</td>
       <td class="main" rowspan="2">MusicPlayerPlatformDesign_tb</td>
      </tr>
      <tr style="height:6px">
@@ -286,7 +286,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <table>
        <tr>
         <td class="parametername">AUTO_GENERATION_ID</td>
-        <td class="parametervalue">1779711358</td>
+        <td class="parametervalue">1779766492</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_UNIQUE_ID</td>
@@ -369,7 +369,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -522,7 +522,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -599,6 +599,342 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_MusicPlayerPlatformDesign_inst_CLK"> </a>
+  <div>
+   <hr/>
+   <h2>MusicPlayerPlatformDesign_inst_CLK</h2>clock_source v22.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_MusicPlayerPlatformDesign_inst_clk_bfm">MusicPlayerPlatformDesign_inst_clk_bfm</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="main" rowspan="55">MusicPlayerPlatformDesign_inst_CLK</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk_in</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_MusicPlayerPlatformDesign_inst_reset_bfm">MusicPlayerPlatformDesign_inst_reset_bfm</a>
+      </td>
+      <td class="from">reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk_in_reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_CPU_NIOS_II">MusicPlayerPlatformDesign_inst_CPU_NIOS_II</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_UART_NIOS_II">MusicPlayerPlatformDesign_inst_UART_NIOS_II</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_REG_BTN_INPUT">MusicPlayerPlatformDesign_inst_REG_BTN_INPUT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_REG_SW_INPUT">MusicPlayerPlatformDesign_inst_REG_SW_INPUT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_TIMER_STATUS_INPUT">MusicPlayerPlatformDesign_inst_TIMER_STATUS_INPUT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_TIMER_CTRL_OUTPUT">MusicPlayerPlatformDesign_inst_TIMER_CTRL_OUTPUT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_AUDIO_OUT">MusicPlayerPlatformDesign_inst_AUDIO_OUT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_AUDIO_CONFIG">MusicPlayerPlatformDesign_inst_AUDIO_CONFIG</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_MusicPlayerPlatformDesign_inst_RAM_NIOS_II">MusicPlayerPlatformDesign_inst_RAM_NIOS_II</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_MusicPlayerPlatformDesign_inst_VGA_CONTROLLER">MusicPlayerPlatformDesign_inst_VGA_CONTROLLER</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_MusicPlayerPlatformDesign_inst_VGA_CHAR_BUFFER">MusicPlayerPlatformDesign_inst_VGA_CHAR_BUFFER</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">clockFrequency</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">clockFrequencyKnown</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">inputClockFrequency</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetSynchronousEdges</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_MusicPlayerPlatformDesign_inst_CPU_NIOS_II"> </a>
   <div>
    <hr/>
@@ -608,7 +944,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <table class="connectionboxes">
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
       <td class="main" rowspan="42">MusicPlayerPlatformDesign_inst_CPU_NIOS_II</td>
@@ -1774,7 +2110,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -2042,7 +2378,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -2258,7 +2594,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -2468,7 +2804,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -2678,7 +3014,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -2894,7 +3230,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
      </tr>
@@ -3058,7 +3394,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
      </tr>
@@ -3250,7 +3586,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
      </tr>
@@ -3305,342 +3641,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <tr>
         <td class="parametername">deviceFamily</td>
         <td class="parametervalue">Cyclone V</td>
-       </tr>
-       <tr>
-        <td class="parametername">generateLegacySim</td>
-        <td class="parametervalue">false</td>
-       </tr>
-      </table>
-     </td>
-    </tr>
-   </table>&#160;&#160;
-   <table class="flowbox">
-    <tr>
-     <td class="parametersbox">
-      <h2>Software Assignments</h2>(none)</td>
-    </tr>
-   </table>
-  </div>
-  <a name="module_MusicPlayerPlatformDesign_inst_clk_0"> </a>
-  <div>
-   <hr/>
-   <h2>MusicPlayerPlatformDesign_inst_clk_0</h2>clock_source v22.1
-   <br/>
-   <div class="greydiv">
-    <table class="connectionboxes">
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_bfm">MusicPlayerPlatformDesign_inst_clk_bfm</a>
-      </td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="55">MusicPlayerPlatformDesign_inst_clk_0</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;clk_in</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_reset_bfm">MusicPlayerPlatformDesign_inst_reset_bfm</a>
-      </td>
-      <td class="from">reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;clk_in_reset</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_CPU_NIOS_II">MusicPlayerPlatformDesign_inst_CPU_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_UART_NIOS_II">MusicPlayerPlatformDesign_inst_UART_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_REG_BTN_INPUT">MusicPlayerPlatformDesign_inst_REG_BTN_INPUT</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_REG_SW_INPUT">MusicPlayerPlatformDesign_inst_REG_SW_INPUT</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_TIMER_STATUS_INPUT">MusicPlayerPlatformDesign_inst_TIMER_STATUS_INPUT</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_TIMER_CTRL_OUTPUT">MusicPlayerPlatformDesign_inst_TIMER_CTRL_OUTPUT</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_AUDIO_OUT">MusicPlayerPlatformDesign_inst_AUDIO_OUT</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_AUDIO_CONFIG">MusicPlayerPlatformDesign_inst_AUDIO_CONFIG</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_MusicPlayerPlatformDesign_inst_RAM_NIOS_II">MusicPlayerPlatformDesign_inst_RAM_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;clk1</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_VGA_CONTROLLER">MusicPlayerPlatformDesign_inst_VGA_CONTROLLER</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">clk_reset&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_VGA_CHAR_BUFFER">MusicPlayerPlatformDesign_inst_VGA_CHAR_BUFFER</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-    </table>
-   </div>
-   <br/>
-   <br/>
-   <table class="flowbox">
-    <tr>
-     <td class="parametersbox">
-      <h2>Parameters</h2>
-      <table>
-       <tr>
-        <td class="parametername">clockFrequency</td>
-        <td class="parametervalue">50000000</td>
-       </tr>
-       <tr>
-        <td class="parametername">clockFrequencyKnown</td>
-        <td class="parametervalue">true</td>
-       </tr>
-       <tr>
-        <td class="parametername">inputClockFrequency</td>
-        <td class="parametervalue">0</td>
-       </tr>
-       <tr>
-        <td class="parametername">resetSynchronousEdges</td>
-        <td class="parametervalue">NONE</td>
-       </tr>
-       <tr>
-        <td class="parametername">deviceFamily</td>
-        <td class="parametervalue">UNKNOWN</td>
        </tr>
        <tr>
         <td class="parametername">generateLegacySim</td>
@@ -3871,7 +3871,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">reset&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_MusicPlayerPlatformDesign_inst_clk_0">MusicPlayerPlatformDesign_inst_clk_0</a>
+       <a href="#module_MusicPlayerPlatformDesign_inst_CLK">MusicPlayerPlatformDesign_inst_CLK</a>
       </td>
      </tr>
      <tr>
