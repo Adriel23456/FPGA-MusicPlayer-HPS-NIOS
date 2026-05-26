@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 22.1 922 win32 2026.05.25.06:16:24
+# ACDS 22.1 922 linux 2026.05.25.21:35:10
 # ----------------------------------------
 # Auto-generated simulation script rivierapro_setup.tcl
 # ----------------------------------------
@@ -113,7 +113,7 @@ if ![info exists QSYS_SIMDIR] {
 }
 
 if ![info exists QUARTUS_INSTALL_DIR] { 
-  set QUARTUS_INSTALL_DIR "C:/intelfpga_lite/22.1std/quartus/"
+  set QUARTUS_INSTALL_DIR "/home/adriel/intelFPGA_lite/22.1std/quartus/"
 }
 
 if ![info exists USER_DEFINED_COMPILE_OPTIONS] { 
@@ -152,15 +152,15 @@ if { [ string match "Active" $Aldec ] } {
 # Copy ROM/RAM files to simulation directory
 alias file_copy {
   echo "\[exec\] file_copy"
-  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_default_contents.dat ./
-  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_default_contents.hex ./
-  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_default_contents.mif ./
-  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_a.dat ./
-  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_a.hex ./
-  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_a.mif ./
   file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_b.dat ./
   file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_b.hex ./
   file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_b.mif ./
+  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_a.mif ./
+  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_a.hex ./
+  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_rf_ram_a.dat ./
+  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_default_contents.hex ./
+  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_default_contents.dat ./
+  file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_ociram_default_contents.mif ./
   file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_char_mode_rom_128.mif ./
   file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_video_fb_color_rom.mif ./
   file copy -force $QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_RAM_NIOS_II.hex ./
@@ -356,11 +356,11 @@ alias com {
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_master_agent.sv"                                                        -l altera_common_sv_packages -work CPU_NIOS_II_data_master_agent                             
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_slave_translator.sv"                                                    -l altera_common_sv_packages -work AUDIO_OUT_avalon_audio_slave_translator                   
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_master_translator.sv"                                                   -l altera_common_sv_packages -work CPU_NIOS_II_data_master_translator                        
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v"                                                                       -work cpu                                                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_sysclk.v"                                                    -work cpu                                                       
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v"                                                            -work cpu                                                       
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu.v"                                                                       -work cpu                                                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_tck.v"                                                       -work cpu                                                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_debug_slave_wrapper.v"                                                   -work cpu                                                       
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_CPU_NIOS_II_cpu_test_bench.v"                                                            -work cpu                                                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_reset_controller.v"                                                                                         -work rst_controller                                            
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/altera_reset_synchronizer.v"                                                                                       -work rst_controller                                            
   eval  vlog  $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS      "$QSYS_SIMDIR/MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_irq_mapper.sv"                                              -l altera_common_sv_packages -work irq_mapper                                                

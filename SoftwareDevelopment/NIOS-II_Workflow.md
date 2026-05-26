@@ -2,6 +2,7 @@
 
 ## What You Get
 
+Note: THis workflow works the same for Windows and Ubuntu, you just start with the two Linux files first!
 Two files to start with — place both in the **same folder**
 (e.g. `SoftwareDevelopment/NIOS-II/`):
 

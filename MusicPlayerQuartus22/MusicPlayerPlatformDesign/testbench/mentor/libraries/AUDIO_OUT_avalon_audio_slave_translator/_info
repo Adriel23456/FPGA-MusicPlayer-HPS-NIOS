@@ -8,27 +8,27 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
 valtera_merlin_slave_translator
 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-!s110 1779713133
+!s110 1779767572
 !i10b 1
 !s100 n?8_4jLIz<NL:?<dYjeFI3
 !s11b Dg1SIo80bB@j0V0VzS_@n1
 ISCT1K5zMCENV;VL99]O_;3
 VDg1SIo80bB@j0V0VzS_@n1
 S1
-R0
-w1779711382
+d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+w1779766505
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_slave_translator.sv
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_slave_translator.sv
-!i122 0
+!i122 1
 L0 35 448
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779713133.000000
+!s108 1779767572.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_slave_translator.sv|
 !s90 -reportprogress|300|-sv|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_merlin_slave_translator.sv|-L|altera_common_sv_packages|-work|AUDIO_OUT_avalon_audio_slave_translator|
 !i113 1

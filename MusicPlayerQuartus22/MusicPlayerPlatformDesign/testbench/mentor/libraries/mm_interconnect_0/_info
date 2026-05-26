@@ -8,25 +8,25 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
 vMusicPlayerPlatformDesign_mm_interconnect_0
-!s110 1779713134
+!s110 1779767572
 !i10b 1
-!s100 dMOdB^[=QDfCLjdRz_H5I0
+!s100 Q8gTCXEK<0Fn:dZWa:43z0
 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I<IE3>^aV@ef0F8fZ:b0_Z2
+IOm=W1Qh^OGnH4X9OAl=ba0
 VDg1SIo80bB@j0V0VzS_@n1
-R0
-w1779711381
+d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+w1779766501
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0.v
-!i122 0
+!i122 1
 L0 9 4729
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779713134.000000
+!s108 1779767572.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_mm_interconnect_0.v|-work|mm_interconnect_0|
 !i113 1

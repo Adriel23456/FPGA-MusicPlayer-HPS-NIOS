@@ -610,7 +610,7 @@ module MusicPlayerPlatformDesign (
 		.HPS_ARM_h2f_axi_master_rlast                                       (hps_arm_h2f_axi_master_rlast),                                           //                                                             .rlast
 		.HPS_ARM_h2f_axi_master_rvalid                                      (hps_arm_h2f_axi_master_rvalid),                                          //                                                             .rvalid
 		.HPS_ARM_h2f_axi_master_rready                                      (hps_arm_h2f_axi_master_rready),                                          //                                                             .rready
-		.clk_0_clk_clk                                                      (clk_clk),                                                                //                                                    clk_0_clk.clk
+		.CLK_clk_clk                                                        (clk_clk),                                                                //                                                      CLK_clk.clk
 		.VGA_CLOCK_BRIDGE_out_clk_clk                                       (vga_clk_clk),                                                            //                                     VGA_CLOCK_BRIDGE_out_clk.clk
 		.CPU_NIOS_II_reset_reset_bridge_in_reset_reset                      (rst_controller_reset_out_reset),                                         //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
 		.HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                                     // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset

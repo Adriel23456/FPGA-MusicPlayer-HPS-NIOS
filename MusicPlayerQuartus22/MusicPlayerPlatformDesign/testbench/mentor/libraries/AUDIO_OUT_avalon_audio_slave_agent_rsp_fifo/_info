@@ -8,25 +8,25 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
 valtera_avalon_sc_fifo
-!s110 1779713133
+!s110 1779767572
 !i10b 1
 !s100 o<4[h9[aF_<eG3j;6n1=<2
 !s11b Dg1SIo80bB@j0V0VzS_@n1
 I19Sl^abEWz[ILb2cH^IEH2
 VDg1SIo80bB@j0V0VzS_@n1
-R0
-w1779711382
+d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+w1779766505
 8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_sc_fifo.v
 F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_sc_fifo.v
-!i122 0
+!i122 1
 L0 21 895
 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1779713133.000000
+!s108 1779767572.000000
 !s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_sc_fifo.v|
 !s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_avalon_sc_fifo.v|-work|AUDIO_OUT_avalon_audio_slave_agent_rsp_fifo|
 !i113 1

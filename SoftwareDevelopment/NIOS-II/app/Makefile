@@ -90,7 +90,7 @@ ACDS_VERSION := 22.1
 ELF := main.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.c
+C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -128,10 +128,10 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp
+BSP_ROOT_DIR := /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp
 
 # List of application specific include directories, library directories and library names
-APP_INCLUDE_DIRS := D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/include
+APP_INCLUDE_DIRS := /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/include
 
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=

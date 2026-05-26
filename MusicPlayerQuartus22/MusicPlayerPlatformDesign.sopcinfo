@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 22.1 922 (Future versions may contain additional information.) -->
- <!-- 2026.05.25.06:31:55 -->
+ <!-- 2026.05.25.21:36:01 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1779712315</value>
+  <value>1779766539</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -1814,6 +1814,388 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>1</width>
     <role>export</role>
+   </port>
+  </interface>
+ </module>
+ <module name="CLK" kind="clock_source" version="22.1" path="CLK">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="clockFrequency">
+   <type>long</type>
+   <value>50000000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="clockFrequencyKnown">
+   <type>boolean</type>
+   <value>true</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="inputClockFrequency">
+   <type>long</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>CLOCK_RATE</sysinfo_type>
+   <sysinfo_arg>clk_in</sysinfo_arg>
+  </parameter>
+  <parameter name="resetSynchronousEdges">
+   <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+   <value>NONE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="clk_in" kind="clock_sink" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <assignment>
+    <name>qsys.ui.export_name</name>
+    <value>clk</value>
+   </assignment>
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRateKnown">
+    <type>java.lang.Boolean</type>
+    <value>true</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRate">
+    <type>java.lang.Long</type>
+    <value>50000000</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>in_clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="clk_in_reset" kind="reset_sink" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <assignment>
+    <name>qsys.ui.export_name</name>
+    <value>reset</value>
+   </assignment>
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>NONE</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>false</isStart>
+   <port>
+    <name>reset_n</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset_n</role>
+   </port>
+  </interface>
+  <interface name="clk" kind="clock_source" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedDirectClock">
+    <type>java.lang.String</type>
+    <value>clk_in</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRate">
+    <type>long</type>
+    <value>50000000</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRateKnown">
+    <type>boolean</type>
+    <value>true</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>true</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>true</isStart>
+   <port>
+    <name>clk_out</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>CPU_NIOS_II</moduleName>
+    <slaveName>clk</slaveName>
+    <name>CPU_NIOS_II.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>UART_NIOS_II</moduleName>
+    <slaveName>clk</slaveName>
+    <name>UART_NIOS_II.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>REG_BTN_INPUT</moduleName>
+    <slaveName>clk</slaveName>
+    <name>REG_BTN_INPUT.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>REG_SW_INPUT</moduleName>
+    <slaveName>clk</slaveName>
+    <name>REG_SW_INPUT.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>TIMER_STATUS_INPUT</moduleName>
+    <slaveName>clk</slaveName>
+    <name>TIMER_STATUS_INPUT.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>TIMER_CTRL_OUTPUT</moduleName>
+    <slaveName>clk</slaveName>
+    <name>TIMER_CTRL_OUTPUT.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AUDIO_OUT</moduleName>
+    <slaveName>clk</slaveName>
+    <name>AUDIO_OUT.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AUDIO_CONFIG</moduleName>
+    <slaveName>clk</slaveName>
+    <name>AUDIO_CONFIG.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>RAM_NIOS_II</moduleName>
+    <slaveName>clk1</slaveName>
+    <name>RAM_NIOS_II.clk1</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>HPS_ARM_bridges</moduleName>
+    <slaveName>f2h_axi_clock</slaveName>
+    <name>HPS_ARM_bridges.f2h_axi_clock</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>HPS_ARM_bridges</moduleName>
+    <slaveName>f2h_sdram0_clock</slaveName>
+    <name>HPS_ARM_bridges.f2h_sdram0_clock</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>HPS_ARM_bridges</moduleName>
+    <slaveName>h2f_axi_clock</slaveName>
+    <name>HPS_ARM_bridges.h2f_axi_clock</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>HPS_ARM_bridges</moduleName>
+    <slaveName>h2f_lw_axi_clock</slaveName>
+    <name>HPS_ARM_bridges.h2f_lw_axi_clock</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AUDIO_CLOCK</moduleName>
+    <slaveName>ref_clk</slaveName>
+    <name>AUDIO_CLOCK.ref_clk</name>
+   </clockDomainMember>
+  </interface>
+  <interface name="clk_reset" kind="reset_source" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedDirectReset">
+    <type>java.lang.String</type>
+    <value>clk_in_reset</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedResetSinks">
+    <type>[Ljava.lang.String;</type>
+    <value>clk_in_reset</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>NONE</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>true</isStart>
+   <port>
+    <name>reset_n_out</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>reset_n</role>
    </port>
   </interface>
  </module>
@@ -3638,7 +4020,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>2</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3648,7 +4030,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>2</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -85164,388 +85546,6 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
- <module name="clk_0" kind="clock_source" version="22.1" path="clk_0">
-  <!-- Describes a single module. Module parameters are
-the requested settings for a module instance. -->
-  <parameter name="clockFrequency">
-   <type>long</type>
-   <value>50000000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="clockFrequencyKnown">
-   <type>boolean</type>
-   <value>true</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="inputClockFrequency">
-   <type>long</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>CLOCK_RATE</sysinfo_type>
-   <sysinfo_arg>clk_in</sysinfo_arg>
-  </parameter>
-  <parameter name="resetSynchronousEdges">
-   <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-   <value>NONE</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <interface name="clk_in" kind="clock_sink" version="22.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <assignment>
-    <name>qsys.ui.export_name</name>
-    <value>clk</value>
-   </assignment>
-   <parameter name="externallyDriven">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="ptfSchematicName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="clockRateKnown">
-    <type>java.lang.Boolean</type>
-    <value>true</value>
-    <derived>true</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="clockRate">
-    <type>java.lang.Long</type>
-    <value>50000000</value>
-    <derived>true</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>clock</type>
-   <isStart>false</isStart>
-   <port>
-    <name>in_clk</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>clk</role>
-   </port>
-  </interface>
-  <interface name="clk_in_reset" kind="reset_sink" version="22.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <assignment>
-    <name>qsys.ui.export_name</name>
-    <value>reset</value>
-   </assignment>
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>NONE</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>false</isStart>
-   <port>
-    <name>reset_n</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>reset_n</role>
-   </port>
-  </interface>
-  <interface name="clk" kind="clock_source" version="22.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedDirectClock">
-    <type>java.lang.String</type>
-    <value>clk_in</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="clockRate">
-    <type>long</type>
-    <value>50000000</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="clockRateKnown">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="externallyDriven">
-    <type>boolean</type>
-    <value>true</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="ptfSchematicName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>clock</type>
-   <isStart>true</isStart>
-   <port>
-    <name>clk_out</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>clk</role>
-   </port>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>CPU_NIOS_II</moduleName>
-    <slaveName>clk</slaveName>
-    <name>CPU_NIOS_II.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>UART_NIOS_II</moduleName>
-    <slaveName>clk</slaveName>
-    <name>UART_NIOS_II.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>REG_BTN_INPUT</moduleName>
-    <slaveName>clk</slaveName>
-    <name>REG_BTN_INPUT.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>REG_SW_INPUT</moduleName>
-    <slaveName>clk</slaveName>
-    <name>REG_SW_INPUT.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>TIMER_STATUS_INPUT</moduleName>
-    <slaveName>clk</slaveName>
-    <name>TIMER_STATUS_INPUT.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>TIMER_CTRL_OUTPUT</moduleName>
-    <slaveName>clk</slaveName>
-    <name>TIMER_CTRL_OUTPUT.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>AUDIO_OUT</moduleName>
-    <slaveName>clk</slaveName>
-    <name>AUDIO_OUT.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>AUDIO_CONFIG</moduleName>
-    <slaveName>clk</slaveName>
-    <name>AUDIO_CONFIG.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>RAM_NIOS_II</moduleName>
-    <slaveName>clk1</slaveName>
-    <name>RAM_NIOS_II.clk1</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>HPS_ARM_bridges</moduleName>
-    <slaveName>f2h_axi_clock</slaveName>
-    <name>HPS_ARM_bridges.f2h_axi_clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>HPS_ARM_bridges</moduleName>
-    <slaveName>f2h_sdram0_clock</slaveName>
-    <name>HPS_ARM_bridges.f2h_sdram0_clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>HPS_ARM_bridges</moduleName>
-    <slaveName>h2f_axi_clock</slaveName>
-    <name>HPS_ARM_bridges.h2f_axi_clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>HPS_ARM_bridges</moduleName>
-    <slaveName>h2f_lw_axi_clock</slaveName>
-    <name>HPS_ARM_bridges.h2f_lw_axi_clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>AUDIO_CLOCK</moduleName>
-    <slaveName>ref_clk</slaveName>
-    <name>AUDIO_CLOCK.ref_clk</name>
-   </clockDomainMember>
-  </interface>
-  <interface name="clk_reset" kind="reset_source" version="22.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedDirectReset">
-    <type>java.lang.String</type>
-    <value>clk_in_reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedResetSinks">
-    <type>[Ljava.lang.String;</type>
-    <value>clk_in_reset</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="synchronousEdges">
-    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>NONE</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>reset</type>
-   <isStart>true</isStart>
-   <port>
-    <name>reset_n_out</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>reset_n</role>
-   </port>
-  </interface>
- </module>
  <connection
    name="HPS_ARM_clk_0.clk_reset/HPS_ARM_bridges.reset_sink"
    kind="reset"
@@ -96414,10 +96414,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_vga_sink</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/CPU_NIOS_II.clk"
+   name="CLK.clk/CPU_NIOS_II.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="CPU_NIOS_II.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96435,16 +96435,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>CPU_NIOS_II</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/UART_NIOS_II.clk"
+   name="CLK.clk/UART_NIOS_II.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="UART_NIOS_II.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96462,16 +96462,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>UART_NIOS_II</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/REG_BTN_INPUT.clk"
+   name="CLK.clk/REG_BTN_INPUT.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="REG_BTN_INPUT.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96489,16 +96489,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>REG_BTN_INPUT</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/REG_SW_INPUT.clk"
+   name="CLK.clk/REG_SW_INPUT.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="REG_SW_INPUT.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96516,16 +96516,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>REG_SW_INPUT</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/TIMER_STATUS_INPUT.clk"
+   name="CLK.clk/TIMER_STATUS_INPUT.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="TIMER_STATUS_INPUT.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96543,16 +96543,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>TIMER_STATUS_INPUT</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/TIMER_CTRL_OUTPUT.clk"
+   name="CLK.clk/TIMER_CTRL_OUTPUT.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="TIMER_CTRL_OUTPUT.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96570,16 +96570,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>TIMER_CTRL_OUTPUT</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/AUDIO_OUT.clk"
+   name="CLK.clk/AUDIO_OUT.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="AUDIO_OUT.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96597,16 +96597,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>AUDIO_OUT</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/AUDIO_CONFIG.clk"
+   name="CLK.clk/AUDIO_CONFIG.clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="AUDIO_CONFIG.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96624,16 +96624,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>AUDIO_CONFIG</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/RAM_NIOS_II.clk1"
+   name="CLK.clk/RAM_NIOS_II.clk1"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="RAM_NIOS_II.clk1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96651,16 +96651,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>RAM_NIOS_II</endModule>
   <endConnectionPoint>clk1</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/HPS_ARM_bridges.f2h_axi_clock"
+   name="CLK.clk/HPS_ARM_bridges.f2h_axi_clock"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM_bridges.f2h_axi_clock">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96678,16 +96678,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>HPS_ARM_bridges</endModule>
   <endConnectionPoint>f2h_axi_clock</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/HPS_ARM_bridges.f2h_sdram0_clock"
+   name="CLK.clk/HPS_ARM_bridges.f2h_sdram0_clock"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM_bridges.f2h_sdram0_clock">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96705,16 +96705,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>HPS_ARM_bridges</endModule>
   <endConnectionPoint>f2h_sdram0_clock</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/HPS_ARM_bridges.h2f_axi_clock"
+   name="CLK.clk/HPS_ARM_bridges.h2f_axi_clock"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM_bridges.h2f_axi_clock">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96732,16 +96732,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>HPS_ARM_bridges</endModule>
   <endConnectionPoint>h2f_axi_clock</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/HPS_ARM_bridges.h2f_lw_axi_clock"
+   name="CLK.clk/HPS_ARM_bridges.h2f_lw_axi_clock"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM_bridges.h2f_lw_axi_clock">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96759,16 +96759,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>HPS_ARM_bridges</endModule>
   <endConnectionPoint>h2f_lw_axi_clock</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/AUDIO_CLOCK.ref_clk"
+   name="CLK.clk/AUDIO_CLOCK.ref_clk"
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="AUDIO_CLOCK.ref_clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -96786,7 +96786,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>AUDIO_CLOCK</endModule>
   <endConnectionPoint>ref_clk</endConnectionPoint>
@@ -96986,10 +96986,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/AUDIO_CLOCK.ref_reset"
+   name="CLK.clk_reset/AUDIO_CLOCK.ref_reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="AUDIO_CLOCK.ref_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97007,16 +97007,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>AUDIO_CLOCK</endModule>
   <endConnectionPoint>ref_reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/CPU_NIOS_II.reset"
+   name="CLK.clk_reset/CPU_NIOS_II.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="CPU_NIOS_II.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97034,16 +97034,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>CPU_NIOS_II</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/UART_NIOS_II.reset"
+   name="CLK.clk_reset/UART_NIOS_II.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="UART_NIOS_II.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97061,16 +97061,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>UART_NIOS_II</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/REG_BTN_INPUT.reset"
+   name="CLK.clk_reset/REG_BTN_INPUT.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="REG_BTN_INPUT.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97088,16 +97088,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>REG_BTN_INPUT</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/REG_SW_INPUT.reset"
+   name="CLK.clk_reset/REG_SW_INPUT.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="REG_SW_INPUT.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97115,16 +97115,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>REG_SW_INPUT</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/TIMER_STATUS_INPUT.reset"
+   name="CLK.clk_reset/TIMER_STATUS_INPUT.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="TIMER_STATUS_INPUT.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97142,16 +97142,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>TIMER_STATUS_INPUT</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/TIMER_CTRL_OUTPUT.reset"
+   name="CLK.clk_reset/TIMER_CTRL_OUTPUT.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="TIMER_CTRL_OUTPUT.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97169,16 +97169,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>TIMER_CTRL_OUTPUT</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/AUDIO_OUT.reset"
+   name="CLK.clk_reset/AUDIO_OUT.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="AUDIO_OUT.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97196,16 +97196,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>AUDIO_OUT</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/AUDIO_CONFIG.reset"
+   name="CLK.clk_reset/AUDIO_CONFIG.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="AUDIO_CONFIG.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97223,16 +97223,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>AUDIO_CONFIG</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/VGA_CONTROLLER.reset"
+   name="CLK.clk_reset/VGA_CONTROLLER.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="VGA_CONTROLLER.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97250,16 +97250,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>VGA_CONTROLLER</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/VGA_CHAR_BUFFER.reset"
+   name="CLK.clk_reset/VGA_CHAR_BUFFER.reset"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="VGA_CHAR_BUFFER.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97277,16 +97277,16 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>VGA_CHAR_BUFFER</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/RAM_NIOS_II.reset1"
+   name="CLK.clk_reset/RAM_NIOS_II.reset1"
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="RAM_NIOS_II.reset1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -97304,7 +97304,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
+  <startModule>CLK</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>RAM_NIOS_II</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
@@ -97387,6 +97387,46 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Interrupt Sender</displayName>
+  <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>clock_source</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IModule</subtype>
+  <displayName>Clock Source</displayName>
+  <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>clock_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Clock Input</displayName>
+  <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>reset_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Input</displayName>
+  <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>clock_source</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Clock Output</displayName>
+  <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>reset_source</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Output</displayName>
   <version>22.1</version>
  </plugin>
  <plugin>
@@ -97763,46 +97803,6 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Avalon Streaming Sink</displayName>
-  <version>22.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>clock_source</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>Clock Source</displayName>
-  <version>22.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>clock_sink</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Clock Input</displayName>
-  <version>22.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>reset_sink</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Reset Input</displayName>
-  <version>22.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>clock_source</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Clock Output</displayName>
-  <version>22.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>reset_source</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Reset Output</displayName>
   <version>22.1</version>
  </plugin>
  <plugin>

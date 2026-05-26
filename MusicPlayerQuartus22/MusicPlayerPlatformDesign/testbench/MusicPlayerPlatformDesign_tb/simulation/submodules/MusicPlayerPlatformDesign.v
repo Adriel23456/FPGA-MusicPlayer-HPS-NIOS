@@ -291,7 +291,7 @@ module MusicPlayerPlatformDesign (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0 mm_interconnect_0 (
-		.clk_0_clk_clk                                        (clk_clk),                                                                //                                   clk_0_clk.clk
+		.CLK_clk_clk                                          (clk_clk),                                                                //                                     CLK_clk.clk
 		.VGA_CLOCK_BRIDGE_out_clk_clk                         (vga_clk_clk),                                                            //                    VGA_CLOCK_BRIDGE_out_clk.clk
 		.CPU_NIOS_II_reset_reset_bridge_in_reset_reset        (rst_controller_reset_out_reset),                                         //     CPU_NIOS_II_reset_reset_bridge_in_reset.reset
 		.VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset    (rst_controller_001_reset_out_reset),                                     // VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset

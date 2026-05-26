@@ -49,6 +49,14 @@
          type = "String";
       }
    }
+   element CLK
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
    element CPU_NIOS_II
    {
       datum _sortIndex
@@ -209,14 +217,6 @@
          type = "int";
       }
    }
-   element clk_0
-   {
-      datum _sortIndex
-      {
-         value = "0";
-         type = "int";
-      }
-   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -258,7 +258,7 @@
    internal="REG_BTN_INPUT.external_connection"
    type="conduit"
    dir="end" />
- <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface name="clk" internal="CLK.clk_in" type="clock" dir="end" />
  <interface
    name="hps_arm_h2f_mpu_events"
    internal="HPS_ARM.h2f_mpu_events"
@@ -266,7 +266,7 @@
    dir="end" />
  <interface name="hps_io" internal="HPS_ARM.hps_io" type="conduit" dir="end" />
  <interface name="memory" internal="HPS_ARM.memory" type="conduit" dir="end" />
- <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface name="reset" internal="CLK.clk_in_reset" type="reset" dir="end" />
  <interface
    name="switch_input"
    internal="REG_SW_INPUT.external_connection"
@@ -336,6 +336,12 @@
   <parameter name="audio_out" value="true" />
   <parameter name="avalon_bus_type" value="Memory Mapped" />
   <parameter name="dw" value="16" />
+ </module>
+ <module name="CLK" kind="clock_source" version="22.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <module
    name="CPU_NIOS_II"
@@ -1205,12 +1211,6 @@
   <parameter name="resolution" value="VGA 640x480" />
   <parameter name="underflow_flag" value="false" />
  </module>
- <module name="clk_0" kind="clock_source" version="22.1" enabled="1">
-  <parameter name="clockFrequency" value="50000000" />
-  <parameter name="clockFrequencyKnown" value="true" />
-  <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
  <connection
    kind="avalon"
    version="22.1"
@@ -1342,48 +1342,44 @@
    version="22.1"
    start="VGA_CHAR_BUFFER.avalon_char_source"
    end="VGA_CONTROLLER.avalon_vga_sink" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="CPU_NIOS_II.clk" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="UART_NIOS_II.clk" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="REG_BTN_INPUT.clk" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="REG_SW_INPUT.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="CPU_NIOS_II.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="UART_NIOS_II.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="REG_BTN_INPUT.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="REG_SW_INPUT.clk" />
  <connection
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="TIMER_STATUS_INPUT.clk" />
  <connection
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="TIMER_CTRL_OUTPUT.clk" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="AUDIO_OUT.clk" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="AUDIO_CONFIG.clk" />
- <connection kind="clock" version="22.1" start="clk_0.clk" end="RAM_NIOS_II.clk1" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_OUT.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_CONFIG.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="RAM_NIOS_II.clk1" />
  <connection
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM.f2h_axi_clock" />
  <connection
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM.f2h_sdram0_clock" />
  <connection
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM.h2f_axi_clock" />
  <connection
    kind="clock"
    version="22.1"
-   start="clk_0.clk"
+   start="CLK.clk"
    end="HPS_ARM.h2f_lw_axi_clock" />
- <connection
-   kind="clock"
-   version="22.1"
-   start="clk_0.clk"
-   end="AUDIO_CLOCK.ref_clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_CLOCK.ref_clk" />
  <connection
    kind="clock"
    version="22.1"
@@ -1425,62 +1421,62 @@
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="AUDIO_CLOCK.ref_reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="CPU_NIOS_II.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="UART_NIOS_II.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="REG_BTN_INPUT.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="REG_SW_INPUT.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="TIMER_STATUS_INPUT.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="TIMER_CTRL_OUTPUT.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="AUDIO_OUT.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="AUDIO_CONFIG.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="VGA_CONTROLLER.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="VGA_CHAR_BUFFER.reset" />
  <connection
    kind="reset"
    version="22.1"
-   start="clk_0.clk_reset"
+   start="CLK.clk_reset"
    end="RAM_NIOS_II.reset1" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />

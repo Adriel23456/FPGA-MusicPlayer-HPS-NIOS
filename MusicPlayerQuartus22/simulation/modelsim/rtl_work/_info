@@ -8,33 +8,33 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/simulation/modelsim
+Z0 d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/simulation/modelsim
 vextra_BCD_to_7Segment
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1779710864
+Z2 !s110 1779761868
 !i10b 1
 !s100 3`CNX?3W`iPLia;PmaRnT0
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IB]eQgdWa?^`DORo0EOYVT3
+IiZQaQb4A8:@=oKmZeZRbK3
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1779499006
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv
+Z5 w1779713614
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv
 !i122 0
 L0 1 28
-Z5 OV;L;2020.1;71
+Z6 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1779710864.000000
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv|
+Z7 !s108 1779761868.000000
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_BCD_to_7Segment.sv|
 !i113 1
-Z7 o-sv -work work
-Z8 !s92 -sv -work work +incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22
-Z9 tCvgOpt 0
+Z8 o-sv -work work
+Z9 !s92 -sv -work work +incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22
+Z10 tCvgOpt 0
 nextra_@b@c@d_to_7@segment
 vextra_ClockDivider
 R1
@@ -42,26 +42,26 @@ R2
 !i10b 1
 !s100 YnC0^@hWIl`9=LLef^1E51
 R3
-Ic[UeV`_>==i>P9g634o>W1
+IQ3`aG;69<c50D0Fk<`<:Y2
 R4
 S1
 R0
-w1779494497
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv
+R5
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv
 !i122 1
 L0 5 24
-R5
+R6
 r1
 !s85 0
 31
-R6
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv|
-!i113 1
 R7
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_ClockDivider.sv|
+!i113 1
 R8
 R9
+R10
 nextra_@clock@divider
 vextra_MinutesCounter
 R1
@@ -69,26 +69,26 @@ R2
 !i10b 1
 !s100 EICbz_@1@mVG?_Nz^K?B;2
 R3
-IeFD>WB`k6hJgj<nhfRd4E1
+If5YEM6nIWUTnl[6MC4>e03
 R4
 S1
 R0
-w1779493107
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv
+R5
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv
 !i122 3
 L0 5 27
-R5
+R6
 r1
 !s85 0
 31
-R6
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv|
-!i113 1
 R7
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_MinutesCounter.sv|
+!i113 1
 R8
 R9
+R10
 nextra_@minutes@counter
 vextra_SecondsCounter
 R1
@@ -96,105 +96,105 @@ R2
 !i10b 1
 !s100 J0>YkOTIiQU]PUbakzSSU2
 R3
-Ij9@:Z7_210[3m3jXY8YYO1
+I0Vkj?;=A[TV?B?kK@gG6_3
 R4
 S1
 R0
-w1779528702
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv
+R5
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv
 !i122 2
 L0 5 31
-R5
+R6
 r1
 !s85 0
 31
-R6
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv|
-!i113 1
 R7
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_SecondsCounter.sv|
+!i113 1
 R8
 R9
+R10
 nextra_@seconds@counter
 vextra_TimerControlUnit
 R1
-Z10 !s110 1779710865
+R2
 !i10b 1
 !s100 n<LOEB0bl=jQ4oZH0bXfn1
 R3
-IU[d>Ya;d_HS4B`gW;S<aY1
+IDlHC:7H6Qm4DdXPMCDN>31
 R4
 S1
 R0
-w1779502954
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv
+R5
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv
 !i122 4
 L0 21 53
-R5
+R6
 r1
 !s85 0
 31
-R6
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv|
-!i113 1
 R7
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/extra_TimerControlUnit.sv|
+!i113 1
 R8
 R9
+R10
 nextra_@timer@control@unit
 vMMSS_Timer
 R1
-R10
+R2
 !i10b 1
 !s100 =D8iKD]9LSh6E`j4T4L1I0
 R3
-I79Xi1VZ<:`5?cGH?3]ndD3
+IN79_]k0SOE:kPjEiWmXZ<3
 R4
 S1
 R0
-w1779528781
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv
+w1779713613
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv
 !i122 5
 L0 6 40
-R5
+R6
 r1
 !s85 0
 31
-Z11 !s108 1779710865.000000
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv|
-!i113 1
 R7
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MMSS_Timer.sv|
+!i113 1
 R8
 R9
+R10
 n@m@m@s@s_@timer
 vtb_Simple_MMSS_Timer
 R1
-R10
+R2
 !i10b 1
 !s100 nZR_hHUd51nLhLaGMJXk?2
 R3
-IoQl;?_B=[SmPQd;g:E7Q]0
+I6^6C?UL=o716IaiR1cUPN2
 R4
 S1
 R0
-w1779503645
-8D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv
-FD:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv
+R5
+8/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv
+F/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv
 !i122 6
 L0 3 169
-R5
+R6
 r1
 !s85 0
 31
-R11
-!s107 D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|D:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv|
-!i113 1
 R7
+!s107 /mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/tb_Simple_MMSS_Timer.sv|
+!i113 1
 R8
 R9
+R10
 ntb_@simple_@m@m@s@s_@timer
