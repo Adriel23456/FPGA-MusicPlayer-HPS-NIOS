@@ -96,6 +96,7 @@ else
 fi
 
 SOC_NAME="$(basename "$SOPCINFO" .sopcinfo)"
+SOPCINFO_DIR="$(dirname "$SOPCINFO")"
 
 # ============================================================
 # Confirm
@@ -105,13 +106,14 @@ echo ""
 echo "============================================================"
 echo " Confirm Settings"
 echo "============================================================"
-echo " SOPCINFO : $SOPCINFO"
-echo " SW ROOT  : $SW_ROOT"
-echo " CPU NAME : $CPU_NAME"
-echo " GCC PATH : $GCC_PATH"
-echo " QUARTUS  : $QUARTUS_ROOT"
-echo " NIOS2EDS : $NIOS_ROOT"
-echo " SOC NAME : $SOC_NAME"
+echo " SOPCINFO     : $SOPCINFO"
+echo " SOPCINFO DIR : $SOPCINFO_DIR"
+echo " SW ROOT      : $SW_ROOT"
+echo " CPU NAME     : $CPU_NAME"
+echo " GCC PATH     : $GCC_PATH"
+echo " QUARTUS      : $QUARTUS_ROOT"
+echo " NIOS2EDS     : $NIOS_ROOT"
+echo " SOC NAME     : $SOC_NAME"
 echo "============================================================"
 echo ""
 
@@ -163,16 +165,16 @@ fi
 cat > "$SCRIPT_DIR/new_project.sh" << 'EOF'
 #!/bin/bash
 
-SOPCINFO="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
-SW_ROOT="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
-CPU_NAME="CPU_NIOS_II"
+SOPCINFO="__SOPCINFO__"
+SW_ROOT="__SW_ROOT__"
+CPU_NAME="__CPU_NAME__"
 
 BSP_DIR="$SW_ROOT/bsp"
 APP_DIR="$SW_ROOT/app"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 echo "============================================================"
 echo " Nios II BSP + Makefile Generator"
@@ -198,7 +200,14 @@ echo "[1/3] Generating BSP..."
 nios2-bsp hal \
     "$BSP_DIR" \
     "$SOPCINFO" \
-    --cpu-name "$CPU_NAME"
+    --cpu-name "$CPU_NAME" \
+    --set hal.enable_reduced_device_drivers true \
+    --set hal.enable_small_c_library true \
+    --set hal.enable_lightweight_device_driver_api true \
+    --set hal.sys_clk_timer none \
+    --set hal.timestamp_timer none \
+    --set hal.max_file_descriptors 4 \
+    --set hal.enable_exit false
 
 [ $? -ne 0 ] && echo "ERROR: BSP generation failed" && exit 1
 
@@ -235,14 +244,14 @@ cat > "$SCRIPT_DIR/update_makefile.sh" << 'EOF'
 
 set -e
 
-SW_ROOT="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
+SW_ROOT="__SW_ROOT__"
 
 APP_DIR="$SW_ROOT/app"
 BSP_DIR="$SW_ROOT/bsp"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 echo "============================================================"
 echo " Updating Application Makefile"
@@ -287,7 +296,6 @@ echo "Makefile updated successfully!"
 echo ""
 echo "Next step:"
 echo "  ./build.sh"
-
 EOF
 
 # ============================================================
@@ -297,15 +305,21 @@ EOF
 cat > "$SCRIPT_DIR/build.sh" << 'EOF'
 #!/bin/bash
 
-APP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app"
+APP_DIR="__SW_ROOT__/app"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 echo "============================================================"
 echo " Building Nios II Application"
 echo "============================================================"
+
+# Patch Makefile to use -Os (size optimization) every build
+if [ -f "$APP_DIR/Makefile" ]; then
+    sed -i 's|APP_CFLAGS_OPTIMIZATION :=.*|APP_CFLAGS_OPTIMIZATION := -Os|' "$APP_DIR/Makefile"
+    echo "[OK] Optimization set to -Os"
+fi
 
 make -C "$APP_DIR"
 
@@ -325,11 +339,11 @@ EOF
 cat > "$SCRIPT_DIR/download.sh" << 'EOF'
 #!/bin/bash
 
-ELF="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.elf"
+ELF="__SW_ROOT__/app/main.elf"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 if [ ! -f "$ELF" ]; then
     echo "ERROR:"
@@ -357,9 +371,9 @@ EOF
 cat > "$SCRIPT_DIR/terminal.sh" << 'EOF'
 #!/bin/bash
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 echo "============================================================"
 echo " Nios II Terminal"
@@ -376,13 +390,13 @@ EOF
 cat > "$SCRIPT_DIR/rebuild_bsp.sh" << 'EOF'
 #!/bin/bash
 
-SOPCINFO="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
-CPU_NAME="CPU_NIOS_II"
-BSP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp"
+SOPCINFO="__SOPCINFO__"
+CPU_NAME="__CPU_NAME__"
+BSP_DIR="__SW_ROOT__/bsp"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 echo "============================================================"
 echo " Rebuilding BSP"
@@ -393,7 +407,14 @@ rm -rf "$BSP_DIR"
 nios2-bsp hal \
     "$BSP_DIR" \
     "$SOPCINFO" \
-    --cpu-name "$CPU_NAME"
+    --cpu-name "$CPU_NAME" \
+    --set hal.enable_reduced_device_drivers true \
+    --set hal.enable_small_c_library true \
+    --set hal.enable_lightweight_device_driver_api true \
+    --set hal.sys_clk_timer none \
+    --set hal.timestamp_timer none \
+    --set hal.max_file_descriptors 4 \
+    --set hal.enable_exit false
 
 [ $? -ne 0 ] && echo "ERROR: BSP generation failed" && exit 1
 
@@ -412,20 +433,16 @@ EOF
 cat > "$SCRIPT_DIR/run_sim.sh" << 'EOF'
 #!/bin/bash
 
-SOC_NAME="MusicPlayerPlatformDesign"
-
-ELF="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.elf"
-BSP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp"
-
-SOPCINFO_DIR="$(dirname "/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo")"
-
+SOC_NAME="__SOC_NAME__"
+ELF="__SW_ROOT__/app/main.elf"
+BSP_DIR="__SW_ROOT__/bsp"
+SOPCINFO_DIR="__SOPCINFO_DIR__"
 MENTOR="$SOPCINFO_DIR/$SOC_NAME/testbench/mentor"
-
 SUBMODULES="$SOPCINFO_DIR/$SOC_NAME/testbench/${SOC_NAME}_tb/simulation/submodules"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+export PATH="$PATH:__GCC_PATH__"
+export QUARTUS_ROOTDIR="__QUARTUS_ROOT__"
+export SOPC_KIT_NIOS2="__NIOS_ROOT__"
 
 echo "============================================================"
 echo " Nios II Simulation Prep"
@@ -478,19 +495,18 @@ echo "============================================================"
 EOF
 
 # ============================================================
-# Replace placeholders
+# Replace placeholders (unique tokens, order-safe)
 # ============================================================
 
 for f in "$SCRIPT_DIR"/*.sh; do
-
-    sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo|$SOPCINFO|g" "$f"
-    sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g" "$f"
-    sed -i "s|CPU_NIOS_II|$CPU_NAME|g" "$f"
-    sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g" "$f"
-    sed -i "s|MusicPlayerPlatformDesign|$SOC_NAME|g" "$f"
-    sed -i "s|/home/adriel/intelFPGA_lite/22.1std/quartus|$QUARTUS_ROOT|g" "$f"
-    sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds|$NIOS_ROOT|g" "$f"
-
+    sed -i "s|__SOPCINFO__|$SOPCINFO|g"           "$f"
+    sed -i "s|__SOPCINFO_DIR__|$SOPCINFO_DIR|g"   "$f"
+    sed -i "s|__SW_ROOT__|$SW_ROOT|g"             "$f"
+    sed -i "s|__CPU_NAME__|$CPU_NAME|g"           "$f"
+    sed -i "s|__GCC_PATH__|$GCC_PATH|g"           "$f"
+    sed -i "s|__SOC_NAME__|$SOC_NAME|g"           "$f"
+    sed -i "s|__QUARTUS_ROOT__|$QUARTUS_ROOT|g"   "$f"
+    sed -i "s|__NIOS_ROOT__|$NIOS_ROOT|g"         "$f"
 done
 
 # ============================================================
