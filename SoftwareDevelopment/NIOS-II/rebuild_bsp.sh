@@ -17,7 +17,14 @@ rm -rf "$BSP_DIR"
 nios2-bsp hal \
     "$BSP_DIR" \
     "$SOPCINFO" \
-    --cpu-name "$CPU_NAME"
+    --cpu-name "$CPU_NAME" \
+    --set hal.enable_reduced_device_drivers true \
+    --set hal.enable_small_c_library true \
+    --set hal.enable_lightweight_device_driver_api true \
+    --set hal.sys_clk_timer none \
+    --set hal.timestamp_timer none \
+    --set hal.max_file_descriptors 4 \
+    --set hal.enable_exit false
 
 [ $? -ne 0 ] && echo "ERROR: BSP generation failed" && exit 1
 

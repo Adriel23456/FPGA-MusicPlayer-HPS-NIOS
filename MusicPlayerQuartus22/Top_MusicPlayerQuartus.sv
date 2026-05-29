@@ -14,7 +14,8 @@ module Top_MusicPlayerQuartus #(
     input  logic        audio_export_BCLK,
     output logic        audio_export_DACDAT,
     input  logic        audio_export_DACLRCK,
-    // ── Audio Clock MCLK (AUD_XCK PIN_G7) ───────────────────────
+    
+	 // ── Audio Clock MCLK (AUD_XCK PIN_G7) ───────────────────────
     output wire         audio_clk_export_clk,
 
     // ── Buttons & Switches ───────────────────────────────────────

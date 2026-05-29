@@ -46,6 +46,7 @@ echo ""
 nios2-app-generate-makefile \
     --bsp-dir "$BSP_DIR" \
     --app-dir "$APP_DIR" \
+    --elf-name main.elf \
     --src-files "${SRCS[@]}" \
     --inc-rdir "$APP_DIR/include"
 
@@ -54,4 +55,3 @@ echo "Makefile updated successfully!"
 echo ""
 echo "Next step:"
 echo "  ./build.sh"
-

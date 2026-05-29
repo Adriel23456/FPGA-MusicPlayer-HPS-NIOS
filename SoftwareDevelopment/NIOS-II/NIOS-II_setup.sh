@@ -116,12 +116,12 @@ echo ""
 # ==============================================================
 cat > "$SCRIPT_DIR/new_project.sh" << 'SHEOF'
 #!/bin/bash
-SOPCINFO="__SOPCINFO__"
-SW_ROOT="__SW_ROOT__"
-CPU_NAME="__CPU_NAME__"
+SOPCINFO="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
+SW_ROOT="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
+CPU_NAME="CPU_NIOS_II"
 BSP_DIR="$SW_ROOT/bsp"
 APP_DIR="$SW_ROOT/app"
-export PATH=$PATH:__GCC_PATH__
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 
 to_win() { echo "$1" | sed 's|/mnt/\([a-z]\)/|\1:/|'; }
 
@@ -175,20 +175,20 @@ make -C "$BSP_DIR"
 echo ""
 echo "DONE! Run ./build.sh to compile the application."
 SHEOF
-sed -i "s|__SOPCINFO__|$SOPCINFO|g"   "$SCRIPT_DIR/new_project.sh"
-sed -i "s|__SW_ROOT__|$SW_ROOT|g"     "$SCRIPT_DIR/new_project.sh"
-sed -i "s|__CPU_NAME__|$CPU_NAME|g"   "$SCRIPT_DIR/new_project.sh"
-sed -i "s|__GCC_PATH__|$GCC_PATH|g"   "$SCRIPT_DIR/new_project.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo|$SOPCINFO|g"   "$SCRIPT_DIR/new_project.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g"     "$SCRIPT_DIR/new_project.sh"
+sed -i "s|CPU_NIOS_II|$CPU_NAME|g"   "$SCRIPT_DIR/new_project.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g"   "$SCRIPT_DIR/new_project.sh"
 
 # ==============================================================
 # update_makefile.sh
 # ==============================================================
 cat > "$SCRIPT_DIR/update_makefile.sh" << 'SHEOF'
 #!/bin/bash
-SW_ROOT="__SW_ROOT__"
+SW_ROOT="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II"
 BSP_DIR="$SW_ROOT/bsp"
 APP_DIR="$SW_ROOT/app"
-export PATH=$PATH:__GCC_PATH__
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 
 to_win() { echo "$1" | sed 's|/mnt/\([a-z]\)/|\1:/|'; }
 
@@ -218,16 +218,16 @@ nios2-app-generate-makefile.exe \
 
 echo "Done! Run ./build.sh to recompile."
 SHEOF
-sed -i "s|__SW_ROOT__|$SW_ROOT|g"   "$SCRIPT_DIR/update_makefile.sh"
-sed -i "s|__GCC_PATH__|$GCC_PATH|g" "$SCRIPT_DIR/update_makefile.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g"   "$SCRIPT_DIR/update_makefile.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g" "$SCRIPT_DIR/update_makefile.sh"
 
 # ==============================================================
 # build.sh
 # ==============================================================
 cat > "$SCRIPT_DIR/build.sh" << 'SHEOF'
 #!/bin/bash
-APP_DIR="__SW_ROOT__/app"
-export PATH=$PATH:__GCC_PATH__
+APP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app"
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 
 echo "=== Building Nios II Application ==="
 sed -i 's|APP_CFLAGS_OPTIMIZATION :=.*|APP_CFLAGS_OPTIMIZATION := -Os|' "$APP_DIR/Makefile"
@@ -237,16 +237,16 @@ echo ""
 echo "Build successful!"
 echo "  ELF: $APP_DIR/main.elf"
 SHEOF
-sed -i "s|__SW_ROOT__|$SW_ROOT|g"   "$SCRIPT_DIR/build.sh"
-sed -i "s|__GCC_PATH__|$GCC_PATH|g" "$SCRIPT_DIR/build.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g"   "$SCRIPT_DIR/build.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g" "$SCRIPT_DIR/build.sh"
 
 # ==============================================================
 # download.sh
 # ==============================================================
 cat > "$SCRIPT_DIR/download.sh" << 'SHEOF'
 #!/bin/bash
-ELF="__SW_ROOT__/app/main.elf"
-export PATH=$PATH:__GCC_PATH__
+ELF="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.elf"
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 
 if [ ! -f "$ELF" ]; then
     echo "ERROR: $ELF not found. Run ./build.sh first."
@@ -258,29 +258,29 @@ nios2-download -g "$ELF"
 [ $? -ne 0 ] && echo "ERROR: Download failed. Is the FPGA programmed?" && exit 1
 echo "Download successful! Run ./terminal.sh to see output."
 SHEOF
-sed -i "s|__SW_ROOT__|$SW_ROOT|g"   "$SCRIPT_DIR/download.sh"
-sed -i "s|__GCC_PATH__|$GCC_PATH|g" "$SCRIPT_DIR/download.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g"   "$SCRIPT_DIR/download.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g" "$SCRIPT_DIR/download.sh"
 
 # ==============================================================
 # terminal.sh
 # ==============================================================
 cat > "$SCRIPT_DIR/terminal.sh" << 'SHEOF'
 #!/bin/bash
-export PATH=$PATH:__GCC_PATH__
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 echo "=== Nios II Terminal (CTRL+C to exit) ==="
 nios2-terminal.exe
 SHEOF
-sed -i "s|__GCC_PATH__|$GCC_PATH|g" "$SCRIPT_DIR/terminal.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g" "$SCRIPT_DIR/terminal.sh"
 
 # ==============================================================
 # rebuild_bsp.sh
 # ==============================================================
 cat > "$SCRIPT_DIR/rebuild_bsp.sh" << 'SHEOF'
 #!/bin/bash
-SOPCINFO="__SOPCINFO__"
-CPU_NAME="__CPU_NAME__"
-BSP_DIR="__SW_ROOT__/bsp"
-export PATH=$PATH:__GCC_PATH__
+SOPCINFO="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
+CPU_NAME="CPU_NIOS_II"
+BSP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp"
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 
 to_win() { echo "$1" | sed 's|/mnt/\([a-z]\)/|\1:/|'; }
 
@@ -306,23 +306,23 @@ make -C "$BSP_DIR"
 
 echo "BSP rebuilt. Run ./build.sh to recompile the application."
 SHEOF
-sed -i "s|__SOPCINFO__|$SOPCINFO|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
-sed -i "s|__CPU_NAME__|$CPU_NAME|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
-sed -i "s|__SW_ROOT__|$SW_ROOT|g"     "$SCRIPT_DIR/rebuild_bsp.sh"
-sed -i "s|__GCC_PATH__|$GCC_PATH|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo|$SOPCINFO|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
+sed -i "s|CPU_NIOS_II|$CPU_NAME|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g"     "$SCRIPT_DIR/rebuild_bsp.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g"   "$SCRIPT_DIR/rebuild_bsp.sh"
 
 # ==============================================================
 # run_sim.sh
 # ==============================================================
 cat > "$SCRIPT_DIR/run_sim.sh" << 'SHEOF'
 #!/bin/bash
-SOC_NAME="__SOC_NAME__"
-ELF="__SW_ROOT__/app/main.elf"
-BSP_DIR="__SW_ROOT__/bsp"
-SOPCINFO_DIR="__SOPCINFO_DIR__"
+SOC_NAME="MusicPlayerPlatformDesign"
+ELF="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.elf"
+BSP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp"
+SOPCINFO_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22"
 MENTOR="$SOPCINFO_DIR/$SOC_NAME/testbench/mentor"
 SUBMODULES="$SOPCINFO_DIR/$SOC_NAME/testbench/${SOC_NAME}_tb/simulation/submodules"
-export PATH=$PATH:__GCC_PATH__
+export PATH=$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
 
 to_win() { echo "$1" | sed 's|/mnt/\([a-z]\)/|\1:/|'; }
 
@@ -371,10 +371,10 @@ echo "   ld_debug"
 echo "   run 2.5ms"
 echo "============================================================"
 SHEOF
-sed -i "s|__SOC_NAME__|$SOC_NAME|g"         "$SCRIPT_DIR/run_sim.sh"
-sed -i "s|__SW_ROOT__|$SW_ROOT|g"           "$SCRIPT_DIR/run_sim.sh"
-sed -i "s|__SOPCINFO_DIR__|$SOPCINFO_DIR|g" "$SCRIPT_DIR/run_sim.sh"
-sed -i "s|__GCC_PATH__|$GCC_PATH|g"         "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|MusicPlayerPlatformDesign|$SOC_NAME|g"         "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II|$SW_ROOT|g"           "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22|$SOPCINFO_DIR|g" "$SCRIPT_DIR/run_sim.sh"
+sed -i "s|/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin|$GCC_PATH|g"         "$SCRIPT_DIR/run_sim.sh"
 
 # ==============================================================
 # Set permissions
