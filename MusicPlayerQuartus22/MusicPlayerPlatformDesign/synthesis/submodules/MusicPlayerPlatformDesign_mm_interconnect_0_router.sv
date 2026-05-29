@@ -223,50 +223,50 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
 
     // ( 0x83000 .. 0x83010 )
     if ( {address[RG:PAD3],{PAD3{1'b0}}} == 20'h83000   ) begin
-            src_channel = 11'b00000000010;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
-    end
-
-    // ( 0x83010 .. 0x83020 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 20'h83010   ) begin
-            src_channel = 11'b00000000001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
-    end
-
-    // ( 0x83020 .. 0x83030 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 20'h83020   ) begin
             src_channel = 11'b10000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end
 
-    // ( 0x83030 .. 0x83040 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 20'h83030  && read_transaction  ) begin
+    // ( 0x83010 .. 0x83020 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 20'h83010  && read_transaction  ) begin
             src_channel = 11'b01000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
 
-    // ( 0x83040 .. 0x83050 )
-    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 20'h83040   ) begin
+    // ( 0x83020 .. 0x83030 )
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 20'h83020   ) begin
             src_channel = 11'b00100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 
-    // ( 0x83050 .. 0x83060 )
-    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 20'h83050   ) begin
+    // ( 0x83030 .. 0x83040 )
+    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 20'h83030   ) begin
             src_channel = 11'b00010000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
+    // ( 0x83040 .. 0x83050 )
+    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 20'h83040   ) begin
+            src_channel = 11'b00000000010;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
+    end
+
+    // ( 0x83050 .. 0x83060 )
+    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 20'h83050   ) begin
+            src_channel = 11'b00000000001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
+    end
+
     // ( 0x83060 .. 0x83068 )
     if ( {address[RG:PAD9],{PAD9{1'b0}}} == 20'h83060   ) begin
-            src_channel = 11'b00000001000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
+            src_channel = 11'b00000010000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
     end
 
     // ( 0x83068 .. 0x83070 )
     if ( {address[RG:PAD10],{PAD10{1'b0}}} == 20'h83068   ) begin
-            src_channel = 11'b00000010000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
+            src_channel = 11'b00000001000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
 end

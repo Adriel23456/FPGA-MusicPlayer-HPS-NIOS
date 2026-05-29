@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 22.1 922 (Future versions may contain additional information.) -->
- <!-- 2026.05.25.21:36:01 -->
+ <!-- 2026.05.28.17:30:43 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1779766539</value>
+  <value>1780011026</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -513,7 +513,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sampling_rate">
    <type>java.lang.String</type>
-   <value>96 kHz</value>
+   <value>48 kHz</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -529,7 +529,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sr_register">
    <type>int</type>
-   <value>7</value>
+   <value>0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3814,7 +3814,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='RAM_NIOS_II.s1' start='0x40000' end='0x80000' type='altera_avalon_onchip_memory2.s1' /><slave name='VGA_CHAR_BUFFER.avalon_char_buffer_slave' start='0x80000' end='0x82000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='CPU_NIOS_II.debug_mem_slave' start='0x82800' end='0x83000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x83000' end='0x83010' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO_OUT.avalon_audio_slave' start='0x83010' end='0x83020' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='TIMER_CTRL_OUTPUT.s1' start='0x83020' end='0x83030' type='altera_avalon_pio.s1' /><slave name='TIMER_STATUS_INPUT.s1' start='0x83030' end='0x83040' type='altera_avalon_pio.s1' /><slave name='REG_SW_INPUT.s1' start='0x83040' end='0x83050' type='altera_avalon_pio.s1' /><slave name='REG_BTN_INPUT.s1' start='0x83050' end='0x83060' type='altera_avalon_pio.s1' /><slave name='VGA_CHAR_BUFFER.avalon_char_control_slave' start='0x83060' end='0x83068' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /><slave name='UART_NIOS_II.avalon_jtag_slave' start='0x83068' end='0x83070' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='RAM_NIOS_II.s1' start='0x40000' end='0x80000' type='altera_avalon_onchip_memory2.s1' /><slave name='VGA_CHAR_BUFFER.avalon_char_buffer_slave' start='0x80000' end='0x82000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='CPU_NIOS_II.debug_mem_slave' start='0x82800' end='0x83000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='TIMER_CTRL_OUTPUT.s1' start='0x83000' end='0x83010' type='altera_avalon_pio.s1' /><slave name='TIMER_STATUS_INPUT.s1' start='0x83010' end='0x83020' type='altera_avalon_pio.s1' /><slave name='REG_SW_INPUT.s1' start='0x83020' end='0x83030' type='altera_avalon_pio.s1' /><slave name='REG_BTN_INPUT.s1' start='0x83030' end='0x83040' type='altera_avalon_pio.s1' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x83040' end='0x83050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO_OUT.avalon_audio_slave' start='0x83050' end='0x83060' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='UART_NIOS_II.avalon_jtag_slave' start='0x83060' end='0x83068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='VGA_CHAR_BUFFER.avalon_char_control_slave' start='0x83068' end='0x83070' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4485,7 +4485,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUDIO_OUT</moduleName>
     <slaveName>avalon_audio_slave</slaveName>
     <name>AUDIO_OUT.avalon_audio_slave</name>
-    <baseAddress>536592</baseAddress>
+    <baseAddress>536656</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -4493,7 +4493,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUDIO_CONFIG</moduleName>
     <slaveName>avalon_av_config_slave</slaveName>
     <name>AUDIO_CONFIG.avalon_av_config_slave</name>
-    <baseAddress>536576</baseAddress>
+    <baseAddress>536640</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -4509,7 +4509,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>VGA_CHAR_BUFFER</moduleName>
     <slaveName>avalon_char_control_slave</slaveName>
     <name>VGA_CHAR_BUFFER.avalon_char_control_slave</name>
-    <baseAddress>536672</baseAddress>
+    <baseAddress>536680</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -4517,7 +4517,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>UART_NIOS_II</moduleName>
     <slaveName>avalon_jtag_slave</slaveName>
     <name>UART_NIOS_II.avalon_jtag_slave</name>
-    <baseAddress>536680</baseAddress>
+    <baseAddress>536672</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -4541,7 +4541,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>REG_BTN_INPUT</moduleName>
     <slaveName>s1</slaveName>
     <name>REG_BTN_INPUT.s1</name>
-    <baseAddress>536656</baseAddress>
+    <baseAddress>536624</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -4549,7 +4549,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>REG_SW_INPUT</moduleName>
     <slaveName>s1</slaveName>
     <name>REG_SW_INPUT.s1</name>
-    <baseAddress>536640</baseAddress>
+    <baseAddress>536608</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -4557,7 +4557,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>TIMER_STATUS_INPUT</moduleName>
     <slaveName>s1</slaveName>
     <name>TIMER_STATUS_INPUT.s1</name>
-    <baseAddress>536624</baseAddress>
+    <baseAddress>536592</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -4565,7 +4565,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>TIMER_CTRL_OUTPUT</moduleName>
     <slaveName>s1</slaveName>
     <name>TIMER_CTRL_OUTPUT.s1</name>
-    <baseAddress>536608</baseAddress>
+    <baseAddress>536576</baseAddress>
     <span>16</span>
    </memoryBlock>
   </interface>
@@ -95688,7 +95688,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083010</value>
+   <value>0x00083050</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -95739,7 +95739,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083000</value>
+   <value>0x00083040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -95841,7 +95841,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083060</value>
+   <value>0x00083068</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -95892,7 +95892,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083068</value>
+   <value>0x00083060</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96045,7 +96045,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083050</value>
+   <value>0x00083030</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96096,7 +96096,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083040</value>
+   <value>0x00083020</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96147,7 +96147,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083030</value>
+   <value>0x00083010</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96198,7 +96198,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00083020</value>
+   <value>0x00083000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

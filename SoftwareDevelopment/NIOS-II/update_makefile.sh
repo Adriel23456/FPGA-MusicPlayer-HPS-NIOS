@@ -54,4 +54,3 @@ echo "Makefile updated successfully!"
 echo ""
 echo "Next step:"
 echo "  ./build.sh"
-
