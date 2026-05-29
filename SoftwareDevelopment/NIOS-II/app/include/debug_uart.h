@@ -1,23 +1,19 @@
 #ifndef DEBUG_UART_H
 #define DEBUG_UART_H
 
-/* ----------------------------------------------------------------------
- *  debug_uart.h  --  non-blocking JTAG-UART debug prints.
- *
- *  alt_putstr() BLOCKS when the JTAG write FIFO is full and no host is
- *  draining it (e.g. nios2-terminal not attached). That can stall the whole
- *  player. dbg_puts() instead checks the write-space field in the control
- *  register and DROPS characters when there's no room -- it never blocks.
- *
- *  JTAG UART register map (Altera JTAG UART core):
- *      +0x0  data     bit 15 = RVALID, bits 7..0 = data
- *      +0x4  control  bits 31..16 = WSPACE (write FIFO space available)
- *
- *  Base comes from the system memory map: UART_NIOS_II @ 0x00083060.
- * -------------------------------------------------------------------- */
+#include <stdint.h>
 
-#include "hw_map.h"
+/* JTAG-UART (UART_NIOS_II) avalon_jtag_slave: 0x0008_3060 - 0x0008_3067 */
+#ifndef JTAG_UART_BASE_ADDR
+#define JTAG_UART_BASE_ADDR   0x00083060u
+#endif
 
-void dbg_puts(const char *s);   /* non-blocking; drops chars if FIFO full */
+#define JTAG_UART_DATA_OFF    0x0   /* data register    */
+#define JTAG_UART_CTRL_OFF    0x4   /* control register */
+
+/* 32-bit volatile lvalue at an absolute address */
+#define REG32(addr)  (*(volatile uint32_t *)(uintptr_t)(addr))
+
+void dbg_puts(const char *s);
 
 #endif /* DEBUG_UART_H */

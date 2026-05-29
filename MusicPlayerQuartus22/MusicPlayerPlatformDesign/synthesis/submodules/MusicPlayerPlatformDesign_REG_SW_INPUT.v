@@ -46,7 +46,12 @@ module MusicPlayerPlatformDesign_REG_SW_INPUT (
 
 
 wire             clk_en;
+reg              d1_data_in;
+reg              d2_data_in;
 wire             data_in;
+reg              edge_capture;
+wire             edge_capture_wr_strobe;
+wire             edge_detect;
 wire             irq;
 reg              irq_mask;
 wire             read_mux_out;
@@ -54,7 +59,8 @@ reg     [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
   assign read_mux_out = ({1 {(address == 0)}} & data_in) |
-    ({1 {(address == 2)}} & irq_mask);
+    ({1 {(address == 2)}} & irq_mask) |
+    ({1 {(address == 3)}} & edge_capture);
 
   always @(posedge clk or negedge reset_n)
     begin
@@ -75,7 +81,39 @@ reg     [ 31: 0] readdata;
     end
 
 
-  assign irq = |(data_in      & irq_mask);
+  assign irq = |(edge_capture & irq_mask);
+  assign edge_capture_wr_strobe = chipselect && ~write_n && (address == 3);
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe && writedata[0])
+              edge_capture <= 0;
+          else if (edge_detect)
+              edge_capture <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_data_in <= 0;
+      else if (clk_en)
+          d1_data_in <= data_in;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d2_data_in <= 0;
+      else if (clk_en)
+          d2_data_in <= d1_data_in;
+    end
+
+
+  assign edge_detect = ~d1_data_in & d2_data_in;
 
 endmodule
 
