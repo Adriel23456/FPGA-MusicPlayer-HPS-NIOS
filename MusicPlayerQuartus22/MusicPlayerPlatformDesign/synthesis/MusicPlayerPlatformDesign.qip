@@ -2,7 +2,7 @@ set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerP
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_TOOL_VERSION "22.1"
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "MusicPlayerPlatformDesign" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../MusicPlayerPlatformDesign.sopcinfo"]
-set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name SLD_INFO "QSYS_NAME MusicPlayerPlatformDesign HAS_SOPCINFO 1 GENERATION_ID 1780080921"
+set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name SLD_INFO "QSYS_NAME MusicPlayerPlatformDesign HAS_SOPCINFO 1 GENERATION_ID 1780134610"
 set_global_assignment -library "MusicPlayerPlatformDesign" -name MISC_FILE [file join $::quartus(qip_path) "../MusicPlayerPlatformDesign.cmp"]
 set_global_assignment -library "MusicPlayerPlatformDesign" -name SLD_FILE [file join $::quartus(qip_path) "MusicPlayerPlatformDesign.regmap"]
 set_global_assignment -library "MusicPlayerPlatformDesign" -name MISC_FILE [file join $::quartus(qip_path) "MusicPlayerPlatformDesign_HPS_ARM_hps.svd"]
@@ -17,7 +17,7 @@ set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerP
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc4MDA4MDkyMQ==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc4MDEzNDYxMA==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "MusicPlayerPlatformDesign" -library "MusicPlayerPlatformDesign" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="

@@ -8,12 +8,17 @@
 #define JTAG_UART_BASE_ADDR   0x00083060u
 #endif
 
-#define JTAG_UART_DATA_OFF    0x0   /* data register    */
-#define JTAG_UART_CTRL_OFF    0x4   /* control register */
+#define JTAG_UART_DATA_OFF    0x0
+#define JTAG_UART_CTRL_OFF    0x4
 
-/* 32-bit volatile lvalue at an absolute address */
 #define REG32(addr)  (*(volatile uint32_t *)(uintptr_t)(addr))
 
+/* Enqueue a string into the software ring buffer (never blocks, never drops
+ * unless the ring overflows with no terminal draining it). */
 void dbg_puts(const char *s);
+
+/* Push as many queued bytes as fit into the JTAG FIFO right now, then return.
+ * Call this every main-loop pass so queued debug output eventually flushes. */
+void dbg_flush(void);
 
 #endif /* DEBUG_UART_H */

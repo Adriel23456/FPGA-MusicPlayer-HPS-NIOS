@@ -92,7 +92,11 @@ ELF := main.elf
 # Paths to C, C++, and assembly source files.
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/lib/debug_uart.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.c
+C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/audio_driver.c
+C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/dummy_hps.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/irq_controller.c
+C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/player_fsm.c
+C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/timer_driver.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/vga_driver.c
 CXX_SRCS :=
 ASM_SRCS :=
