@@ -27,4 +27,12 @@
 void irq_init(void);
 void irq_service(void);   /* call from main loop to finish level-IRQ work */
 
+/* Audio data core write interrupt */
+#define AUDIO_IRQ_NUM   3
+
+void irq_init(void);
+void irq_service(void);
+int  irq_audio_retest_requested(void);   /* set by reset switch */
+void irq_audio_retest_clear(void);
+
 #endif /* IRQ_CONTROLLER_H */
