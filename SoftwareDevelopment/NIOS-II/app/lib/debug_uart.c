@@ -1,0 +1,66 @@
+/* ----------------------------------------------------------------------
+ *  debug_uart.c  --  buffered, non-blocking JTAG-UART writes.
+ *
+ *  dbg_puts() never touches the hardware directly -- it enqueues into a
+ *  software ring buffer and returns immediately, so it never blocks the
+ *  player and (unlike the old version) never drops characters just because
+ *  the JTAG FIFO is momentarily full.
+ *
+ *  dbg_flush() drains the ring into the JTAG write FIFO whenever the FIFO
+ *  reports space. Call it from the main loop. Output is therefore sent out
+ *  "eventually" rather than instantly, which is fine for debug logging.
+ *
+ *  If the ring overflows (producing far faster than a terminal drains, e.g.
+ *  with no terminal attached), the OLDEST byte is dropped to keep the most
+ *  recent output and to guarantee the player never stalls.
+ * -------------------------------------------------------------------- */
+
+#include "debug_uart.h"
+
+#define JTAG_DATA  REG32(JTAG_UART_BASE_ADDR + JTAG_UART_DATA_OFF)
+#define JTAG_CTRL  REG32(JTAG_UART_BASE_ADDR + JTAG_UART_CTRL_OFF)
+#define JTAG_WSPACE() (JTAG_CTRL >> 16)   /* writable FIFO slots available */
+
+/* Ring buffer. Size is a power of two so index math is a cheap mask.
+ * 1024 bytes comfortably holds the boot burst between flush calls. */
+#define DBG_RING_SZ   1024u
+#define DBG_RING_MASK (DBG_RING_SZ - 1u)
+
+static volatile unsigned char dbg_ring[DBG_RING_SZ];
+static volatile unsigned      dbg_head = 0;   /* write index (producer) */
+static volatile unsigned      dbg_tail = 0;   /* read index  (consumer) */
+
+static inline unsigned dbg_count(void)
+{
+    return (dbg_head - dbg_tail) & DBG_RING_MASK;
+}
+
+/* enqueue one byte; on overflow drop the oldest to keep newest + never block */
+static void dbg_put_byte(unsigned char c)
+{
+    unsigned next = (dbg_head + 1u) & DBG_RING_MASK;
+    if (next == dbg_tail) {
+        /* ring full: advance tail (drop oldest byte) */
+        dbg_tail = (dbg_tail + 1u) & DBG_RING_MASK;
+    }
+    dbg_ring[dbg_head] = c;
+    dbg_head = next;
+}
+
+void dbg_puts(const char *s)
+{
+    while (*s)
+        dbg_put_byte((unsigned char)*s++);
+    /* opportunistic flush so output appears promptly when the FIFO has room,
+       without requiring the caller to remember dbg_flush() every time */
+    dbg_flush();
+}
+
+void dbg_flush(void)
+{
+    /* push queued bytes while both the ring has data and the FIFO has space */
+    while (dbg_tail != dbg_head && JTAG_WSPACE() > 0) {
+        JTAG_DATA = (uint32_t)dbg_ring[dbg_tail];
+        dbg_tail = (dbg_tail + 1u) & DBG_RING_MASK;
+    }
+}

@@ -180,8 +180,11 @@ module MusicPlayerPlatformDesign (
 	wire   [1:0] mm_interconnect_0_reg_sw_input_s1_address;                              // mm_interconnect_0:REG_SW_INPUT_s1_address -> REG_SW_INPUT:address
 	wire         mm_interconnect_0_reg_sw_input_s1_write;                                // mm_interconnect_0:REG_SW_INPUT_s1_write -> REG_SW_INPUT:write_n
 	wire  [31:0] mm_interconnect_0_reg_sw_input_s1_writedata;                            // mm_interconnect_0:REG_SW_INPUT_s1_writedata -> REG_SW_INPUT:writedata
+	wire         mm_interconnect_0_timer_status_input_s1_chipselect;                     // mm_interconnect_0:TIMER_STATUS_INPUT_s1_chipselect -> TIMER_STATUS_INPUT:chipselect
 	wire  [31:0] mm_interconnect_0_timer_status_input_s1_readdata;                       // TIMER_STATUS_INPUT:readdata -> mm_interconnect_0:TIMER_STATUS_INPUT_s1_readdata
 	wire   [1:0] mm_interconnect_0_timer_status_input_s1_address;                        // mm_interconnect_0:TIMER_STATUS_INPUT_s1_address -> TIMER_STATUS_INPUT:address
+	wire         mm_interconnect_0_timer_status_input_s1_write;                          // mm_interconnect_0:TIMER_STATUS_INPUT_s1_write -> TIMER_STATUS_INPUT:write_n
+	wire  [31:0] mm_interconnect_0_timer_status_input_s1_writedata;                      // mm_interconnect_0:TIMER_STATUS_INPUT_s1_writedata -> TIMER_STATUS_INPUT:writedata
 	wire         mm_interconnect_0_timer_ctrl_output_s1_chipselect;                      // mm_interconnect_0:TIMER_CTRL_OUTPUT_s1_chipselect -> TIMER_CTRL_OUTPUT:chipselect
 	wire  [31:0] mm_interconnect_0_timer_ctrl_output_s1_readdata;                        // TIMER_CTRL_OUTPUT:readdata -> mm_interconnect_0:TIMER_CTRL_OUTPUT_s1_readdata
 	wire   [1:0] mm_interconnect_0_timer_ctrl_output_s1_address;                         // mm_interconnect_0:TIMER_CTRL_OUTPUT_s1_address -> TIMER_CTRL_OUTPUT:address
@@ -510,11 +513,14 @@ module MusicPlayerPlatformDesign (
 	);
 
 	MusicPlayerPlatformDesign_TIMER_STATUS_INPUT timer_status_input (
-		.clk      (clk_clk),                                          //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),                  //               reset.reset_n
-		.address  (mm_interconnect_0_timer_status_input_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_0_timer_status_input_s1_readdata), //                    .readdata
-		.in_port  (timer_status_input_export)                         // external_connection.export
+		.clk        (clk_clk),                                            //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                    //               reset.reset_n
+		.address    (mm_interconnect_0_timer_status_input_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_timer_status_input_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_timer_status_input_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_timer_status_input_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_timer_status_input_s1_readdata),   //                    .readdata
+		.in_port    (timer_status_input_export)                           // external_connection.export
 	);
 
 	MusicPlayerPlatformDesign_UART_NIOS_II uart_nios_ii (
@@ -671,7 +677,10 @@ module MusicPlayerPlatformDesign (
 		.TIMER_CTRL_OUTPUT_s1_writedata                                     (mm_interconnect_0_timer_ctrl_output_s1_writedata),                       //                                                             .writedata
 		.TIMER_CTRL_OUTPUT_s1_chipselect                                    (mm_interconnect_0_timer_ctrl_output_s1_chipselect),                      //                                                             .chipselect
 		.TIMER_STATUS_INPUT_s1_address                                      (mm_interconnect_0_timer_status_input_s1_address),                        //                                        TIMER_STATUS_INPUT_s1.address
+		.TIMER_STATUS_INPUT_s1_write                                        (mm_interconnect_0_timer_status_input_s1_write),                          //                                                             .write
 		.TIMER_STATUS_INPUT_s1_readdata                                     (mm_interconnect_0_timer_status_input_s1_readdata),                       //                                                             .readdata
+		.TIMER_STATUS_INPUT_s1_writedata                                    (mm_interconnect_0_timer_status_input_s1_writedata),                      //                                                             .writedata
+		.TIMER_STATUS_INPUT_s1_chipselect                                   (mm_interconnect_0_timer_status_input_s1_chipselect),                     //                                                             .chipselect
 		.UART_NIOS_II_avalon_jtag_slave_address                             (mm_interconnect_0_uart_nios_ii_avalon_jtag_slave_address),               //                               UART_NIOS_II_avalon_jtag_slave.address
 		.UART_NIOS_II_avalon_jtag_slave_write                               (mm_interconnect_0_uart_nios_ii_avalon_jtag_slave_write),                 //                                                             .write
 		.UART_NIOS_II_avalon_jtag_slave_read                                (mm_interconnect_0_uart_nios_ii_avalon_jtag_slave_read),                  //                                                             .read

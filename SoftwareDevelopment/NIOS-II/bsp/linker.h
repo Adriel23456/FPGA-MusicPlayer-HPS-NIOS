@@ -4,7 +4,7 @@
  * Machine generated for CPU 'CPU_NIOS_II' in SOPC Builder design 'MusicPlayerPlatformDesign'
  * SOPC Builder design path: /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
  *
- * Generated: Mon May 25 21:51:07 CST 2026
+ * Generated: Fri May 29 16:33:54 CST 2026
  */
 
 /*

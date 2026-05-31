@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 22.1 922 linux 2026.05.25.21:35:10
+# ACDS 22.1 922 linux 2026.05.29.11:25:37
 
 # ----------------------------------------
 # vcs - auto-generated simulation script
@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 22.1 922 linux 2026.05.25.21:35:10
+# ACDS 22.1 922 linux 2026.05.29.11:25:37
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="MusicPlayerPlatformDesign_tb"
