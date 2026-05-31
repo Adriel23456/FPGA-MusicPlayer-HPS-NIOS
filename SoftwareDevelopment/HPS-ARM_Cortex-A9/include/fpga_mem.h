@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 
-/* Cyclone V HPS-to-FPGA AXI bridge base */
+/* Full HPS-to-FPGA AXI bridge base: FPGA slaves region */
 #define H2F_AXI_BASE     0xC0000000UL
 
 /* RAM_NIOS_II.s1 offset from address map:
