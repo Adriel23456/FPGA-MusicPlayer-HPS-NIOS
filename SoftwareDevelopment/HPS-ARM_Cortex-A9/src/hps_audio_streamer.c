@@ -16,6 +16,10 @@ static char song_paths[MAX_SONGS][MUSIC_PATH_MAX];
 static uint32_t playlist_count = 0;
 static uint32_t current_song_index = 0;
 
+static int build_song_path(char *dst, uint32_t dst_size, const char *music_dir,
+                           const char *filename);
+static int is_supported_wav_file(const char *path);
+
 void hps_stream_init_shared(volatile shared_audio_mem_t *shared){
 
     if (shared == 0){
@@ -44,6 +48,15 @@ void hps_stream_init_shared(volatile shared_audio_mem_t *shared){
     }
 }
 
+static char ascii_lower(char ch)
+{
+    if (ch >= 'A' && ch <= 'Z') {
+        return (char)(ch + ('a' - 'A'));
+    }
+
+    return ch;
+}
+
 static int has_wav_extension(const char* filename){
     const char *dot;
 
@@ -57,7 +70,15 @@ static int has_wav_extension(const char* filename){
         return 0;
    }
 
-   return strcmp (".wav", dot) == 0;
+   if (strlen(dot) != 4u) {
+        return 0;
+   }
+
+   return ascii_lower(dot[0]) == '.' &&
+          ascii_lower(dot[1]) == 'w' &&
+          ascii_lower(dot[2]) == 'a' &&
+          ascii_lower(dot[3]) == 'v' &&
+          dot[4] == '\0';
 }
 
 uint32_t hps_count_valid_songs(const char* music_dir){
@@ -78,9 +99,14 @@ uint32_t hps_count_valid_songs(const char* music_dir){
     while ((entry = readdir(dir))!= 0)
     {
         if(has_wav_extension(entry->d_name)){
-            count ++;
-            if(count>= MAX_SONGS){
-                break;
+            char path[MUSIC_PATH_MAX];
+
+            if (build_song_path(path, MUSIC_PATH_MAX, music_dir, entry->d_name) == 0 &&
+                is_supported_wav_file(path)) {
+                count ++;
+                if(count>= MAX_SONGS){
+                    break;
+                }
             }
         }
     }
@@ -104,6 +130,22 @@ const char *filename){
     }
 
     return 0;
+}
+
+static int is_supported_wav_file(const char *path)
+{
+    wav_info_t wav;
+
+    if (path == 0) {
+        return 0;
+    }
+
+    if (wav_open(path, &wav) != 0) {
+        return 0;
+    }
+
+    wav_close(&wav);
+    return 1;
 }
 
 int hps_stream_load_playlist(volatile shared_audio_mem_t *shared,
@@ -135,7 +177,8 @@ int hps_stream_load_playlist(volatile shared_audio_mem_t *shared,
             if (build_song_path(song_paths[playlist_count],
                                 MUSIC_PATH_MAX,
                                 music_dir,
-                                entry->d_name) == 0) {
+                                entry->d_name) == 0 &&
+                is_supported_wav_file(song_paths[playlist_count])) {
                 playlist_count++;
             }
         }
@@ -230,23 +273,28 @@ static void copy_shared_text(const char *src, volatile char *target){
 }
 
 int hps_stream_start_wav_file(volatile shared_audio_mem_t *shared, const char *path){
+    wav_info_t next_wav;
+
     if (shared == 0 || path == 0){
         return -1;
     }
+
+    if(wav_open(path, &next_wav)!= 0){
+        return -1;
+    }
+
     if(current_wav_open){
         wav_close(&current_wav);
         current_wav_open = 0;
     }
+
+    current_wav = next_wav;
+    current_wav_open = 1;
+
     hps_stream_reset_buffers(shared);
 
     shared->current_metadata.valid = 0;
     shared->current_metadata.duration_seconds = 0;
-
-    if(wav_open(path, &current_wav)!= 0){
-        return -1;
-    }
-
-    current_wav_open = 1;
 
     copy_shared_text(current_wav.metadata.title,
                     shared->current_metadata.title);
@@ -273,6 +321,7 @@ int hps_stream_start_wav_file(volatile shared_audio_mem_t *shared, const char *p
 void hps_stream_handle_nios_events(volatile shared_audio_mem_t *shared)
 {
     uint32_t events;
+    uint32_t pending_events;
 
     if (shared == 0) {
         return;
@@ -285,23 +334,29 @@ void hps_stream_handle_nios_events(volatile shared_audio_mem_t *shared)
         return;
     }
 
-    if (playlist_count == 0u) {
-        shared->hps_event_ack |= events;
+    pending_events = events & ~shared->hps_event_ack;
+
+    if (pending_events == NIOS_EVENT_NONE) {
         return;
     }
 
-    if (events & NIOS_EVENT_NEXT_SONG) {
+    if (playlist_count == 0u) {
+        shared->hps_event_ack |= pending_events;
+        return;
+    }
+
+    if (pending_events & NIOS_EVENT_NEXT_SONG) {
         uint32_t next_index = (current_song_index + 1u) % playlist_count;
 
         if (hps_stream_start_wav_file(shared, song_paths[next_index]) == 0) {
             current_song_index = next_index;
-            shared->hps_event_ack |= NIOS_EVENT_NEXT_SONG;
         }
 
+        shared->hps_event_ack |= NIOS_EVENT_NEXT_SONG;
         return;
     }
 
-    if (events & NIOS_EVENT_PREV_SONG) {
+    if (pending_events & NIOS_EVENT_PREV_SONG) {
         uint32_t prev_index;
 
         if (current_song_index == 0u) {
@@ -312,16 +367,15 @@ void hps_stream_handle_nios_events(volatile shared_audio_mem_t *shared)
 
         if (hps_stream_start_wav_file(shared, song_paths[prev_index]) == 0) {
             current_song_index = prev_index;
-            shared->hps_event_ack |= NIOS_EVENT_PREV_SONG;
         }
 
+        shared->hps_event_ack |= NIOS_EVENT_PREV_SONG;
         return;
     }
 
-    if (events & NIOS_EVENT_RESTART) {
-        if (hps_stream_start_wav_file(shared, song_paths[current_song_index]) == 0) {
-            shared->hps_event_ack |= NIOS_EVENT_RESTART;
-        }
+    if (pending_events & NIOS_EVENT_RESTART) {
+        (void)hps_stream_start_wav_file(shared, song_paths[current_song_index]);
+        shared->hps_event_ack |= NIOS_EVENT_RESTART;
 
         return;
     }

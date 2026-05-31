@@ -35,7 +35,7 @@ int hps_fpga_init(uintptr_t phys_base, size_t map_size)
         return -1;
     }
 
-    mapped_addr = fpga_mmap((uint32_t)phys_base,(uint32_t)map_size);
+    mapped_addr = fpga_mmap(phys_base, map_size);
 
     if(mapped_addr == NULL){
         return -1;
@@ -50,7 +50,7 @@ int hps_fpga_init(uintptr_t phys_base, size_t map_size)
 void hps_fpga_close(void)
 {
     if(shared_ptr != 0){
-        fpga_munmap((void *)shared_ptr, (uint32_t) mapped_size);
+        fpga_munmap((void *)shared_ptr, mapped_size);
         shared_ptr = 0;
         mapped_size = 0;
     }

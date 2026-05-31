@@ -2,6 +2,7 @@
 #ifndef FPGA_MEM_H
 #define FPGA_MEM_H
 
+#include <stddef.h>
 #include <stdint.h>
 
 /* Full HPS-to-FPGA AXI bridge base: FPGA slaves region */
@@ -14,7 +15,7 @@
 
 #define RAM_S1_PHYS      (H2F_AXI_BASE + RAM_S1_OFFSET)
 
-void *fpga_mmap(uint32_t phys_addr, uint32_t size);
-void  fpga_munmap(void *map, uint32_t size);
+void *fpga_mmap(uintptr_t phys_addr, size_t size);
+void  fpga_munmap(void *map, size_t size);
 
 #endif /* FPGA_MEM_H */

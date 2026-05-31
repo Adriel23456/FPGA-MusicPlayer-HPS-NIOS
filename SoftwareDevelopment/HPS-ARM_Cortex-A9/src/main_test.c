@@ -7,18 +7,6 @@
 #include "hps_audio_streamer.h"
 #include "wav_reader.h"
 
-static void test_shared_init(volatile shared_audio_mem_t *shared)
-{
-    hps_stream_init_shared(shared);
-
-    printf("Shared memory initialized.\n");
-    printf("song_count = %u\n", shared->song_count);
-
-    for (uint32_t i = 0; i < NUM_BUFFERS; i++) {
-        printf("buffer %u state = %u\n", i, shared->buffers[i].state);
-    }
-}
-
 static void test_song_counter(volatile shared_audio_mem_t *shared)
 {
     uint32_t song_count = hps_count_valid_songs("./music");
@@ -214,6 +202,12 @@ static void test_playlist_and_events(volatile shared_audio_mem_t *shared)
                shared->buffers[i].size_bytes,
                shared->buffers[i].flags);
     }
+
+    hps_stream_handle_nios_events(shared);
+
+    printf("After repeated HPS poll before fake Nios II clears NEXT:\n");
+    printf("hps_event_ack = %u\n", shared->hps_event_ack);
+    printf("title = %s\n", (const char *)shared->current_metadata.title);
 
     shared->nios_event_flags = NIOS_EVENT_NONE;
     hps_stream_handle_nios_events(shared);
