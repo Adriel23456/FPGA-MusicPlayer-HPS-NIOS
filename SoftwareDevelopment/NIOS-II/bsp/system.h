@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'CPU_NIOS_II' in SOPC Builder design 'MusicPlayerPlatformDesign'
- * SOPC Builder design path: /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
+ * SOPC Builder design path: /home/dadump/Documents/Local_Projects/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
  *
- * Generated: Fri May 29 16:33:54 CST 2026
+ * Generated: Sun May 31 14:16:10 CST 2026
  */
 
 /*

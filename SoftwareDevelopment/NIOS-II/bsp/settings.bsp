@@ -2,12 +2,12 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 29, 2026 4:33:54 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1780094034258</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp</BspGeneratedLocation>
-        <BspSettingsFile>/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp/settings.bsp</BspSettingsFile>
-        <SopcDesignFile>/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo</SopcDesignFile>
-        <SystemFileHash>aa8527e17488c05ef8cc78f826efe1d2e88676eccef91a734413df82f244e1f</SystemFileHash>
+        <BspGeneratedTimeStamp>May 31, 2026 2:16:09 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1780258569631</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>./</BspGeneratedLocation>
+        <BspSettingsFile>SoftwareDevelopment/NIOS-II/bsp/settings.bsp</BspSettingsFile>
+        <SopcDesignFile>/home/dadump/Documents/Local_Projects/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo</SopcDesignFile>
+        <SystemFileHash>f81a997210e5a1a270f57884c891d5987e0c319c1adeaeceecd71fe7c4522</SystemFileHash>
         <JdiFile>default</JdiFile>
         <Cpu>CPU_NIOS_II</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

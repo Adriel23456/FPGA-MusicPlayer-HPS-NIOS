@@ -26,12 +26,12 @@ void fpga_munmap(void *map, size_t size) {
 
 int main(void) {
     printf("=== HPS-to-FPGA RAM Test ===\n");
-    printf("Physical address: 0x%08" PRIXPTR "\n", (uintptr_t)RAM_S1_PHYS);
+    printf("Physical address: 0x%08" PRIXPTR "\n", (uintptr_t)SHARED_AUDIO_MEM_PHYS);
     printf("Size:             0x%08zX (%zu KB)\n\n",
-           (size_t)RAM_S1_SIZE,
-           (size_t)RAM_S1_SIZE / 1024u);
+           sizeof(shared_audio_mem_t),
+           sizeof(shared_audio_mem_t) / 1024u);
 
-    volatile uint32_t *mem = fpga_mmap(RAM_S1_PHYS, RAM_S1_SIZE);
+    volatile uint32_t *mem = fpga_mmap(SHARED_AUDIO_MEM_PHYS, sizeof(shared_audio_mem_t));
     if (!mem) return 1;
 
     /* Read initial value */
@@ -56,7 +56,7 @@ int main(void) {
     mem[2] = 0x00000000;
     printf("\nCleared. Read back [0x00]: 0x%08X\n", mem[0]);
 
-    fpga_munmap((void *)mem, RAM_S1_SIZE);
+    fpga_munmap((void *)mem, sizeof(shared_audio_mem_t));
     printf("\nDone.\n");
     return 0;
 }

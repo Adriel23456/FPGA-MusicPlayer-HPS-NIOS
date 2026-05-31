@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "shared_protocol.h"
+#include "../../common/include/shared_protocol.h"
 #include "fpga_mem.h"
 #include "hps_fpga_comm.h"
 #include "hps_audio_streamer.h"
@@ -265,7 +265,7 @@ int main(void)
 {
     volatile shared_audio_mem_t *shared;
 
-    if (hps_fpga_init(RAM_S1_PHYS, sizeof(shared_audio_mem_t)) != 0) {
+    if (hps_fpga_init(SHARED_AUDIO_MEM_PHYS, sizeof(shared_audio_mem_t)) != 0) {
         printf("ERROR: hps_fpga_init failed.\n");
         return 1;
     }

@@ -26,6 +26,8 @@ void hps_stream_init_shared(volatile shared_audio_mem_t *shared){
         return;
     }
 
+    shared->protocol_magic = 0u;
+    shared->protocol_version = 0u;
     shared->nios_event_flags = NIOS_EVENT_NONE;
     shared->hps_event_ack = HPS_ACK_NONE;
     shared->song_count= 0;
@@ -40,12 +42,16 @@ void hps_stream_init_shared(volatile shared_audio_mem_t *shared){
 
     shared->current_metadata.valid = 0;
     shared->current_metadata.duration_seconds = 0;
+    shared->current_metadata.sample_rate_hz = 0;
 
     for (uint32_t i = 0; i < META_TEXT_MAX; i++) {
         shared->current_metadata.title[i] = '\0';
         shared->current_metadata.artist[i] = '\0';
         shared->current_metadata.album[i] = '\0';
     }
+
+    shared->protocol_version = SHARED_PROTOCOL_VERSION;
+    shared->protocol_magic = SHARED_PROTOCOL_MAGIC;
 }
 
 static char ascii_lower(char ch)
@@ -295,6 +301,7 @@ int hps_stream_start_wav_file(volatile shared_audio_mem_t *shared, const char *p
 
     shared->current_metadata.valid = 0;
     shared->current_metadata.duration_seconds = 0;
+    shared->current_metadata.sample_rate_hz = 0;
 
     copy_shared_text(current_wav.metadata.title,
                     shared->current_metadata.title);
@@ -306,6 +313,7 @@ int hps_stream_start_wav_file(volatile shared_audio_mem_t *shared, const char *p
                     shared->current_metadata.album);
 
     shared->current_metadata.duration_seconds = current_wav.duration_seconds;
+    shared->current_metadata.sample_rate_hz = current_wav.sample_rate;
 
     /*
      * Write valid last.

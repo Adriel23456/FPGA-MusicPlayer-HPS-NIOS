@@ -1,12 +1,17 @@
 #!/bin/bash
 
-SOPCINFO="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+SOPCINFO="$REPO_ROOT/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo"
 CPU_NAME="CPU_NIOS_II"
-BSP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp"
+BSP_DIR="$SCRIPT_DIR/bsp"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+: "${QUARTUS_ROOTDIR:=/home/dadump/intelFPGA_lite/22.1std/quartus}"
+: "${SOPC_KIT_NIOS2:=/home/dadump/intelFPGA_lite/22.1std/nios2eds}"
+
+export QUARTUS_ROOTDIR
+export SOPC_KIT_NIOS2
+export PATH="$PATH:$SOPC_KIT_NIOS2/bin/gnu/H-x86_64-pc-linux-gnu/bin"
 
 echo "============================================================"
 echo " Rebuilding BSP"

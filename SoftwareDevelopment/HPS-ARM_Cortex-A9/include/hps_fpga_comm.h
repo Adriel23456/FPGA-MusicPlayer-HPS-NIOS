@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
-#include "shared_protocol.h"
+#include "../../common/include/shared_protocol.h"
 
 int hps_fpga_init(uintptr_t phys_base, size_t map_size);
 void hps_fpga_close(void);

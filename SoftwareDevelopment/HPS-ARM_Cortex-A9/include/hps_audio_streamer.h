@@ -1,7 +1,7 @@
 #ifndef HPS_AUDIO_STREAMER_H
 #define HPS_AUDIO_STREAMER_H
 
-#include "shared_protocol.h"
+#include "../../common/include/shared_protocol.h"
 
 void hps_stream_init_shared(volatile shared_audio_mem_t *shared);
 

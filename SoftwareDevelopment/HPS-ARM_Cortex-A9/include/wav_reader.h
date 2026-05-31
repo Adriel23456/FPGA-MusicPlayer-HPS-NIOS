@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include "shared_protocol.h"
+#include "../../common/include/shared_protocol.h"
 
 typedef struct {
     char title[META_TEXT_MAX];

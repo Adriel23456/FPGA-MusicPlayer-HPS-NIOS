@@ -86,7 +86,7 @@ uint32_t audio_play_buffer(const int16_t *src, unsigned count,
     uint32_t phase = phase_in;
     uint32_t limit = ((uint32_t)(count - 1)) << 16;   /* need idx and idx+1 */
 
-    while (phase <= limit) {
+    while (phase < limit) {
         uint32_t idx  = phase >> 16;
         uint32_t frac = phase & 0xFFFF;
         int16_t  a = src[idx];
@@ -117,7 +117,7 @@ unsigned audio_feed_nb(const int16_t *src, unsigned count,
     /* reconstruct absolute phase from carried index + sub-sample phase */
     uint32_t p = ((uint32_t)(*src_index) << 16) | (*phase & 0xFFFF);
 
-    while (p <= limit && audio_fifo_has_space()) {
+    while (p < limit && audio_fifo_has_space()) {
         uint32_t idx  = p >> 16;
         uint32_t frac = p & 0xFFFF;
         int16_t  a = src[idx];

@@ -88,16 +88,18 @@ ACDS_VERSION := 22.1
 # It may be used by the makefile fragments so is defined before including them. 
 # 
 ELF := main.elf
+APP_DIR := $(CURDIR)
+SW_ROOT_DIR := $(abspath $(APP_DIR)/..)
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/lib/debug_uart.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/audio_driver.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/dummy_hps.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/irq_controller.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/player_fsm.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/timer_driver.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/vga_driver.c
+C_SRCS += $(APP_DIR)/lib/debug_uart.c
+C_SRCS += $(APP_DIR)/main.c
+C_SRCS += $(APP_DIR)/src/audio_driver.c
+C_SRCS += $(APP_DIR)/src/hps_bridge.c
+C_SRCS += $(APP_DIR)/src/irq_controller.c
+C_SRCS += $(APP_DIR)/src/player_fsm.c
+C_SRCS += $(APP_DIR)/src/timer_driver.c
+C_SRCS += $(APP_DIR)/src/vga_driver.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -135,10 +137,10 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp
+BSP_ROOT_DIR := $(SW_ROOT_DIR)/bsp
 
 # List of application specific include directories, library directories and library names
-APP_INCLUDE_DIRS := /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/include
+APP_INCLUDE_DIRS := $(APP_DIR)/include
 
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=
@@ -154,6 +156,13 @@ BUILD_POST_PROCESS :=
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #                            GENERATED SETTINGS END                           ^
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+# Keep the Nios II heap/stack below the HPS/NIOS shared-memory window.
+# RAM_NIOS_II_BASE (0x40000) + SHARED_AUDIO_MEM_OFFSET (0x20000) = 0x60000.
+NIOS_SHARED_MEM_BASE := 0x00060000
+NIOS_HEAP_LIMIT := 0x00058000
+APP_LDFLAGS_USER += -Wl,--defsym=__alt_stack_pointer=$(NIOS_SHARED_MEM_BASE)
+APP_LDFLAGS_USER += -Wl,--defsym=__alt_heap_limit=$(NIOS_HEAP_LIMIT)
 
 
 #------------------------------------------------------------------------------
@@ -1038,5 +1047,3 @@ $(call adjust-path,$(OBJDUMP_NAME)) : $(call adjust-path,$(ELF))
 .PHONY: print-elf-name
 print-elf-name:
 	@$(ECHO) $(ELF)
-
-

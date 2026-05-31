@@ -1,10 +1,14 @@
 #!/bin/bash
 
-APP_DIR="/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_DIR="$SCRIPT_DIR/app"
 
-export PATH="$PATH:/home/adriel/intelFPGA_lite/22.1std/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin"
-export QUARTUS_ROOTDIR="/home/adriel/intelFPGA_lite/22.1std/quartus"
-export SOPC_KIT_NIOS2="/home/adriel/intelFPGA_lite/22.1std/nios2eds"
+: "${QUARTUS_ROOTDIR:=/home/dadump/intelFPGA_lite/22.1std/quartus}"
+: "${SOPC_KIT_NIOS2:=/home/dadump/intelFPGA_lite/22.1std/nios2eds}"
+
+export QUARTUS_ROOTDIR
+export SOPC_KIT_NIOS2
+export PATH="$PATH:$SOPC_KIT_NIOS2/bin/gnu/H-x86_64-pc-linux-gnu/bin"
 
 echo "============================================================"
 echo " Building Nios II Application"
