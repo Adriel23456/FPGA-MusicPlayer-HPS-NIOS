@@ -29,6 +29,7 @@ greybox_tmp/
 
 # ---- NIOS II / Eclipse build artifacts ----
 software/*/obj/
+SoftwareDevelopment/NIOS-II/app/obj/
 software/*/Debug/
 software/*/Release/
 software/*_bsp/
@@ -109,4 +110,11 @@ desktop.ini
 # Keep documentation
 !README*
 !*.md
+!SoftwareDevelopment/NIOS-II/app/Makefile
+!SoftwareDevelopment/NIOS-II/build.sh
+!SoftwareDevelopment/NIOS-II/update_makefile.sh
+!SoftwareDevelopment/NIOS-II/bsp/Makefile
+!SoftwareDevelopment/NIOS-II/bsp/settings.bsp
+!SoftwareDevelopment/NIOS-II/rebuild_bsp.sh
+!SoftwareDevelopment/NIOS-II/new_project.sh
 build/
