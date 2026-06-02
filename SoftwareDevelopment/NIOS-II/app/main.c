@@ -3,7 +3,7 @@
 #include "irq_controller.h"
 #include "audio_driver.h"
 #include "timer_driver.h"
-#include "dummy_hps.h"
+#include "real_hps.h"
 #include "player_fsm.h"
 #include <unistd.h>
 

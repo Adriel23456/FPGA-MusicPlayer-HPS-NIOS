@@ -218,8 +218,9 @@ nios2-app-generate-makefile \
     --bsp-dir "$BSP_DIR" \
     --app-dir "$APP_DIR" \
     --elf-name main.elf \
-    --src-files $SRCS \
-    --inc-rdir "$APP_DIR/include"
+    --src-files "${SRCS[@]}" \
+    --inc-rdir "$APP_DIR/include" \
+    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0x78000"
 
 [ $? -ne 0 ] && echo "ERROR: Makefile generation failed" && exit 1
 
@@ -291,7 +292,8 @@ nios2-app-generate-makefile \
     --app-dir "$APP_DIR" \
     --elf-name main.elf \
     --src-files "${SRCS[@]}" \
-    --inc-rdir "$APP_DIR/include"
+    --inc-rdir "$APP_DIR/include" \
+    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0x78000"
 
 echo ""
 echo "Makefile updated successfully!"

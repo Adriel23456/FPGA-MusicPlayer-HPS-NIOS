@@ -7,7 +7,7 @@
  * at a FIXED 48 kHz; any source rate is converted to it by the fractional
  * resampling engine below. */
 #define AUDIO_OUT_IRQ_NUM   3
-#define AUDIO_HW_RATE_HZ    48000u
+#define AUDIO_HW_RATE_HZ    22500u
 
 /* Source sample rates. Stored as the actual rate in Hz because 44.1 kHz is
  * NOT an integer divisor of 48 kHz -> fractional resampling is required. */
