@@ -8,16 +8,25 @@
 static alt_up_audio_dev     *g_audio = 0;
 static alt_up_av_config_dev *g_avcfg = 0;
 
-/* AIS bit in the AV config status register confirms auto-init completed. */
-#define AV_CONFIG_STATUS  ((volatile unsigned int *)(AUDIO_CONFIG_BASE + 4))
-#define AV_AIS_BIT        (1u << 8)
+static uint32_t s_step  = STEP_44K1;  /* SOURCE frames per output frame (16.16) */
+static uint32_t s_phase = 0;          /* current sub-frame position             */
+
+static int codec_write_raw(unsigned reg7, unsigned data9)
+{
+    unsigned spin = 0;
+    while (!(AVCFG_STATUS & AVCFG_RDY)) { if (++spin > 2000000u) return -1; }
+    AVCFG_ADDRESS = reg7  & 0x7Fu;
+    AVCFG_DATA    = data9 & 0x1FFu;
+    spin = 0;
+    while (!(AVCFG_STATUS & AVCFG_RDY)) { if (++spin > 2000000u) return -1; }
+    return (AVCFG_STATUS & AVCFG_ACK) ? -1 : 0;
+}
 
 static inline unsigned int u16cast(int v)
 {
     return (unsigned int)(uint16_t)(int16_t)v;
 }
 
-/* True if both output FIFOs have room for at least one frame. */
 int audio_fifo_has_space(void)
 {
     if (!g_audio) return 0;
@@ -25,25 +34,69 @@ int audio_fifo_has_space(void)
             alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) > 0);
 }
 
-/* Blocking single-frame write: waits for room, then writes L+R. */
-static void write_frame(int16_t s)
+/* Blocking stereo frame write: both channels written as a pair (the core does
+ * not play a frame until L and R are both present). */
+static void write_stereo_frame(int16_t l, int16_t r)
 {
+    unsigned spin = 0;
     while (alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_LEFT)  == 0 ||
-           alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) == 0)
-        ;
-    alt_up_audio_write_fifo_head(g_audio, u16cast(s), ALT_UP_AUDIO_LEFT);
-    alt_up_audio_write_fifo_head(g_audio, u16cast(s), ALT_UP_AUDIO_RIGHT);
+           alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) == 0) {
+        if (++spin > 5000000u) return;   /* FIFO not draining -> bail */
+    }
+    alt_up_audio_write_fifo_head(g_audio, u16cast(l), ALT_UP_AUDIO_LEFT);
+    alt_up_audio_write_fifo_head(g_audio, u16cast(r), ALT_UP_AUDIO_RIGHT);
 }
 
-/* Non-blocking single-frame write: assumes caller already checked space. */
-static void write_frame_nofs(int16_t s)
+/* DAC is fixed at DAC_RATE_HZ (set in audio_init). Pick the FRAME step that
+ * maps this source rate onto it. The codec is NOT reprogrammed here. */
+audio_rate_t audio_prepare_rate(audio_rate_t src_rate)
 {
-    alt_up_audio_write_fifo_head(g_audio, u16cast(s), ALT_UP_AUDIO_LEFT);
-    alt_up_audio_write_fifo_head(g_audio, u16cast(s), ALT_UP_AUDIO_RIGHT);
+    switch (src_rate) {
+        case RATE_44K1: s_step = STEP_44K1; break;   /* 1:1, bit-exact (untouched) */
+        case RATE_16K:  s_step = STEP_16K;  break;
+        case RATE_8K:   s_step = STEP_8K;   break;
+        default:        s_step = STEP_44K1; break;
+    }
+    s_phase = 0;
+    return src_rate;
+}
+
+void audio_play_stereo(const volatile int16_t *inter, unsigned frames)
+{
+    if (!g_audio || !inter || frames < 2) return;
+
+    /* Fast path: 44.1k source on 44.1k DAC -> 1:1, bit-exact. UNCHANGED. */
+    if (s_step == (1u << 16)) {
+        for (unsigned f = 0; f < frames; f++)
+            write_stereo_frame(inter[2*f], inter[2*f + 1]);
+        return;
+    }
+
+    /* Resample path (16k / 8k -> 44.1k). phase/idx are in STEREO FRAMES, so
+     * idx addresses inter[2*idx] (L) and inter[2*idx+1] (R). L and R are
+     * interpolated INDEPENDENTLY with half-LSB rounding before the >>16. */
+    uint32_t phase = s_phase;
+    uint32_t limit = ((uint32_t)(frames - 1)) << 16;   /* need frame idx and idx+1 */
+
+    while (phase <= limit) {
+        uint32_t idx  = phase >> 16;
+        uint32_t frac = phase & 0xFFFF;
+        int16_t aL = inter[2*idx],     aR = inter[2*idx + 1];
+        int16_t bL = inter[2*idx + 2], bR = inter[2*idx + 3];
+        int32_t vL = ((int32_t)aL << 16) + (int32_t)(bL - aL) * (int32_t)frac;
+        int32_t vR = ((int32_t)aR << 16) + (int32_t)(bR - aR) * (int32_t)frac;
+        write_stereo_frame((int16_t)((vL + (1 << 15)) >> 16),
+                           (int16_t)((vR + (1 << 15)) >> 16));
+        phase += s_step;
+    }
+    /* carry the sub-frame remainder into the next buffer so seams stay
+     * continuous: subtract the frames we fully consumed. */
+    s_phase = phase - limit;
 }
 
 int audio_init(void)
 {
+    int e = 0;
     dbg_puts("[AUDIO] init: start\r\n");
 
     g_avcfg = alt_up_av_config_open_dev(AUDIO_CONFIG_NAME);
@@ -56,132 +109,23 @@ int audio_init(void)
     g_audio = alt_up_audio_open_dev(AUDIO_OUT_NAME);
     if (g_audio == 0) { dbg_puts("[AUDIO] ERROR: audio open failed\r\n"); return -1; }
     alt_up_audio_reset_audio_core(g_audio);
+
+    e |= codec_write_raw(0x04, 0x010);   /* analog path: DACSEL=1, BYPASS=0   */
+    e |= codec_write_raw(0x05, 0x000);   /* digital path: de-emphasis/mute OFF*/
+    e |= codec_write_raw(0x02, 0x07F);   /* L headphone */
+    e |= codec_write_raw(0x03, 0x07F);   /* R headphone */
+
+    /* lock the DAC sampling rate ONCE -- never reprogrammed per song */
+    e |= codec_write_raw(0x09, 0x000);            /* deactivate */
+    e |= codec_write_raw(0x08, CODEC_REG8_DAC);   /* sampling control */
+    e |= codec_write_raw(0x09, 0x001);            /* activate   */
+
+    if (e) dbg_puts("[AUDIO] CODEC WRITE FAILED -> path/rate not applied\r\n");
+    else   dbg_puts("[AUDIO] codec locked @ DAC_RATE_HZ (DACSEL=1, BYPASS=0)\r\n");
+
     dbg_puts("[AUDIO] init: complete\r\n");
     return 0;
 }
 
 void audio_enable_write_irq(void)  { if (g_audio) alt_up_audio_enable_write_interrupt(g_audio); }
 void audio_disable_write_irq(void) { if (g_audio) alt_up_audio_disable_write_interrupt(g_audio); }
-
-/* =====================================================================
- *  FRACTIONAL RESAMPLING ENGINE  (handles ANY source rate incl. 44.1k)
- *
- *  Output is fixed 48 kHz. A read position walks the source at
- *      step = src_rate / 48000   source-samples per output frame
- *  in 16.16 fixed point. Each output frame is the linear interpolation
- *  between source[idx] and source[idx+1] using the fractional part:
- *      step = 48000/48000 = 1.000    -> 1:1
- *      step = 44100/48000 = 0.91875
- *      step = 16000/48000 = 0.3333
- *      step =  8000/48000 = 0.1666
- * ===================================================================== */
-
-/* BLOCKING: plays the whole buffer; returns leftover phase for chunking. */
-uint32_t audio_play_buffer(const int16_t *src, unsigned count,
-                           audio_rate_t src_rate_hz, uint32_t phase_in)
-{
-    if (!g_audio || !src || count == 0) return phase_in;
-
-    uint32_t step  = ((uint64_t)(unsigned)src_rate_hz << 16) / AUDIO_HW_RATE_HZ;
-    uint32_t phase = phase_in;
-    uint32_t limit = ((uint32_t)(count - 1)) << 16;   /* need idx and idx+1 */
-
-    while (phase <= limit) {
-        uint32_t idx  = phase >> 16;
-        uint32_t frac = phase & 0xFFFF;
-        int16_t  a = src[idx];
-        int16_t  b = src[idx + 1];
-        int32_t  v = ((int32_t)a << 16) + (int32_t)(b - a) * (int32_t)frac;
-        write_frame((int16_t)((v + (1 << 15)) >> 16));   /* rounded */
-        phase += step;
-    }
-    /* carry sub-sample remainder relative to the start of the next chunk */
-    return phase - (((uint32_t)(count - 1)) << 16);
-}
-
-/* NON-BLOCKING: same math, but stops as soon as the FIFO is full. Progress
- * is held in *src_index / *phase so the caller resumes exactly where it
- * stopped on the next pass. The slice is done when *src_index >= count-1
- * (we need idx+1 to interpolate, so the last interpolable index is count-1).
- * Returns frames written this call. */
-unsigned audio_feed_nb(const int16_t *src, unsigned count,
-                       audio_rate_t src_rate_hz,
-                       unsigned *src_index, uint32_t *phase)
-{
-    if (!g_audio || !src || count == 0) return 0;
-
-    uint32_t step  = ((uint64_t)(unsigned)src_rate_hz << 16) / AUDIO_HW_RATE_HZ;
-    uint32_t limit = ((uint32_t)(count - 1)) << 16;
-    unsigned written = 0;
-
-    /* reconstruct absolute phase from carried index + sub-sample phase */
-    uint32_t p = ((uint32_t)(*src_index) << 16) | (*phase & 0xFFFF);
-
-    while (p <= limit && audio_fifo_has_space()) {
-        uint32_t idx  = p >> 16;
-        uint32_t frac = p & 0xFFFF;
-        int16_t  a = src[idx];
-        int16_t  b = src[idx + 1];
-        int32_t  v = ((int32_t)a << 16) + (int32_t)(b - a) * (int32_t)frac;
-        write_frame_nofs((int16_t)((v + (1 << 15)) >> 16));
-        p += step;
-        written++;
-    }
-
-    *src_index = p >> 16;          /* save progress for next call */
-    *phase     = p & 0xFFFF;
-    return written;
-}
-
-/* =====================================================================
- *  TEST ONLY: sine source at src_rate, played via the blocking engine.
- * ===================================================================== */
-#define TONE_BUF_MAX 2048
-static int16_t s_tone_buf[TONE_BUF_MAX];
-
-#define SINE_N 64
-static const int16_t SINE_LUT[SINE_N] = {
-        0,   3211,   6392,   9511,  12539,  15446,  18204,  20787,
-    23169,  25329,  27244,  28897,  30272,  31356,  32137,  32609,
-    32767,  32609,  32137,  31356,  30272,  28897,  27244,  25329,
-    23169,  20787,  18204,  15446,  12539,   9511,   6392,   3211,
-        0,  -3211,  -6392,  -9511, -12539, -15446, -18204, -20787,
-   -23169, -25329, -27244, -28897, -30272, -31356, -32137, -32609,
-   -32767, -32609, -32137, -31356, -30272, -28897, -27244, -25329,
-   -23169, -20787, -18204, -15446, -12539,  -9511,  -6392,  -3211
-};
-
-void audio_play_tone(unsigned freq_hz, unsigned duration_ms, audio_rate_t rate)
-{
-    if (freq_hz == 0) return;
-
-    unsigned src_rate = (unsigned)rate;
-    unsigned want     = ((uint64_t)src_rate * duration_ms) / 1000u;
-
-    uint32_t s_inc = ((uint64_t)freq_hz * SINE_N << 16) / src_rate;
-    uint32_t s_ph  = 0;     /* sine generation phase  */
-    uint32_t r_ph  = 0;     /* resampler carry phase  */
-
-    while (want > 0) {
-        unsigned n = (want > (TONE_BUF_MAX - 1)) ? (TONE_BUF_MAX - 1) : want;
-        uint32_t p = s_ph;
-        for (unsigned i = 0; i <= n; i++) {      /* n+1 so engine reads idx+1 */
-            s_tone_buf[i] = SINE_LUT[(p >> 16) & (SINE_N - 1)];
-            p += s_inc;
-        }
-        r_ph  = audio_play_buffer(s_tone_buf, n + 1, rate, r_ph);
-        s_ph += s_inc * n;
-        want -= n;
-    }
-}
-
-void audio_run_test(void)
-{
-    dbg_puts("[AUDIO] === rate sweep test start ===\r\n");
-    dbg_puts("[AUDIO] 440Hz @ 48kHz\r\n");   audio_play_tone(440, 1000, RATE_48K);
-    dbg_puts("[AUDIO] 440Hz @ 44.1kHz\r\n"); audio_play_tone(440, 1000, RATE_44K1);
-    dbg_puts("[AUDIO] 440Hz @ 16kHz\r\n");   audio_play_tone(440, 1000, RATE_16K);
-    dbg_puts("[AUDIO] 440Hz @ 8kHz\r\n");    audio_play_tone(440, 1000, RATE_8K);
-    alt_up_audio_reset_audio_core(g_audio);
-    dbg_puts("[AUDIO] === rate sweep test done ===\r\n");
-}

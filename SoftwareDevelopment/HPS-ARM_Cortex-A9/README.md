@@ -9,4 +9,4 @@ make && make install
 scp usr/bin/hps_music_player root@192.168.100.50:/usr/bin/
 
 # On board (with FPGA programmed):
-fpga_mem_test
+hps_music_player

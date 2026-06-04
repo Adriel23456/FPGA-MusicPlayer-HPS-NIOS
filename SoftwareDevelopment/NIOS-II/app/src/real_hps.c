@@ -47,7 +47,6 @@ void hps_current_meta(song_meta_t *out)
     copy_meta_field(out->artist, m->current_meta.artist);
     copy_meta_field(out->album,  m->current_meta.album);
     out->duration_sec = (unsigned)m->current_meta.duration_seconds;
-    out->rate         = hps_rate_from_hz((uint32_t)m->current_meta.sample_rate);
 
     dbg_puts("[HPS] meta: ");
     dbg_puts(out->name);

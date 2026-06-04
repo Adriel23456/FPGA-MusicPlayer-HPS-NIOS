@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 22.1 922 (Future versions may contain additional information.) -->
- <!-- 2026.05.30.03:50:27 -->
+ <!-- 2026.06.03.23:30:30 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1780134610</value>
+  <value>1780551013</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -154,7 +154,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="audio_clk_freq">
    <type>double</type>
-   <value>12.288</value>
+   <value>11.2896</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -307,7 +307,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>long</type>
-    <value>12288135</value>
+    <value>11288888</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -2090,15 +2090,15 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>AUDIO_OUT</moduleName>
-    <slaveName>clk</slaveName>
-    <name>AUDIO_OUT.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
     <moduleName>AUDIO_CONFIG</moduleName>
     <slaveName>clk</slaveName>
     <name>AUDIO_CONFIG.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AUDIO_OUT</moduleName>
+    <slaveName>clk</slaveName>
+    <name>AUDIO_OUT.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -4020,7 +4020,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4030,7 +4030,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -96602,33 +96602,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="CLK.clk/AUDIO_OUT.clk"
-   kind="clock"
-   version="22.1"
-   start="CLK.clk"
-   end="AUDIO_OUT.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>CLK</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>AUDIO_OUT</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
    name="CLK.clk/AUDIO_CONFIG.clk"
    kind="clock"
    version="22.1"
@@ -96653,6 +96626,33 @@ parameters are a RESULT of the module parameters. -->
   <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>AUDIO_CONFIG</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+   name="CLK.clk/AUDIO_OUT.clk"
+   kind="clock"
+   version="22.1"
+   start="CLK.clk"
+   end="AUDIO_OUT.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>CLK</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>AUDIO_OUT</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
@@ -97201,33 +97201,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="CLK.clk_reset/AUDIO_OUT.reset"
-   kind="reset"
-   version="22.1"
-   start="CLK.clk_reset"
-   end="AUDIO_OUT.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>CLK</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>AUDIO_OUT</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
    name="CLK.clk_reset/AUDIO_CONFIG.reset"
    kind="reset"
    version="22.1"
@@ -97334,6 +97307,33 @@ parameters are a RESULT of the module parameters. -->
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>RAM_NIOS_II</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
+ </connection>
+ <connection
+   name="AUDIO_CLOCK.reset_source/AUDIO_OUT.reset"
+   kind="reset"
+   version="22.1"
+   start="AUDIO_CLOCK.reset_source"
+   end="AUDIO_OUT.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>AUDIO_CLOCK</startModule>
+  <startConnectionPoint>reset_source</startConnectionPoint>
+  <endModule>AUDIO_OUT</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <plugin>
   <instanceCount>1</instanceCount>

@@ -7,7 +7,7 @@
 #include "hps_audio_streamer.h"
 
 #define DEFAULT_MUSIC_DIR "/mnt/music"
-#define POLL_SLEEP_US     1000u
+#define POLL_SLEEP_US     100u
 
 int main(int argc, char *argv[])
 {
