@@ -190,18 +190,20 @@ module MusicPlayerPlatformDesign (
 	wire   [1:0] mm_interconnect_0_timer_ctrl_output_s1_address;                         // mm_interconnect_0:TIMER_CTRL_OUTPUT_s1_address -> TIMER_CTRL_OUTPUT:address
 	wire         mm_interconnect_0_timer_ctrl_output_s1_write;                           // mm_interconnect_0:TIMER_CTRL_OUTPUT_s1_write -> TIMER_CTRL_OUTPUT:write_n
 	wire  [31:0] mm_interconnect_0_timer_ctrl_output_s1_writedata;                       // mm_interconnect_0:TIMER_CTRL_OUTPUT_s1_writedata -> TIMER_CTRL_OUTPUT:writedata
-	wire         irq_mapper_receiver0_irq;                                               // AUDIO_OUT:irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                               // UART_NIOS_II:av_irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                               // REG_BTN_INPUT:irq -> irq_mapper:receiver2_irq
 	wire         irq_mapper_receiver3_irq;                                               // REG_SW_INPUT:irq -> irq_mapper:receiver3_irq
 	wire  [31:0] cpu_nios_ii_irq_irq;                                                    // irq_mapper:sender_irq -> CPU_NIOS_II:irq
-	wire         rst_controller_reset_out_reset;                                         // rst_controller:reset_out -> [AUDIO_CONFIG:reset, CPU_NIOS_II:reset_n, RAM_NIOS_II:reset, REG_BTN_INPUT:reset_n, REG_SW_INPUT:reset_n, TIMER_CTRL_OUTPUT:reset_n, TIMER_STATUS_INPUT:reset_n, UART_NIOS_II:rst_n, irq_mapper:reset, mm_interconnect_0:CPU_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
-	wire         rst_controller_reset_out_reset_req;                                     // rst_controller:reset_req -> [CPU_NIOS_II:reset_req, RAM_NIOS_II:reset_req, rst_translator:reset_req_in]
-	wire         rst_controller_001_reset_out_reset;                                     // rst_controller_001:reset_out -> [AUDIO_OUT:reset, mm_interconnect_0:AUDIO_OUT_reset_reset_bridge_in_reset_reset]
+	wire         irq_mapper_receiver0_irq;                                               // irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
+	wire   [0:0] irq_synchronizer_receiver_irq;                                          // AUDIO_OUT:irq -> irq_synchronizer:receiver_irq
+	wire         rst_controller_reset_out_reset;                                         // rst_controller:reset_out -> [AUDIO_CONFIG:reset, mm_interconnect_0:AUDIO_CONFIG_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_001_reset_out_reset;                                     // rst_controller_001:reset_out -> [AUDIO_OUT:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:AUDIO_OUT_reset_reset_bridge_in_reset_reset]
 	wire         audio_clock_reset_source_reset;                                         // AUDIO_CLOCK:reset_source_reset -> rst_controller_001:reset_in0
-	wire         rst_controller_002_reset_out_reset;                                     // rst_controller_002:reset_out -> [VGA_CHAR_BUFFER:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_003_reset_out_reset;                                     // rst_controller_003:reset_out -> mm_interconnect_0:HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
-	wire         hps_arm_h2f_reset_reset;                                                // HPS_ARM:h2f_rst_n -> rst_controller_003:reset_in0
+	wire         rst_controller_002_reset_out_reset;                                     // rst_controller_002:reset_out -> [CPU_NIOS_II:reset_n, RAM_NIOS_II:reset, REG_BTN_INPUT:reset_n, REG_SW_INPUT:reset_n, TIMER_CTRL_OUTPUT:reset_n, TIMER_STATUS_INPUT:reset_n, UART_NIOS_II:rst_n, irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:CPU_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
+	wire         rst_controller_002_reset_out_reset_req;                                 // rst_controller_002:reset_req -> [CPU_NIOS_II:reset_req, RAM_NIOS_II:reset_req, rst_translator:reset_req_in]
+	wire         rst_controller_003_reset_out_reset;                                     // rst_controller_003:reset_out -> [VGA_CHAR_BUFFER:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_004_reset_out_reset;                                     // rst_controller_004:reset_out -> mm_interconnect_0:HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
+	wire         hps_arm_h2f_reset_reset;                                                // HPS_ARM:h2f_rst_n -> rst_controller_004:reset_in0
 
 	MusicPlayerPlatformDesign_AUDIO_CLOCK audio_clock (
 		.ref_clk_clk        (clk_clk),                        //      ref_clk.clk
@@ -211,7 +213,7 @@ module MusicPlayerPlatformDesign (
 	);
 
 	MusicPlayerPlatformDesign_AUDIO_CONFIG audio_config (
-		.clk         (clk_clk),                                                           //                    clk.clk
+		.clk         (audio_clk_export_clk),                                              //                    clk.clk
 		.reset       (rst_controller_reset_out_reset),                                    //                  reset.reset
 		.address     (mm_interconnect_0_audio_config_avalon_av_config_slave_address),     // avalon_av_config_slave.address
 		.byteenable  (mm_interconnect_0_audio_config_avalon_av_config_slave_byteenable),  //                       .byteenable
@@ -225,7 +227,7 @@ module MusicPlayerPlatformDesign (
 	);
 
 	MusicPlayerPlatformDesign_AUDIO_OUT audio_out (
-		.clk         (clk_clk),                                                   //                clk.clk
+		.clk         (audio_clk_export_clk),                                      //                clk.clk
 		.reset       (rst_controller_001_reset_out_reset),                        //              reset.reset
 		.address     (mm_interconnect_0_audio_out_avalon_audio_slave_address),    // avalon_audio_slave.address
 		.chipselect  (mm_interconnect_0_audio_out_avalon_audio_slave_chipselect), //                   .chipselect
@@ -233,7 +235,7 @@ module MusicPlayerPlatformDesign (
 		.write       (mm_interconnect_0_audio_out_avalon_audio_slave_write),      //                   .write
 		.writedata   (mm_interconnect_0_audio_out_avalon_audio_slave_writedata),  //                   .writedata
 		.readdata    (mm_interconnect_0_audio_out_avalon_audio_slave_readdata),   //                   .readdata
-		.irq         (irq_mapper_receiver0_irq),                                  //          interrupt.irq
+		.irq         (irq_synchronizer_receiver_irq),                             //          interrupt.irq
 		.AUD_BCLK    (audio_export_BCLK),                                         // external_interface.export
 		.AUD_DACDAT  (audio_export_DACDAT),                                       //                   .export
 		.AUD_DACLRCK (audio_export_DACLRCK)                                       //                   .export
@@ -241,8 +243,8 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_CPU_NIOS_II cpu_nios_ii (
 		.clk                                 (clk_clk),                                                   //                       clk.clk
-		.reset_n                             (~rst_controller_reset_out_reset),                           //                     reset.reset_n
-		.reset_req                           (rst_controller_reset_out_reset_req),                        //                          .reset_req
+		.reset_n                             (~rst_controller_002_reset_out_reset),                       //                     reset.reset_n
+		.reset_req                           (rst_controller_002_reset_out_reset_req),                    //                          .reset_req
 		.d_address                           (cpu_nios_ii_data_master_address),                           //               data_master.address
 		.d_byteenable                        (cpu_nios_ii_data_master_byteenable),                        //                          .byteenable
 		.d_read                              (cpu_nios_ii_data_master_read),                              //                          .read
@@ -474,14 +476,14 @@ module MusicPlayerPlatformDesign (
 		.readdata   (mm_interconnect_0_ram_nios_ii_s1_readdata),   //       .readdata
 		.writedata  (mm_interconnect_0_ram_nios_ii_s1_writedata),  //       .writedata
 		.byteenable (mm_interconnect_0_ram_nios_ii_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_reset_out_reset),              // reset1.reset
-		.reset_req  (rst_controller_reset_out_reset_req),          //       .reset_req
+		.reset      (rst_controller_002_reset_out_reset),          // reset1.reset
+		.reset_req  (rst_controller_002_reset_out_reset_req),      //       .reset_req
 		.freeze     (1'b0)                                         // (terminated)
 	);
 
 	MusicPlayerPlatformDesign_REG_BTN_INPUT reg_btn_input (
 		.clk        (clk_clk),                                       //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),           //               reset.reset_n
 		.address    (mm_interconnect_0_reg_btn_input_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_reg_btn_input_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_reg_btn_input_s1_writedata),  //                    .writedata
@@ -493,7 +495,7 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_REG_SW_INPUT reg_sw_input (
 		.clk        (clk_clk),                                      //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_reg_sw_input_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_reg_sw_input_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_reg_sw_input_s1_writedata),  //                    .writedata
@@ -505,7 +507,7 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_TIMER_CTRL_OUTPUT timer_ctrl_output (
 		.clk        (clk_clk),                                           //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),                   //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),               //               reset.reset_n
 		.address    (mm_interconnect_0_timer_ctrl_output_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_timer_ctrl_output_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_timer_ctrl_output_s1_writedata),  //                    .writedata
@@ -516,7 +518,7 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_TIMER_STATUS_INPUT timer_status_input (
 		.clk        (clk_clk),                                            //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),                    //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),                //               reset.reset_n
 		.address    (mm_interconnect_0_timer_status_input_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_timer_status_input_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_timer_status_input_s1_writedata),  //                    .writedata
@@ -527,7 +529,7 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_UART_NIOS_II uart_nios_ii (
 		.clk            (clk_clk),                                                      //               clk.clk
-		.rst_n          (~rst_controller_reset_out_reset),                              //             reset.reset_n
+		.rst_n          (~rst_controller_002_reset_out_reset),                          //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_uart_nios_ii_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_uart_nios_ii_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_uart_nios_ii_avalon_jtag_slave_read),       //                  .read_n
@@ -540,7 +542,7 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_VGA_CHAR_BUFFER vga_char_buffer (
 		.clk                  (vga_clk_clk),                                                            //                       clk.clk
-		.reset                (rst_controller_002_reset_out_reset),                                     //                     reset.reset
+		.reset                (rst_controller_003_reset_out_reset),                                     //                     reset.reset
 		.ctrl_address         (mm_interconnect_0_vga_char_buffer_avalon_char_control_slave_address),    // avalon_char_control_slave.address
 		.ctrl_byteenable      (mm_interconnect_0_vga_char_buffer_avalon_char_control_slave_byteenable), //                          .byteenable
 		.ctrl_chipselect      (mm_interconnect_0_vga_char_buffer_avalon_char_control_slave_chipselect), //                          .chipselect
@@ -565,7 +567,7 @@ module MusicPlayerPlatformDesign (
 
 	MusicPlayerPlatformDesign_VGA_CONTROLLER vga_controller (
 		.clk           (vga_clk_clk),                                      //                clk.clk
-		.reset         (rst_controller_002_reset_out_reset),               //              reset.reset
+		.reset         (rst_controller_003_reset_out_reset),               //              reset.reset
 		.data          (vga_char_buffer_avalon_char_source_data),          //    avalon_vga_sink.data
 		.startofpacket (vga_char_buffer_avalon_char_source_startofpacket), //                   .startofpacket
 		.endofpacket   (vga_char_buffer_avalon_char_source_endofpacket),   //                   .endofpacket
@@ -618,12 +620,14 @@ module MusicPlayerPlatformDesign (
 		.HPS_ARM_h2f_axi_master_rlast                                       (hps_arm_h2f_axi_master_rlast),                                           //                                                             .rlast
 		.HPS_ARM_h2f_axi_master_rvalid                                      (hps_arm_h2f_axi_master_rvalid),                                          //                                                             .rvalid
 		.HPS_ARM_h2f_axi_master_rready                                      (hps_arm_h2f_axi_master_rready),                                          //                                                             .rready
+		.AUDIO_CLOCK_audio_clk_clk                                          (audio_clk_export_clk),                                                   //                                        AUDIO_CLOCK_audio_clk.clk
 		.CLK_clk_clk                                                        (clk_clk),                                                                //                                                      CLK_clk.clk
 		.VGA_CLOCK_BRIDGE_out_clk_clk                                       (vga_clk_clk),                                                            //                                     VGA_CLOCK_BRIDGE_out_clk.clk
+		.AUDIO_CONFIG_reset_reset_bridge_in_reset_reset                     (rst_controller_reset_out_reset),                                         //                     AUDIO_CONFIG_reset_reset_bridge_in_reset.reset
 		.AUDIO_OUT_reset_reset_bridge_in_reset_reset                        (rst_controller_001_reset_out_reset),                                     //                        AUDIO_OUT_reset_reset_bridge_in_reset.reset
-		.CPU_NIOS_II_reset_reset_bridge_in_reset_reset                      (rst_controller_reset_out_reset),                                         //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
-		.HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_003_reset_out_reset),                                     // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
-		.VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset                  (rst_controller_002_reset_out_reset),                                     //                  VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset
+		.CPU_NIOS_II_reset_reset_bridge_in_reset_reset                      (rst_controller_002_reset_out_reset),                                     //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
+		.HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_004_reset_out_reset),                                     // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
+		.VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset                  (rst_controller_003_reset_out_reset),                                     //                  VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset
 		.CPU_NIOS_II_data_master_address                                    (cpu_nios_ii_data_master_address),                                        //                                      CPU_NIOS_II_data_master.address
 		.CPU_NIOS_II_data_master_waitrequest                                (cpu_nios_ii_data_master_waitrequest),                                    //                                                             .waitrequest
 		.CPU_NIOS_II_data_master_byteenable                                 (cpu_nios_ii_data_master_byteenable),                                     //                                                             .byteenable
@@ -709,20 +713,31 @@ module MusicPlayerPlatformDesign (
 	);
 
 	MusicPlayerPlatformDesign_irq_mapper irq_mapper (
-		.clk           (clk_clk),                        //       clk.clk
-		.reset         (rst_controller_reset_out_reset), // clk_reset.reset
-		.receiver0_irq (irq_mapper_receiver0_irq),       // receiver0.irq
-		.receiver1_irq (irq_mapper_receiver1_irq),       // receiver1.irq
-		.receiver2_irq (irq_mapper_receiver2_irq),       // receiver2.irq
-		.receiver3_irq (irq_mapper_receiver3_irq),       // receiver3.irq
-		.sender_irq    (cpu_nios_ii_irq_irq)             //    sender.irq
+		.clk           (clk_clk),                            //       clk.clk
+		.reset         (rst_controller_002_reset_out_reset), // clk_reset.reset
+		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
+		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
+		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
+		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
+		.sender_irq    (cpu_nios_ii_irq_irq)                 //    sender.irq
+	);
+
+	altera_irq_clock_crosser #(
+		.IRQ_WIDTH (1)
+	) irq_synchronizer (
+		.receiver_clk   (audio_clk_export_clk),               //       receiver_clk.clk
+		.sender_clk     (clk_clk),                            //         sender_clk.clk
+		.receiver_reset (rst_controller_001_reset_out_reset), // receiver_clk_reset.reset
+		.sender_reset   (rst_controller_002_reset_out_reset), //   sender_clk_reset.reset
+		.receiver_irq   (irq_synchronizer_receiver_irq),      //           receiver.irq
+		.sender_irq     (irq_mapper_receiver0_irq)            //             sender.irq
 	);
 
 	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (1),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (1),
+		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
 		.MIN_RST_ASSERTION_TIME    (3),
 		.RESET_REQ_EARLY_DSRT_TIME (1),
@@ -744,41 +759,41 @@ module MusicPlayerPlatformDesign (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
-		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
-		.clk            (clk_clk),                            //       clk.clk
-		.reset_out      (rst_controller_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_reset_out_reset_req), //          .reset_req
-		.reset_req_in0  (1'b0),                               // (terminated)
-		.reset_in1      (1'b0),                               // (terminated)
-		.reset_req_in1  (1'b0),                               // (terminated)
-		.reset_in2      (1'b0),                               // (terminated)
-		.reset_req_in2  (1'b0),                               // (terminated)
-		.reset_in3      (1'b0),                               // (terminated)
-		.reset_req_in3  (1'b0),                               // (terminated)
-		.reset_in4      (1'b0),                               // (terminated)
-		.reset_req_in4  (1'b0),                               // (terminated)
-		.reset_in5      (1'b0),                               // (terminated)
-		.reset_req_in5  (1'b0),                               // (terminated)
-		.reset_in6      (1'b0),                               // (terminated)
-		.reset_req_in6  (1'b0),                               // (terminated)
-		.reset_in7      (1'b0),                               // (terminated)
-		.reset_req_in7  (1'b0),                               // (terminated)
-		.reset_in8      (1'b0),                               // (terminated)
-		.reset_req_in8  (1'b0),                               // (terminated)
-		.reset_in9      (1'b0),                               // (terminated)
-		.reset_req_in9  (1'b0),                               // (terminated)
-		.reset_in10     (1'b0),                               // (terminated)
-		.reset_req_in10 (1'b0),                               // (terminated)
-		.reset_in11     (1'b0),                               // (terminated)
-		.reset_req_in11 (1'b0),                               // (terminated)
-		.reset_in12     (1'b0),                               // (terminated)
-		.reset_req_in12 (1'b0),                               // (terminated)
-		.reset_in13     (1'b0),                               // (terminated)
-		.reset_req_in13 (1'b0),                               // (terminated)
-		.reset_in14     (1'b0),                               // (terminated)
-		.reset_req_in14 (1'b0),                               // (terminated)
-		.reset_in15     (1'b0),                               // (terminated)
-		.reset_req_in15 (1'b0)                                // (terminated)
+		.reset_in0      (~reset_reset_n),                 // reset_in0.reset
+		.clk            (audio_clk_export_clk),           //       clk.clk
+		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
+		.reset_req      (),                               // (terminated)
+		.reset_req_in0  (1'b0),                           // (terminated)
+		.reset_in1      (1'b0),                           // (terminated)
+		.reset_req_in1  (1'b0),                           // (terminated)
+		.reset_in2      (1'b0),                           // (terminated)
+		.reset_req_in2  (1'b0),                           // (terminated)
+		.reset_in3      (1'b0),                           // (terminated)
+		.reset_req_in3  (1'b0),                           // (terminated)
+		.reset_in4      (1'b0),                           // (terminated)
+		.reset_req_in4  (1'b0),                           // (terminated)
+		.reset_in5      (1'b0),                           // (terminated)
+		.reset_req_in5  (1'b0),                           // (terminated)
+		.reset_in6      (1'b0),                           // (terminated)
+		.reset_req_in6  (1'b0),                           // (terminated)
+		.reset_in7      (1'b0),                           // (terminated)
+		.reset_req_in7  (1'b0),                           // (terminated)
+		.reset_in8      (1'b0),                           // (terminated)
+		.reset_req_in8  (1'b0),                           // (terminated)
+		.reset_in9      (1'b0),                           // (terminated)
+		.reset_req_in9  (1'b0),                           // (terminated)
+		.reset_in10     (1'b0),                           // (terminated)
+		.reset_req_in10 (1'b0),                           // (terminated)
+		.reset_in11     (1'b0),                           // (terminated)
+		.reset_req_in11 (1'b0),                           // (terminated)
+		.reset_in12     (1'b0),                           // (terminated)
+		.reset_req_in12 (1'b0),                           // (terminated)
+		.reset_in13     (1'b0),                           // (terminated)
+		.reset_req_in13 (1'b0),                           // (terminated)
+		.reset_in14     (1'b0),                           // (terminated)
+		.reset_req_in14 (1'b0),                           // (terminated)
+		.reset_in15     (1'b0),                           // (terminated)
+		.reset_req_in15 (1'b0)                            // (terminated)
 	);
 
 	altera_reset_controller #(
@@ -808,7 +823,7 @@ module MusicPlayerPlatformDesign (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
 		.reset_in0      (audio_clock_reset_source_reset),     // reset_in0.reset
-		.clk            (clk_clk),                            //       clk.clk
+		.clk            (audio_clk_export_clk),               //       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
@@ -848,7 +863,7 @@ module MusicPlayerPlatformDesign (
 		.NUM_RESET_INPUTS          (1),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQUEST_PRESENT     (1),
 		.RESET_REQ_WAIT_TIME       (1),
 		.MIN_RST_ASSERTION_TIME    (3),
 		.RESET_REQ_EARLY_DSRT_TIME (1),
@@ -870,9 +885,72 @@ module MusicPlayerPlatformDesign (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_002 (
+		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
+		.clk            (clk_clk),                                //       clk.clk
+		.reset_out      (rst_controller_002_reset_out_reset),     // reset_out.reset
+		.reset_req      (rst_controller_002_reset_out_reset_req), //          .reset_req
+		.reset_req_in0  (1'b0),                                   // (terminated)
+		.reset_in1      (1'b0),                                   // (terminated)
+		.reset_req_in1  (1'b0),                                   // (terminated)
+		.reset_in2      (1'b0),                                   // (terminated)
+		.reset_req_in2  (1'b0),                                   // (terminated)
+		.reset_in3      (1'b0),                                   // (terminated)
+		.reset_req_in3  (1'b0),                                   // (terminated)
+		.reset_in4      (1'b0),                                   // (terminated)
+		.reset_req_in4  (1'b0),                                   // (terminated)
+		.reset_in5      (1'b0),                                   // (terminated)
+		.reset_req_in5  (1'b0),                                   // (terminated)
+		.reset_in6      (1'b0),                                   // (terminated)
+		.reset_req_in6  (1'b0),                                   // (terminated)
+		.reset_in7      (1'b0),                                   // (terminated)
+		.reset_req_in7  (1'b0),                                   // (terminated)
+		.reset_in8      (1'b0),                                   // (terminated)
+		.reset_req_in8  (1'b0),                                   // (terminated)
+		.reset_in9      (1'b0),                                   // (terminated)
+		.reset_req_in9  (1'b0),                                   // (terminated)
+		.reset_in10     (1'b0),                                   // (terminated)
+		.reset_req_in10 (1'b0),                                   // (terminated)
+		.reset_in11     (1'b0),                                   // (terminated)
+		.reset_req_in11 (1'b0),                                   // (terminated)
+		.reset_in12     (1'b0),                                   // (terminated)
+		.reset_req_in12 (1'b0),                                   // (terminated)
+		.reset_in13     (1'b0),                                   // (terminated)
+		.reset_req_in13 (1'b0),                                   // (terminated)
+		.reset_in14     (1'b0),                                   // (terminated)
+		.reset_req_in14 (1'b0),                                   // (terminated)
+		.reset_in15     (1'b0),                                   // (terminated)
+		.reset_req_in15 (1'b0)                                    // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_003 (
 		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
 		.clk            (vga_clk_clk),                        //       clk.clk
-		.reset_out      (rst_controller_002_reset_out_reset), // reset_out.reset
+		.reset_out      (rst_controller_003_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
 		.reset_in1      (1'b0),                               // (terminated)
@@ -932,10 +1010,10 @@ module MusicPlayerPlatformDesign (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_003 (
+	) rst_controller_004 (
 		.reset_in0      (~hps_arm_h2f_reset_reset),           // reset_in0.reset
 		.clk            (clk_clk),                            //       clk.clk
-		.reset_out      (rst_controller_003_reset_out_reset), // reset_out.reset
+		.reset_out      (rst_controller_004_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
 		.reset_in1      (1'b0),                               // (terminated)

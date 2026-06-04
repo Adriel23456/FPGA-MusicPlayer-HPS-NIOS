@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.06.03.23:30:30</td>
+    <td class="l">2026.06.04.02:15:56</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -1278,6 +1278,63 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
    </tr>
   </table>
+  <a name="module_AUDIO_CLK_BRIDGE"> </a>
+  <div>
+   <hr/>
+   <h2>AUDIO_CLK_BRIDGE</h2>altera_clock_bridge v22.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_AUDIO_CLOCK">AUDIO_CLOCK</a>
+      </td>
+      <td class="from">audio_clk&#160;&#160;</td>
+      <td class="main" rowspan="2">AUDIO_CLK_BRIDGE</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;in_clk</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">DERIVED_CLOCK_RATE</td>
+        <td class="parametervalue">11288888</td>
+       </tr>
+       <tr>
+        <td class="parametername">EXPLICIT_CLOCK_RATE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">NUM_CLOCK_OUTPUTS</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_AUDIO_CLOCK"> </a>
   <div>
    <hr/>
@@ -1290,7 +1347,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_CLK">CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="6">AUDIO_CLOCK</td>
+      <td class="main" rowspan="14">AUDIO_CLOCK</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;ref_clk</td>
@@ -1304,15 +1361,57 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td></td>
       <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
+      <td class="from">audio_clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
        <a href="#module_AUDIO_OUT">AUDIO_OUT</a>
       </td>
      </tr>
      <tr>
       <td></td>
       <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
       <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">audio_clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_AUDIO_CONFIG">AUDIO_CONFIG</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">audio_clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_AUDIO_CLK_BRIDGE">AUDIO_CLK_BRIDGE</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;in_clk</td>
      </tr>
     </table>
    </div>
@@ -1378,7 +1477,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_CPU_NIOS_II">CPU_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="7">AUDIO_CONFIG</td>
+      <td class="main" rowspan="8">AUDIO_CONFIG</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_av_config_slave</td>
@@ -1387,15 +1486,21 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_CLK">CLK</a>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_AUDIO_CLOCK">AUDIO_CLOCK</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">audio_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_CLK">CLK</a>
+      </td>
       <td class="from">clk_reset&#160;&#160;</td>
      </tr>
      <tr>
@@ -1452,7 +1557,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">sampling_rate</td>
-        <td class="parametervalue">48 kHz</td>
+        <td class="parametervalue">96 kHz</td>
        </tr>
        <tr>
         <td class="parametername">bosr</td>
@@ -1460,7 +1565,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">sr_register</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">7</td>
        </tr>
        <tr>
         <td class="parametername">video_format</td>
@@ -1480,7 +1585,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
-        <td class="parametervalue">50000000</td>
+        <td class="parametervalue">11288888</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -1513,7 +1618,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_CPU_NIOS_II">CPU_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="10">AUDIO_OUT</td>
+      <td class="main" rowspan="9">AUDIO_OUT</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_audio_slave</td>
@@ -1528,21 +1633,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_CLK">CLK</a>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_AUDIO_CLOCK">AUDIO_CLOCK</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">audio_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
      <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_AUDIO_CLOCK">AUDIO_CLOCK</a>
-      </td>
       <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
@@ -1579,7 +1678,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
-        <td class="parametervalue">50000000</td>
+        <td class="parametervalue">11288888</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -2654,11 +2753,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_CLOCK_DOMAIN</td>
-        <td class="parametervalue">2</td>
+        <td class="parametervalue">3</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_RESET_DOMAIN</td>
-        <td class="parametervalue">2</td>
+        <td class="parametervalue">3</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -31714,7 +31813,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.23 seconds</td>
+    <td class="r">rendering took 0.26 seconds</td>
    </tr>
   </table>
  </body>

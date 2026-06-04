@@ -6,29 +6,31 @@
 
 #define AUDIO_OUT_IRQ_NUM   3
 
-/* The codec is LOCKED to this rate in audio_init and never reprogrammed.
- * All source rates are matched to it in software. */
-#define DAC_RATE_HZ      44100u
-#define CODEC_REG8_DAC   0x022u    /* WM8731 sampling-control value for 44.1 kHz */
-/* If you ever lock the DAC at 48 kHz instead: DAC_RATE_HZ=48000u, CODEC_REG8_DAC=0x000u */
-
-/* ---- AV-config / WM8731 register block (Avalon-mapped) ---- */
+/* AIS bit in the AV config status register confirms auto-init completed. */
 #define AV_CONFIG_STATUS  ((volatile unsigned int *)(AUDIO_CONFIG_BASE + 4))
 #define AV_AIS_BIT        (1u << 8)
 
-#define AVCFG_STATUS   (*(volatile uint32_t *)(AUDIO_CONFIG_BASE + 0x4))
-#define AVCFG_ADDRESS  (*(volatile uint32_t *)(AUDIO_CONFIG_BASE + 0x8))
-#define AVCFG_DATA     (*(volatile uint32_t *)(AUDIO_CONFIG_BASE + 0xC))
-#define AVCFG_RDY      (1u << 1)
-#define AVCFG_ACK      (1u << 0)
+/* WM8731 sampling-control (reg 8) values, Normal mode, BOSR = 1 (384fs). */
+#define CODEC_REG8_48K   0x002u   /* ADC48K_DAC48K */
+#define CODEC_REG8_32K   0x006u   /* ADC32K_DAC32K -> used for 16k playback */
+#define CODEC_REG8_8K    0x00Eu   /* ADC8K_DAC8K   */
+#define CODEC_REG8_44K1  0x022u   /* ADC44K1_DAC44K1 */
 
-/* ---- RESAMPLE STEPS (SOURCE frames per output frame, 16.16) ----
- * step = src_rate / DAC_RATE_HZ. Tweak these to fix speed (see note in .c):
- *   16000/44100 -> 23777   (48k DAC alt: 21845)
- *    8000/44100 -> 11889   (48k DAC alt: 10923) */
-#define STEP_44K1   (1u << 16)     /* 44.1k source on 44.1k DAC -> exact 1:1 */
-#define STEP_16K    23777u
-#define STEP_8K     11889u
+/* ---- PLAYBACK SPEED STEPS (SOURCE frames per output frame, 16.16) ----
+ * Speed tuning lever:  too slow -> INCREASE the step;  too fast -> DECREASE it.
+ *   65536 (1<<16) = 1:1.
+ *
+ * 8k  : native on the 8k codec  -> 1:1, bit-exact (perfect, do not change).
+ * 16k : codec at 32k, step 1<<17 plays at the correct speed with clear quality.
+ * 44.1k: codec reg8 0x22, played 1:1 (bit-exact). This is the known-good path
+ *        -- adding a fractional step here caused slowdown + background noise,
+ *        so 44.1k stays on the 1:1 fast path. A small residual pitch offset is
+ *        inherent to MCLK 18.432 MHz (true 44.1k needs 11.2896 MHz).
+ * 48k : native, 1:1. */
+#define STEP_8K     (1u << 16)     /* native, 1:1 (perfect) */
+#define STEP_16K    (1u << 17)     /* correct speed + clear quality */
+#define STEP_44K1   (1u << 16)     /* 1:1 bit-exact -> nice quality, no noise */
+#define STEP_48K    (1u << 16)
 
 typedef enum {
     RATE_48K  = 48000,

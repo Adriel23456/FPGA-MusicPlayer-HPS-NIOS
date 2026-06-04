@@ -8,18 +8,15 @@
 static alt_up_audio_dev     *g_audio = 0;
 static alt_up_av_config_dev *g_avcfg = 0;
 
-static uint32_t s_step  = STEP_44K1;  /* SOURCE frames per output frame (16.16) */
+static uint32_t s_step  = 1u << 16;   /* SOURCE frames per output frame (16.16) */
 static uint32_t s_phase = 0;          /* current sub-frame position             */
 
-static int codec_write_raw(unsigned reg7, unsigned data9)
+/* Write one WM8731 register over I2C through the AV config core (SDAT/SCLK). */
+static int codec_cfg(unsigned reg, unsigned data)
 {
-    unsigned spin = 0;
-    while (!(AVCFG_STATUS & AVCFG_RDY)) { if (++spin > 2000000u) return -1; }
-    AVCFG_ADDRESS = reg7  & 0x7Fu;
-    AVCFG_DATA    = data9 & 0x1FFu;
-    spin = 0;
-    while (!(AVCFG_STATUS & AVCFG_RDY)) { if (++spin > 2000000u) return -1; }
-    return (AVCFG_STATUS & AVCFG_ACK) ? -1 : 0;
+    return alt_up_av_config_write_audio_cfg_register(g_avcfg,
+                                                     (alt_u32)reg,
+                                                     (alt_u32)data);
 }
 
 static inline unsigned int u16cast(int v)
@@ -34,8 +31,8 @@ int audio_fifo_has_space(void)
             alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) > 0);
 }
 
-/* Blocking stereo frame write: both channels written as a pair (the core does
- * not play a frame until L and R are both present). */
+/* Both channels written as a pair (the core does not play a frame until L and
+ * R are both present, per the audio-core datasheet). */
 static void write_stereo_frame(int16_t l, int16_t r)
 {
     unsigned spin = 0;
@@ -47,17 +44,47 @@ static void write_stereo_frame(int16_t l, int16_t r)
     alt_up_audio_write_fifo_head(g_audio, u16cast(r), ALT_UP_AUDIO_RIGHT);
 }
 
-/* DAC is fixed at DAC_RATE_HZ (set in audio_init). Pick the FRAME step that
- * maps this source rate onto it. The codec is NOT reprogrammed here. */
+/* Program codec sampling register (deactivate, set, activate) over I2C.
+ * Left Justified / slave format is left as auto-init set it (reg7 untouched). */
+static int codec_set_reg8(unsigned reg8)
+{
+    int e = 0;
+    e |= codec_cfg(0x09, 0x000);   /* deactivate */
+    e |= codec_cfg(0x08, reg8);    /* sampling control */
+    e |= codec_cfg(0x09, 0x001);   /* activate   */
+    return e ? -1 : 0;
+}
+
 audio_rate_t audio_prepare_rate(audio_rate_t src_rate)
 {
+    int e;
+
     switch (src_rate) {
-        case RATE_44K1: s_step = STEP_44K1; break;   /* 1:1, bit-exact (untouched) */
-        case RATE_16K:  s_step = STEP_16K;  break;
-        case RATE_8K:   s_step = STEP_8K;   break;
-        default:        s_step = STEP_44K1; break;
+        case RATE_8K:                            /* native, 1:1 (perfect) */
+            e = codec_set_reg8(CODEC_REG8_8K);
+            s_step = STEP_8K;
+            break;
+        case RATE_16K:                           /* codec 32k, speed via STEP_16K */
+            e = codec_set_reg8(CODEC_REG8_32K);
+            s_step = STEP_16K;
+            break;
+        case RATE_44K1:                          /* reg8 0x22, played 1:1 (no noise) */
+            e = codec_set_reg8(CODEC_REG8_44K1);
+            s_step = STEP_44K1;
+            break;
+        case RATE_48K:                           /* native, 1:1 */
+            e = codec_set_reg8(CODEC_REG8_48K);
+            s_step = STEP_48K;
+            break;
+        default:                                 /* safe default: 48k native */
+            e = codec_set_reg8(CODEC_REG8_48K);
+            s_step = STEP_48K;
+            break;
     }
     s_phase = 0;
+
+    if (e) dbg_puts("[AUDIO] WARN: codec rate write FAILED\r\n");
+    else   dbg_puts("[AUDIO] codec rate set\r\n");
     return src_rate;
 }
 
@@ -65,16 +92,18 @@ void audio_play_stereo(const volatile int16_t *inter, unsigned frames)
 {
     if (!g_audio || !inter || frames < 2) return;
 
-    /* Fast path: 44.1k source on 44.1k DAC -> 1:1, bit-exact. UNCHANGED. */
+    /* Fast path: step is exactly 1:1 -> bit-exact, no interpolation.
+     * 8k, 44.1k and 48k all land here. */
     if (s_step == (1u << 16)) {
         for (unsigned f = 0; f < frames; f++)
             write_stereo_frame(inter[2*f], inter[2*f + 1]);
         return;
     }
 
-    /* Resample path (16k / 8k -> 44.1k). phase/idx are in STEREO FRAMES, so
-     * idx addresses inter[2*idx] (L) and inter[2*idx+1] (R). L and R are
-     * interpolated INDEPENDENTLY with half-LSB rounding before the >>16. */
+    /* Speed/resample path (16k). phase/idx are in STEREO FRAMES, so idx
+     * addresses inter[2*idx] (L) and inter[2*idx+1] (R). A LARGER s_step
+     * consumes the source faster -> faster playback; a SMALLER step -> slower.
+     * L and R interpolated INDEPENDENTLY with half-LSB rounding before >>16. */
     uint32_t phase = s_phase;
     uint32_t limit = ((uint32_t)(frames - 1)) << 16;   /* need frame idx and idx+1 */
 
@@ -89,8 +118,7 @@ void audio_play_stereo(const volatile int16_t *inter, unsigned frames)
                            (int16_t)((vR + (1 << 15)) >> 16));
         phase += s_step;
     }
-    /* carry the sub-frame remainder into the next buffer so seams stay
-     * continuous: subtract the frames we fully consumed. */
+    /* carry sub-frame remainder into the next buffer so seams stay continuous */
     s_phase = phase - limit;
 }
 
@@ -103,25 +131,21 @@ int audio_init(void)
     if (g_avcfg == 0) { dbg_puts("[AUDIO] ERROR: AV config open failed\r\n"); return -1; }
     alt_up_av_config_reset(g_avcfg);
     while (!(*AV_CONFIG_STATUS & AV_AIS_BIT))
-        ;
+        ;                                  /* wait for auto-init (Left Justified) */
     dbg_puts("[AUDIO] AV config auto-init complete\r\n");
 
     g_audio = alt_up_audio_open_dev(AUDIO_OUT_NAME);
     if (g_audio == 0) { dbg_puts("[AUDIO] ERROR: audio open failed\r\n"); return -1; }
     alt_up_audio_reset_audio_core(g_audio);
 
-    e |= codec_write_raw(0x04, 0x010);   /* analog path: DACSEL=1, BYPASS=0   */
-    e |= codec_write_raw(0x05, 0x000);   /* digital path: de-emphasis/mute OFF*/
-    e |= codec_write_raw(0x02, 0x07F);   /* L headphone */
-    e |= codec_write_raw(0x03, 0x07F);   /* R headphone */
+    /* signal-path config over I2C (codec stays slave, Left Justified) */
+    e |= codec_cfg(0x04, 0x010);   /* analog path: DACSEL=1, BYPASS=0   */
+    e |= codec_cfg(0x05, 0x000);   /* digital path: de-emphasis/mute OFF */
+    e |= codec_cfg(0x02, 0x07F);   /* L headphone */
+    e |= codec_cfg(0x03, 0x07F);   /* R headphone */
 
-    /* lock the DAC sampling rate ONCE -- never reprogrammed per song */
-    e |= codec_write_raw(0x09, 0x000);            /* deactivate */
-    e |= codec_write_raw(0x08, CODEC_REG8_DAC);   /* sampling control */
-    e |= codec_write_raw(0x09, 0x001);            /* activate   */
-
-    if (e) dbg_puts("[AUDIO] CODEC WRITE FAILED -> path/rate not applied\r\n");
-    else   dbg_puts("[AUDIO] codec locked @ DAC_RATE_HZ (DACSEL=1, BYPASS=0)\r\n");
+    if (e) dbg_puts("[AUDIO] CODEC WRITE FAILED -> path not applied\r\n");
+    else   dbg_puts("[AUDIO] codec path OK (DACSEL=1, BYPASS=0, slave/LeftJustified)\r\n");
 
     dbg_puts("[AUDIO] init: complete\r\n");
     return 0;
