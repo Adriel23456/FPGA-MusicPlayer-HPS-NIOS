@@ -43,11 +43,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		output wire        HPS_ARM_h2f_axi_master_rlast,                                       //                                                             .rlast
 		output wire        HPS_ARM_h2f_axi_master_rvalid,                                      //                                                             .rvalid
 		input  wire        HPS_ARM_h2f_axi_master_rready,                                      //                                                             .rready
-		input  wire        AUDIO_CLOCK_audio_clk_clk,                                          //                                        AUDIO_CLOCK_audio_clk.clk
 		input  wire        CLK_clk_clk,                                                        //                                                      CLK_clk.clk
 		input  wire        VGA_CLOCK_BRIDGE_out_clk_clk,                                       //                                     VGA_CLOCK_BRIDGE_out_clk.clk
-		input  wire        AUDIO_CONFIG_reset_reset_bridge_in_reset_reset,                     //                     AUDIO_CONFIG_reset_reset_bridge_in_reset.reset
-		input  wire        AUDIO_OUT_reset_reset_bridge_in_reset_reset,                        //                        AUDIO_OUT_reset_reset_bridge_in_reset.reset
 		input  wire        CPU_NIOS_II_reset_reset_bridge_in_reset_reset,                      //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
 		input  wire        HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		input  wire        VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset,                  //                  VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset
@@ -688,6 +685,18 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	wire   [10:0] ram_nios_ii_s1_burst_adapter_source0_channel;                                                            // RAM_NIOS_II_s1_burst_adapter:source0_channel -> RAM_NIOS_II_s1_agent:cp_channel
 	wire          ram_nios_ii_s1_burst_adapter_source0_startofpacket;                                                      // RAM_NIOS_II_s1_burst_adapter:source0_startofpacket -> RAM_NIOS_II_s1_agent:cp_startofpacket
 	wire          ram_nios_ii_s1_burst_adapter_source0_endofpacket;                                                        // RAM_NIOS_II_s1_burst_adapter:source0_endofpacket -> RAM_NIOS_II_s1_agent:cp_endofpacket
+	wire          cmd_demux_src0_valid;                                                                                    // cmd_demux:src0_valid -> cmd_mux:sink0_valid
+	wire  [128:0] cmd_demux_src0_data;                                                                                     // cmd_demux:src0_data -> cmd_mux:sink0_data
+	wire          cmd_demux_src0_ready;                                                                                    // cmd_mux:sink0_ready -> cmd_demux:src0_ready
+	wire   [10:0] cmd_demux_src0_channel;                                                                                  // cmd_demux:src0_channel -> cmd_mux:sink0_channel
+	wire          cmd_demux_src0_startofpacket;                                                                            // cmd_demux:src0_startofpacket -> cmd_mux:sink0_startofpacket
+	wire          cmd_demux_src0_endofpacket;                                                                              // cmd_demux:src0_endofpacket -> cmd_mux:sink0_endofpacket
+	wire          cmd_demux_src1_valid;                                                                                    // cmd_demux:src1_valid -> cmd_mux_001:sink0_valid
+	wire  [128:0] cmd_demux_src1_data;                                                                                     // cmd_demux:src1_data -> cmd_mux_001:sink0_data
+	wire          cmd_demux_src1_ready;                                                                                    // cmd_mux_001:sink0_ready -> cmd_demux:src1_ready
+	wire   [10:0] cmd_demux_src1_channel;                                                                                  // cmd_demux:src1_channel -> cmd_mux_001:sink0_channel
+	wire          cmd_demux_src1_startofpacket;                                                                            // cmd_demux:src1_startofpacket -> cmd_mux_001:sink0_startofpacket
+	wire          cmd_demux_src1_endofpacket;                                                                              // cmd_demux:src1_endofpacket -> cmd_mux_001:sink0_endofpacket
 	wire          cmd_demux_src4_valid;                                                                                    // cmd_demux:src4_valid -> cmd_mux_004:sink0_valid
 	wire  [128:0] cmd_demux_src4_data;                                                                                     // cmd_demux:src4_data -> cmd_mux_004:sink0_data
 	wire          cmd_demux_src4_ready;                                                                                    // cmd_mux_004:sink0_ready -> cmd_demux:src4_ready
@@ -742,6 +751,18 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	wire   [10:0] cmd_demux_003_src1_channel;                                                                              // cmd_demux_003:src1_channel -> cmd_mux_006:sink3_channel
 	wire          cmd_demux_003_src1_startofpacket;                                                                        // cmd_demux_003:src1_startofpacket -> cmd_mux_006:sink3_startofpacket
 	wire          cmd_demux_003_src1_endofpacket;                                                                          // cmd_demux_003:src1_endofpacket -> cmd_mux_006:sink3_endofpacket
+	wire          rsp_demux_src0_valid;                                                                                    // rsp_demux:src0_valid -> rsp_mux:sink0_valid
+	wire  [128:0] rsp_demux_src0_data;                                                                                     // rsp_demux:src0_data -> rsp_mux:sink0_data
+	wire          rsp_demux_src0_ready;                                                                                    // rsp_mux:sink0_ready -> rsp_demux:src0_ready
+	wire   [10:0] rsp_demux_src0_channel;                                                                                  // rsp_demux:src0_channel -> rsp_mux:sink0_channel
+	wire          rsp_demux_src0_startofpacket;                                                                            // rsp_demux:src0_startofpacket -> rsp_mux:sink0_startofpacket
+	wire          rsp_demux_src0_endofpacket;                                                                              // rsp_demux:src0_endofpacket -> rsp_mux:sink0_endofpacket
+	wire          rsp_demux_001_src0_valid;                                                                                // rsp_demux_001:src0_valid -> rsp_mux:sink1_valid
+	wire  [128:0] rsp_demux_001_src0_data;                                                                                 // rsp_demux_001:src0_data -> rsp_mux:sink1_data
+	wire          rsp_demux_001_src0_ready;                                                                                // rsp_mux:sink1_ready -> rsp_demux_001:src0_ready
+	wire   [10:0] rsp_demux_001_src0_channel;                                                                              // rsp_demux_001:src0_channel -> rsp_mux:sink1_channel
+	wire          rsp_demux_001_src0_startofpacket;                                                                        // rsp_demux_001:src0_startofpacket -> rsp_mux:sink1_startofpacket
+	wire          rsp_demux_001_src0_endofpacket;                                                                          // rsp_demux_001:src0_endofpacket -> rsp_mux:sink1_endofpacket
 	wire          rsp_demux_004_src0_valid;                                                                                // rsp_demux_004:src0_valid -> rsp_mux:sink4_valid
 	wire  [128:0] rsp_demux_004_src0_data;                                                                                 // rsp_demux_004:src0_data -> rsp_mux:sink4_data
 	wire          rsp_demux_004_src0_ready;                                                                                // rsp_mux:sink4_ready -> rsp_demux_004:src0_ready
@@ -856,102 +877,54 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	wire   [10:0] ram_nios_ii_s1_to_hps_arm_h2f_axi_master_rd_rsp_width_adapter_src_channel;                               // RAM_NIOS_II_s1_to_HPS_ARM_h2f_axi_master_rd_rsp_width_adapter:out_channel -> rsp_mux_002:sink0_channel
 	wire          ram_nios_ii_s1_to_hps_arm_h2f_axi_master_rd_rsp_width_adapter_src_startofpacket;                         // RAM_NIOS_II_s1_to_HPS_ARM_h2f_axi_master_rd_rsp_width_adapter:out_startofpacket -> rsp_mux_002:sink0_startofpacket
 	wire          ram_nios_ii_s1_to_hps_arm_h2f_axi_master_rd_rsp_width_adapter_src_endofpacket;                           // RAM_NIOS_II_s1_to_HPS_ARM_h2f_axi_master_rd_rsp_width_adapter:out_endofpacket -> rsp_mux_002:sink0_endofpacket
-	wire          cmd_demux_src0_valid;                                                                                    // cmd_demux:src0_valid -> crosser:in_valid
-	wire  [128:0] cmd_demux_src0_data;                                                                                     // cmd_demux:src0_data -> crosser:in_data
-	wire          cmd_demux_src0_ready;                                                                                    // crosser:in_ready -> cmd_demux:src0_ready
-	wire   [10:0] cmd_demux_src0_channel;                                                                                  // cmd_demux:src0_channel -> crosser:in_channel
-	wire          cmd_demux_src0_startofpacket;                                                                            // cmd_demux:src0_startofpacket -> crosser:in_startofpacket
-	wire          cmd_demux_src0_endofpacket;                                                                              // cmd_demux:src0_endofpacket -> crosser:in_endofpacket
-	wire          crosser_out_valid;                                                                                       // crosser:out_valid -> cmd_mux:sink0_valid
-	wire  [128:0] crosser_out_data;                                                                                        // crosser:out_data -> cmd_mux:sink0_data
-	wire          crosser_out_ready;                                                                                       // cmd_mux:sink0_ready -> crosser:out_ready
-	wire   [10:0] crosser_out_channel;                                                                                     // crosser:out_channel -> cmd_mux:sink0_channel
-	wire          crosser_out_startofpacket;                                                                               // crosser:out_startofpacket -> cmd_mux:sink0_startofpacket
-	wire          crosser_out_endofpacket;                                                                                 // crosser:out_endofpacket -> cmd_mux:sink0_endofpacket
-	wire          cmd_demux_src1_valid;                                                                                    // cmd_demux:src1_valid -> crosser_001:in_valid
-	wire  [128:0] cmd_demux_src1_data;                                                                                     // cmd_demux:src1_data -> crosser_001:in_data
-	wire          cmd_demux_src1_ready;                                                                                    // crosser_001:in_ready -> cmd_demux:src1_ready
-	wire   [10:0] cmd_demux_src1_channel;                                                                                  // cmd_demux:src1_channel -> crosser_001:in_channel
-	wire          cmd_demux_src1_startofpacket;                                                                            // cmd_demux:src1_startofpacket -> crosser_001:in_startofpacket
-	wire          cmd_demux_src1_endofpacket;                                                                              // cmd_demux:src1_endofpacket -> crosser_001:in_endofpacket
-	wire          crosser_001_out_valid;                                                                                   // crosser_001:out_valid -> cmd_mux_001:sink0_valid
-	wire  [128:0] crosser_001_out_data;                                                                                    // crosser_001:out_data -> cmd_mux_001:sink0_data
-	wire          crosser_001_out_ready;                                                                                   // cmd_mux_001:sink0_ready -> crosser_001:out_ready
-	wire   [10:0] crosser_001_out_channel;                                                                                 // crosser_001:out_channel -> cmd_mux_001:sink0_channel
-	wire          crosser_001_out_startofpacket;                                                                           // crosser_001:out_startofpacket -> cmd_mux_001:sink0_startofpacket
-	wire          crosser_001_out_endofpacket;                                                                             // crosser_001:out_endofpacket -> cmd_mux_001:sink0_endofpacket
-	wire          cmd_demux_src3_valid;                                                                                    // cmd_demux:src3_valid -> crosser_002:in_valid
-	wire  [128:0] cmd_demux_src3_data;                                                                                     // cmd_demux:src3_data -> crosser_002:in_data
-	wire          cmd_demux_src3_ready;                                                                                    // crosser_002:in_ready -> cmd_demux:src3_ready
-	wire   [10:0] cmd_demux_src3_channel;                                                                                  // cmd_demux:src3_channel -> crosser_002:in_channel
-	wire          cmd_demux_src3_startofpacket;                                                                            // cmd_demux:src3_startofpacket -> crosser_002:in_startofpacket
-	wire          cmd_demux_src3_endofpacket;                                                                              // cmd_demux:src3_endofpacket -> crosser_002:in_endofpacket
-	wire          crosser_002_out_valid;                                                                                   // crosser_002:out_valid -> cmd_mux_003:sink0_valid
-	wire  [128:0] crosser_002_out_data;                                                                                    // crosser_002:out_data -> cmd_mux_003:sink0_data
-	wire          crosser_002_out_ready;                                                                                   // cmd_mux_003:sink0_ready -> crosser_002:out_ready
-	wire   [10:0] crosser_002_out_channel;                                                                                 // crosser_002:out_channel -> cmd_mux_003:sink0_channel
-	wire          crosser_002_out_startofpacket;                                                                           // crosser_002:out_startofpacket -> cmd_mux_003:sink0_startofpacket
-	wire          crosser_002_out_endofpacket;                                                                             // crosser_002:out_endofpacket -> cmd_mux_003:sink0_endofpacket
-	wire          rsp_demux_src0_valid;                                                                                    // rsp_demux:src0_valid -> crosser_003:in_valid
-	wire  [128:0] rsp_demux_src0_data;                                                                                     // rsp_demux:src0_data -> crosser_003:in_data
-	wire          rsp_demux_src0_ready;                                                                                    // crosser_003:in_ready -> rsp_demux:src0_ready
-	wire   [10:0] rsp_demux_src0_channel;                                                                                  // rsp_demux:src0_channel -> crosser_003:in_channel
-	wire          rsp_demux_src0_startofpacket;                                                                            // rsp_demux:src0_startofpacket -> crosser_003:in_startofpacket
-	wire          rsp_demux_src0_endofpacket;                                                                              // rsp_demux:src0_endofpacket -> crosser_003:in_endofpacket
-	wire          crosser_003_out_valid;                                                                                   // crosser_003:out_valid -> rsp_mux:sink0_valid
-	wire  [128:0] crosser_003_out_data;                                                                                    // crosser_003:out_data -> rsp_mux:sink0_data
-	wire          crosser_003_out_ready;                                                                                   // rsp_mux:sink0_ready -> crosser_003:out_ready
-	wire   [10:0] crosser_003_out_channel;                                                                                 // crosser_003:out_channel -> rsp_mux:sink0_channel
-	wire          crosser_003_out_startofpacket;                                                                           // crosser_003:out_startofpacket -> rsp_mux:sink0_startofpacket
-	wire          crosser_003_out_endofpacket;                                                                             // crosser_003:out_endofpacket -> rsp_mux:sink0_endofpacket
-	wire          rsp_demux_001_src0_valid;                                                                                // rsp_demux_001:src0_valid -> crosser_004:in_valid
-	wire  [128:0] rsp_demux_001_src0_data;                                                                                 // rsp_demux_001:src0_data -> crosser_004:in_data
-	wire          rsp_demux_001_src0_ready;                                                                                // crosser_004:in_ready -> rsp_demux_001:src0_ready
-	wire   [10:0] rsp_demux_001_src0_channel;                                                                              // rsp_demux_001:src0_channel -> crosser_004:in_channel
-	wire          rsp_demux_001_src0_startofpacket;                                                                        // rsp_demux_001:src0_startofpacket -> crosser_004:in_startofpacket
-	wire          rsp_demux_001_src0_endofpacket;                                                                          // rsp_demux_001:src0_endofpacket -> crosser_004:in_endofpacket
-	wire          crosser_004_out_valid;                                                                                   // crosser_004:out_valid -> rsp_mux:sink1_valid
-	wire  [128:0] crosser_004_out_data;                                                                                    // crosser_004:out_data -> rsp_mux:sink1_data
-	wire          crosser_004_out_ready;                                                                                   // rsp_mux:sink1_ready -> crosser_004:out_ready
-	wire   [10:0] crosser_004_out_channel;                                                                                 // crosser_004:out_channel -> rsp_mux:sink1_channel
-	wire          crosser_004_out_startofpacket;                                                                           // crosser_004:out_startofpacket -> rsp_mux:sink1_startofpacket
-	wire          crosser_004_out_endofpacket;                                                                             // crosser_004:out_endofpacket -> rsp_mux:sink1_endofpacket
-	wire          rsp_demux_003_src0_valid;                                                                                // rsp_demux_003:src0_valid -> crosser_005:in_valid
-	wire  [128:0] rsp_demux_003_src0_data;                                                                                 // rsp_demux_003:src0_data -> crosser_005:in_data
-	wire          rsp_demux_003_src0_ready;                                                                                // crosser_005:in_ready -> rsp_demux_003:src0_ready
-	wire   [10:0] rsp_demux_003_src0_channel;                                                                              // rsp_demux_003:src0_channel -> crosser_005:in_channel
-	wire          rsp_demux_003_src0_startofpacket;                                                                        // rsp_demux_003:src0_startofpacket -> crosser_005:in_startofpacket
-	wire          rsp_demux_003_src0_endofpacket;                                                                          // rsp_demux_003:src0_endofpacket -> crosser_005:in_endofpacket
-	wire          crosser_005_out_valid;                                                                                   // crosser_005:out_valid -> rsp_mux:sink3_valid
-	wire  [128:0] crosser_005_out_data;                                                                                    // crosser_005:out_data -> rsp_mux:sink3_data
-	wire          crosser_005_out_ready;                                                                                   // rsp_mux:sink3_ready -> crosser_005:out_ready
-	wire   [10:0] crosser_005_out_channel;                                                                                 // crosser_005:out_channel -> rsp_mux:sink3_channel
-	wire          crosser_005_out_startofpacket;                                                                           // crosser_005:out_startofpacket -> rsp_mux:sink3_startofpacket
-	wire          crosser_005_out_endofpacket;                                                                             // crosser_005:out_endofpacket -> rsp_mux:sink3_endofpacket
-	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_valid;         // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_valid -> crosser_006:in_valid
-	wire  [101:0] cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_data;          // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_data -> crosser_006:in_data
-	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_ready;         // crosser_006:in_ready -> CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_ready
-	wire   [10:0] cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_channel;       // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_channel -> crosser_006:in_channel
-	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_startofpacket; // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_startofpacket -> crosser_006:in_startofpacket
-	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_endofpacket;   // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_endofpacket -> crosser_006:in_endofpacket
-	wire          crosser_006_out_valid;                                                                                   // crosser_006:out_valid -> cmd_mux_002:sink0_valid
-	wire  [101:0] crosser_006_out_data;                                                                                    // crosser_006:out_data -> cmd_mux_002:sink0_data
-	wire          crosser_006_out_ready;                                                                                   // cmd_mux_002:sink0_ready -> crosser_006:out_ready
-	wire   [10:0] crosser_006_out_channel;                                                                                 // crosser_006:out_channel -> cmd_mux_002:sink0_channel
-	wire          crosser_006_out_startofpacket;                                                                           // crosser_006:out_startofpacket -> cmd_mux_002:sink0_startofpacket
-	wire          crosser_006_out_endofpacket;                                                                             // crosser_006:out_endofpacket -> cmd_mux_002:sink0_endofpacket
-	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_valid;         // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_valid -> crosser_007:in_valid
-	wire  [128:0] vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_data;          // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_data -> crosser_007:in_data
-	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_ready;         // crosser_007:in_ready -> VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_ready
-	wire   [10:0] vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_channel;       // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_channel -> crosser_007:in_channel
-	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_startofpacket; // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_startofpacket -> crosser_007:in_startofpacket
-	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_endofpacket;   // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_endofpacket -> crosser_007:in_endofpacket
-	wire          crosser_007_out_valid;                                                                                   // crosser_007:out_valid -> rsp_mux:sink2_valid
-	wire  [128:0] crosser_007_out_data;                                                                                    // crosser_007:out_data -> rsp_mux:sink2_data
-	wire          crosser_007_out_ready;                                                                                   // rsp_mux:sink2_ready -> crosser_007:out_ready
-	wire   [10:0] crosser_007_out_channel;                                                                                 // crosser_007:out_channel -> rsp_mux:sink2_channel
-	wire          crosser_007_out_startofpacket;                                                                           // crosser_007:out_startofpacket -> rsp_mux:sink2_startofpacket
-	wire          crosser_007_out_endofpacket;                                                                             // crosser_007:out_endofpacket -> rsp_mux:sink2_endofpacket
+	wire          cmd_demux_src3_valid;                                                                                    // cmd_demux:src3_valid -> crosser:in_valid
+	wire  [128:0] cmd_demux_src3_data;                                                                                     // cmd_demux:src3_data -> crosser:in_data
+	wire          cmd_demux_src3_ready;                                                                                    // crosser:in_ready -> cmd_demux:src3_ready
+	wire   [10:0] cmd_demux_src3_channel;                                                                                  // cmd_demux:src3_channel -> crosser:in_channel
+	wire          cmd_demux_src3_startofpacket;                                                                            // cmd_demux:src3_startofpacket -> crosser:in_startofpacket
+	wire          cmd_demux_src3_endofpacket;                                                                              // cmd_demux:src3_endofpacket -> crosser:in_endofpacket
+	wire          crosser_out_valid;                                                                                       // crosser:out_valid -> cmd_mux_003:sink0_valid
+	wire  [128:0] crosser_out_data;                                                                                        // crosser:out_data -> cmd_mux_003:sink0_data
+	wire          crosser_out_ready;                                                                                       // cmd_mux_003:sink0_ready -> crosser:out_ready
+	wire   [10:0] crosser_out_channel;                                                                                     // crosser:out_channel -> cmd_mux_003:sink0_channel
+	wire          crosser_out_startofpacket;                                                                               // crosser:out_startofpacket -> cmd_mux_003:sink0_startofpacket
+	wire          crosser_out_endofpacket;                                                                                 // crosser:out_endofpacket -> cmd_mux_003:sink0_endofpacket
+	wire          rsp_demux_003_src0_valid;                                                                                // rsp_demux_003:src0_valid -> crosser_001:in_valid
+	wire  [128:0] rsp_demux_003_src0_data;                                                                                 // rsp_demux_003:src0_data -> crosser_001:in_data
+	wire          rsp_demux_003_src0_ready;                                                                                // crosser_001:in_ready -> rsp_demux_003:src0_ready
+	wire   [10:0] rsp_demux_003_src0_channel;                                                                              // rsp_demux_003:src0_channel -> crosser_001:in_channel
+	wire          rsp_demux_003_src0_startofpacket;                                                                        // rsp_demux_003:src0_startofpacket -> crosser_001:in_startofpacket
+	wire          rsp_demux_003_src0_endofpacket;                                                                          // rsp_demux_003:src0_endofpacket -> crosser_001:in_endofpacket
+	wire          crosser_001_out_valid;                                                                                   // crosser_001:out_valid -> rsp_mux:sink3_valid
+	wire  [128:0] crosser_001_out_data;                                                                                    // crosser_001:out_data -> rsp_mux:sink3_data
+	wire          crosser_001_out_ready;                                                                                   // rsp_mux:sink3_ready -> crosser_001:out_ready
+	wire   [10:0] crosser_001_out_channel;                                                                                 // crosser_001:out_channel -> rsp_mux:sink3_channel
+	wire          crosser_001_out_startofpacket;                                                                           // crosser_001:out_startofpacket -> rsp_mux:sink3_startofpacket
+	wire          crosser_001_out_endofpacket;                                                                             // crosser_001:out_endofpacket -> rsp_mux:sink3_endofpacket
+	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_valid;         // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_valid -> crosser_002:in_valid
+	wire  [101:0] cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_data;          // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_data -> crosser_002:in_data
+	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_ready;         // crosser_002:in_ready -> CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_ready
+	wire   [10:0] cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_channel;       // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_channel -> crosser_002:in_channel
+	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_startofpacket; // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_startofpacket -> crosser_002:in_startofpacket
+	wire          cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_endofpacket;   // CPU_NIOS_II_data_master_to_VGA_CHAR_BUFFER_avalon_char_buffer_slave_cmd_width_adapter:out_endofpacket -> crosser_002:in_endofpacket
+	wire          crosser_002_out_valid;                                                                                   // crosser_002:out_valid -> cmd_mux_002:sink0_valid
+	wire  [101:0] crosser_002_out_data;                                                                                    // crosser_002:out_data -> cmd_mux_002:sink0_data
+	wire          crosser_002_out_ready;                                                                                   // cmd_mux_002:sink0_ready -> crosser_002:out_ready
+	wire   [10:0] crosser_002_out_channel;                                                                                 // crosser_002:out_channel -> cmd_mux_002:sink0_channel
+	wire          crosser_002_out_startofpacket;                                                                           // crosser_002:out_startofpacket -> cmd_mux_002:sink0_startofpacket
+	wire          crosser_002_out_endofpacket;                                                                             // crosser_002:out_endofpacket -> cmd_mux_002:sink0_endofpacket
+	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_valid;         // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_valid -> crosser_003:in_valid
+	wire  [128:0] vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_data;          // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_data -> crosser_003:in_data
+	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_ready;         // crosser_003:in_ready -> VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_ready
+	wire   [10:0] vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_channel;       // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_channel -> crosser_003:in_channel
+	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_startofpacket; // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_startofpacket -> crosser_003:in_startofpacket
+	wire          vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_endofpacket;   // VGA_CHAR_BUFFER_avalon_char_buffer_slave_to_CPU_NIOS_II_data_master_rsp_width_adapter:out_endofpacket -> crosser_003:in_endofpacket
+	wire          crosser_003_out_valid;                                                                                   // crosser_003:out_valid -> rsp_mux:sink2_valid
+	wire  [128:0] crosser_003_out_data;                                                                                    // crosser_003:out_data -> rsp_mux:sink2_data
+	wire          crosser_003_out_ready;                                                                                   // rsp_mux:sink2_ready -> crosser_003:out_ready
+	wire   [10:0] crosser_003_out_channel;                                                                                 // crosser_003:out_channel -> rsp_mux:sink2_channel
+	wire          crosser_003_out_startofpacket;                                                                           // crosser_003:out_startofpacket -> rsp_mux:sink2_startofpacket
+	wire          crosser_003_out_endofpacket;                                                                             // crosser_003:out_endofpacket -> rsp_mux:sink2_endofpacket
 	wire          audio_out_avalon_audio_slave_agent_rdata_fifo_out_valid;                                                 // AUDIO_OUT_avalon_audio_slave_agent_rdata_fifo:out_valid -> avalon_st_adapter:in_0_valid
 	wire   [33:0] audio_out_avalon_audio_slave_agent_rdata_fifo_out_data;                                                  // AUDIO_OUT_avalon_audio_slave_agent_rdata_fifo:out_data -> avalon_st_adapter:in_0_data
 	wire          audio_out_avalon_audio_slave_agent_rdata_fifo_out_ready;                                                 // avalon_st_adapter:in_0_ready -> AUDIO_OUT_avalon_audio_slave_agent_rdata_fifo:out_ready
@@ -1177,8 +1150,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_out_avalon_audio_slave_translator (
-		.clk                    (AUDIO_CLOCK_audio_clk_clk),                           //                      clk.clk
-		.reset                  (AUDIO_OUT_reset_reset_bridge_in_reset_reset),         //                    reset.reset
+		.clk                    (CLK_clk_clk),                                         //                      clk.clk
+		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),       //                    reset.reset
 		.uav_address            (audio_out_avalon_audio_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_out_avalon_audio_slave_agent_m0_burstcount),    //                         .burstcount
 		.uav_read               (audio_out_avalon_audio_slave_agent_m0_read),          //                         .read
@@ -1241,8 +1214,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_config_avalon_av_config_slave_translator (
-		.clk                    (AUDIO_CLOCK_audio_clk_clk),                                  //                      clk.clk
-		.reset                  (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset),             //                    reset.reset
+		.clk                    (CLK_clk_clk),                                                //                      clk.clk
+		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),              //                    reset.reset
 		.uav_address            (audio_config_avalon_av_config_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_config_avalon_av_config_slave_agent_m0_burstcount),    //                         .burstcount
 		.uav_read               (audio_config_avalon_av_config_slave_agent_m0_read),          //                         .read
@@ -2183,8 +2156,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) audio_out_avalon_audio_slave_agent (
-		.clk                     (AUDIO_CLOCK_audio_clk_clk),                                     //             clk.clk
-		.reset                   (AUDIO_OUT_reset_reset_bridge_in_reset_reset),                   //       clk_reset.reset
+		.clk                     (CLK_clk_clk),                                                   //             clk.clk
+		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                 //       clk_reset.reset
 		.m0_address              (audio_out_avalon_audio_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_out_avalon_audio_slave_agent_m0_burstcount),              //                .burstcount
 		.m0_byteenable           (audio_out_avalon_audio_slave_agent_m0_byteenable),              //                .byteenable
@@ -2242,8 +2215,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_out_avalon_audio_slave_agent_rsp_fifo (
-		.clk               (AUDIO_CLOCK_audio_clk_clk),                                     //       clk.clk
-		.reset             (AUDIO_OUT_reset_reset_bridge_in_reset_reset),                   // clk_reset.reset
+		.clk               (CLK_clk_clk),                                                   //       clk.clk
+		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                 // clk_reset.reset
 		.in_data           (audio_out_avalon_audio_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_out_avalon_audio_slave_agent_rf_source_valid),            //          .valid
 		.in_ready          (audio_out_avalon_audio_slave_agent_rf_source_ready),            //          .ready
@@ -2283,8 +2256,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_out_avalon_audio_slave_agent_rdata_fifo (
-		.clk               (AUDIO_CLOCK_audio_clk_clk),                               //       clk.clk
-		.reset             (AUDIO_OUT_reset_reset_bridge_in_reset_reset),             // clk_reset.reset
+		.clk               (CLK_clk_clk),                                             //       clk.clk
+		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),           // clk_reset.reset
 		.in_data           (audio_out_avalon_audio_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_out_avalon_audio_slave_agent_rdata_fifo_src_valid), //          .valid
 		.in_ready          (audio_out_avalon_audio_slave_agent_rdata_fifo_src_ready), //          .ready
@@ -2349,8 +2322,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) audio_config_avalon_av_config_slave_agent (
-		.clk                     (AUDIO_CLOCK_audio_clk_clk),                                            //             clk.clk
-		.reset                   (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset),                       //       clk_reset.reset
+		.clk                     (CLK_clk_clk),                                                          //             clk.clk
+		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                        //       clk_reset.reset
 		.m0_address              (audio_config_avalon_av_config_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_config_avalon_av_config_slave_agent_m0_burstcount),              //                .burstcount
 		.m0_byteenable           (audio_config_avalon_av_config_slave_agent_m0_byteenable),              //                .byteenable
@@ -2408,8 +2381,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_config_avalon_av_config_slave_agent_rsp_fifo (
-		.clk               (AUDIO_CLOCK_audio_clk_clk),                                            //       clk.clk
-		.reset             (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset),                       // clk_reset.reset
+		.clk               (CLK_clk_clk),                                                          //       clk.clk
+		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                        // clk_reset.reset
 		.in_data           (audio_config_avalon_av_config_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_config_avalon_av_config_slave_agent_rf_source_valid),            //          .valid
 		.in_ready          (audio_config_avalon_av_config_slave_agent_rf_source_ready),            //          .ready
@@ -2449,8 +2422,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_config_avalon_av_config_slave_agent_rdata_fifo (
-		.clk               (AUDIO_CLOCK_audio_clk_clk),                                      //       clk.clk
-		.reset             (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset),                 // clk_reset.reset
+		.clk               (CLK_clk_clk),                                                    //       clk.clk
+		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                  // clk_reset.reset
 		.in_data           (audio_config_avalon_av_config_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_config_avalon_av_config_slave_agent_rdata_fifo_src_valid), //          .valid
 		.in_ready          (audio_config_avalon_av_config_slave_agent_rdata_fifo_src_ready), //          .ready
@@ -4040,8 +4013,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (audio_out_avalon_audio_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (audio_out_avalon_audio_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_out_avalon_audio_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (AUDIO_CLOCK_audio_clk_clk),                           //       clk.clk
-		.reset              (AUDIO_OUT_reset_reset_bridge_in_reset_reset),         // clk_reset.reset
+		.clk                (CLK_clk_clk),                                         //       clk.clk
+		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),       // clk_reset.reset
 		.src_ready          (router_004_src_ready),                                //       src.ready
 		.src_valid          (router_004_src_valid),                                //          .valid
 		.src_data           (router_004_src_data),                                 //          .data
@@ -4056,8 +4029,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.sink_data          (audio_config_avalon_av_config_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (audio_config_avalon_av_config_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_config_avalon_av_config_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (AUDIO_CLOCK_audio_clk_clk),                                  //       clk.clk
-		.reset              (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset),             // clk_reset.reset
+		.clk                (CLK_clk_clk),                                                //       clk.clk
+		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
 		.src_ready          (router_005_src_ready),                                       //       src.ready
 		.src_valid          (router_005_src_valid),                                       //          .valid
 		.src_data           (router_005_src_data),                                        //          .data
@@ -4445,37 +4418,37 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux (
-		.clk                 (AUDIO_CLOCK_audio_clk_clk),                   //       clk.clk
-		.reset               (AUDIO_OUT_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready           (cmd_mux_src_ready),                           //       src.ready
-		.src_valid           (cmd_mux_src_valid),                           //          .valid
-		.src_data            (cmd_mux_src_data),                            //          .data
-		.src_channel         (cmd_mux_src_channel),                         //          .channel
-		.src_startofpacket   (cmd_mux_src_startofpacket),                   //          .startofpacket
-		.src_endofpacket     (cmd_mux_src_endofpacket),                     //          .endofpacket
-		.sink0_ready         (crosser_out_ready),                           //     sink0.ready
-		.sink0_valid         (crosser_out_valid),                           //          .valid
-		.sink0_channel       (crosser_out_channel),                         //          .channel
-		.sink0_data          (crosser_out_data),                            //          .data
-		.sink0_startofpacket (crosser_out_startofpacket),                   //          .startofpacket
-		.sink0_endofpacket   (crosser_out_endofpacket)                      //          .endofpacket
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
+		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready           (cmd_mux_src_ready),                             //       src.ready
+		.src_valid           (cmd_mux_src_valid),                             //          .valid
+		.src_data            (cmd_mux_src_data),                              //          .data
+		.src_channel         (cmd_mux_src_channel),                           //          .channel
+		.src_startofpacket   (cmd_mux_src_startofpacket),                     //          .startofpacket
+		.src_endofpacket     (cmd_mux_src_endofpacket),                       //          .endofpacket
+		.sink0_ready         (cmd_demux_src0_ready),                          //     sink0.ready
+		.sink0_valid         (cmd_demux_src0_valid),                          //          .valid
+		.sink0_channel       (cmd_demux_src0_channel),                        //          .channel
+		.sink0_data          (cmd_demux_src0_data),                           //          .data
+		.sink0_startofpacket (cmd_demux_src0_startofpacket),                  //          .startofpacket
+		.sink0_endofpacket   (cmd_demux_src0_endofpacket)                     //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_001 (
-		.clk                 (AUDIO_CLOCK_audio_clk_clk),                      //       clk.clk
-		.reset               (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready           (cmd_mux_001_src_ready),                          //       src.ready
-		.src_valid           (cmd_mux_001_src_valid),                          //          .valid
-		.src_data            (cmd_mux_001_src_data),                           //          .data
-		.src_channel         (cmd_mux_001_src_channel),                        //          .channel
-		.src_startofpacket   (cmd_mux_001_src_startofpacket),                  //          .startofpacket
-		.src_endofpacket     (cmd_mux_001_src_endofpacket),                    //          .endofpacket
-		.sink0_ready         (crosser_001_out_ready),                          //     sink0.ready
-		.sink0_valid         (crosser_001_out_valid),                          //          .valid
-		.sink0_channel       (crosser_001_out_channel),                        //          .channel
-		.sink0_data          (crosser_001_out_data),                           //          .data
-		.sink0_startofpacket (crosser_001_out_startofpacket),                  //          .startofpacket
-		.sink0_endofpacket   (crosser_001_out_endofpacket)                     //          .endofpacket
+		.clk                 (CLK_clk_clk),                                   //       clk.clk
+		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready           (cmd_mux_001_src_ready),                         //       src.ready
+		.src_valid           (cmd_mux_001_src_valid),                         //          .valid
+		.src_data            (cmd_mux_001_src_data),                          //          .data
+		.src_channel         (cmd_mux_001_src_channel),                       //          .channel
+		.src_startofpacket   (cmd_mux_001_src_startofpacket),                 //          .startofpacket
+		.src_endofpacket     (cmd_mux_001_src_endofpacket),                   //          .endofpacket
+		.sink0_ready         (cmd_demux_src1_ready),                          //     sink0.ready
+		.sink0_valid         (cmd_demux_src1_valid),                          //          .valid
+		.sink0_channel       (cmd_demux_src1_channel),                        //          .channel
+		.sink0_data          (cmd_demux_src1_data),                           //          .data
+		.sink0_startofpacket (cmd_demux_src1_startofpacket),                  //          .startofpacket
+		.sink0_endofpacket   (cmd_demux_src1_endofpacket)                     //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux_002 cmd_mux_002 (
@@ -4487,12 +4460,12 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src_channel         (cmd_mux_002_src_channel),                           //          .channel
 		.src_startofpacket   (cmd_mux_002_src_startofpacket),                     //          .startofpacket
 		.src_endofpacket     (cmd_mux_002_src_endofpacket),                       //          .endofpacket
-		.sink0_ready         (crosser_006_out_ready),                             //     sink0.ready
-		.sink0_valid         (crosser_006_out_valid),                             //          .valid
-		.sink0_channel       (crosser_006_out_channel),                           //          .channel
-		.sink0_data          (crosser_006_out_data),                              //          .data
-		.sink0_startofpacket (crosser_006_out_startofpacket),                     //          .startofpacket
-		.sink0_endofpacket   (crosser_006_out_endofpacket)                        //          .endofpacket
+		.sink0_ready         (crosser_002_out_ready),                             //     sink0.ready
+		.sink0_valid         (crosser_002_out_valid),                             //          .valid
+		.sink0_channel       (crosser_002_out_channel),                           //          .channel
+		.sink0_data          (crosser_002_out_data),                              //          .data
+		.sink0_startofpacket (crosser_002_out_startofpacket),                     //          .startofpacket
+		.sink0_endofpacket   (crosser_002_out_endofpacket)                        //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_003 (
@@ -4504,12 +4477,12 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src_channel         (cmd_mux_003_src_channel),                           //          .channel
 		.src_startofpacket   (cmd_mux_003_src_startofpacket),                     //          .startofpacket
 		.src_endofpacket     (cmd_mux_003_src_endofpacket),                       //          .endofpacket
-		.sink0_ready         (crosser_002_out_ready),                             //     sink0.ready
-		.sink0_valid         (crosser_002_out_valid),                             //          .valid
-		.sink0_channel       (crosser_002_out_channel),                           //          .channel
-		.sink0_data          (crosser_002_out_data),                              //          .data
-		.sink0_startofpacket (crosser_002_out_startofpacket),                     //          .startofpacket
-		.sink0_endofpacket   (crosser_002_out_endofpacket)                        //          .endofpacket
+		.sink0_ready         (crosser_out_ready),                                 //     sink0.ready
+		.sink0_valid         (crosser_out_valid),                                 //          .valid
+		.sink0_channel       (crosser_out_channel),                               //          .channel
+		.sink0_data          (crosser_out_data),                                  //          .data
+		.sink0_startofpacket (crosser_out_startofpacket),                         //          .startofpacket
+		.sink0_endofpacket   (crosser_out_endofpacket)                            //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux cmd_mux_004 (
@@ -4656,37 +4629,37 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux (
-		.clk                (AUDIO_CLOCK_audio_clk_clk),                   //       clk.clk
-		.reset              (AUDIO_OUT_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_004_src_ready),                        //      sink.ready
-		.sink_channel       (router_004_src_channel),                      //          .channel
-		.sink_data          (router_004_src_data),                         //          .data
-		.sink_startofpacket (router_004_src_startofpacket),                //          .startofpacket
-		.sink_endofpacket   (router_004_src_endofpacket),                  //          .endofpacket
-		.sink_valid         (router_004_src_valid),                        //          .valid
-		.src0_ready         (rsp_demux_src0_ready),                        //      src0.ready
-		.src0_valid         (rsp_demux_src0_valid),                        //          .valid
-		.src0_data          (rsp_demux_src0_data),                         //          .data
-		.src0_channel       (rsp_demux_src0_channel),                      //          .channel
-		.src0_startofpacket (rsp_demux_src0_startofpacket),                //          .startofpacket
-		.src0_endofpacket   (rsp_demux_src0_endofpacket)                   //          .endofpacket
+		.clk                (CLK_clk_clk),                                   //       clk.clk
+		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_004_src_ready),                          //      sink.ready
+		.sink_channel       (router_004_src_channel),                        //          .channel
+		.sink_data          (router_004_src_data),                           //          .data
+		.sink_startofpacket (router_004_src_startofpacket),                  //          .startofpacket
+		.sink_endofpacket   (router_004_src_endofpacket),                    //          .endofpacket
+		.sink_valid         (router_004_src_valid),                          //          .valid
+		.src0_ready         (rsp_demux_src0_ready),                          //      src0.ready
+		.src0_valid         (rsp_demux_src0_valid),                          //          .valid
+		.src0_data          (rsp_demux_src0_data),                           //          .data
+		.src0_channel       (rsp_demux_src0_channel),                        //          .channel
+		.src0_startofpacket (rsp_demux_src0_startofpacket),                  //          .startofpacket
+		.src0_endofpacket   (rsp_demux_src0_endofpacket)                     //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_001 (
-		.clk                (AUDIO_CLOCK_audio_clk_clk),                      //       clk.clk
-		.reset              (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_005_src_ready),                           //      sink.ready
-		.sink_channel       (router_005_src_channel),                         //          .channel
-		.sink_data          (router_005_src_data),                            //          .data
-		.sink_startofpacket (router_005_src_startofpacket),                   //          .startofpacket
-		.sink_endofpacket   (router_005_src_endofpacket),                     //          .endofpacket
-		.sink_valid         (router_005_src_valid),                           //          .valid
-		.src0_ready         (rsp_demux_001_src0_ready),                       //      src0.ready
-		.src0_valid         (rsp_demux_001_src0_valid),                       //          .valid
-		.src0_data          (rsp_demux_001_src0_data),                        //          .data
-		.src0_channel       (rsp_demux_001_src0_channel),                     //          .channel
-		.src0_startofpacket (rsp_demux_001_src0_startofpacket),               //          .startofpacket
-		.src0_endofpacket   (rsp_demux_001_src0_endofpacket)                  //          .endofpacket
+		.clk                (CLK_clk_clk),                                   //       clk.clk
+		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_005_src_ready),                          //      sink.ready
+		.sink_channel       (router_005_src_channel),                        //          .channel
+		.sink_data          (router_005_src_data),                           //          .data
+		.sink_startofpacket (router_005_src_startofpacket),                  //          .startofpacket
+		.sink_endofpacket   (router_005_src_endofpacket),                    //          .endofpacket
+		.sink_valid         (router_005_src_valid),                          //          .valid
+		.src0_ready         (rsp_demux_001_src0_ready),                      //      src0.ready
+		.src0_valid         (rsp_demux_001_src0_valid),                      //          .valid
+		.src0_data          (rsp_demux_001_src0_data),                       //          .data
+		.src0_channel       (rsp_demux_001_src0_channel),                    //          .channel
+		.src0_startofpacket (rsp_demux_001_src0_startofpacket),              //          .startofpacket
+		.src0_endofpacket   (rsp_demux_001_src0_endofpacket)                 //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_002 rsp_demux_002 (
@@ -4723,7 +4696,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src0_endofpacket   (rsp_demux_003_src0_endofpacket)                     //          .endofpacket
 	);
 
-	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_004 rsp_demux_004 (
+	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_004 (
 		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_008_src_ready),                          //      sink.ready
@@ -4798,7 +4771,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src3_endofpacket   (rsp_demux_006_src3_endofpacket)                 //          .endofpacket
 	);
 
-	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_004 rsp_demux_007 (
+	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_007 (
 		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_011_src_ready),                          //      sink.ready
@@ -4815,7 +4788,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src0_endofpacket   (rsp_demux_007_src0_endofpacket)                 //          .endofpacket
 	);
 
-	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_004 rsp_demux_008 (
+	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_008 (
 		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_012_src_ready),                          //      sink.ready
@@ -4832,7 +4805,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src0_endofpacket   (rsp_demux_008_src0_endofpacket)                 //          .endofpacket
 	);
 
-	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_004 rsp_demux_009 (
+	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_009 (
 		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_013_src_ready),                          //      sink.ready
@@ -4849,7 +4822,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src0_endofpacket   (rsp_demux_009_src0_endofpacket)                 //          .endofpacket
 	);
 
-	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_004 rsp_demux_010 (
+	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_010 (
 		.clk                (CLK_clk_clk),                                   //       clk.clk
 		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_014_src_ready),                          //      sink.ready
@@ -4875,30 +4848,30 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.src_channel          (rsp_mux_src_channel),                           //          .channel
 		.src_startofpacket    (rsp_mux_src_startofpacket),                     //          .startofpacket
 		.src_endofpacket      (rsp_mux_src_endofpacket),                       //          .endofpacket
-		.sink0_ready          (crosser_003_out_ready),                         //     sink0.ready
-		.sink0_valid          (crosser_003_out_valid),                         //          .valid
-		.sink0_channel        (crosser_003_out_channel),                       //          .channel
-		.sink0_data           (crosser_003_out_data),                          //          .data
-		.sink0_startofpacket  (crosser_003_out_startofpacket),                 //          .startofpacket
-		.sink0_endofpacket    (crosser_003_out_endofpacket),                   //          .endofpacket
-		.sink1_ready          (crosser_004_out_ready),                         //     sink1.ready
-		.sink1_valid          (crosser_004_out_valid),                         //          .valid
-		.sink1_channel        (crosser_004_out_channel),                       //          .channel
-		.sink1_data           (crosser_004_out_data),                          //          .data
-		.sink1_startofpacket  (crosser_004_out_startofpacket),                 //          .startofpacket
-		.sink1_endofpacket    (crosser_004_out_endofpacket),                   //          .endofpacket
-		.sink2_ready          (crosser_007_out_ready),                         //     sink2.ready
-		.sink2_valid          (crosser_007_out_valid),                         //          .valid
-		.sink2_channel        (crosser_007_out_channel),                       //          .channel
-		.sink2_data           (crosser_007_out_data),                          //          .data
-		.sink2_startofpacket  (crosser_007_out_startofpacket),                 //          .startofpacket
-		.sink2_endofpacket    (crosser_007_out_endofpacket),                   //          .endofpacket
-		.sink3_ready          (crosser_005_out_ready),                         //     sink3.ready
-		.sink3_valid          (crosser_005_out_valid),                         //          .valid
-		.sink3_channel        (crosser_005_out_channel),                       //          .channel
-		.sink3_data           (crosser_005_out_data),                          //          .data
-		.sink3_startofpacket  (crosser_005_out_startofpacket),                 //          .startofpacket
-		.sink3_endofpacket    (crosser_005_out_endofpacket),                   //          .endofpacket
+		.sink0_ready          (rsp_demux_src0_ready),                          //     sink0.ready
+		.sink0_valid          (rsp_demux_src0_valid),                          //          .valid
+		.sink0_channel        (rsp_demux_src0_channel),                        //          .channel
+		.sink0_data           (rsp_demux_src0_data),                           //          .data
+		.sink0_startofpacket  (rsp_demux_src0_startofpacket),                  //          .startofpacket
+		.sink0_endofpacket    (rsp_demux_src0_endofpacket),                    //          .endofpacket
+		.sink1_ready          (rsp_demux_001_src0_ready),                      //     sink1.ready
+		.sink1_valid          (rsp_demux_001_src0_valid),                      //          .valid
+		.sink1_channel        (rsp_demux_001_src0_channel),                    //          .channel
+		.sink1_data           (rsp_demux_001_src0_data),                       //          .data
+		.sink1_startofpacket  (rsp_demux_001_src0_startofpacket),              //          .startofpacket
+		.sink1_endofpacket    (rsp_demux_001_src0_endofpacket),                //          .endofpacket
+		.sink2_ready          (crosser_003_out_ready),                         //     sink2.ready
+		.sink2_valid          (crosser_003_out_valid),                         //          .valid
+		.sink2_channel        (crosser_003_out_channel),                       //          .channel
+		.sink2_data           (crosser_003_out_data),                          //          .data
+		.sink2_startofpacket  (crosser_003_out_startofpacket),                 //          .startofpacket
+		.sink2_endofpacket    (crosser_003_out_endofpacket),                   //          .endofpacket
+		.sink3_ready          (crosser_001_out_ready),                         //     sink3.ready
+		.sink3_valid          (crosser_001_out_valid),                         //          .valid
+		.sink3_channel        (crosser_001_out_channel),                       //          .channel
+		.sink3_data           (crosser_001_out_data),                          //          .data
+		.sink3_startofpacket  (crosser_001_out_startofpacket),                 //          .startofpacket
+		.sink3_endofpacket    (crosser_001_out_endofpacket),                   //          .endofpacket
 		.sink4_ready          (rsp_demux_004_src0_ready),                      //     sink4.ready
 		.sink4_valid          (rsp_demux_004_src0_valid),                      //          .valid
 		.sink4_channel        (rsp_demux_004_src0_channel),                    //          .channel
@@ -5408,74 +5381,6 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser (
-		.in_clk            (CLK_clk_clk),                                   //        in_clk.clk
-		.in_reset          (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (AUDIO_CLOCK_audio_clk_clk),                     //       out_clk.clk
-		.out_reset         (AUDIO_OUT_reset_reset_bridge_in_reset_reset),   // out_clk_reset.reset
-		.in_ready          (cmd_demux_src0_ready),                          //            in.ready
-		.in_valid          (cmd_demux_src0_valid),                          //              .valid
-		.in_startofpacket  (cmd_demux_src0_startofpacket),                  //              .startofpacket
-		.in_endofpacket    (cmd_demux_src0_endofpacket),                    //              .endofpacket
-		.in_channel        (cmd_demux_src0_channel),                        //              .channel
-		.in_data           (cmd_demux_src0_data),                           //              .data
-		.out_ready         (crosser_out_ready),                             //           out.ready
-		.out_valid         (crosser_out_valid),                             //              .valid
-		.out_startofpacket (crosser_out_startofpacket),                     //              .startofpacket
-		.out_endofpacket   (crosser_out_endofpacket),                       //              .endofpacket
-		.out_channel       (crosser_out_channel),                           //              .channel
-		.out_data          (crosser_out_data),                              //              .data
-		.in_empty          (1'b0),                                          //   (terminated)
-		.in_error          (1'b0),                                          //   (terminated)
-		.out_empty         (),                                              //   (terminated)
-		.out_error         ()                                               //   (terminated)
-	);
-
-	altera_avalon_st_handshake_clock_crosser #(
-		.DATA_WIDTH          (129),
-		.BITS_PER_SYMBOL     (129),
-		.USE_PACKETS         (1),
-		.USE_CHANNEL         (1),
-		.CHANNEL_WIDTH       (11),
-		.USE_ERROR           (0),
-		.ERROR_WIDTH         (1),
-		.VALID_SYNC_DEPTH    (2),
-		.READY_SYNC_DEPTH    (2),
-		.USE_OUTPUT_PIPELINE (0)
-	) crosser_001 (
-		.in_clk            (CLK_clk_clk),                                    //        in_clk.clk
-		.in_reset          (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),  //  in_clk_reset.reset
-		.out_clk           (AUDIO_CLOCK_audio_clk_clk),                      //       out_clk.clk
-		.out_reset         (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
-		.in_ready          (cmd_demux_src1_ready),                           //            in.ready
-		.in_valid          (cmd_demux_src1_valid),                           //              .valid
-		.in_startofpacket  (cmd_demux_src1_startofpacket),                   //              .startofpacket
-		.in_endofpacket    (cmd_demux_src1_endofpacket),                     //              .endofpacket
-		.in_channel        (cmd_demux_src1_channel),                         //              .channel
-		.in_data           (cmd_demux_src1_data),                            //              .data
-		.out_ready         (crosser_001_out_ready),                          //           out.ready
-		.out_valid         (crosser_001_out_valid),                          //              .valid
-		.out_startofpacket (crosser_001_out_startofpacket),                  //              .startofpacket
-		.out_endofpacket   (crosser_001_out_endofpacket),                    //              .endofpacket
-		.out_channel       (crosser_001_out_channel),                        //              .channel
-		.out_data          (crosser_001_out_data),                           //              .data
-		.in_empty          (1'b0),                                           //   (terminated)
-		.in_error          (1'b0),                                           //   (terminated)
-		.out_empty         (),                                               //   (terminated)
-		.out_error         ()                                                //   (terminated)
-	);
-
-	altera_avalon_st_handshake_clock_crosser #(
-		.DATA_WIDTH          (129),
-		.BITS_PER_SYMBOL     (129),
-		.USE_PACKETS         (1),
-		.USE_CHANNEL         (1),
-		.CHANNEL_WIDTH       (11),
-		.USE_ERROR           (0),
-		.ERROR_WIDTH         (1),
-		.VALID_SYNC_DEPTH    (2),
-		.READY_SYNC_DEPTH    (2),
-		.USE_OUTPUT_PIPELINE (0)
-	) crosser_002 (
 		.in_clk            (CLK_clk_clk),                                       //        in_clk.clk
 		.in_reset          (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),     //  in_clk_reset.reset
 		.out_clk           (VGA_CLOCK_BRIDGE_out_clk_clk),                      //       out_clk.clk
@@ -5486,12 +5391,12 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.in_endofpacket    (cmd_demux_src3_endofpacket),                        //              .endofpacket
 		.in_channel        (cmd_demux_src3_channel),                            //              .channel
 		.in_data           (cmd_demux_src3_data),                               //              .data
-		.out_ready         (crosser_002_out_ready),                             //           out.ready
-		.out_valid         (crosser_002_out_valid),                             //              .valid
-		.out_startofpacket (crosser_002_out_startofpacket),                     //              .startofpacket
-		.out_endofpacket   (crosser_002_out_endofpacket),                       //              .endofpacket
-		.out_channel       (crosser_002_out_channel),                           //              .channel
-		.out_data          (crosser_002_out_data),                              //              .data
+		.out_ready         (crosser_out_ready),                                 //           out.ready
+		.out_valid         (crosser_out_valid),                                 //              .valid
+		.out_startofpacket (crosser_out_startofpacket),                         //              .startofpacket
+		.out_endofpacket   (crosser_out_endofpacket),                           //              .endofpacket
+		.out_channel       (crosser_out_channel),                               //              .channel
+		.out_data          (crosser_out_data),                                  //              .data
 		.in_empty          (1'b0),                                              //   (terminated)
 		.in_error          (1'b0),                                              //   (terminated)
 		.out_empty         (),                                                  //   (terminated)
@@ -5509,75 +5414,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.VALID_SYNC_DEPTH    (2),
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
-	) crosser_003 (
-		.in_clk            (AUDIO_CLOCK_audio_clk_clk),                     //        in_clk.clk
-		.in_reset          (AUDIO_OUT_reset_reset_bridge_in_reset_reset),   //  in_clk_reset.reset
-		.out_clk           (CLK_clk_clk),                                   //       out_clk.clk
-		.out_reset         (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
-		.in_ready          (rsp_demux_src0_ready),                          //            in.ready
-		.in_valid          (rsp_demux_src0_valid),                          //              .valid
-		.in_startofpacket  (rsp_demux_src0_startofpacket),                  //              .startofpacket
-		.in_endofpacket    (rsp_demux_src0_endofpacket),                    //              .endofpacket
-		.in_channel        (rsp_demux_src0_channel),                        //              .channel
-		.in_data           (rsp_demux_src0_data),                           //              .data
-		.out_ready         (crosser_003_out_ready),                         //           out.ready
-		.out_valid         (crosser_003_out_valid),                         //              .valid
-		.out_startofpacket (crosser_003_out_startofpacket),                 //              .startofpacket
-		.out_endofpacket   (crosser_003_out_endofpacket),                   //              .endofpacket
-		.out_channel       (crosser_003_out_channel),                       //              .channel
-		.out_data          (crosser_003_out_data),                          //              .data
-		.in_empty          (1'b0),                                          //   (terminated)
-		.in_error          (1'b0),                                          //   (terminated)
-		.out_empty         (),                                              //   (terminated)
-		.out_error         ()                                               //   (terminated)
-	);
-
-	altera_avalon_st_handshake_clock_crosser #(
-		.DATA_WIDTH          (129),
-		.BITS_PER_SYMBOL     (129),
-		.USE_PACKETS         (1),
-		.USE_CHANNEL         (1),
-		.CHANNEL_WIDTH       (11),
-		.USE_ERROR           (0),
-		.ERROR_WIDTH         (1),
-		.VALID_SYNC_DEPTH    (2),
-		.READY_SYNC_DEPTH    (2),
-		.USE_OUTPUT_PIPELINE (0)
-	) crosser_004 (
-		.in_clk            (AUDIO_CLOCK_audio_clk_clk),                      //        in_clk.clk
-		.in_reset          (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (CLK_clk_clk),                                    //       out_clk.clk
-		.out_reset         (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),  // out_clk_reset.reset
-		.in_ready          (rsp_demux_001_src0_ready),                       //            in.ready
-		.in_valid          (rsp_demux_001_src0_valid),                       //              .valid
-		.in_startofpacket  (rsp_demux_001_src0_startofpacket),               //              .startofpacket
-		.in_endofpacket    (rsp_demux_001_src0_endofpacket),                 //              .endofpacket
-		.in_channel        (rsp_demux_001_src0_channel),                     //              .channel
-		.in_data           (rsp_demux_001_src0_data),                        //              .data
-		.out_ready         (crosser_004_out_ready),                          //           out.ready
-		.out_valid         (crosser_004_out_valid),                          //              .valid
-		.out_startofpacket (crosser_004_out_startofpacket),                  //              .startofpacket
-		.out_endofpacket   (crosser_004_out_endofpacket),                    //              .endofpacket
-		.out_channel       (crosser_004_out_channel),                        //              .channel
-		.out_data          (crosser_004_out_data),                           //              .data
-		.in_empty          (1'b0),                                           //   (terminated)
-		.in_error          (1'b0),                                           //   (terminated)
-		.out_empty         (),                                               //   (terminated)
-		.out_error         ()                                                //   (terminated)
-	);
-
-	altera_avalon_st_handshake_clock_crosser #(
-		.DATA_WIDTH          (129),
-		.BITS_PER_SYMBOL     (129),
-		.USE_PACKETS         (1),
-		.USE_CHANNEL         (1),
-		.CHANNEL_WIDTH       (11),
-		.USE_ERROR           (0),
-		.ERROR_WIDTH         (1),
-		.VALID_SYNC_DEPTH    (2),
-		.READY_SYNC_DEPTH    (2),
-		.USE_OUTPUT_PIPELINE (0)
-	) crosser_005 (
+	) crosser_001 (
 		.in_clk            (VGA_CLOCK_BRIDGE_out_clk_clk),                      //        in_clk.clk
 		.in_reset          (VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
 		.out_clk           (CLK_clk_clk),                                       //       out_clk.clk
@@ -5588,12 +5425,12 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.in_endofpacket    (rsp_demux_003_src0_endofpacket),                    //              .endofpacket
 		.in_channel        (rsp_demux_003_src0_channel),                        //              .channel
 		.in_data           (rsp_demux_003_src0_data),                           //              .data
-		.out_ready         (crosser_005_out_ready),                             //           out.ready
-		.out_valid         (crosser_005_out_valid),                             //              .valid
-		.out_startofpacket (crosser_005_out_startofpacket),                     //              .startofpacket
-		.out_endofpacket   (crosser_005_out_endofpacket),                       //              .endofpacket
-		.out_channel       (crosser_005_out_channel),                           //              .channel
-		.out_data          (crosser_005_out_data),                              //              .data
+		.out_ready         (crosser_001_out_ready),                             //           out.ready
+		.out_valid         (crosser_001_out_valid),                             //              .valid
+		.out_startofpacket (crosser_001_out_startofpacket),                     //              .startofpacket
+		.out_endofpacket   (crosser_001_out_endofpacket),                       //              .endofpacket
+		.out_channel       (crosser_001_out_channel),                           //              .channel
+		.out_data          (crosser_001_out_data),                              //              .data
 		.in_empty          (1'b0),                                              //   (terminated)
 		.in_error          (1'b0),                                              //   (terminated)
 		.out_empty         (),                                                  //   (terminated)
@@ -5611,7 +5448,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.VALID_SYNC_DEPTH    (2),
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
-	) crosser_006 (
+	) crosser_002 (
 		.in_clk            (CLK_clk_clk),                                                                                             //        in_clk.clk
 		.in_reset          (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                                           //  in_clk_reset.reset
 		.out_clk           (VGA_CLOCK_BRIDGE_out_clk_clk),                                                                            //       out_clk.clk
@@ -5622,12 +5459,12 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.in_endofpacket    (cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_endofpacket),   //              .endofpacket
 		.in_channel        (cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_channel),       //              .channel
 		.in_data           (cpu_nios_ii_data_master_to_vga_char_buffer_avalon_char_buffer_slave_cmd_width_adapter_src_data),          //              .data
-		.out_ready         (crosser_006_out_ready),                                                                                   //           out.ready
-		.out_valid         (crosser_006_out_valid),                                                                                   //              .valid
-		.out_startofpacket (crosser_006_out_startofpacket),                                                                           //              .startofpacket
-		.out_endofpacket   (crosser_006_out_endofpacket),                                                                             //              .endofpacket
-		.out_channel       (crosser_006_out_channel),                                                                                 //              .channel
-		.out_data          (crosser_006_out_data),                                                                                    //              .data
+		.out_ready         (crosser_002_out_ready),                                                                                   //           out.ready
+		.out_valid         (crosser_002_out_valid),                                                                                   //              .valid
+		.out_startofpacket (crosser_002_out_startofpacket),                                                                           //              .startofpacket
+		.out_endofpacket   (crosser_002_out_endofpacket),                                                                             //              .endofpacket
+		.out_channel       (crosser_002_out_channel),                                                                                 //              .channel
+		.out_data          (crosser_002_out_data),                                                                                    //              .data
 		.in_empty          (1'b0),                                                                                                    //   (terminated)
 		.in_error          (1'b0),                                                                                                    //   (terminated)
 		.out_empty         (),                                                                                                        //   (terminated)
@@ -5645,7 +5482,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.VALID_SYNC_DEPTH    (2),
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
-	) crosser_007 (
+	) crosser_003 (
 		.in_clk            (VGA_CLOCK_BRIDGE_out_clk_clk),                                                                            //        in_clk.clk
 		.in_reset          (VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset),                                                       //  in_clk_reset.reset
 		.out_clk           (CLK_clk_clk),                                                                                             //       out_clk.clk
@@ -5656,12 +5493,12 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.in_endofpacket    (vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_endofpacket),   //              .endofpacket
 		.in_channel        (vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_channel),       //              .channel
 		.in_data           (vga_char_buffer_avalon_char_buffer_slave_to_cpu_nios_ii_data_master_rsp_width_adapter_src_data),          //              .data
-		.out_ready         (crosser_007_out_ready),                                                                                   //           out.ready
-		.out_valid         (crosser_007_out_valid),                                                                                   //              .valid
-		.out_startofpacket (crosser_007_out_startofpacket),                                                                           //              .startofpacket
-		.out_endofpacket   (crosser_007_out_endofpacket),                                                                             //              .endofpacket
-		.out_channel       (crosser_007_out_channel),                                                                                 //              .channel
-		.out_data          (crosser_007_out_data),                                                                                    //              .data
+		.out_ready         (crosser_003_out_ready),                                                                                   //           out.ready
+		.out_valid         (crosser_003_out_valid),                                                                                   //              .valid
+		.out_startofpacket (crosser_003_out_startofpacket),                                                                           //              .startofpacket
+		.out_endofpacket   (crosser_003_out_endofpacket),                                                                             //              .endofpacket
+		.out_channel       (crosser_003_out_channel),                                                                                 //              .channel
+		.out_data          (crosser_003_out_data),                                                                                    //              .data
 		.in_empty          (1'b0),                                                                                                    //   (terminated)
 		.in_error          (1'b0),                                                                                                    //   (terminated)
 		.out_empty         (),                                                                                                        //   (terminated)
@@ -5686,8 +5523,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter (
-		.in_clk_0_clk   (AUDIO_CLOCK_audio_clk_clk),                               // in_clk_0.clk
-		.in_rst_0_reset (AUDIO_OUT_reset_reset_bridge_in_reset_reset),             // in_rst_0.reset
+		.in_clk_0_clk   (CLK_clk_clk),                                             // in_clk_0.clk
+		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),           // in_rst_0.reset
 		.in_0_data      (audio_out_avalon_audio_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_out_avalon_audio_slave_agent_rdata_fifo_out_valid), //         .valid
 		.in_0_ready     (audio_out_avalon_audio_slave_agent_rdata_fifo_out_ready), //         .ready
@@ -5715,8 +5552,8 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_001 (
-		.in_clk_0_clk   (AUDIO_CLOCK_audio_clk_clk),                                      // in_clk_0.clk
-		.in_rst_0_reset (AUDIO_CONFIG_reset_reset_bridge_in_reset_reset),                 // in_rst_0.reset
+		.in_clk_0_clk   (CLK_clk_clk),                                                    // in_clk_0.clk
+		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                  // in_rst_0.reset
 		.in_0_data      (audio_config_avalon_av_config_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_config_avalon_av_config_slave_agent_rdata_fifo_out_valid), //         .valid
 		.in_0_ready     (audio_config_avalon_av_config_slave_agent_rdata_fifo_out_ready), //         .ready

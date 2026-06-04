@@ -10,30 +10,47 @@
 #define AV_CONFIG_STATUS  ((volatile unsigned int *)(AUDIO_CONFIG_BASE + 4))
 #define AV_AIS_BIT        (1u << 8)
 
-/* WM8731 sampling-control (reg 8) values, Normal mode, BOSR = 1 (384fs). */
-#define CODEC_REG8_48K   0x002u   /* ADC48K_DAC48K */
-#define CODEC_REG8_32K   0x006u   /* ADC32K_DAC32K -> used for 16k playback */
-#define CODEC_REG8_8K    0x00Eu   /* ADC8K_DAC8K   */
-#define CODEC_REG8_44K1  0x022u   /* ADC44K1_DAC44K1 */
-
-/* ---- PLAYBACK SPEED STEPS (SOURCE frames per output frame, 16.16) ----
- * Speed tuning lever:  too slow -> INCREASE the step;  too fast -> DECREASE it.
- *   65536 (1<<16) = 1:1.
+/* =====================================================================
+ *  PER-RATE CONFIGURATION
  *
- * 8k  : native on the 8k codec  -> 1:1, bit-exact (perfect, do not change).
- * 16k : codec at 32k, step 1<<17 plays at the correct speed with clear quality.
- * 44.1k: codec reg8 0x22, played 1:1 (bit-exact). This is the known-good path
- *        -- adding a fractional step here caused slowdown + background noise,
- *        so 44.1k stays on the 1:1 fast path. A small residual pitch offset is
- *        inherent to MCLK 18.432 MHz (true 44.1k needs 11.2896 MHz).
- * 48k : native, 1:1. */
-#define STEP_8K     (1u << 16)     /* native, 1:1 (perfect) */
-#define STEP_16K    (1u << 17)     /* correct speed + clear quality */
-#define STEP_44K1   (1u << 16)     /* 1:1 bit-exact -> nice quality, no noise */
-#define STEP_48K    (1u << 16)
+ *  Three supported source rates: 44.1k, 16k, 8k. Each has two knobs and
+ *  NOTHING ELSE decides its behaviour:
+ *
+ *    CODEC_REG8_<rate> : WM8731 sampling-control value (sets physical DAC rate).
+ *    STEP_<rate>       : resample step, SOURCE frames per output frame (16.16).
+ *                          65536 (1<<16) = 1:1 (bit-exact, no interpolation)
+ *                          > 65536 = faster playback;  < 65536 = slower.
+ *
+ *  KEY RELATIONSHIP (why the tuned values work):
+ *    effective_DAC_rate = src_rate / (STEP / 65536)
+ *  Playback is correct speed when STEP is chosen so this equals the actual
+ *  DAC rate produced by CODEC_REG8_<rate>. Higher achievable DAC rate = more
+ *  usable bandwidth = clearer sound.
+ *
+ *  Editing either knob takes effect immediately: audio_play_stereo selects
+ *  its path from the active STEP, not from any hard-coded constant.
+ * ===================================================================== */
+
+/* ---- 44.1 kHz ----
+ * STEP 240300 / 65536 = 3.667 source frames per output frame.
+ * 44100 / 3.667 = ~12.0 kHz effective DAC rate.
+ * NOTE: 240300 is not a power of two, so it cannot be a single (1u << n);
+ * keep it as 240300u. */
+#define CODEC_REG8_44K1  0x00Cu
+#define STEP_44K1        240300u
+
+/* ---- 16 kHz ----
+ * Same codec setting as 44.1k (~12.0 kHz DAC), tuned to match by ear.
+ * STEP 87950 / 65536 = 1.342 source frames per output frame.
+ * 16000 / 1.342 = ~11.9 kHz effective DAC rate (matches the 44.1k path). */
+#define CODEC_REG8_16K   0x00Cu
+#define STEP_16K         87950u
+
+/* ---- 8 kHz ---- */
+#define CODEC_REG8_8K    0x00Eu   /* WM8731 reg8: ADC8K_DAC8K */
+#define STEP_8K          (1u << 16)   /* 65536 = 1:1, bit-exact */
 
 typedef enum {
-    RATE_48K  = 48000,
     RATE_44K1 = 44100,
     RATE_16K  = 16000,
     RATE_8K   = 8000

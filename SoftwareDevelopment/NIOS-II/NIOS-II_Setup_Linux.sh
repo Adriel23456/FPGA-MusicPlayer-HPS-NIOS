@@ -329,6 +329,11 @@ make -C "$APP_DIR"
 
 [ $? -ne 0 ] && echo "ERROR: Build failed" && exit 1
 
+# Cleanup
+rm -rf "$APP_DIR/obj"
+rm -f  "$APP_DIR/main.map" "$APP_DIR/main.objdump"
+echo "[OK] Cleaned obj/, main.map, main.objdump"
+
 echo ""
 echo "Build successful!"
 echo ""

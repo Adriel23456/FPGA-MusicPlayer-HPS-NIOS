@@ -16,14 +16,15 @@ unsigned hps_song_count(void)
     return (unsigned)hps_shared()->song_count;
 }
 
+/* Map a source sample rate in Hz to the engine rate enum. Only 44.1k, 16k and
+ * 8k are supported; anything else falls back to 44.1k. */
 audio_rate_t hps_rate_from_hz(uint32_t hz)
 {
     switch (hz) {
         case SR_8000:  return RATE_8K;
         case SR_16000: return RATE_16K;
         case SR_44100: return RATE_44K1;
-        case SR_48000: return RATE_48K;
-        default:       return RATE_48K;   /* safe default */
+        default:       return RATE_44K1;   /* safe default */
     }
 }
 

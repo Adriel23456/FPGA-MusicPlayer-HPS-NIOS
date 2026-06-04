@@ -10,7 +10,6 @@ echo "============================================================"
 echo " Building Nios II Application"
 echo "============================================================"
 
-# Patch Makefile to use -Os (size optimization) every build
 if [ -f "$APP_DIR/Makefile" ]; then
     sed -i 's|APP_CFLAGS_OPTIMIZATION :=.*|APP_CFLAGS_OPTIMIZATION := -Os|' "$APP_DIR/Makefile"
     echo "[OK] Optimization set to -Os"
@@ -19,6 +18,11 @@ fi
 make -C "$APP_DIR"
 
 [ $? -ne 0 ] && echo "ERROR: Build failed" && exit 1
+
+# Cleanup
+rm -rf "$APP_DIR/obj"
+rm -f  "$APP_DIR/main.map" "$APP_DIR/main.objdump"
+echo "[OK] Cleaned obj/, main.map, main.objdump"
 
 echo ""
 echo "Build successful!"

@@ -9,19 +9,6 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element AUDIO_CLK_BRIDGE
-   {
-      datum _sortIndex
-      {
-         value = "15";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
    element AUDIO_CLOCK
    {
       datum _sortIndex
@@ -31,7 +18,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -328,7 +315,7 @@
  <instanceScript></instanceScript>
  <interface
    name="audio_clk_export"
-   internal="AUDIO_CLK_BRIDGE.out_clk"
+   internal="AUDIO_CLOCK.audio_clk"
    type="clock"
    dir="start" />
  <interface
@@ -381,22 +368,13 @@
    type="conduit"
    dir="end" />
  <module
-   name="AUDIO_CLK_BRIDGE"
-   kind="altera_clock_bridge"
-   version="22.1"
-   enabled="1">
-  <parameter name="DERIVED_CLOCK_RATE" value="11288888" />
-  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
-  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
- </module>
- <module
    name="AUDIO_CLOCK"
    kind="altera_up_avalon_audio_pll"
    version="18.0"
    enabled="1">
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
-  <parameter name="audio_clk_freq" value="11.2896" />
+  <parameter name="audio_clk_freq" value="18.432" />
   <parameter name="device_family" value="Cyclone V" />
   <parameter name="gui_refclk" value="50.0" />
  </module>
@@ -405,7 +383,7 @@
    kind="altera_up_avalon_audio_and_video_config"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="11288888" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="audio_in" value="Line In to ADC" />
   <parameter name="bit_length" value="16" />
@@ -419,7 +397,7 @@
   <parameter name="line_in_bypass" value="false" />
   <parameter name="mic_attenuation" value="-6dB" />
   <parameter name="mic_bypass" value="false" />
-  <parameter name="sampling_rate" value="96 kHz" />
+  <parameter name="sampling_rate" value="48 kHz" />
   <parameter name="video_format" value="NTSC" />
  </module>
  <module
@@ -427,7 +405,7 @@
    kind="altera_up_avalon_audio"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="11288888" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="audio_in" value="false" />
   <parameter name="audio_out" value="true" />
@@ -725,7 +703,7 @@
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM4_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM5_CLOCK_FREQ" value="100" />
-  <parameter name="F2SCLK_COLDRST_Enable" value="false" />
+  <parameter name="F2SCLK_COLDRST_Enable" value="true" />
   <parameter name="F2SCLK_DBGRST_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_FREQ" value="0" />
@@ -1439,21 +1417,6 @@
    version="22.1"
    start="VGA_CHAR_BUFFER.avalon_char_source"
    end="VGA_CONTROLLER.avalon_vga_sink" />
- <connection
-   kind="clock"
-   version="22.1"
-   start="AUDIO_CLOCK.audio_clk"
-   end="AUDIO_OUT.clk" />
- <connection
-   kind="clock"
-   version="22.1"
-   start="AUDIO_CLOCK.audio_clk"
-   end="AUDIO_CONFIG.clk" />
- <connection
-   kind="clock"
-   version="22.1"
-   start="AUDIO_CLOCK.audio_clk"
-   end="AUDIO_CLK_BRIDGE.in_clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="CPU_NIOS_II.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="UART_NIOS_II.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="REG_BTN_INPUT.clk" />
@@ -1468,6 +1431,8 @@
    version="22.1"
    start="CLK.clk"
    end="TIMER_CTRL_OUTPUT.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_OUT.clk" />
+ <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_CONFIG.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="RAM_NIOS_II.clk1" />
  <connection
    kind="clock"
@@ -1582,12 +1547,17 @@
    kind="reset"
    version="22.1"
    start="CLK.clk_reset"
+   end="AUDIO_OUT.reset" />
+ <connection
+   kind="reset"
+   version="22.1"
+   start="CLK.clk_reset"
    end="RAM_NIOS_II.reset1" />
  <connection
    kind="reset"
    version="22.1"
-   start="AUDIO_CLOCK.reset_source"
-   end="AUDIO_OUT.reset" />
+   start="CPU_NIOS_II.debug_reset_request"
+   end="HPS_ARM.f2h_cold_reset_req" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
