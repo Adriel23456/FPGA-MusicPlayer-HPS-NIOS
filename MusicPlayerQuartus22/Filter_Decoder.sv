@@ -1,9 +1,12 @@
 // FILE: Filter_Decoder.sv
 module Filter_Decoder (
     input  logic [1:0] sw,
+    output logic [1:0] filter_mode,
     output logic [6:0] seg_out
 );
     logic [3:0] bcd;
+
+    assign filter_mode = sw;
 
     always_comb begin
         unique case (sw)

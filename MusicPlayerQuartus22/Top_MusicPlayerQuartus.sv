@@ -104,6 +104,7 @@ module Top_MusicPlayerQuartus #(
     // ────────────────────────────────────────────────────────────
     logic [1:0] timer_ctrl_wire;
     logic [1:0] timer_status_wire;
+    logic [1:0] filter_mode_wire;
 
     // ────────────────────────────────────────────────────────────
     // Platform Design (NIOS V + HPS)
@@ -205,8 +206,9 @@ module Top_MusicPlayerQuartus #(
     // Filter_Decoder (standalone)
     // ────────────────────────────────────────────────────────────
     Filter_Decoder filter_inst (
-        .sw      (filter_sw),
-        .seg_out (filter_seg_out)
+        .sw          (filter_sw),
+        .filter_mode (filter_mode_wire),
+        .seg_out     (filter_seg_out)
     );
 
 endmodule
