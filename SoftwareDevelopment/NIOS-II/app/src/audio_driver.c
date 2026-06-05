@@ -1,4 +1,5 @@
 #include "audio_driver.h"
+#include "audio_filter_hw.h"
 #include "debug_uart.h"
 #include <sys/alt_irq.h>
 #include "altera_up_avalon_audio.h"
@@ -36,6 +37,7 @@ int audio_fifo_has_space(void)
 static void write_stereo_frame(int16_t l, int16_t r)
 {
     unsigned spin = 0;
+    audio_filter_hw_apply(&l, &r);
     while (alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_LEFT)  == 0 ||
            alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) == 0) {
         if (++spin > 5000000u) return;   /* FIFO not draining -> bail */
