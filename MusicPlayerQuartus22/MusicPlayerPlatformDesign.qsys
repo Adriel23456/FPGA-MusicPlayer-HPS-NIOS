@@ -18,7 +18,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -31,7 +31,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -52,7 +52,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -64,6 +64,19 @@
          type = "String";
       }
    }
+   element AudioBiquadFilter_0
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
    element CLK
    {
       datum _sortIndex
@@ -73,7 +86,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -86,7 +99,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -107,8 +120,24 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
+      }
+   }
+   element MusicPlayerPlatformDesign
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element MusicPlayerPlatformDesign
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
       }
    }
    element RAM_NIOS_II
@@ -120,7 +149,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -141,7 +170,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -162,7 +191,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -183,7 +212,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -204,7 +233,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -225,7 +254,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -246,7 +275,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -275,7 +304,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -288,7 +317,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -412,6 +441,15 @@
   <parameter name="avalon_bus_type" value="Memory Mapped" />
   <parameter name="dw" value="16" />
  </module>
+ <module
+   name="AudioBiquadFilter_0"
+   kind="AudioBiquadFilter"
+   version="1.0"
+   enabled="1">
+  <parameter name="COEF_FRAC" value="14" />
+  <parameter name="COEF_WIDTH" value="18" />
+  <parameter name="DATA_WIDTH" value="16" />
+ </module>
  <module name="CLK" kind="clock_source" version="22.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -442,7 +480,7 @@
   <parameter name="dataAddrWidth" value="20" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='RAM_NIOS_II.s1' start='0x40000' end='0x80000' type='altera_avalon_onchip_memory2.s1' /><slave name='VGA_CHAR_BUFFER.avalon_char_buffer_slave' start='0x80000' end='0x82000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='CPU_NIOS_II.debug_mem_slave' start='0x82800' end='0x83000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='TIMER_CTRL_OUTPUT.s1' start='0x83000' end='0x83010' type='altera_avalon_pio.s1' /><slave name='TIMER_STATUS_INPUT.s1' start='0x83010' end='0x83020' type='altera_avalon_pio.s1' /><slave name='REG_SW_INPUT.s1' start='0x83020' end='0x83030' type='altera_avalon_pio.s1' /><slave name='REG_BTN_INPUT.s1' start='0x83030' end='0x83040' type='altera_avalon_pio.s1' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x83040' end='0x83050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO_OUT.avalon_audio_slave' start='0x83050' end='0x83060' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='UART_NIOS_II.avalon_jtag_slave' start='0x83060' end='0x83068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='VGA_CHAR_BUFFER.avalon_char_control_slave' start='0x83068' end='0x83070' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='AudioBiquadFilter_0.avalon_slave_0' start='0x0' end='0x20' type='AudioBiquadFilter.avalon_slave_0' /><slave name='RAM_NIOS_II.s1' start='0x40000' end='0x80000' type='altera_avalon_onchip_memory2.s1' /><slave name='VGA_CHAR_BUFFER.avalon_char_buffer_slave' start='0x80000' end='0x82000' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_buffer_slave' /><slave name='CPU_NIOS_II.debug_mem_slave' start='0x82800' end='0x83000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='TIMER_CTRL_OUTPUT.s1' start='0x83000' end='0x83010' type='altera_avalon_pio.s1' /><slave name='TIMER_STATUS_INPUT.s1' start='0x83010' end='0x83020' type='altera_avalon_pio.s1' /><slave name='REG_SW_INPUT.s1' start='0x83020' end='0x83030' type='altera_avalon_pio.s1' /><slave name='REG_BTN_INPUT.s1' start='0x83030' end='0x83040' type='altera_avalon_pio.s1' /><slave name='AUDIO_CONFIG.avalon_av_config_slave' start='0x83040' end='0x83050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='AUDIO_OUT.avalon_audio_slave' start='0x83050' end='0x83060' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='UART_NIOS_II.avalon_jtag_slave' start='0x83060' end='0x83068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='VGA_CHAR_BUFFER.avalon_char_control_slave' start='0x83068' end='0x83070' type='altera_up_avalon_video_character_buffer_with_dma.avalon_char_control_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1335,6 +1373,15 @@
    kind="avalon"
    version="22.1"
    start="CPU_NIOS_II.data_master"
+   end="AudioBiquadFilter_0.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="22.1"
+   start="CPU_NIOS_II.data_master"
    end="CPU_NIOS_II.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00082800" />
@@ -1434,6 +1481,11 @@
  <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_OUT.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_CONFIG.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="RAM_NIOS_II.clk1" />
+ <connection
+   kind="clock"
+   version="22.1"
+   start="CLK.clk"
+   end="AudioBiquadFilter_0.clock" />
  <connection
    kind="clock"
    version="22.1"
@@ -1548,6 +1600,11 @@
    version="22.1"
    start="CLK.clk_reset"
    end="AUDIO_OUT.reset" />
+ <connection
+   kind="reset"
+   version="22.1"
+   start="CLK.clk_reset"
+   end="AudioBiquadFilter_0.reset" />
  <connection
    kind="reset"
    version="22.1"

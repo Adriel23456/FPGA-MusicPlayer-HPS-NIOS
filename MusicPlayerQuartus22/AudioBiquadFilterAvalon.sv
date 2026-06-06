@@ -12,6 +12,7 @@ module AudioBiquadFilterAvalon #(
     input  logic chipselect,
     input  logic [31:0] writedata,
     output logic [31:0] readdata,
+    output logic readdatavalid,
 
     output logic waitrequest
 );
@@ -25,6 +26,7 @@ module AudioBiquadFilterAvalon #(
     logic signed [DATA_WIDTH-1:0] sample_right_out;
 
     logic busy;
+    logic read_pending;
 
     AudioBiquadFilter #(
         .DATA_WIDTH(DATA_WIDTH),
@@ -53,8 +55,12 @@ module AudioBiquadFilterAvalon #(
             sample_right_in  <= '0;
             busy             <= 1'b0;
             readdata         <= '0;
+            readdatavalid    <= 1'b0;
+            read_pending     <= 1'b0;
         end else begin
             sample_valid <= 1'b0;
+            readdatavalid <= read_pending;
+            read_pending <= chipselect && read;
 
             if (chipselect && write) begin
                 unique case (address)
