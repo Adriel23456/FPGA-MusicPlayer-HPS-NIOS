@@ -20,14 +20,17 @@ cd ~/gsrd-socfpga
 # If you changed hps-music-player files:
 bitbake hps-music-player -c cleansstate && bitbake hps-music-player
 
-# If you changed de1soc-handoff files:
-bitbake de1soc-handoff -c cleansstate && bitbake de1soc-handoff
+# If you changed fpga-autoload files:
+bitbake fpga-autoload -c cleansstate && bitbake fpga-autoload
 
 # Full image:
 bitbake core-image-minimal
 
 # SDK (optional):
 bitbake core-image-minimal -c populate_sdk
+ls tmp/deploy/sdk/*.sh
+
+. /opt/poky/5.0.17/environment-setup-cortexa9t2hf-neon-poky-linux-gnueabi
 ```
 
 ---
@@ -77,6 +80,7 @@ sudo umount /dev/mmcblk0p* 2>/dev/null
 sudo wipefs -a /dev/mmcblk0
 sudo dd if=/dev/zero of=/dev/mmcblk0 bs=1M count=100 status=progress
 sync
+
 sudo bmaptool copy --nobmap ~/core-image-minimal-cyclone5.rootfs.wic /dev/mmcblk0
 sync
 
@@ -105,15 +109,6 @@ sudo umount /mnt/sdboot
 ## 6. Boot, Program FPGA & Verify
 
 1. Insert the SD card and power the board.
-2. Program the `.sof` via **Quartus Programmer (JTAG)**.
-   - The HPS-FPGA bridge has no logic until the FPGA is loaded. The daemon's mmap retry loop will spin until you do this.
-
-```bash
-# Discover the board (or use static IP 192.168.100.50 directly):
-sudo nmap -sn 192.168.100.0/24
-
-ssh root@192.168.100.50   # password: 1234
-```
 
 ```bash
 # Static IP applied?
@@ -128,9 +123,4 @@ ls -l /mnt/music
 
 # Bridge enabled?
 cat /sys/class/fpga_bridge/br1/state   # expected: enabled
-```
-
-For UART connection:
-```bash
-sudo minicom -D /dev/ttyUSB0 -b 115200
 ```

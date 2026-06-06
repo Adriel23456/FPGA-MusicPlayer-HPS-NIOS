@@ -75,9 +75,7 @@ desktop.ini
 
 # ---- Synthesis / build outputs ----
 *.qar
-*.sof
 *.pof
-*.rbf
 *.jam
 *.jbc
 *.svf

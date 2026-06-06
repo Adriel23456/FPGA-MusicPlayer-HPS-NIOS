@@ -73,7 +73,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -107,7 +107,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -120,7 +120,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -703,7 +703,7 @@
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM4_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM5_CLOCK_FREQ" value="100" />
-  <parameter name="F2SCLK_COLDRST_Enable" value="true" />
+  <parameter name="F2SCLK_COLDRST_Enable" value="false" />
   <parameter name="F2SCLK_DBGRST_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_FREQ" value="0" />
@@ -1152,7 +1152,7 @@
   <parameter name="instanceID" value="NONE" />
   <parameter name="memorySize" value="32768" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
-  <parameter name="resetrequest_enabled" value="true" />
+  <parameter name="resetrequest_enabled" value="false" />
   <parameter name="simAllowMRAMContentsFile" value="false" />
   <parameter name="simMemInitOnlyFilename" value="0" />
   <parameter name="singleClockOperation" value="false" />
@@ -1551,13 +1551,8 @@
  <connection
    kind="reset"
    version="22.1"
-   start="CLK.clk_reset"
+   start="HPS_ARM.h2f_reset"
    end="RAM_NIOS_II.reset1" />
- <connection
-   kind="reset"
-   version="22.1"
-   start="CPU_NIOS_II.debug_reset_request"
-   end="HPS_ARM.f2h_cold_reset_req" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

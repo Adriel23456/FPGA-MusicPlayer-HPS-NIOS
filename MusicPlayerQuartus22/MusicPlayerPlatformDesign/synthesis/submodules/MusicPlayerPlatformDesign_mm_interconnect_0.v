@@ -7,129 +7,129 @@
 
 `timescale 1 ps / 1 ps
 module MusicPlayerPlatformDesign_mm_interconnect_0 (
-		input  wire [11:0] HPS_ARM_h2f_axi_master_awid,                                        //                                       HPS_ARM_h2f_axi_master.awid
-		input  wire [29:0] HPS_ARM_h2f_axi_master_awaddr,                                      //                                                             .awaddr
-		input  wire [3:0]  HPS_ARM_h2f_axi_master_awlen,                                       //                                                             .awlen
-		input  wire [2:0]  HPS_ARM_h2f_axi_master_awsize,                                      //                                                             .awsize
-		input  wire [1:0]  HPS_ARM_h2f_axi_master_awburst,                                     //                                                             .awburst
-		input  wire [1:0]  HPS_ARM_h2f_axi_master_awlock,                                      //                                                             .awlock
-		input  wire [3:0]  HPS_ARM_h2f_axi_master_awcache,                                     //                                                             .awcache
-		input  wire [2:0]  HPS_ARM_h2f_axi_master_awprot,                                      //                                                             .awprot
-		input  wire        HPS_ARM_h2f_axi_master_awvalid,                                     //                                                             .awvalid
-		output wire        HPS_ARM_h2f_axi_master_awready,                                     //                                                             .awready
-		input  wire [11:0] HPS_ARM_h2f_axi_master_wid,                                         //                                                             .wid
-		input  wire [63:0] HPS_ARM_h2f_axi_master_wdata,                                       //                                                             .wdata
-		input  wire [7:0]  HPS_ARM_h2f_axi_master_wstrb,                                       //                                                             .wstrb
-		input  wire        HPS_ARM_h2f_axi_master_wlast,                                       //                                                             .wlast
-		input  wire        HPS_ARM_h2f_axi_master_wvalid,                                      //                                                             .wvalid
-		output wire        HPS_ARM_h2f_axi_master_wready,                                      //                                                             .wready
-		output wire [11:0] HPS_ARM_h2f_axi_master_bid,                                         //                                                             .bid
-		output wire [1:0]  HPS_ARM_h2f_axi_master_bresp,                                       //                                                             .bresp
-		output wire        HPS_ARM_h2f_axi_master_bvalid,                                      //                                                             .bvalid
-		input  wire        HPS_ARM_h2f_axi_master_bready,                                      //                                                             .bready
-		input  wire [11:0] HPS_ARM_h2f_axi_master_arid,                                        //                                                             .arid
-		input  wire [29:0] HPS_ARM_h2f_axi_master_araddr,                                      //                                                             .araddr
-		input  wire [3:0]  HPS_ARM_h2f_axi_master_arlen,                                       //                                                             .arlen
-		input  wire [2:0]  HPS_ARM_h2f_axi_master_arsize,                                      //                                                             .arsize
-		input  wire [1:0]  HPS_ARM_h2f_axi_master_arburst,                                     //                                                             .arburst
-		input  wire [1:0]  HPS_ARM_h2f_axi_master_arlock,                                      //                                                             .arlock
-		input  wire [3:0]  HPS_ARM_h2f_axi_master_arcache,                                     //                                                             .arcache
-		input  wire [2:0]  HPS_ARM_h2f_axi_master_arprot,                                      //                                                             .arprot
-		input  wire        HPS_ARM_h2f_axi_master_arvalid,                                     //                                                             .arvalid
-		output wire        HPS_ARM_h2f_axi_master_arready,                                     //                                                             .arready
-		output wire [11:0] HPS_ARM_h2f_axi_master_rid,                                         //                                                             .rid
-		output wire [63:0] HPS_ARM_h2f_axi_master_rdata,                                       //                                                             .rdata
-		output wire [1:0]  HPS_ARM_h2f_axi_master_rresp,                                       //                                                             .rresp
-		output wire        HPS_ARM_h2f_axi_master_rlast,                                       //                                                             .rlast
-		output wire        HPS_ARM_h2f_axi_master_rvalid,                                      //                                                             .rvalid
-		input  wire        HPS_ARM_h2f_axi_master_rready,                                      //                                                             .rready
-		input  wire        CLK_clk_clk,                                                        //                                                      CLK_clk.clk
-		input  wire        VGA_CLOCK_BRIDGE_out_clk_clk,                                       //                                     VGA_CLOCK_BRIDGE_out_clk.clk
-		input  wire        CPU_NIOS_II_reset_reset_bridge_in_reset_reset,                      //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
-		input  wire        HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
-		input  wire        VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset,                  //                  VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset
-		input  wire [16:0] CPU_NIOS_II_data_master_address,                                    //                                      CPU_NIOS_II_data_master.address
-		output wire        CPU_NIOS_II_data_master_waitrequest,                                //                                                             .waitrequest
-		input  wire [3:0]  CPU_NIOS_II_data_master_byteenable,                                 //                                                             .byteenable
-		input  wire        CPU_NIOS_II_data_master_read,                                       //                                                             .read
-		output wire [31:0] CPU_NIOS_II_data_master_readdata,                                   //                                                             .readdata
-		input  wire        CPU_NIOS_II_data_master_write,                                      //                                                             .write
-		input  wire [31:0] CPU_NIOS_II_data_master_writedata,                                  //                                                             .writedata
-		input  wire        CPU_NIOS_II_data_master_debugaccess,                                //                                                             .debugaccess
-		input  wire [16:0] CPU_NIOS_II_instruction_master_address,                             //                               CPU_NIOS_II_instruction_master.address
-		output wire        CPU_NIOS_II_instruction_master_waitrequest,                         //                                                             .waitrequest
-		input  wire        CPU_NIOS_II_instruction_master_read,                                //                                                             .read
-		output wire [31:0] CPU_NIOS_II_instruction_master_readdata,                            //                                                             .readdata
-		output wire [1:0]  AUDIO_CONFIG_avalon_av_config_slave_address,                        //                          AUDIO_CONFIG_avalon_av_config_slave.address
-		output wire        AUDIO_CONFIG_avalon_av_config_slave_write,                          //                                                             .write
-		output wire        AUDIO_CONFIG_avalon_av_config_slave_read,                           //                                                             .read
-		input  wire [31:0] AUDIO_CONFIG_avalon_av_config_slave_readdata,                       //                                                             .readdata
-		output wire [31:0] AUDIO_CONFIG_avalon_av_config_slave_writedata,                      //                                                             .writedata
-		output wire [3:0]  AUDIO_CONFIG_avalon_av_config_slave_byteenable,                     //                                                             .byteenable
-		input  wire        AUDIO_CONFIG_avalon_av_config_slave_waitrequest,                    //                                                             .waitrequest
-		output wire [1:0]  AUDIO_OUT_avalon_audio_slave_address,                               //                                 AUDIO_OUT_avalon_audio_slave.address
-		output wire        AUDIO_OUT_avalon_audio_slave_write,                                 //                                                             .write
-		output wire        AUDIO_OUT_avalon_audio_slave_read,                                  //                                                             .read
-		input  wire [31:0] AUDIO_OUT_avalon_audio_slave_readdata,                              //                                                             .readdata
-		output wire [31:0] AUDIO_OUT_avalon_audio_slave_writedata,                             //                                                             .writedata
-		output wire        AUDIO_OUT_avalon_audio_slave_chipselect,                            //                                                             .chipselect
-		output wire [8:0]  CPU_NIOS_II_debug_mem_slave_address,                                //                                  CPU_NIOS_II_debug_mem_slave.address
-		output wire        CPU_NIOS_II_debug_mem_slave_write,                                  //                                                             .write
-		output wire        CPU_NIOS_II_debug_mem_slave_read,                                   //                                                             .read
-		input  wire [31:0] CPU_NIOS_II_debug_mem_slave_readdata,                               //                                                             .readdata
-		output wire [31:0] CPU_NIOS_II_debug_mem_slave_writedata,                              //                                                             .writedata
-		output wire [3:0]  CPU_NIOS_II_debug_mem_slave_byteenable,                             //                                                             .byteenable
-		input  wire        CPU_NIOS_II_debug_mem_slave_waitrequest,                            //                                                             .waitrequest
-		output wire        CPU_NIOS_II_debug_mem_slave_debugaccess,                            //                                                             .debugaccess
-		output wire [12:0] RAM_NIOS_II_s1_address,                                             //                                               RAM_NIOS_II_s1.address
-		output wire        RAM_NIOS_II_s1_write,                                               //                                                             .write
-		input  wire [31:0] RAM_NIOS_II_s1_readdata,                                            //                                                             .readdata
-		output wire [31:0] RAM_NIOS_II_s1_writedata,                                           //                                                             .writedata
-		output wire [3:0]  RAM_NIOS_II_s1_byteenable,                                          //                                                             .byteenable
-		output wire        RAM_NIOS_II_s1_chipselect,                                          //                                                             .chipselect
-		output wire        RAM_NIOS_II_s1_clken,                                               //                                                             .clken
-		output wire [1:0]  REG_BTN_INPUT_s1_address,                                           //                                             REG_BTN_INPUT_s1.address
-		output wire        REG_BTN_INPUT_s1_write,                                             //                                                             .write
-		input  wire [31:0] REG_BTN_INPUT_s1_readdata,                                          //                                                             .readdata
-		output wire [31:0] REG_BTN_INPUT_s1_writedata,                                         //                                                             .writedata
-		output wire        REG_BTN_INPUT_s1_chipselect,                                        //                                                             .chipselect
-		output wire [1:0]  REG_SW_INPUT_s1_address,                                            //                                              REG_SW_INPUT_s1.address
-		output wire        REG_SW_INPUT_s1_write,                                              //                                                             .write
-		input  wire [31:0] REG_SW_INPUT_s1_readdata,                                           //                                                             .readdata
-		output wire [31:0] REG_SW_INPUT_s1_writedata,                                          //                                                             .writedata
-		output wire        REG_SW_INPUT_s1_chipselect,                                         //                                                             .chipselect
-		output wire [1:0]  TIMER_CTRL_OUTPUT_s1_address,                                       //                                         TIMER_CTRL_OUTPUT_s1.address
-		output wire        TIMER_CTRL_OUTPUT_s1_write,                                         //                                                             .write
-		input  wire [31:0] TIMER_CTRL_OUTPUT_s1_readdata,                                      //                                                             .readdata
-		output wire [31:0] TIMER_CTRL_OUTPUT_s1_writedata,                                     //                                                             .writedata
-		output wire        TIMER_CTRL_OUTPUT_s1_chipselect,                                    //                                                             .chipselect
-		output wire [1:0]  TIMER_STATUS_INPUT_s1_address,                                      //                                        TIMER_STATUS_INPUT_s1.address
-		output wire        TIMER_STATUS_INPUT_s1_write,                                        //                                                             .write
-		input  wire [31:0] TIMER_STATUS_INPUT_s1_readdata,                                     //                                                             .readdata
-		output wire [31:0] TIMER_STATUS_INPUT_s1_writedata,                                    //                                                             .writedata
-		output wire        TIMER_STATUS_INPUT_s1_chipselect,                                   //                                                             .chipselect
-		output wire [0:0]  UART_NIOS_II_avalon_jtag_slave_address,                             //                               UART_NIOS_II_avalon_jtag_slave.address
-		output wire        UART_NIOS_II_avalon_jtag_slave_write,                               //                                                             .write
-		output wire        UART_NIOS_II_avalon_jtag_slave_read,                                //                                                             .read
-		input  wire [31:0] UART_NIOS_II_avalon_jtag_slave_readdata,                            //                                                             .readdata
-		output wire [31:0] UART_NIOS_II_avalon_jtag_slave_writedata,                           //                                                             .writedata
-		input  wire        UART_NIOS_II_avalon_jtag_slave_waitrequest,                         //                                                             .waitrequest
-		output wire        UART_NIOS_II_avalon_jtag_slave_chipselect,                          //                                                             .chipselect
-		output wire [12:0] VGA_CHAR_BUFFER_avalon_char_buffer_slave_address,                   //                     VGA_CHAR_BUFFER_avalon_char_buffer_slave.address
-		output wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_write,                     //                                                             .write
-		output wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_read,                      //                                                             .read
-		input  wire [7:0]  VGA_CHAR_BUFFER_avalon_char_buffer_slave_readdata,                  //                                                             .readdata
-		output wire [7:0]  VGA_CHAR_BUFFER_avalon_char_buffer_slave_writedata,                 //                                                             .writedata
-		output wire [0:0]  VGA_CHAR_BUFFER_avalon_char_buffer_slave_byteenable,                //                                                             .byteenable
-		input  wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_waitrequest,               //                                                             .waitrequest
-		output wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_chipselect,                //                                                             .chipselect
-		output wire [0:0]  VGA_CHAR_BUFFER_avalon_char_control_slave_address,                  //                    VGA_CHAR_BUFFER_avalon_char_control_slave.address
-		output wire        VGA_CHAR_BUFFER_avalon_char_control_slave_write,                    //                                                             .write
-		output wire        VGA_CHAR_BUFFER_avalon_char_control_slave_read,                     //                                                             .read
-		input  wire [31:0] VGA_CHAR_BUFFER_avalon_char_control_slave_readdata,                 //                                                             .readdata
-		output wire [31:0] VGA_CHAR_BUFFER_avalon_char_control_slave_writedata,                //                                                             .writedata
-		output wire [3:0]  VGA_CHAR_BUFFER_avalon_char_control_slave_byteenable,               //                                                             .byteenable
-		output wire        VGA_CHAR_BUFFER_avalon_char_control_slave_chipselect                //                                                             .chipselect
+		input  wire [11:0] HPS_ARM_h2f_axi_master_awid,                          //                      HPS_ARM_h2f_axi_master.awid
+		input  wire [29:0] HPS_ARM_h2f_axi_master_awaddr,                        //                                            .awaddr
+		input  wire [3:0]  HPS_ARM_h2f_axi_master_awlen,                         //                                            .awlen
+		input  wire [2:0]  HPS_ARM_h2f_axi_master_awsize,                        //                                            .awsize
+		input  wire [1:0]  HPS_ARM_h2f_axi_master_awburst,                       //                                            .awburst
+		input  wire [1:0]  HPS_ARM_h2f_axi_master_awlock,                        //                                            .awlock
+		input  wire [3:0]  HPS_ARM_h2f_axi_master_awcache,                       //                                            .awcache
+		input  wire [2:0]  HPS_ARM_h2f_axi_master_awprot,                        //                                            .awprot
+		input  wire        HPS_ARM_h2f_axi_master_awvalid,                       //                                            .awvalid
+		output wire        HPS_ARM_h2f_axi_master_awready,                       //                                            .awready
+		input  wire [11:0] HPS_ARM_h2f_axi_master_wid,                           //                                            .wid
+		input  wire [63:0] HPS_ARM_h2f_axi_master_wdata,                         //                                            .wdata
+		input  wire [7:0]  HPS_ARM_h2f_axi_master_wstrb,                         //                                            .wstrb
+		input  wire        HPS_ARM_h2f_axi_master_wlast,                         //                                            .wlast
+		input  wire        HPS_ARM_h2f_axi_master_wvalid,                        //                                            .wvalid
+		output wire        HPS_ARM_h2f_axi_master_wready,                        //                                            .wready
+		output wire [11:0] HPS_ARM_h2f_axi_master_bid,                           //                                            .bid
+		output wire [1:0]  HPS_ARM_h2f_axi_master_bresp,                         //                                            .bresp
+		output wire        HPS_ARM_h2f_axi_master_bvalid,                        //                                            .bvalid
+		input  wire        HPS_ARM_h2f_axi_master_bready,                        //                                            .bready
+		input  wire [11:0] HPS_ARM_h2f_axi_master_arid,                          //                                            .arid
+		input  wire [29:0] HPS_ARM_h2f_axi_master_araddr,                        //                                            .araddr
+		input  wire [3:0]  HPS_ARM_h2f_axi_master_arlen,                         //                                            .arlen
+		input  wire [2:0]  HPS_ARM_h2f_axi_master_arsize,                        //                                            .arsize
+		input  wire [1:0]  HPS_ARM_h2f_axi_master_arburst,                       //                                            .arburst
+		input  wire [1:0]  HPS_ARM_h2f_axi_master_arlock,                        //                                            .arlock
+		input  wire [3:0]  HPS_ARM_h2f_axi_master_arcache,                       //                                            .arcache
+		input  wire [2:0]  HPS_ARM_h2f_axi_master_arprot,                        //                                            .arprot
+		input  wire        HPS_ARM_h2f_axi_master_arvalid,                       //                                            .arvalid
+		output wire        HPS_ARM_h2f_axi_master_arready,                       //                                            .arready
+		output wire [11:0] HPS_ARM_h2f_axi_master_rid,                           //                                            .rid
+		output wire [63:0] HPS_ARM_h2f_axi_master_rdata,                         //                                            .rdata
+		output wire [1:0]  HPS_ARM_h2f_axi_master_rresp,                         //                                            .rresp
+		output wire        HPS_ARM_h2f_axi_master_rlast,                         //                                            .rlast
+		output wire        HPS_ARM_h2f_axi_master_rvalid,                        //                                            .rvalid
+		input  wire        HPS_ARM_h2f_axi_master_rready,                        //                                            .rready
+		input  wire        CLK_clk_clk,                                          //                                     CLK_clk.clk
+		input  wire        VGA_CLOCK_BRIDGE_out_clk_clk,                         //                    VGA_CLOCK_BRIDGE_out_clk.clk
+		input  wire        CPU_NIOS_II_reset_reset_bridge_in_reset_reset,        //     CPU_NIOS_II_reset_reset_bridge_in_reset.reset
+		input  wire        RAM_NIOS_II_reset1_reset_bridge_in_reset_reset,       //    RAM_NIOS_II_reset1_reset_bridge_in_reset.reset
+		input  wire        VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset,    // VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset
+		input  wire [16:0] CPU_NIOS_II_data_master_address,                      //                     CPU_NIOS_II_data_master.address
+		output wire        CPU_NIOS_II_data_master_waitrequest,                  //                                            .waitrequest
+		input  wire [3:0]  CPU_NIOS_II_data_master_byteenable,                   //                                            .byteenable
+		input  wire        CPU_NIOS_II_data_master_read,                         //                                            .read
+		output wire [31:0] CPU_NIOS_II_data_master_readdata,                     //                                            .readdata
+		input  wire        CPU_NIOS_II_data_master_write,                        //                                            .write
+		input  wire [31:0] CPU_NIOS_II_data_master_writedata,                    //                                            .writedata
+		input  wire        CPU_NIOS_II_data_master_debugaccess,                  //                                            .debugaccess
+		input  wire [16:0] CPU_NIOS_II_instruction_master_address,               //              CPU_NIOS_II_instruction_master.address
+		output wire        CPU_NIOS_II_instruction_master_waitrequest,           //                                            .waitrequest
+		input  wire        CPU_NIOS_II_instruction_master_read,                  //                                            .read
+		output wire [31:0] CPU_NIOS_II_instruction_master_readdata,              //                                            .readdata
+		output wire [1:0]  AUDIO_CONFIG_avalon_av_config_slave_address,          //         AUDIO_CONFIG_avalon_av_config_slave.address
+		output wire        AUDIO_CONFIG_avalon_av_config_slave_write,            //                                            .write
+		output wire        AUDIO_CONFIG_avalon_av_config_slave_read,             //                                            .read
+		input  wire [31:0] AUDIO_CONFIG_avalon_av_config_slave_readdata,         //                                            .readdata
+		output wire [31:0] AUDIO_CONFIG_avalon_av_config_slave_writedata,        //                                            .writedata
+		output wire [3:0]  AUDIO_CONFIG_avalon_av_config_slave_byteenable,       //                                            .byteenable
+		input  wire        AUDIO_CONFIG_avalon_av_config_slave_waitrequest,      //                                            .waitrequest
+		output wire [1:0]  AUDIO_OUT_avalon_audio_slave_address,                 //                AUDIO_OUT_avalon_audio_slave.address
+		output wire        AUDIO_OUT_avalon_audio_slave_write,                   //                                            .write
+		output wire        AUDIO_OUT_avalon_audio_slave_read,                    //                                            .read
+		input  wire [31:0] AUDIO_OUT_avalon_audio_slave_readdata,                //                                            .readdata
+		output wire [31:0] AUDIO_OUT_avalon_audio_slave_writedata,               //                                            .writedata
+		output wire        AUDIO_OUT_avalon_audio_slave_chipselect,              //                                            .chipselect
+		output wire [8:0]  CPU_NIOS_II_debug_mem_slave_address,                  //                 CPU_NIOS_II_debug_mem_slave.address
+		output wire        CPU_NIOS_II_debug_mem_slave_write,                    //                                            .write
+		output wire        CPU_NIOS_II_debug_mem_slave_read,                     //                                            .read
+		input  wire [31:0] CPU_NIOS_II_debug_mem_slave_readdata,                 //                                            .readdata
+		output wire [31:0] CPU_NIOS_II_debug_mem_slave_writedata,                //                                            .writedata
+		output wire [3:0]  CPU_NIOS_II_debug_mem_slave_byteenable,               //                                            .byteenable
+		input  wire        CPU_NIOS_II_debug_mem_slave_waitrequest,              //                                            .waitrequest
+		output wire        CPU_NIOS_II_debug_mem_slave_debugaccess,              //                                            .debugaccess
+		output wire [12:0] RAM_NIOS_II_s1_address,                               //                              RAM_NIOS_II_s1.address
+		output wire        RAM_NIOS_II_s1_write,                                 //                                            .write
+		input  wire [31:0] RAM_NIOS_II_s1_readdata,                              //                                            .readdata
+		output wire [31:0] RAM_NIOS_II_s1_writedata,                             //                                            .writedata
+		output wire [3:0]  RAM_NIOS_II_s1_byteenable,                            //                                            .byteenable
+		output wire        RAM_NIOS_II_s1_chipselect,                            //                                            .chipselect
+		output wire        RAM_NIOS_II_s1_clken,                                 //                                            .clken
+		output wire [1:0]  REG_BTN_INPUT_s1_address,                             //                            REG_BTN_INPUT_s1.address
+		output wire        REG_BTN_INPUT_s1_write,                               //                                            .write
+		input  wire [31:0] REG_BTN_INPUT_s1_readdata,                            //                                            .readdata
+		output wire [31:0] REG_BTN_INPUT_s1_writedata,                           //                                            .writedata
+		output wire        REG_BTN_INPUT_s1_chipselect,                          //                                            .chipselect
+		output wire [1:0]  REG_SW_INPUT_s1_address,                              //                             REG_SW_INPUT_s1.address
+		output wire        REG_SW_INPUT_s1_write,                                //                                            .write
+		input  wire [31:0] REG_SW_INPUT_s1_readdata,                             //                                            .readdata
+		output wire [31:0] REG_SW_INPUT_s1_writedata,                            //                                            .writedata
+		output wire        REG_SW_INPUT_s1_chipselect,                           //                                            .chipselect
+		output wire [1:0]  TIMER_CTRL_OUTPUT_s1_address,                         //                        TIMER_CTRL_OUTPUT_s1.address
+		output wire        TIMER_CTRL_OUTPUT_s1_write,                           //                                            .write
+		input  wire [31:0] TIMER_CTRL_OUTPUT_s1_readdata,                        //                                            .readdata
+		output wire [31:0] TIMER_CTRL_OUTPUT_s1_writedata,                       //                                            .writedata
+		output wire        TIMER_CTRL_OUTPUT_s1_chipselect,                      //                                            .chipselect
+		output wire [1:0]  TIMER_STATUS_INPUT_s1_address,                        //                       TIMER_STATUS_INPUT_s1.address
+		output wire        TIMER_STATUS_INPUT_s1_write,                          //                                            .write
+		input  wire [31:0] TIMER_STATUS_INPUT_s1_readdata,                       //                                            .readdata
+		output wire [31:0] TIMER_STATUS_INPUT_s1_writedata,                      //                                            .writedata
+		output wire        TIMER_STATUS_INPUT_s1_chipselect,                     //                                            .chipselect
+		output wire [0:0]  UART_NIOS_II_avalon_jtag_slave_address,               //              UART_NIOS_II_avalon_jtag_slave.address
+		output wire        UART_NIOS_II_avalon_jtag_slave_write,                 //                                            .write
+		output wire        UART_NIOS_II_avalon_jtag_slave_read,                  //                                            .read
+		input  wire [31:0] UART_NIOS_II_avalon_jtag_slave_readdata,              //                                            .readdata
+		output wire [31:0] UART_NIOS_II_avalon_jtag_slave_writedata,             //                                            .writedata
+		input  wire        UART_NIOS_II_avalon_jtag_slave_waitrequest,           //                                            .waitrequest
+		output wire        UART_NIOS_II_avalon_jtag_slave_chipselect,            //                                            .chipselect
+		output wire [12:0] VGA_CHAR_BUFFER_avalon_char_buffer_slave_address,     //    VGA_CHAR_BUFFER_avalon_char_buffer_slave.address
+		output wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_write,       //                                            .write
+		output wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_read,        //                                            .read
+		input  wire [7:0]  VGA_CHAR_BUFFER_avalon_char_buffer_slave_readdata,    //                                            .readdata
+		output wire [7:0]  VGA_CHAR_BUFFER_avalon_char_buffer_slave_writedata,   //                                            .writedata
+		output wire [0:0]  VGA_CHAR_BUFFER_avalon_char_buffer_slave_byteenable,  //                                            .byteenable
+		input  wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_waitrequest, //                                            .waitrequest
+		output wire        VGA_CHAR_BUFFER_avalon_char_buffer_slave_chipselect,  //                                            .chipselect
+		output wire [0:0]  VGA_CHAR_BUFFER_avalon_char_control_slave_address,    //   VGA_CHAR_BUFFER_avalon_char_control_slave.address
+		output wire        VGA_CHAR_BUFFER_avalon_char_control_slave_write,      //                                            .write
+		output wire        VGA_CHAR_BUFFER_avalon_char_control_slave_read,       //                                            .read
+		input  wire [31:0] VGA_CHAR_BUFFER_avalon_char_control_slave_readdata,   //                                            .readdata
+		output wire [31:0] VGA_CHAR_BUFFER_avalon_char_control_slave_writedata,  //                                            .writedata
+		output wire [3:0]  VGA_CHAR_BUFFER_avalon_char_control_slave_byteenable, //                                            .byteenable
+		output wire        VGA_CHAR_BUFFER_avalon_char_control_slave_chipselect  //                                            .chipselect
 	);
 
 	wire          cpu_nios_ii_data_master_translator_avalon_universal_master_0_waitrequest;                                // CPU_NIOS_II_data_master_agent:av_waitrequest -> CPU_NIOS_II_data_master_translator:uav_waitrequest
@@ -1534,41 +1534,41 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) ram_nios_ii_s1_translator (
-		.clk                    (CLK_clk_clk),                                   //                      clk.clk
-		.reset                  (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), //                    reset.reset
-		.uav_address            (ram_nios_ii_s1_agent_m0_address),               // avalon_universal_slave_0.address
-		.uav_burstcount         (ram_nios_ii_s1_agent_m0_burstcount),            //                         .burstcount
-		.uav_read               (ram_nios_ii_s1_agent_m0_read),                  //                         .read
-		.uav_write              (ram_nios_ii_s1_agent_m0_write),                 //                         .write
-		.uav_waitrequest        (ram_nios_ii_s1_agent_m0_waitrequest),           //                         .waitrequest
-		.uav_readdatavalid      (ram_nios_ii_s1_agent_m0_readdatavalid),         //                         .readdatavalid
-		.uav_byteenable         (ram_nios_ii_s1_agent_m0_byteenable),            //                         .byteenable
-		.uav_readdata           (ram_nios_ii_s1_agent_m0_readdata),              //                         .readdata
-		.uav_writedata          (ram_nios_ii_s1_agent_m0_writedata),             //                         .writedata
-		.uav_lock               (ram_nios_ii_s1_agent_m0_lock),                  //                         .lock
-		.uav_debugaccess        (ram_nios_ii_s1_agent_m0_debugaccess),           //                         .debugaccess
-		.av_address             (RAM_NIOS_II_s1_address),                        //      avalon_anti_slave_0.address
-		.av_write               (RAM_NIOS_II_s1_write),                          //                         .write
-		.av_readdata            (RAM_NIOS_II_s1_readdata),                       //                         .readdata
-		.av_writedata           (RAM_NIOS_II_s1_writedata),                      //                         .writedata
-		.av_byteenable          (RAM_NIOS_II_s1_byteenable),                     //                         .byteenable
-		.av_chipselect          (RAM_NIOS_II_s1_chipselect),                     //                         .chipselect
-		.av_clken               (RAM_NIOS_II_s1_clken),                          //                         .clken
-		.av_read                (),                                              //              (terminated)
-		.av_begintransfer       (),                                              //              (terminated)
-		.av_beginbursttransfer  (),                                              //              (terminated)
-		.av_burstcount          (),                                              //              (terminated)
-		.av_readdatavalid       (1'b0),                                          //              (terminated)
-		.av_waitrequest         (1'b0),                                          //              (terminated)
-		.av_writebyteenable     (),                                              //              (terminated)
-		.av_lock                (),                                              //              (terminated)
-		.uav_clken              (1'b0),                                          //              (terminated)
-		.av_debugaccess         (),                                              //              (terminated)
-		.av_outputenable        (),                                              //              (terminated)
-		.uav_response           (),                                              //              (terminated)
-		.av_response            (2'b00),                                         //              (terminated)
-		.uav_writeresponsevalid (),                                              //              (terminated)
-		.av_writeresponsevalid  (1'b0)                                           //              (terminated)
+		.clk                    (CLK_clk_clk),                                    //                      clk.clk
+		.reset                  (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), //                    reset.reset
+		.uav_address            (ram_nios_ii_s1_agent_m0_address),                // avalon_universal_slave_0.address
+		.uav_burstcount         (ram_nios_ii_s1_agent_m0_burstcount),             //                         .burstcount
+		.uav_read               (ram_nios_ii_s1_agent_m0_read),                   //                         .read
+		.uav_write              (ram_nios_ii_s1_agent_m0_write),                  //                         .write
+		.uav_waitrequest        (ram_nios_ii_s1_agent_m0_waitrequest),            //                         .waitrequest
+		.uav_readdatavalid      (ram_nios_ii_s1_agent_m0_readdatavalid),          //                         .readdatavalid
+		.uav_byteenable         (ram_nios_ii_s1_agent_m0_byteenable),             //                         .byteenable
+		.uav_readdata           (ram_nios_ii_s1_agent_m0_readdata),               //                         .readdata
+		.uav_writedata          (ram_nios_ii_s1_agent_m0_writedata),              //                         .writedata
+		.uav_lock               (ram_nios_ii_s1_agent_m0_lock),                   //                         .lock
+		.uav_debugaccess        (ram_nios_ii_s1_agent_m0_debugaccess),            //                         .debugaccess
+		.av_address             (RAM_NIOS_II_s1_address),                         //      avalon_anti_slave_0.address
+		.av_write               (RAM_NIOS_II_s1_write),                           //                         .write
+		.av_readdata            (RAM_NIOS_II_s1_readdata),                        //                         .readdata
+		.av_writedata           (RAM_NIOS_II_s1_writedata),                       //                         .writedata
+		.av_byteenable          (RAM_NIOS_II_s1_byteenable),                      //                         .byteenable
+		.av_chipselect          (RAM_NIOS_II_s1_chipselect),                      //                         .chipselect
+		.av_clken               (RAM_NIOS_II_s1_clken),                           //                         .clken
+		.av_read                (),                                               //              (terminated)
+		.av_begintransfer       (),                                               //              (terminated)
+		.av_beginbursttransfer  (),                                               //              (terminated)
+		.av_burstcount          (),                                               //              (terminated)
+		.av_readdatavalid       (1'b0),                                           //              (terminated)
+		.av_waitrequest         (1'b0),                                           //              (terminated)
+		.av_writebyteenable     (),                                               //              (terminated)
+		.av_lock                (),                                               //              (terminated)
+		.uav_clken              (1'b0),                                           //              (terminated)
+		.av_debugaccess         (),                                               //              (terminated)
+		.av_outputenable        (),                                               //              (terminated)
+		.uav_response           (),                                               //              (terminated)
+		.av_response            (2'b00),                                          //              (terminated)
+		.uav_writeresponsevalid (),                                               //              (terminated)
+		.av_writeresponsevalid  (1'b0)                                            //              (terminated)
 	);
 
 	altera_merlin_slave_translator #(
@@ -1965,75 +1965,75 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ST_CHANNEL_W              (11),
 		.ID                        (2)
 	) hps_arm_h2f_axi_master_agent (
-		.aclk                   (CLK_clk_clk),                                                         //              clk.clk
-		.aresetn                (~HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), //        clk_reset.reset_n
-		.write_cp_valid         (hps_arm_h2f_axi_master_agent_write_cp_valid),                         //         write_cp.valid
-		.write_cp_data          (hps_arm_h2f_axi_master_agent_write_cp_data),                          //                 .data
-		.write_cp_startofpacket (hps_arm_h2f_axi_master_agent_write_cp_startofpacket),                 //                 .startofpacket
-		.write_cp_endofpacket   (hps_arm_h2f_axi_master_agent_write_cp_endofpacket),                   //                 .endofpacket
-		.write_cp_ready         (hps_arm_h2f_axi_master_agent_write_cp_ready),                         //                 .ready
-		.write_rp_valid         (rsp_mux_001_src_valid),                                               //         write_rp.valid
-		.write_rp_data          (rsp_mux_001_src_data),                                                //                 .data
-		.write_rp_channel       (rsp_mux_001_src_channel),                                             //                 .channel
-		.write_rp_startofpacket (rsp_mux_001_src_startofpacket),                                       //                 .startofpacket
-		.write_rp_endofpacket   (rsp_mux_001_src_endofpacket),                                         //                 .endofpacket
-		.write_rp_ready         (rsp_mux_001_src_ready),                                               //                 .ready
-		.read_cp_valid          (hps_arm_h2f_axi_master_agent_read_cp_valid),                          //          read_cp.valid
-		.read_cp_data           (hps_arm_h2f_axi_master_agent_read_cp_data),                           //                 .data
-		.read_cp_startofpacket  (hps_arm_h2f_axi_master_agent_read_cp_startofpacket),                  //                 .startofpacket
-		.read_cp_endofpacket    (hps_arm_h2f_axi_master_agent_read_cp_endofpacket),                    //                 .endofpacket
-		.read_cp_ready          (hps_arm_h2f_axi_master_agent_read_cp_ready),                          //                 .ready
-		.read_rp_valid          (rsp_mux_002_src_valid),                                               //          read_rp.valid
-		.read_rp_data           (rsp_mux_002_src_data),                                                //                 .data
-		.read_rp_channel        (rsp_mux_002_src_channel),                                             //                 .channel
-		.read_rp_startofpacket  (rsp_mux_002_src_startofpacket),                                       //                 .startofpacket
-		.read_rp_endofpacket    (rsp_mux_002_src_endofpacket),                                         //                 .endofpacket
-		.read_rp_ready          (rsp_mux_002_src_ready),                                               //                 .ready
-		.awid                   (HPS_ARM_h2f_axi_master_awid),                                         // altera_axi_slave.awid
-		.awaddr                 (HPS_ARM_h2f_axi_master_awaddr),                                       //                 .awaddr
-		.awlen                  (HPS_ARM_h2f_axi_master_awlen),                                        //                 .awlen
-		.awsize                 (HPS_ARM_h2f_axi_master_awsize),                                       //                 .awsize
-		.awburst                (HPS_ARM_h2f_axi_master_awburst),                                      //                 .awburst
-		.awlock                 (HPS_ARM_h2f_axi_master_awlock),                                       //                 .awlock
-		.awcache                (HPS_ARM_h2f_axi_master_awcache),                                      //                 .awcache
-		.awprot                 (HPS_ARM_h2f_axi_master_awprot),                                       //                 .awprot
-		.awvalid                (HPS_ARM_h2f_axi_master_awvalid),                                      //                 .awvalid
-		.awready                (HPS_ARM_h2f_axi_master_awready),                                      //                 .awready
-		.wid                    (HPS_ARM_h2f_axi_master_wid),                                          //                 .wid
-		.wdata                  (HPS_ARM_h2f_axi_master_wdata),                                        //                 .wdata
-		.wstrb                  (HPS_ARM_h2f_axi_master_wstrb),                                        //                 .wstrb
-		.wlast                  (HPS_ARM_h2f_axi_master_wlast),                                        //                 .wlast
-		.wvalid                 (HPS_ARM_h2f_axi_master_wvalid),                                       //                 .wvalid
-		.wready                 (HPS_ARM_h2f_axi_master_wready),                                       //                 .wready
-		.bid                    (HPS_ARM_h2f_axi_master_bid),                                          //                 .bid
-		.bresp                  (HPS_ARM_h2f_axi_master_bresp),                                        //                 .bresp
-		.bvalid                 (HPS_ARM_h2f_axi_master_bvalid),                                       //                 .bvalid
-		.bready                 (HPS_ARM_h2f_axi_master_bready),                                       //                 .bready
-		.arid                   (HPS_ARM_h2f_axi_master_arid),                                         //                 .arid
-		.araddr                 (HPS_ARM_h2f_axi_master_araddr),                                       //                 .araddr
-		.arlen                  (HPS_ARM_h2f_axi_master_arlen),                                        //                 .arlen
-		.arsize                 (HPS_ARM_h2f_axi_master_arsize),                                       //                 .arsize
-		.arburst                (HPS_ARM_h2f_axi_master_arburst),                                      //                 .arburst
-		.arlock                 (HPS_ARM_h2f_axi_master_arlock),                                       //                 .arlock
-		.arcache                (HPS_ARM_h2f_axi_master_arcache),                                      //                 .arcache
-		.arprot                 (HPS_ARM_h2f_axi_master_arprot),                                       //                 .arprot
-		.arvalid                (HPS_ARM_h2f_axi_master_arvalid),                                      //                 .arvalid
-		.arready                (HPS_ARM_h2f_axi_master_arready),                                      //                 .arready
-		.rid                    (HPS_ARM_h2f_axi_master_rid),                                          //                 .rid
-		.rdata                  (HPS_ARM_h2f_axi_master_rdata),                                        //                 .rdata
-		.rresp                  (HPS_ARM_h2f_axi_master_rresp),                                        //                 .rresp
-		.rlast                  (HPS_ARM_h2f_axi_master_rlast),                                        //                 .rlast
-		.rvalid                 (HPS_ARM_h2f_axi_master_rvalid),                                       //                 .rvalid
-		.rready                 (HPS_ARM_h2f_axi_master_rready),                                       //                 .rready
-		.awuser                 (1'b0),                                                                //      (terminated)
-		.aruser                 (1'b0),                                                                //      (terminated)
-		.awqos                  (4'b0000),                                                             //      (terminated)
-		.arqos                  (4'b0000),                                                             //      (terminated)
-		.awregion               (4'b0000),                                                             //      (terminated)
-		.arregion               (4'b0000),                                                             //      (terminated)
-		.wuser                  (1'b0),                                                                //      (terminated)
-		.ruser                  (),                                                                    //      (terminated)
-		.buser                  ()                                                                     //      (terminated)
+		.aclk                   (CLK_clk_clk),                                         //              clk.clk
+		.aresetn                (~RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),     //        clk_reset.reset_n
+		.write_cp_valid         (hps_arm_h2f_axi_master_agent_write_cp_valid),         //         write_cp.valid
+		.write_cp_data          (hps_arm_h2f_axi_master_agent_write_cp_data),          //                 .data
+		.write_cp_startofpacket (hps_arm_h2f_axi_master_agent_write_cp_startofpacket), //                 .startofpacket
+		.write_cp_endofpacket   (hps_arm_h2f_axi_master_agent_write_cp_endofpacket),   //                 .endofpacket
+		.write_cp_ready         (hps_arm_h2f_axi_master_agent_write_cp_ready),         //                 .ready
+		.write_rp_valid         (rsp_mux_001_src_valid),                               //         write_rp.valid
+		.write_rp_data          (rsp_mux_001_src_data),                                //                 .data
+		.write_rp_channel       (rsp_mux_001_src_channel),                             //                 .channel
+		.write_rp_startofpacket (rsp_mux_001_src_startofpacket),                       //                 .startofpacket
+		.write_rp_endofpacket   (rsp_mux_001_src_endofpacket),                         //                 .endofpacket
+		.write_rp_ready         (rsp_mux_001_src_ready),                               //                 .ready
+		.read_cp_valid          (hps_arm_h2f_axi_master_agent_read_cp_valid),          //          read_cp.valid
+		.read_cp_data           (hps_arm_h2f_axi_master_agent_read_cp_data),           //                 .data
+		.read_cp_startofpacket  (hps_arm_h2f_axi_master_agent_read_cp_startofpacket),  //                 .startofpacket
+		.read_cp_endofpacket    (hps_arm_h2f_axi_master_agent_read_cp_endofpacket),    //                 .endofpacket
+		.read_cp_ready          (hps_arm_h2f_axi_master_agent_read_cp_ready),          //                 .ready
+		.read_rp_valid          (rsp_mux_002_src_valid),                               //          read_rp.valid
+		.read_rp_data           (rsp_mux_002_src_data),                                //                 .data
+		.read_rp_channel        (rsp_mux_002_src_channel),                             //                 .channel
+		.read_rp_startofpacket  (rsp_mux_002_src_startofpacket),                       //                 .startofpacket
+		.read_rp_endofpacket    (rsp_mux_002_src_endofpacket),                         //                 .endofpacket
+		.read_rp_ready          (rsp_mux_002_src_ready),                               //                 .ready
+		.awid                   (HPS_ARM_h2f_axi_master_awid),                         // altera_axi_slave.awid
+		.awaddr                 (HPS_ARM_h2f_axi_master_awaddr),                       //                 .awaddr
+		.awlen                  (HPS_ARM_h2f_axi_master_awlen),                        //                 .awlen
+		.awsize                 (HPS_ARM_h2f_axi_master_awsize),                       //                 .awsize
+		.awburst                (HPS_ARM_h2f_axi_master_awburst),                      //                 .awburst
+		.awlock                 (HPS_ARM_h2f_axi_master_awlock),                       //                 .awlock
+		.awcache                (HPS_ARM_h2f_axi_master_awcache),                      //                 .awcache
+		.awprot                 (HPS_ARM_h2f_axi_master_awprot),                       //                 .awprot
+		.awvalid                (HPS_ARM_h2f_axi_master_awvalid),                      //                 .awvalid
+		.awready                (HPS_ARM_h2f_axi_master_awready),                      //                 .awready
+		.wid                    (HPS_ARM_h2f_axi_master_wid),                          //                 .wid
+		.wdata                  (HPS_ARM_h2f_axi_master_wdata),                        //                 .wdata
+		.wstrb                  (HPS_ARM_h2f_axi_master_wstrb),                        //                 .wstrb
+		.wlast                  (HPS_ARM_h2f_axi_master_wlast),                        //                 .wlast
+		.wvalid                 (HPS_ARM_h2f_axi_master_wvalid),                       //                 .wvalid
+		.wready                 (HPS_ARM_h2f_axi_master_wready),                       //                 .wready
+		.bid                    (HPS_ARM_h2f_axi_master_bid),                          //                 .bid
+		.bresp                  (HPS_ARM_h2f_axi_master_bresp),                        //                 .bresp
+		.bvalid                 (HPS_ARM_h2f_axi_master_bvalid),                       //                 .bvalid
+		.bready                 (HPS_ARM_h2f_axi_master_bready),                       //                 .bready
+		.arid                   (HPS_ARM_h2f_axi_master_arid),                         //                 .arid
+		.araddr                 (HPS_ARM_h2f_axi_master_araddr),                       //                 .araddr
+		.arlen                  (HPS_ARM_h2f_axi_master_arlen),                        //                 .arlen
+		.arsize                 (HPS_ARM_h2f_axi_master_arsize),                       //                 .arsize
+		.arburst                (HPS_ARM_h2f_axi_master_arburst),                      //                 .arburst
+		.arlock                 (HPS_ARM_h2f_axi_master_arlock),                       //                 .arlock
+		.arcache                (HPS_ARM_h2f_axi_master_arcache),                      //                 .arcache
+		.arprot                 (HPS_ARM_h2f_axi_master_arprot),                       //                 .arprot
+		.arvalid                (HPS_ARM_h2f_axi_master_arvalid),                      //                 .arvalid
+		.arready                (HPS_ARM_h2f_axi_master_arready),                      //                 .arready
+		.rid                    (HPS_ARM_h2f_axi_master_rid),                          //                 .rid
+		.rdata                  (HPS_ARM_h2f_axi_master_rdata),                        //                 .rdata
+		.rresp                  (HPS_ARM_h2f_axi_master_rresp),                        //                 .rresp
+		.rlast                  (HPS_ARM_h2f_axi_master_rlast),                        //                 .rlast
+		.rvalid                 (HPS_ARM_h2f_axi_master_rvalid),                       //                 .rvalid
+		.rready                 (HPS_ARM_h2f_axi_master_rready),                       //                 .rready
+		.awuser                 (1'b0),                                                //      (terminated)
+		.aruser                 (1'b0),                                                //      (terminated)
+		.awqos                  (4'b0000),                                             //      (terminated)
+		.arqos                  (4'b0000),                                             //      (terminated)
+		.awregion               (4'b0000),                                             //      (terminated)
+		.arregion               (4'b0000),                                             //      (terminated)
+		.wuser                  (1'b0),                                                //      (terminated)
+		.ruser                  (),                                                    //      (terminated)
+		.buser                  ()                                                     //      (terminated)
 	);
 
 	altera_merlin_master_agent #(
@@ -3153,7 +3153,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ECC_ENABLE                (0)
 	) ram_nios_ii_s1_agent (
 		.clk                     (CLK_clk_clk),                                        //             clk.clk
-		.reset                   (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),      //       clk_reset.reset
+		.reset                   (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),     //       clk_reset.reset
 		.m0_address              (ram_nios_ii_s1_agent_m0_address),                    //              m0.address
 		.m0_burstcount           (ram_nios_ii_s1_agent_m0_burstcount),                 //                .burstcount
 		.m0_byteenable           (ram_nios_ii_s1_agent_m0_byteenable),                 //                .byteenable
@@ -3212,7 +3212,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_EMPTY_IF (0)
 	) ram_nios_ii_s1_agent_rsp_fifo (
 		.clk               (CLK_clk_clk),                                     //       clk.clk
-		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),   // clk_reset.reset
+		.reset             (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),  // clk_reset.reset
 		.in_data           (ram_nios_ii_s1_agent_rf_source_data),             //        in.data
 		.in_valid          (ram_nios_ii_s1_agent_rf_source_valid),            //          .valid
 		.in_ready          (ram_nios_ii_s1_agent_rf_source_ready),            //          .ready
@@ -3252,31 +3252,31 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) ram_nios_ii_s1_agent_rdata_fifo (
-		.clk               (CLK_clk_clk),                                   //       clk.clk
-		.reset             (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.in_data           (ram_nios_ii_s1_agent_rdata_fifo_src_data),      //        in.data
-		.in_valid          (ram_nios_ii_s1_agent_rdata_fifo_src_valid),     //          .valid
-		.in_ready          (ram_nios_ii_s1_agent_rdata_fifo_src_ready),     //          .ready
-		.out_data          (ram_nios_ii_s1_agent_rdata_fifo_out_data),      //       out.data
-		.out_valid         (ram_nios_ii_s1_agent_rdata_fifo_out_valid),     //          .valid
-		.out_ready         (ram_nios_ii_s1_agent_rdata_fifo_out_ready),     //          .ready
-		.csr_address       (2'b00),                                         // (terminated)
-		.csr_read          (1'b0),                                          // (terminated)
-		.csr_write         (1'b0),                                          // (terminated)
-		.csr_readdata      (),                                              // (terminated)
-		.csr_writedata     (32'b00000000000000000000000000000000),          // (terminated)
-		.almost_full_data  (),                                              // (terminated)
-		.almost_empty_data (),                                              // (terminated)
-		.in_startofpacket  (1'b0),                                          // (terminated)
-		.in_endofpacket    (1'b0),                                          // (terminated)
-		.out_startofpacket (),                                              // (terminated)
-		.out_endofpacket   (),                                              // (terminated)
-		.in_empty          (1'b0),                                          // (terminated)
-		.out_empty         (),                                              // (terminated)
-		.in_error          (1'b0),                                          // (terminated)
-		.out_error         (),                                              // (terminated)
-		.in_channel        (1'b0),                                          // (terminated)
-		.out_channel       ()                                               // (terminated)
+		.clk               (CLK_clk_clk),                                    //       clk.clk
+		.reset             (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), // clk_reset.reset
+		.in_data           (ram_nios_ii_s1_agent_rdata_fifo_src_data),       //        in.data
+		.in_valid          (ram_nios_ii_s1_agent_rdata_fifo_src_valid),      //          .valid
+		.in_ready          (ram_nios_ii_s1_agent_rdata_fifo_src_ready),      //          .ready
+		.out_data          (ram_nios_ii_s1_agent_rdata_fifo_out_data),       //       out.data
+		.out_valid         (ram_nios_ii_s1_agent_rdata_fifo_out_valid),      //          .valid
+		.out_ready         (ram_nios_ii_s1_agent_rdata_fifo_out_ready),      //          .ready
+		.csr_address       (2'b00),                                          // (terminated)
+		.csr_read          (1'b0),                                           // (terminated)
+		.csr_write         (1'b0),                                           // (terminated)
+		.csr_readdata      (),                                               // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),           // (terminated)
+		.almost_full_data  (),                                               // (terminated)
+		.almost_empty_data (),                                               // (terminated)
+		.in_startofpacket  (1'b0),                                           // (terminated)
+		.in_endofpacket    (1'b0),                                           // (terminated)
+		.out_startofpacket (),                                               // (terminated)
+		.out_endofpacket   (),                                               // (terminated)
+		.in_empty          (1'b0),                                           // (terminated)
+		.out_empty         (),                                               // (terminated)
+		.in_error          (1'b0),                                           // (terminated)
+		.out_error         (),                                               // (terminated)
+		.in_channel        (1'b0),                                           // (terminated)
+		.out_channel       ()                                                // (terminated)
 	);
 
 	altera_merlin_slave_agent #(
@@ -3960,35 +3960,35 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_router_001 router_001 (
-		.sink_ready         (hps_arm_h2f_axi_master_agent_write_cp_ready),                        //      sink.ready
-		.sink_valid         (hps_arm_h2f_axi_master_agent_write_cp_valid),                        //          .valid
-		.sink_data          (hps_arm_h2f_axi_master_agent_write_cp_data),                         //          .data
-		.sink_startofpacket (hps_arm_h2f_axi_master_agent_write_cp_startofpacket),                //          .startofpacket
-		.sink_endofpacket   (hps_arm_h2f_axi_master_agent_write_cp_endofpacket),                  //          .endofpacket
-		.clk                (CLK_clk_clk),                                                        //       clk.clk
-		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready          (router_001_src_ready),                                               //       src.ready
-		.src_valid          (router_001_src_valid),                                               //          .valid
-		.src_data           (router_001_src_data),                                                //          .data
-		.src_channel        (router_001_src_channel),                                             //          .channel
-		.src_startofpacket  (router_001_src_startofpacket),                                       //          .startofpacket
-		.src_endofpacket    (router_001_src_endofpacket)                                          //          .endofpacket
+		.sink_ready         (hps_arm_h2f_axi_master_agent_write_cp_ready),         //      sink.ready
+		.sink_valid         (hps_arm_h2f_axi_master_agent_write_cp_valid),         //          .valid
+		.sink_data          (hps_arm_h2f_axi_master_agent_write_cp_data),          //          .data
+		.sink_startofpacket (hps_arm_h2f_axi_master_agent_write_cp_startofpacket), //          .startofpacket
+		.sink_endofpacket   (hps_arm_h2f_axi_master_agent_write_cp_endofpacket),   //          .endofpacket
+		.clk                (CLK_clk_clk),                                         //       clk.clk
+		.reset              (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),      // clk_reset.reset
+		.src_ready          (router_001_src_ready),                                //       src.ready
+		.src_valid          (router_001_src_valid),                                //          .valid
+		.src_data           (router_001_src_data),                                 //          .data
+		.src_channel        (router_001_src_channel),                              //          .channel
+		.src_startofpacket  (router_001_src_startofpacket),                        //          .startofpacket
+		.src_endofpacket    (router_001_src_endofpacket)                           //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_router_001 router_002 (
-		.sink_ready         (hps_arm_h2f_axi_master_agent_read_cp_ready),                         //      sink.ready
-		.sink_valid         (hps_arm_h2f_axi_master_agent_read_cp_valid),                         //          .valid
-		.sink_data          (hps_arm_h2f_axi_master_agent_read_cp_data),                          //          .data
-		.sink_startofpacket (hps_arm_h2f_axi_master_agent_read_cp_startofpacket),                 //          .startofpacket
-		.sink_endofpacket   (hps_arm_h2f_axi_master_agent_read_cp_endofpacket),                   //          .endofpacket
-		.clk                (CLK_clk_clk),                                                        //       clk.clk
-		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready          (router_002_src_ready),                                               //       src.ready
-		.src_valid          (router_002_src_valid),                                               //          .valid
-		.src_data           (router_002_src_data),                                                //          .data
-		.src_channel        (router_002_src_channel),                                             //          .channel
-		.src_startofpacket  (router_002_src_startofpacket),                                       //          .startofpacket
-		.src_endofpacket    (router_002_src_endofpacket)                                          //          .endofpacket
+		.sink_ready         (hps_arm_h2f_axi_master_agent_read_cp_ready),         //      sink.ready
+		.sink_valid         (hps_arm_h2f_axi_master_agent_read_cp_valid),         //          .valid
+		.sink_data          (hps_arm_h2f_axi_master_agent_read_cp_data),          //          .data
+		.sink_startofpacket (hps_arm_h2f_axi_master_agent_read_cp_startofpacket), //          .startofpacket
+		.sink_endofpacket   (hps_arm_h2f_axi_master_agent_read_cp_endofpacket),   //          .endofpacket
+		.clk                (CLK_clk_clk),                                        //       clk.clk
+		.reset              (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),     // clk_reset.reset
+		.src_ready          (router_002_src_ready),                               //       src.ready
+		.src_valid          (router_002_src_valid),                               //          .valid
+		.src_data           (router_002_src_data),                                //          .data
+		.src_channel        (router_002_src_channel),                             //          .channel
+		.src_startofpacket  (router_002_src_startofpacket),                       //          .startofpacket
+		.src_endofpacket    (router_002_src_endofpacket)                          //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_router_003 router_003 (
@@ -4104,19 +4104,19 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_router_010 router_010 (
-		.sink_ready         (ram_nios_ii_s1_agent_rp_ready),                 //      sink.ready
-		.sink_valid         (ram_nios_ii_s1_agent_rp_valid),                 //          .valid
-		.sink_data          (ram_nios_ii_s1_agent_rp_data),                  //          .data
-		.sink_startofpacket (ram_nios_ii_s1_agent_rp_startofpacket),         //          .startofpacket
-		.sink_endofpacket   (ram_nios_ii_s1_agent_rp_endofpacket),           //          .endofpacket
-		.clk                (CLK_clk_clk),                                   //       clk.clk
-		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready          (router_010_src_ready),                          //       src.ready
-		.src_valid          (router_010_src_valid),                          //          .valid
-		.src_data           (router_010_src_data),                           //          .data
-		.src_channel        (router_010_src_channel),                        //          .channel
-		.src_startofpacket  (router_010_src_startofpacket),                  //          .startofpacket
-		.src_endofpacket    (router_010_src_endofpacket)                     //          .endofpacket
+		.sink_ready         (ram_nios_ii_s1_agent_rp_ready),                  //      sink.ready
+		.sink_valid         (ram_nios_ii_s1_agent_rp_valid),                  //          .valid
+		.sink_data          (ram_nios_ii_s1_agent_rp_data),                   //          .data
+		.sink_startofpacket (ram_nios_ii_s1_agent_rp_startofpacket),          //          .startofpacket
+		.sink_endofpacket   (ram_nios_ii_s1_agent_rp_endofpacket),            //          .endofpacket
+		.clk                (CLK_clk_clk),                                    //       clk.clk
+		.reset              (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready          (router_010_src_ready),                           //       src.ready
+		.src_valid          (router_010_src_valid),                           //          .valid
+		.src_data           (router_010_src_data),                            //          .data
+		.src_channel        (router_010_src_channel),                         //          .channel
+		.src_startofpacket  (router_010_src_startofpacket),                   //          .startofpacket
+		.src_endofpacket    (router_010_src_endofpacket)                      //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_router_004 router_011 (
@@ -4268,7 +4268,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ADAPTER_VERSION           ("13.1")
 	) ram_nios_ii_s1_burst_adapter (
 		.clk                   (CLK_clk_clk),                                        //       cr0.clk
-		.reset                 (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),      // cr0_reset.reset
+		.reset                 (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),     // cr0_reset.reset
 		.sink0_valid           (cmd_mux_006_src_valid),                              //     sink0.valid
 		.sink0_data            (cmd_mux_006_src_data),                               //          .data
 		.sink0_channel         (cmd_mux_006_src_channel),                            //          .channel
@@ -4361,37 +4361,37 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_001 cmd_demux_001 (
-		.clk                (CLK_clk_clk),                                                        //       clk.clk
-		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_001_src_ready),                                               //      sink.ready
-		.sink_channel       (router_001_src_channel),                                             //          .channel
-		.sink_data          (router_001_src_data),                                                //          .data
-		.sink_startofpacket (router_001_src_startofpacket),                                       //          .startofpacket
-		.sink_endofpacket   (router_001_src_endofpacket),                                         //          .endofpacket
-		.sink_valid         (router_001_src_valid),                                               //          .valid
-		.src0_ready         (cmd_demux_001_src0_ready),                                           //      src0.ready
-		.src0_valid         (cmd_demux_001_src0_valid),                                           //          .valid
-		.src0_data          (cmd_demux_001_src0_data),                                            //          .data
-		.src0_channel       (cmd_demux_001_src0_channel),                                         //          .channel
-		.src0_startofpacket (cmd_demux_001_src0_startofpacket),                                   //          .startofpacket
-		.src0_endofpacket   (cmd_demux_001_src0_endofpacket)                                      //          .endofpacket
+		.clk                (CLK_clk_clk),                                    //       clk.clk
+		.reset              (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_001_src_ready),                           //      sink.ready
+		.sink_channel       (router_001_src_channel),                         //          .channel
+		.sink_data          (router_001_src_data),                            //          .data
+		.sink_startofpacket (router_001_src_startofpacket),                   //          .startofpacket
+		.sink_endofpacket   (router_001_src_endofpacket),                     //          .endofpacket
+		.sink_valid         (router_001_src_valid),                           //          .valid
+		.src0_ready         (cmd_demux_001_src0_ready),                       //      src0.ready
+		.src0_valid         (cmd_demux_001_src0_valid),                       //          .valid
+		.src0_data          (cmd_demux_001_src0_data),                        //          .data
+		.src0_channel       (cmd_demux_001_src0_channel),                     //          .channel
+		.src0_startofpacket (cmd_demux_001_src0_startofpacket),               //          .startofpacket
+		.src0_endofpacket   (cmd_demux_001_src0_endofpacket)                  //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_001 cmd_demux_002 (
-		.clk                (CLK_clk_clk),                                                        //       clk.clk
-		.reset              (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_002_src_ready),                                               //      sink.ready
-		.sink_channel       (router_002_src_channel),                                             //          .channel
-		.sink_data          (router_002_src_data),                                                //          .data
-		.sink_startofpacket (router_002_src_startofpacket),                                       //          .startofpacket
-		.sink_endofpacket   (router_002_src_endofpacket),                                         //          .endofpacket
-		.sink_valid         (router_002_src_valid),                                               //          .valid
-		.src0_ready         (cmd_demux_002_src0_ready),                                           //      src0.ready
-		.src0_valid         (cmd_demux_002_src0_valid),                                           //          .valid
-		.src0_data          (cmd_demux_002_src0_data),                                            //          .data
-		.src0_channel       (cmd_demux_002_src0_channel),                                         //          .channel
-		.src0_startofpacket (cmd_demux_002_src0_startofpacket),                                   //          .startofpacket
-		.src0_endofpacket   (cmd_demux_002_src0_endofpacket)                                      //          .endofpacket
+		.clk                (CLK_clk_clk),                                    //       clk.clk
+		.reset              (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_002_src_ready),                           //      sink.ready
+		.sink_channel       (router_002_src_channel),                         //          .channel
+		.sink_data          (router_002_src_data),                            //          .data
+		.sink_startofpacket (router_002_src_startofpacket),                   //          .startofpacket
+		.sink_endofpacket   (router_002_src_endofpacket),                     //          .endofpacket
+		.sink_valid         (router_002_src_valid),                           //          .valid
+		.src0_ready         (cmd_demux_002_src0_ready),                       //      src0.ready
+		.src0_valid         (cmd_demux_002_src0_valid),                       //          .valid
+		.src0_data          (cmd_demux_002_src0_data),                        //          .data
+		.src0_channel       (cmd_demux_002_src0_channel),                     //          .channel
+		.src0_startofpacket (cmd_demux_002_src0_startofpacket),               //          .startofpacket
+		.src0_endofpacket   (cmd_demux_002_src0_endofpacket)                  //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_demux_003 cmd_demux_003 (
@@ -4527,7 +4527,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_cmd_mux_006 cmd_mux_006 (
 		.clk                 (CLK_clk_clk),                                                                     //       clk.clk
-		.reset               (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                   // clk_reset.reset
+		.reset               (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.src_ready           (cmd_mux_006_src_ready),                                                           //       src.ready
 		.src_valid           (cmd_mux_006_src_valid),                                                           //          .valid
 		.src_data            (cmd_mux_006_src_data),                                                            //          .data
@@ -4737,38 +4737,38 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux_006 rsp_demux_006 (
-		.clk                (CLK_clk_clk),                                   //       clk.clk
-		.reset              (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_010_src_ready),                          //      sink.ready
-		.sink_channel       (router_010_src_channel),                        //          .channel
-		.sink_data          (router_010_src_data),                           //          .data
-		.sink_startofpacket (router_010_src_startofpacket),                  //          .startofpacket
-		.sink_endofpacket   (router_010_src_endofpacket),                    //          .endofpacket
-		.sink_valid         (router_010_src_valid),                          //          .valid
-		.src0_ready         (rsp_demux_006_src0_ready),                      //      src0.ready
-		.src0_valid         (rsp_demux_006_src0_valid),                      //          .valid
-		.src0_data          (rsp_demux_006_src0_data),                       //          .data
-		.src0_channel       (rsp_demux_006_src0_channel),                    //          .channel
-		.src0_startofpacket (rsp_demux_006_src0_startofpacket),              //          .startofpacket
-		.src0_endofpacket   (rsp_demux_006_src0_endofpacket),                //          .endofpacket
-		.src1_ready         (rsp_demux_006_src1_ready),                      //      src1.ready
-		.src1_valid         (rsp_demux_006_src1_valid),                      //          .valid
-		.src1_data          (rsp_demux_006_src1_data),                       //          .data
-		.src1_channel       (rsp_demux_006_src1_channel),                    //          .channel
-		.src1_startofpacket (rsp_demux_006_src1_startofpacket),              //          .startofpacket
-		.src1_endofpacket   (rsp_demux_006_src1_endofpacket),                //          .endofpacket
-		.src2_ready         (rsp_demux_006_src2_ready),                      //      src2.ready
-		.src2_valid         (rsp_demux_006_src2_valid),                      //          .valid
-		.src2_data          (rsp_demux_006_src2_data),                       //          .data
-		.src2_channel       (rsp_demux_006_src2_channel),                    //          .channel
-		.src2_startofpacket (rsp_demux_006_src2_startofpacket),              //          .startofpacket
-		.src2_endofpacket   (rsp_demux_006_src2_endofpacket),                //          .endofpacket
-		.src3_ready         (rsp_demux_006_src3_ready),                      //      src3.ready
-		.src3_valid         (rsp_demux_006_src3_valid),                      //          .valid
-		.src3_data          (rsp_demux_006_src3_data),                       //          .data
-		.src3_channel       (rsp_demux_006_src3_channel),                    //          .channel
-		.src3_startofpacket (rsp_demux_006_src3_startofpacket),              //          .startofpacket
-		.src3_endofpacket   (rsp_demux_006_src3_endofpacket)                 //          .endofpacket
+		.clk                (CLK_clk_clk),                                    //       clk.clk
+		.reset              (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_010_src_ready),                           //      sink.ready
+		.sink_channel       (router_010_src_channel),                         //          .channel
+		.sink_data          (router_010_src_data),                            //          .data
+		.sink_startofpacket (router_010_src_startofpacket),                   //          .startofpacket
+		.sink_endofpacket   (router_010_src_endofpacket),                     //          .endofpacket
+		.sink_valid         (router_010_src_valid),                           //          .valid
+		.src0_ready         (rsp_demux_006_src0_ready),                       //      src0.ready
+		.src0_valid         (rsp_demux_006_src0_valid),                       //          .valid
+		.src0_data          (rsp_demux_006_src0_data),                        //          .data
+		.src0_channel       (rsp_demux_006_src0_channel),                     //          .channel
+		.src0_startofpacket (rsp_demux_006_src0_startofpacket),               //          .startofpacket
+		.src0_endofpacket   (rsp_demux_006_src0_endofpacket),                 //          .endofpacket
+		.src1_ready         (rsp_demux_006_src1_ready),                       //      src1.ready
+		.src1_valid         (rsp_demux_006_src1_valid),                       //          .valid
+		.src1_data          (rsp_demux_006_src1_data),                        //          .data
+		.src1_channel       (rsp_demux_006_src1_channel),                     //          .channel
+		.src1_startofpacket (rsp_demux_006_src1_startofpacket),               //          .startofpacket
+		.src1_endofpacket   (rsp_demux_006_src1_endofpacket),                 //          .endofpacket
+		.src2_ready         (rsp_demux_006_src2_ready),                       //      src2.ready
+		.src2_valid         (rsp_demux_006_src2_valid),                       //          .valid
+		.src2_data          (rsp_demux_006_src2_data),                        //          .data
+		.src2_channel       (rsp_demux_006_src2_channel),                     //          .channel
+		.src2_startofpacket (rsp_demux_006_src2_startofpacket),               //          .startofpacket
+		.src2_endofpacket   (rsp_demux_006_src2_endofpacket),                 //          .endofpacket
+		.src3_ready         (rsp_demux_006_src3_ready),                       //      src3.ready
+		.src3_valid         (rsp_demux_006_src3_valid),                       //          .valid
+		.src3_data          (rsp_demux_006_src3_data),                        //          .data
+		.src3_channel       (rsp_demux_006_src3_channel),                     //          .channel
+		.src3_startofpacket (rsp_demux_006_src3_startofpacket),               //          .startofpacket
+		.src3_endofpacket   (rsp_demux_006_src3_endofpacket)                  //          .endofpacket
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_demux rsp_demux_007 (
@@ -4918,7 +4918,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_mux_001 rsp_mux_001 (
 		.clk                 (CLK_clk_clk),                                                                     //       clk.clk
-		.reset               (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
+		.reset               (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.src_ready           (rsp_mux_001_src_ready),                                                           //       src.ready
 		.src_valid           (rsp_mux_001_src_valid),                                                           //          .valid
 		.src_data            (rsp_mux_001_src_data),                                                            //          .data
@@ -4935,7 +4935,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_rsp_mux_001 rsp_mux_002 (
 		.clk                 (CLK_clk_clk),                                                                     //       clk.clk
-		.reset               (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
+		.reset               (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.src_ready           (rsp_mux_002_src_ready),                                                           //       src.ready
 		.src_valid           (rsp_mux_002_src_valid),                                                           //          .valid
 		.src_data            (rsp_mux_002_src_data),                                                            //          .data
@@ -5089,7 +5089,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) hps_arm_h2f_axi_master_wr_to_ram_nios_ii_s1_cmd_width_adapter (
 		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
-		.reset                (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
+		.reset                (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.in_valid             (cmd_demux_001_src0_valid),                                                        //      sink.valid
 		.in_channel           (cmd_demux_001_src0_channel),                                                      //          .channel
 		.in_startofpacket     (cmd_demux_001_src0_startofpacket),                                                //          .startofpacket
@@ -5155,7 +5155,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) hps_arm_h2f_axi_master_rd_to_ram_nios_ii_s1_cmd_width_adapter (
 		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
-		.reset                (HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
+		.reset                (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.in_valid             (cmd_demux_002_src0_valid),                                                        //      sink.valid
 		.in_channel           (cmd_demux_002_src0_channel),                                                      //          .channel
 		.in_startofpacket     (cmd_demux_002_src0_startofpacket),                                                //          .startofpacket
@@ -5287,7 +5287,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) ram_nios_ii_s1_to_hps_arm_h2f_axi_master_wr_rsp_width_adapter (
 		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
-		.reset                (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                   // clk_reset.reset
+		.reset                (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.in_valid             (rsp_demux_006_src1_valid),                                                        //      sink.valid
 		.in_channel           (rsp_demux_006_src1_channel),                                                      //          .channel
 		.in_startofpacket     (rsp_demux_006_src1_startofpacket),                                                //          .startofpacket
@@ -5353,7 +5353,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.ENABLE_ADDRESS_ALIGNMENT      (1)
 	) ram_nios_ii_s1_to_hps_arm_h2f_axi_master_rd_rsp_width_adapter (
 		.clk                  (CLK_clk_clk),                                                                     //       clk.clk
-		.reset                (CPU_NIOS_II_reset_reset_bridge_in_reset_reset),                                   // clk_reset.reset
+		.reset                (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.in_valid             (rsp_demux_006_src2_valid),                                                        //      sink.valid
 		.in_channel           (rsp_demux_006_src2_channel),                                                      //          .channel
 		.in_startofpacket     (rsp_demux_006_src2_startofpacket),                                                //          .startofpacket
@@ -5697,15 +5697,15 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_006 (
-		.in_clk_0_clk   (CLK_clk_clk),                                   // in_clk_0.clk
-		.in_rst_0_reset (CPU_NIOS_II_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
-		.in_0_data      (ram_nios_ii_s1_agent_rdata_fifo_out_data),      //     in_0.data
-		.in_0_valid     (ram_nios_ii_s1_agent_rdata_fifo_out_valid),     //         .valid
-		.in_0_ready     (ram_nios_ii_s1_agent_rdata_fifo_out_ready),     //         .ready
-		.out_0_data     (avalon_st_adapter_006_out_0_data),              //    out_0.data
-		.out_0_valid    (avalon_st_adapter_006_out_0_valid),             //         .valid
-		.out_0_ready    (avalon_st_adapter_006_out_0_ready),             //         .ready
-		.out_0_error    (avalon_st_adapter_006_out_0_error)              //         .error
+		.in_clk_0_clk   (CLK_clk_clk),                                    // in_clk_0.clk
+		.in_rst_0_reset (RAM_NIOS_II_reset1_reset_bridge_in_reset_reset), // in_rst_0.reset
+		.in_0_data      (ram_nios_ii_s1_agent_rdata_fifo_out_data),       //     in_0.data
+		.in_0_valid     (ram_nios_ii_s1_agent_rdata_fifo_out_valid),      //         .valid
+		.in_0_ready     (ram_nios_ii_s1_agent_rdata_fifo_out_ready),      //         .ready
+		.out_0_data     (avalon_st_adapter_006_out_0_data),               //    out_0.data
+		.out_0_valid    (avalon_st_adapter_006_out_0_valid),              //         .valid
+		.out_0_ready    (avalon_st_adapter_006_out_0_ready),              //         .ready
+		.out_0_error    (avalon_st_adapter_006_out_0_error)               //         .error
 	);
 
 	MusicPlayerPlatformDesign_mm_interconnect_0_avalon_st_adapter #(
