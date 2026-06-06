@@ -3,7 +3,7 @@
 # Machine generated for CPU 'CPU_NIOS_II' in SOPC Builder design 'MusicPlayerPlatformDesign'
 # SOPC Builder design path: /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo
 #
-# Generated: Thu Jun 04 12:36:12 CST 2026
+# Generated: Sat Jun 06 04:08:36 CST 2026
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # RAM_NIOS_II
-memory 0x40000 0x80000 cache
+memory 0x8000 0x10000 cache

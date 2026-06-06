@@ -14,8 +14,6 @@
 module MusicPlayerPlatformDesign_HPS_ARM_fpga_interfaces(
 // h2f_reset
   output wire [1 - 1 : 0 ] h2f_rst_n
-// f2h_cold_reset_req
- ,input wire [1 - 1 : 0 ] f2h_cold_rst_req_n
 // h2f_mpu_events
  ,input wire [1 - 1 : 0 ] h2f_mpu_eventi
  ,output wire [1 - 1 : 0 ] h2f_mpu_evento
@@ -196,10 +194,10 @@ assign intermediate[4:4] = f2h_sdram0_WVALID[0:0];
 assign intermediate[8:8] = f2h_sdram0_clk[0:0];
 
 cyclonev_hps_interface_clocks_resets clocks_resets(
- .f2h_warm_rst_req_n({
+ .f2h_pending_rst_ack({
     1'b1 // 0:0
   })
-,.f2h_pending_rst_ack({
+,.f2h_warm_rst_req_n({
     1'b1 // 0:0
   })
 ,.f2h_dbg_rst_req_n({
@@ -209,7 +207,7 @@ cyclonev_hps_interface_clocks_resets clocks_resets(
     h2f_rst_n[0:0] // 0:0
   })
 ,.f2h_cold_rst_req_n({
-    f2h_cold_rst_req_n[0:0] // 0:0
+    1'b1 // 0:0
   })
 );
 

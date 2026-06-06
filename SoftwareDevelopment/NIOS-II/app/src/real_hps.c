@@ -1,10 +1,11 @@
 #include "real_hps.h"
-#include "debug_uart.h"
-#include <string.h>
 
 /* The Nios data master sees the shared RAM at this address. It is the SAME
- * physical memory the HPS maps at SHARED_AUDIO_MEM_PHYS (0xC0040000). */
-#define NIOS_SHARED_BASE  0x00078000u
+ * physical memory the HPS maps at SHARED_AUDIO_MEM_PHYS.
+ *
+ * RAM is 0x8000-0xFFFF (32 KB). The shared region occupies the top 8 KB,
+ * so its base is 0x8000 + 0x6000 = 0xE000. */
+#define NIOS_SHARED_BASE  0x0000E000u
 
 shared_audio_mem_t *hps_shared(void)
 {
@@ -48,10 +49,4 @@ void hps_current_meta(song_meta_t *out)
     copy_meta_field(out->artist, m->current_meta.artist);
     copy_meta_field(out->album,  m->current_meta.album);
     out->duration_sec = (unsigned)m->current_meta.duration_seconds;
-
-    dbg_puts("[HPS] meta: ");
-    dbg_puts(out->name);
-    dbg_puts(" / ");
-    dbg_puts(out->artist);
-    dbg_puts("\r\n");
 }

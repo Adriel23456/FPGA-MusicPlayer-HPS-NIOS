@@ -13,18 +13,16 @@
  *                                                    main-loop driven
  *
  *  ISRs do the minimum: read the edge-capture register, clear only the
- *  bits that fired (bit-clearing enabled on both PIOs -> per-bit
- *  independence, no missed presses), and latch the event for the main
- *  loop. All real work (screen wipes, song changes, long busy-waits) runs
- *  in the main loop, never in interrupt context.
+ *  bits that fired, and latch the event for the main loop. All real work
+ *  runs in the main loop, never in interrupt context.
  * ============================================================ */
 
 /* ---- Reset switch: 1-bit input PIO, EDGE, IRQ 2 ---- */
-#define RESET_PIO_BASE     0x00083020u
+#define RESET_PIO_BASE     0x00013020u
 #define RESET_PIO_IRQ      2
 
 /* ---- Buttons: 4-bit input PIO, EDGE, IRQ 1 (all 4 share this line) ---- */
-#define BTN_PIO_BASE       0x00083030u
+#define BTN_PIO_BASE       0x00013030u
 #define BTN_PIO_IRQ        1
 #define BTN_COUNT          4
 #define BTN_MASK           0xFu        /* bits 3..0 */
@@ -42,23 +40,59 @@
 #define REG32(addr)  (*(volatile uint32_t *)(uintptr_t)(addr))
 #endif
 
+/* ============================================================
+ *  Nios II interrupt-kernel interface.
+ *
+ *  The header for these is intentionally NOT included; the symbols are
+ *  provided by the linked BSP and declared locally so this module pulls in
+ *  no HAL headers. Global enable/disable is done directly on the CPU status
+ *  register (PIE bit), per-source registration uses the BSP kernel.
+ * ============================================================ */
+#define NIOS2_STATUS_PIE_MSK  0x1u    /* status.PIE: global interrupt enable */
+
+typedef int irq_context_t;                       /* saved status register */
+typedef void (*irq_isr_func_t)(void *context, unsigned int id);
+
+extern int alt_irq_register(unsigned int id, void *context, irq_isr_func_t isr);
+
+/* Mask a single interrupt source by clearing its bit in the CPU ienable
+ * control register (ctl3). Replaces the legacy inline alt_irq_disable. */
+static inline void irq_source_disable(unsigned int id)
+{
+    unsigned int ienable;
+    __asm__ volatile ("rdctl %0, ienable" : "=r"(ienable));
+    ienable &= ~(1u << id);
+    __asm__ volatile ("wrctl ienable, %0" :: "r"(ienable));
+}
+
+/* Save status and globally disable interrupts; returns prior status. */
+static inline irq_context_t irq_disable_all(void)
+{
+    irq_context_t ctx;
+    __asm__ volatile ("rdctl %0, status" : "=r"(ctx));
+    __asm__ volatile ("wrctl status, %0" :: "r"(ctx & ~NIOS2_STATUS_PIE_MSK));
+    return ctx;
+}
+
+/* Restore the status register saved by irq_disable_all(). */
+static inline void irq_enable_all(irq_context_t ctx)
+{
+    __asm__ volatile ("wrctl status, %0" :: "r"(ctx));
+}
+
 /* Register and arm every interrupt source. Call once, AFTER the drivers
  * (VGA/audio/timer) are up and stable. */
 void irq_init(void);
 
-/* Per-main-loop housekeeping for interrupt-driven state. Currently a no-op
- * placeholder kept so callers don't have to change if future sources need
- * deferred servicing. Safe to call every pass. */
+/* Per-main-loop housekeeping placeholder. Safe to call every pass. */
 void irq_service(void);
 
 /* Atomically read + clear the latched button bits. Bit n set => BTN[n] was
- * pressed since the last call. Drained by the main loop, which dispatches
- * the matching player action. */
+ * pressed since the last call. */
 uint32_t irq_buttons_take(void);
 
 /* Returns 1 exactly once if the reset switch fired since the last call,
- * then clears the latch. Used by the main loop to trigger a full
- * player reset (redo from step 1). */
+ * then clears the latch. */
 int irq_reset_requested_take(void);
 
 #endif /* IRQ_CONTROLLER_H */

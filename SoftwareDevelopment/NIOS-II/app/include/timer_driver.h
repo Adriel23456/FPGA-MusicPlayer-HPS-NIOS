@@ -3,11 +3,11 @@
 
 #include <stdint.h>
 
-/* TIMER_STATUS_INPUT  (2-bit, NIOS->timer command), 0x83010-0x8301f
- * TIMER_CTRL_OUTPUT   (2-bit, timer->NIOS ack),     0x83000-0x8300f
+/* TIMER_STATUS_INPUT  (2-bit, NIOS->timer command), 0x13010-0x1301f
+ * TIMER_CTRL_OUTPUT   (2-bit, timer->NIOS ack),     0x13000-0x1300f
  * Both decode: 00=nothing, 01=resume, 10=pause, 11=reset */
-#define TIMER_IN_BASE    0x00083000u   /* command (PIO input, no IRQ)   */
-#define TIMER_OUT_BASE   0x00083010u   /* acknowledge (PIO output)      */
+#define TIMER_IN_BASE    0x00013000u   /* command (PIO input, no IRQ)   */
+#define TIMER_OUT_BASE   0x00013010u   /* acknowledge (PIO output)      */
 
 #define PIO_DATA_OFF     0x0
 

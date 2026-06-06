@@ -48,7 +48,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		input  wire        CPU_NIOS_II_reset_reset_bridge_in_reset_reset,                      //                      CPU_NIOS_II_reset_reset_bridge_in_reset.reset
 		input  wire        HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, // HPS_ARM_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		input  wire        VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset,                  //                  VGA_CHAR_BUFFER_reset_reset_bridge_in_reset.reset
-		input  wire [19:0] CPU_NIOS_II_data_master_address,                                    //                                      CPU_NIOS_II_data_master.address
+		input  wire [16:0] CPU_NIOS_II_data_master_address,                                    //                                      CPU_NIOS_II_data_master.address
 		output wire        CPU_NIOS_II_data_master_waitrequest,                                //                                                             .waitrequest
 		input  wire [3:0]  CPU_NIOS_II_data_master_byteenable,                                 //                                                             .byteenable
 		input  wire        CPU_NIOS_II_data_master_read,                                       //                                                             .read
@@ -56,7 +56,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		input  wire        CPU_NIOS_II_data_master_write,                                      //                                                             .write
 		input  wire [31:0] CPU_NIOS_II_data_master_writedata,                                  //                                                             .writedata
 		input  wire        CPU_NIOS_II_data_master_debugaccess,                                //                                                             .debugaccess
-		input  wire [19:0] CPU_NIOS_II_instruction_master_address,                             //                               CPU_NIOS_II_instruction_master.address
+		input  wire [16:0] CPU_NIOS_II_instruction_master_address,                             //                               CPU_NIOS_II_instruction_master.address
 		output wire        CPU_NIOS_II_instruction_master_waitrequest,                         //                                                             .waitrequest
 		input  wire        CPU_NIOS_II_instruction_master_read,                                //                                                             .read
 		output wire [31:0] CPU_NIOS_II_instruction_master_readdata,                            //                                                             .readdata
@@ -81,7 +81,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 		output wire [3:0]  CPU_NIOS_II_debug_mem_slave_byteenable,                             //                                                             .byteenable
 		input  wire        CPU_NIOS_II_debug_mem_slave_waitrequest,                            //                                                             .waitrequest
 		output wire        CPU_NIOS_II_debug_mem_slave_debugaccess,                            //                                                             .debugaccess
-		output wire [15:0] RAM_NIOS_II_s1_address,                                             //                                               RAM_NIOS_II_s1.address
+		output wire [12:0] RAM_NIOS_II_s1_address,                                             //                                               RAM_NIOS_II_s1.address
 		output wire        RAM_NIOS_II_s1_write,                                               //                                                             .write
 		input  wire [31:0] RAM_NIOS_II_s1_readdata,                                            //                                                             .readdata
 		output wire [31:0] RAM_NIOS_II_s1_writedata,                                           //                                                             .writedata
@@ -1004,7 +1004,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	wire    [0:0] avalon_st_adapter_010_out_0_error;                                                                       // avalon_st_adapter_010:out_0_error -> TIMER_CTRL_OUTPUT_s1_agent:rdata_fifo_sink_error
 
 	altera_merlin_master_translator #(
-		.AV_ADDRESS_W                (20),
+		.AV_ADDRESS_W                (17),
 		.AV_DATA_W                   (32),
 		.AV_BURSTCOUNT_W             (1),
 		.AV_BYTEENABLE_W             (4),
@@ -1064,7 +1064,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	altera_merlin_master_translator #(
-		.AV_ADDRESS_W                (20),
+		.AV_ADDRESS_W                (17),
 		.AV_DATA_W                   (32),
 		.AV_BURSTCOUNT_W             (1),
 		.AV_BYTEENABLE_W             (4),
@@ -1508,7 +1508,7 @@ module MusicPlayerPlatformDesign_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (16),
+		.AV_ADDRESS_W                   (13),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),

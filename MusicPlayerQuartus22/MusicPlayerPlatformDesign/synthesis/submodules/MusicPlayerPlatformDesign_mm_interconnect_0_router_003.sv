@@ -134,14 +134,14 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router_003
     // Figure out the number of bits to mask off for each slave span
     // during address decoding
     // -------------------------------------------------------
-    localparam PAD0 = log2ceil(64'h80000 - 64'h40000); 
-    localparam PAD1 = log2ceil(64'h83000 - 64'h82800); 
+    localparam PAD0 = log2ceil(64'h10000 - 64'h8000); 
+    localparam PAD1 = log2ceil(64'h13000 - 64'h12800); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h83000;
+    localparam ADDR_RANGE = 64'h13000;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -189,14 +189,14 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router_003
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
 
-    // ( 0x40000 .. 0x80000 )
-    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 20'h40000   ) begin
+    // ( 0x8000 .. 0x10000 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 17'h8000   ) begin
             src_channel = 11'b10;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
-    // ( 0x82800 .. 0x83000 )
-    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 20'h82800   ) begin
+    // ( 0x12800 .. 0x13000 )
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 17'h12800   ) begin
             src_channel = 11'b01;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end

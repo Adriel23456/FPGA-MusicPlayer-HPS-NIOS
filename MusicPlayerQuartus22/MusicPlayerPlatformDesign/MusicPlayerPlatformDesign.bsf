@@ -527,7 +527,7 @@ https://fpgasoftware.intel.com/eula.
 		(text "R" (rect 245 987 496 1984)(font "Arial" (color 0 0 0)))
 		(text "G" (rect 245 1003 496 2016)(font "Arial" (color 0 0 0)))
 		(text "B" (rect 245 1019 496 2048)(font "Arial" (color 0 0 0)))
-		(text " MusicPlayerPlatformDesign " (rect 566 1040 1294 2090)(font "Arial" ))
+		(text " system " (rect 653 1040 1354 2090)(font "Arial" ))
 		(line (pt 240 32)(pt 448 32)(line_width 1))
 		(line (pt 448 32)(pt 448 1040)(line_width 1))
 		(line (pt 240 1040)(pt 448 1040)(line_width 1))

@@ -20,21 +20,16 @@ typedef struct {
 
     uint32_t data_size;
     uint32_t bytes_remaining;
-    long data_offset;
+    long     data_offset;
 
     uint32_t duration_seconds;
 
     wav_metadata_t metadata;
 } wav_info_t;
 
-int wav_open(const char *path, wav_info_t *info);
-
-int wav_read_pcm_chunk(wav_info_t *info,
-                       volatile uint8_t *dst,
-                       uint32_t max_bytes,
-                       uint32_t *bytes_read,
-                       int *is_last);
-
+int  wav_open(const char *path, wav_info_t *info);
+int  wav_read_pcm_chunk(wav_info_t *info, volatile uint8_t *dst,
+                        uint32_t max_bytes, uint32_t *bytes_read, int *is_last);
 void wav_close(wav_info_t *info);
 
 #endif /* WAV_READER_H */

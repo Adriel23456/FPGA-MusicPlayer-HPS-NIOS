@@ -1,22 +1,16 @@
 #include "audio_driver.h"
-#include "debug_uart.h"
-#include <sys/alt_irq.h>
-#include "altera_up_avalon_audio.h"
-#include "altera_up_avalon_audio_and_video_config.h"
-#include "system.h"
-
-static alt_up_audio_dev     *g_audio = 0;
-static alt_up_av_config_dev *g_avcfg = 0;
 
 static uint32_t s_step  = STEP_44K1;  /* SOURCE frames per output frame (16.16) */
 static uint32_t s_phase = 0;          /* current sub-frame position             */
+static int      s_ready = 0;          /* set once init has configured the codec */
 
-/* Write one WM8731 register over I2C through the AV config core (SDAT/SCLK). */
-static int codec_cfg(unsigned reg, unsigned data)
+/* Write one WM8731 register over I2C through the AV config core. */
+static void codec_write_reg(unsigned reg, unsigned data)
 {
-    return alt_up_av_config_write_audio_cfg_register(g_avcfg,
-                                                     (alt_u32)reg,
-                                                     (alt_u32)data);
+    while ((AVCFG_STATUS_REG & AVCFG_STATUS_RDY) == 0u)
+        ;                                   /* wait for the core to accept a transfer */
+    AVCFG_ADDRESS_REG = reg  & 0xFFu;
+    AVCFG_DATA_REG    = data & 0xFFFFu;
 }
 
 static inline unsigned int u16cast(int v)
@@ -24,11 +18,20 @@ static inline unsigned int u16cast(int v)
     return (unsigned int)(uint16_t)(int16_t)v;
 }
 
+/* Free words currently available in each write FIFO. */
+static inline unsigned audio_wspace_left(void)
+{
+    return (AUDIO_FIFOSPACE_REG >> AUDIO_FIFOSPACE_WSLC_OFST) & AUDIO_FIFOSPACE_BYTE_MSK;
+}
+static inline unsigned audio_wspace_right(void)
+{
+    return (AUDIO_FIFOSPACE_REG >> AUDIO_FIFOSPACE_WSRC_OFST) & AUDIO_FIFOSPACE_BYTE_MSK;
+}
+
 int audio_fifo_has_space(void)
 {
-    if (!g_audio) return 0;
-    return (alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_LEFT)  > 0 &&
-            alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) > 0);
+    if (!s_ready) return 0;
+    return (audio_wspace_left() > 0 && audio_wspace_right() > 0);
 }
 
 /* Both channels written as a pair (the core does not play a frame until L and
@@ -36,60 +39,40 @@ int audio_fifo_has_space(void)
 static void write_stereo_frame(int16_t l, int16_t r)
 {
     unsigned spin = 0;
-    while (alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_LEFT)  == 0 ||
-           alt_up_audio_write_fifo_space(g_audio, ALT_UP_AUDIO_RIGHT) == 0) {
-        if (++spin > 5000000u) return;   /* FIFO not draining -> bail */
+    while (audio_wspace_left() == 0 || audio_wspace_right() == 0) {
+        if (++spin > 5000000u) return;      /* FIFO not draining -> bail */
     }
-    alt_up_audio_write_fifo_head(g_audio, u16cast(l), ALT_UP_AUDIO_LEFT);
-    alt_up_audio_write_fifo_head(g_audio, u16cast(r), ALT_UP_AUDIO_RIGHT);
+    AUDIO_LEFTDATA_REG  = u16cast(l);
+    AUDIO_RIGHTDATA_REG = u16cast(r);
 }
 
-/* Program the codec sampling register (deactivate, set, activate) over I2C.
- * Format/clocking is left as the AV-config auto-init set it (reg7 untouched). */
-static int codec_set_reg8(unsigned reg8)
+/* Program the codec sampling register (deactivate, set, activate). Format and
+ * clocking are left as the AV-config auto-init set them. */
+static void codec_set_reg8(unsigned reg8)
 {
-    int e = 0;
-    e |= codec_cfg(0x09, 0x000);   /* deactivate */
-    e |= codec_cfg(0x08, reg8);    /* sampling control */
-    e |= codec_cfg(0x09, 0x001);   /* activate   */
-    return e ? -1 : 0;
+    codec_write_reg(CODEC_REG_ACTIVE,   0x000);   /* deactivate */
+    codec_write_reg(CODEC_REG_SAMPLING, reg8);    /* sampling control */
+    codec_write_reg(CODEC_REG_ACTIVE,   0x001);   /* activate */
 }
 
-/* For the active source rate, program its codec reg8 AND set its step.
- * Both come straight from the per-rate defines, so editing a define in the
- * header is honoured here with no other change required. */
+/* For the active source rate, program its codec reg8 AND set its step. Both
+ * come straight from the per-rate defines, so editing a define in the header
+ * is honoured here with no other change required. */
 audio_rate_t audio_prepare_rate(audio_rate_t src_rate)
 {
-    int e;
-
     switch (src_rate) {
-        case RATE_44K1:
-            e = codec_set_reg8(CODEC_REG8_44K1);
-            s_step = STEP_44K1;
-            break;
-        case RATE_16K:
-            e = codec_set_reg8(CODEC_REG8_16K);
-            s_step = STEP_16K;
-            break;
-        case RATE_8K:
-            e = codec_set_reg8(CODEC_REG8_8K);
-            s_step = STEP_8K;
-            break;
-        default:                         /* safe default: 44.1k */
-            e = codec_set_reg8(CODEC_REG8_44K1);
-            s_step = STEP_44K1;
-            break;
+        case RATE_44K1: codec_set_reg8(CODEC_REG8_44K1); s_step = STEP_44K1; break;
+        case RATE_16K:  codec_set_reg8(CODEC_REG8_16K);  s_step = STEP_16K;  break;
+        case RATE_8K:   codec_set_reg8(CODEC_REG8_8K);   s_step = STEP_8K;   break;
+        default:        codec_set_reg8(CODEC_REG8_44K1); s_step = STEP_44K1; break;
     }
     s_phase = 0;
-
-    if (e) dbg_puts("[AUDIO] WARN: codec rate write FAILED\r\n");
-    else   dbg_puts("[AUDIO] codec rate + step set\r\n");
     return src_rate;
 }
 
 void audio_play_stereo(const volatile int16_t *inter, unsigned frames)
 {
-    if (!g_audio || !inter || frames < 2) return;
+    if (!s_ready || !inter || frames < 2) return;
 
     /* Path is chosen from the ACTIVE step (set by audio_prepare_rate from the
      * per-rate define), not from any hard-coded number. step == 1:1 -> exact
@@ -125,32 +108,24 @@ void audio_play_stereo(const volatile int16_t *inter, unsigned frames)
 
 int audio_init(void)
 {
-    int e = 0;
-    dbg_puts("[AUDIO] init: start\r\n");
+    /* Reset the AV config core; it auto-initialises the codec over I2C. */
+    AVCFG_CONTROL_REG = AVCFG_CTRL_RESET;
+    while (!(AVCFG_STATUS_REG & AVCFG_STATUS_AIS))
+        ;                                   /* wait for auto-init to complete */
 
-    g_avcfg = alt_up_av_config_open_dev(AUDIO_CONFIG_NAME);
-    if (g_avcfg == 0) { dbg_puts("[AUDIO] ERROR: AV config open failed\r\n"); return -1; }
-    alt_up_av_config_reset(g_avcfg);
-    while (!(*AV_CONFIG_STATUS & AV_AIS_BIT))
-        ;                                  /* wait for auto-init */
-    dbg_puts("[AUDIO] AV config auto-init complete\r\n");
+    /* Reset the audio core: clear read + write FIFOs, then release. */
+    AUDIO_CONTROL_REG = AUDIO_CTRL_CR | AUDIO_CTRL_CW;
+    AUDIO_CONTROL_REG = 0u;
 
-    g_audio = alt_up_audio_open_dev(AUDIO_OUT_NAME);
-    if (g_audio == 0) { dbg_puts("[AUDIO] ERROR: audio open failed\r\n"); return -1; }
-    alt_up_audio_reset_audio_core(g_audio);
+    /* Signal-path configuration over I2C. */
+    codec_write_reg(CODEC_REG_ANALOG_PATH,  0x010);   /* DACSEL=1, BYPASS=0 */
+    codec_write_reg(CODEC_REG_DIGITAL_PATH, 0x000);   /* de-emphasis/mute off */
+    codec_write_reg(CODEC_REG_LEFT_HP,      0x07F);   /* L headphone */
+    codec_write_reg(CODEC_REG_RIGHT_HP,     0x07F);   /* R headphone */
 
-    /* signal-path config over I2C */
-    e |= codec_cfg(0x04, 0x010);   /* analog path: DACSEL=1, BYPASS=0   */
-    e |= codec_cfg(0x05, 0x000);   /* digital path: de-emphasis/mute OFF */
-    e |= codec_cfg(0x02, 0x07F);   /* L headphone */
-    e |= codec_cfg(0x03, 0x07F);   /* R headphone */
-
-    if (e) dbg_puts("[AUDIO] CODEC WRITE FAILED -> path not applied\r\n");
-    else   dbg_puts("[AUDIO] codec path OK (DACSEL=1, BYPASS=0)\r\n");
-
-    dbg_puts("[AUDIO] init: complete\r\n");
+    s_ready = 1;
     return 0;
 }
 
-void audio_enable_write_irq(void)  { if (g_audio) alt_up_audio_enable_write_interrupt(g_audio); }
-void audio_disable_write_irq(void) { if (g_audio) alt_up_audio_disable_write_interrupt(g_audio); }
+void audio_enable_write_irq(void)  { AUDIO_CONTROL_REG |= AUDIO_CTRL_WI;  }
+void audio_disable_write_irq(void) { AUDIO_CONTROL_REG &= ~AUDIO_CTRL_WI; }
