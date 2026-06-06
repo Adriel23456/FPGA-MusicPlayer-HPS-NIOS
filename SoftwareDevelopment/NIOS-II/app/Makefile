@@ -93,9 +93,9 @@ ELF := main.elf
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/lib/debug_uart.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/audio_driver.c
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/dummy_hps.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/irq_controller.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/player_fsm.c
+C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/real_hps.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/timer_driver.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/vga_driver.c
 CXX_SRCS :=
@@ -147,6 +147,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
+APP_LDFLAGS_USER := -Wl,--defsym,__alt_stack_pointer=0x78000
 
 
 #END GENERATED

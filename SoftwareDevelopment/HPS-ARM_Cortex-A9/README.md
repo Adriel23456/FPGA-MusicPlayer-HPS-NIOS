@@ -6,7 +6,7 @@ cmake .. -DCMAKE_INSTALL_PREFIX:PATH=$(pwd)/usr
 make && make install
 
 # Deploy to board:
-scp usr/bin/fpga_mem_test root@192.168.100.172:/usr/bin/
+scp usr/bin/hps_music_player root@192.168.100.50:/usr/bin/
 
 # On board (with FPGA programmed):
-fpga_mem_test
+hps_music_player

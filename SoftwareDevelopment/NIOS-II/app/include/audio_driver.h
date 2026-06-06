@@ -2,17 +2,55 @@
 #define AUDIO_DRIVER_H
 
 #include <stdint.h>
+#include "system.h"
 
-/* AUDIO_OUT (write-only, 16-bit, IRQ 3) + AUDIO_CONFIG (I2C). The codec runs
- * at a FIXED 48 kHz; any source rate is converted to it by the fractional
- * resampling engine below. */
 #define AUDIO_OUT_IRQ_NUM   3
-#define AUDIO_HW_RATE_HZ    48000u
 
-/* Source sample rates. Stored as the actual rate in Hz because 44.1 kHz is
- * NOT an integer divisor of 48 kHz -> fractional resampling is required. */
+/* AIS bit in the AV config status register confirms auto-init completed. */
+#define AV_CONFIG_STATUS  ((volatile unsigned int *)(AUDIO_CONFIG_BASE + 4))
+#define AV_AIS_BIT        (1u << 8)
+
+/* =====================================================================
+ *  PER-RATE CONFIGURATION
+ *
+ *  Three supported source rates: 44.1k, 16k, 8k. Each has two knobs and
+ *  NOTHING ELSE decides its behaviour:
+ *
+ *    CODEC_REG8_<rate> : WM8731 sampling-control value (sets physical DAC rate).
+ *    STEP_<rate>       : resample step, SOURCE frames per output frame (16.16).
+ *                          65536 (1<<16) = 1:1 (bit-exact, no interpolation)
+ *                          > 65536 = faster playback;  < 65536 = slower.
+ *
+ *  KEY RELATIONSHIP (why the tuned values work):
+ *    effective_DAC_rate = src_rate / (STEP / 65536)
+ *  Playback is correct speed when STEP is chosen so this equals the actual
+ *  DAC rate produced by CODEC_REG8_<rate>. Higher achievable DAC rate = more
+ *  usable bandwidth = clearer sound.
+ *
+ *  Editing either knob takes effect immediately: audio_play_stereo selects
+ *  its path from the active STEP, not from any hard-coded constant.
+ * ===================================================================== */
+
+/* ---- 44.1 kHz ----
+ * STEP 240300 / 65536 = 3.667 source frames per output frame.
+ * 44100 / 3.667 = ~12.0 kHz effective DAC rate.
+ * NOTE: 240300 is not a power of two, so it cannot be a single (1u << n);
+ * keep it as 240300u. */
+#define CODEC_REG8_44K1  0x00Cu
+#define STEP_44K1        240300u
+
+/* ---- 16 kHz ----
+ * Same codec setting as 44.1k (~12.0 kHz DAC), tuned to match by ear.
+ * STEP 87950 / 65536 = 1.342 source frames per output frame.
+ * 16000 / 1.342 = ~11.9 kHz effective DAC rate (matches the 44.1k path). */
+#define CODEC_REG8_16K   0x00Cu
+#define STEP_16K         87950u
+
+/* ---- 8 kHz ---- */
+#define CODEC_REG8_8K    0x00Eu   /* WM8731 reg8: ADC8K_DAC8K */
+#define STEP_8K          (1u << 16)   /* 65536 = 1:1, bit-exact */
+
 typedef enum {
-    RATE_48K  = 48000,
     RATE_44K1 = 44100,
     RATE_16K  = 16000,
     RATE_8K   = 8000
@@ -22,34 +60,9 @@ int  audio_init(void);
 void audio_enable_write_irq(void);
 void audio_disable_write_irq(void);
 
-/* ---- REUSABLE ENGINE (blocking) ----
- * Play `count` mono 16-bit samples captured at `src_rate_hz` on the fixed
- * 48 kHz output, using 16.16 fixed-point fractional linear-interpolating
- * resampling. Blocks until the whole buffer has been pushed. `phase_in` is
- * the leftover fractional position from the previous chunk (0 to start);
- * the returned value feeds the next call so chunked playback stays
- * phase-continuous (no seam clicks). Used by the tone self-test. */
-uint32_t audio_play_buffer(const int16_t *src, unsigned count,
-                           audio_rate_t src_rate_hz, uint32_t phase_in);
+audio_rate_t audio_prepare_rate(audio_rate_t src_rate);
+void         audio_play_stereo(const volatile int16_t *interleaved, unsigned frames);
 
-/* ---- REUSABLE ENGINE (non-blocking) ----
- * Same resampling as above, but pushes ONLY as many output frames as fit in
- * the FIFO right now, then returns immediately -- so the caller's main loop
- * stays responsive (this is what makes pause = "stop calling this").
- *
- * Progress is carried in *src_index (which source sample we're on) and
- * *phase (16.16 sub-sample position). Call repeatedly with the same buffer
- * until *src_index >= count, which signals the slice is fully played.
- * Returns the number of output frames actually written this call. */
-unsigned audio_feed_nb(const int16_t *src, unsigned count,
-                       audio_rate_t src_rate_hz,
-                       unsigned *src_index, uint32_t *phase);
-
-/* True if the output FIFO currently has room for at least one stereo frame. */
 int audio_fifo_has_space(void);
-
-/* ---- TEST ONLY ---- */
-void audio_play_tone(unsigned freq_hz, unsigned duration_ms, audio_rate_t rate);
-void audio_run_test(void);
 
 #endif /* AUDIO_DRIVER_H */

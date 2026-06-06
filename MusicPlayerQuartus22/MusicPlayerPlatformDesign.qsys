@@ -107,7 +107,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -120,7 +120,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -246,7 +246,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -374,7 +374,7 @@
    enabled="1">
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
-  <parameter name="audio_clk_freq" value="12.288" />
+  <parameter name="audio_clk_freq" value="18.432" />
   <parameter name="device_family" value="Cyclone V" />
   <parameter name="gui_refclk" value="50.0" />
  </module>
@@ -703,7 +703,7 @@
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM4_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM5_CLOCK_FREQ" value="100" />
-  <parameter name="F2SCLK_COLDRST_Enable" value="false" />
+  <parameter name="F2SCLK_COLDRST_Enable" value="true" />
   <parameter name="F2SCLK_DBGRST_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_FREQ" value="0" />
@@ -1532,11 +1532,6 @@
    kind="reset"
    version="22.1"
    start="CLK.clk_reset"
-   end="AUDIO_OUT.reset" />
- <connection
-   kind="reset"
-   version="22.1"
-   start="CLK.clk_reset"
    end="AUDIO_CONFIG.reset" />
  <connection
    kind="reset"
@@ -1552,7 +1547,17 @@
    kind="reset"
    version="22.1"
    start="CLK.clk_reset"
+   end="AUDIO_OUT.reset" />
+ <connection
+   kind="reset"
+   version="22.1"
+   start="CLK.clk_reset"
    end="RAM_NIOS_II.reset1" />
+ <connection
+   kind="reset"
+   version="22.1"
+   start="CPU_NIOS_II.debug_reset_request"
+   end="HPS_ARM.f2h_cold_reset_req" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

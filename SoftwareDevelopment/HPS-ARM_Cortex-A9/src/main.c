@@ -1,56 +1,52 @@
-/* src/main.c */
+#define _DEFAULT_SOURCE
 #include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <stdint.h>
+#include <unistd.h>
+#include <signal.h>
+#include <setjmp.h>
+#include "shared_protocol.h"
 #include "fpga_mem.h"
+#include "hps_fpga_comm.h"
+#include "hps_audio_streamer.h"
 
-void *fpga_mmap(uint32_t phys_addr, uint32_t size) {
-    int fd = open("/dev/mem", O_RDWR | O_SYNC);
-    if (fd < 0) { perror("open /dev/mem"); return NULL; }
-    void *map = mmap(NULL, size, PROT_READ | PROT_WRITE,
-                     MAP_SHARED, fd, phys_addr);
-    close(fd);
-    if (map == MAP_FAILED) { perror("mmap"); return NULL; }
-    return map;
-}
+#define DEFAULT_MUSIC_DIR "/mnt/music"
+#define POLL_SLEEP_US     1000u
 
-void fpga_munmap(void *map, uint32_t size) {
-    munmap(map, size);
-}
+/* declared in hps_fpga_comm.c */
+extern volatile sig_atomic_t g_bus_fault;
+extern sigjmp_buf             g_bus_jmp;
 
-int main(void) {
-    printf("=== HPS-to-FPGA RAM Test ===\n");
-    printf("Physical address: 0x%08X\n", RAM_S1_PHYS);
-    printf("Size:             0x%08X (%u KB)\n\n", RAM_S1_SIZE, RAM_S1_SIZE / 1024);
+int main(int argc, char *argv[])
+{
+    const char *music_dir = (argc > 1) ? argv[1] : DEFAULT_MUSIC_DIR;
 
-    volatile uint32_t *mem = fpga_mmap(RAM_S1_PHYS, RAM_S1_SIZE);
-    if (!mem) return 1;
+    if (hps_fpga_init(SHARED_AUDIO_MEM_PHYS, sizeof(shared_audio_mem_t)) != 0)
+        return 1;
 
-    /* Read initial value */
-    printf("Read  [0x00]: 0x%08X\n", mem[0]);
+    volatile shared_audio_mem_t *shared = hps_fpga_get_shared();
+    if (!shared) { hps_fpga_close(); return 1; }
 
-    /* Write test pattern */
-    mem[0] = 0xDEADBEEF;
-    mem[1] = 0xCAFEBABE;
-    mem[2] = 0x12345678;
+    hps_stream_init_shared(shared);
 
-    /* Read back */
-    printf("Write [0x00]: 0xDEADBEEF  ->  Read: 0x%08X  %s\n",
-           mem[0], mem[0] == 0xDEADBEEF ? "OK" : "FAIL");
-    printf("Write [0x04]: 0xCAFEBABE  ->  Read: 0x%08X  %s\n",
-           mem[1], mem[1] == 0xCAFEBABE ? "OK" : "FAIL");
-    printf("Write [0x08]: 0x12345678  ->  Read: 0x%08X  %s\n",
-           mem[2], mem[2] == 0x12345678 ? "OK" : "FAIL");
+    if (hps_stream_load_playlist(shared, music_dir) != 0)
+        printf("[HPS] no songs in %s (will still serve events)\n", music_dir);
 
-    /* Clear */
-    mem[0] = 0x00000000;
-    mem[1] = 0x00000000;
-    mem[2] = 0x00000000;
-    printf("\nCleared. Read back [0x00]: 0x%08X\n", mem[0]);
+    printf("[HPS] streamer up. songs=%u dir=%s\n", shared->song_count, music_dir);
 
-    fpga_munmap((void *)mem, RAM_S1_SIZE);
-    printf("\nDone.\n");
+    for (;;) {
+        if (sigsetjmp(g_bus_jmp, 1) != 0) {
+            fprintf(stderr, "[HPS] bus fault during poll, remapping...\n");
+            hps_fpga_close();
+            if (hps_fpga_init(SHARED_AUDIO_MEM_PHYS, sizeof(shared_audio_mem_t)) != 0)
+                return 1;
+            shared = hps_fpga_get_shared();
+            hps_stream_init_shared(shared);
+            continue;
+        }
+        hps_stream_handle_nios_events(shared);
+        hps_stream_try_fill_next_buffer(shared);
+        usleep(POLL_SLEEP_US);
+    }
+
+    hps_fpga_close();
     return 0;
 }
