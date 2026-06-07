@@ -64,6 +64,19 @@
          type = "String";
       }
    }
+   element AudioBiquadFilter
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
    element CLK
    {
       datum _sortIndex
@@ -73,7 +86,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -107,8 +120,24 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
+      }
+   }
+   element MusicPlayerPlatformDesign
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element MusicPlayerPlatformDesign
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
       }
    }
    element RAM_NIOS_II
@@ -120,7 +149,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -315,17 +344,17 @@
  <instanceScript></instanceScript>
  <interface
    name="audio_clk_export"
-   internal="AUDIO_CLOCK.audio_clk"
-   type="clock"
-   dir="start" />
+   internal="AudioBiquadFilter.audio_clk_export"
+   type="conduit"
+   dir="end" />
  <interface
    name="audio_config_export"
-   internal="AUDIO_CONFIG.external_interface"
+   internal="AudioBiquadFilter.audio_config_export"
    type="conduit"
    dir="end" />
  <interface
    name="audio_export"
-   internal="AUDIO_OUT.external_interface"
+   internal="AudioBiquadFilter.audio_export"
    type="conduit"
    dir="end" />
  <interface
@@ -334,6 +363,11 @@
    type="conduit"
    dir="end" />
  <interface name="clk" internal="CLK.clk_in" type="clock" dir="end" />
+ <interface
+   name="filter_select"
+   internal="AudioBiquadFilter.filter_select"
+   type="conduit"
+   dir="end" />
  <interface
    name="hps_arm_h2f_mpu_events"
    internal="HPS_ARM.h2f_mpu_events"
@@ -412,6 +446,15 @@
   <parameter name="avalon_bus_type" value="Memory Mapped" />
   <parameter name="dw" value="16" />
  </module>
+ <module
+   name="AudioBiquadFilter"
+   kind="AudioBiquadFilter"
+   version="1.0"
+   enabled="1">
+  <parameter name="COEF_FRAC" value="14" />
+  <parameter name="COEF_WIDTH" value="18" />
+  <parameter name="DATA_WIDTH" value="16" />
+ </module>
  <module name="CLK" kind="clock_source" version="22.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -423,8 +466,8 @@
    kind="altera_nios2_gen2"
    version="22.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -1417,6 +1460,11 @@
    version="22.1"
    start="VGA_CHAR_BUFFER.avalon_char_source"
    end="VGA_CONTROLLER.avalon_vga_sink" />
+ <connection
+   kind="clock"
+   version="22.1"
+   start="AUDIO_CLOCK.audio_clk"
+   end="AudioBiquadFilter.audio_pll_clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="CPU_NIOS_II.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="UART_NIOS_II.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="REG_BTN_INPUT.clk" />
@@ -1433,6 +1481,11 @@
    end="TIMER_CTRL_OUTPUT.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_OUT.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="AUDIO_CONFIG.clk" />
+ <connection
+   kind="clock"
+   version="22.1"
+   start="CLK.clk"
+   end="AudioBiquadFilter.clk" />
  <connection kind="clock" version="22.1" start="CLK.clk" end="RAM_NIOS_II.clk1" />
  <connection
    kind="clock"
@@ -1465,6 +1518,28 @@
    version="22.1"
    start="VGA_CLOCK_BRIDGE.out_clk"
    end="VGA_CHAR_BUFFER.clk" />
+ <connection
+   kind="conduit"
+   version="22.1"
+   start="AudioBiquadFilter.audio_config_pd"
+   end="AUDIO_CONFIG.external_interface">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="22.1"
+   start="AudioBiquadFilter.audio_pd"
+   end="AUDIO_OUT.external_interface">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
  <connection
    kind="interrupt"
    version="22.1"
@@ -1548,6 +1623,11 @@
    version="22.1"
    start="CLK.clk_reset"
    end="AUDIO_OUT.reset" />
+ <connection
+   kind="reset"
+   version="22.1"
+   start="CLK.clk_reset"
+   end="AudioBiquadFilter.reset" />
  <connection
    kind="reset"
    version="22.1"

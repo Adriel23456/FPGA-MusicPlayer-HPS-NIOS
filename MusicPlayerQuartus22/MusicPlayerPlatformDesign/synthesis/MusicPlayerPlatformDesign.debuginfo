@@ -5,7 +5,7 @@
  version="22.1"
  fabric="QSYS">
  <!-- Format version 22.1 922 (Future versions may contain additional information.) -->
- <!-- 2026.06.06.05:13:55 -->
+ <!-- 2026.06.07.02:48:20 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -57,7 +57,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1780744017</value>
+  <value>1780821685</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -383,6 +383,12 @@ parameters are a RESULT of the module parameters. -->
     <width>1</width>
     <role>clk</role>
    </port>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AudioBiquadFilter</moduleName>
+    <slaveName>audio_pll_clk</slaveName>
+    <name>AudioBiquadFilter.audio_pll_clk</name>
+   </clockDomainMember>
   </interface>
   <interface name="reset_source" kind="reset_source" version="22.1">
    <!-- The connection points exposed by a module instance for the
@@ -1839,6 +1845,489 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
+ <module
+   name="AudioBiquadFilter"
+   kind="AudioBiquadFilter"
+   version="1.0"
+   path="AudioBiquadFilter">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="DATA_WIDTH">
+   <type>int</type>
+   <value>16</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="COEF_WIDTH">
+   <type>int</type>
+   <value>18</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="COEF_FRAC">
+   <type>int</type>
+   <value>14</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="clk" kind="clock_sink" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="reset" kind="reset_sink" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clk</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>DEASSERT</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>false</isStart>
+   <port>
+    <name>reset_reset_n</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset_n</role>
+   </port>
+  </interface>
+  <interface name="audio_pll_clk" kind="clock_sink" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>audio_pll_clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="audio_pd" kind="conduit_end" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>pd_audio_bclk</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export</role>
+   </port>
+   <port>
+    <name>pd_audio_daclrck</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export</role>
+   </port>
+   <port>
+    <name>pd_audio_dacdat</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export</role>
+   </port>
+  </interface>
+  <interface name="audio_config_pd" kind="conduit_end" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>pd_cfg_sclk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>export</role>
+   </port>
+  </interface>
+  <interface name="audio_export" kind="conduit_end" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>audio_export_BCLK</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>BCLK</role>
+   </port>
+   <port>
+    <name>audio_export_DACDAT</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>DACDAT</role>
+   </port>
+   <port>
+    <name>audio_export_DACLRCK</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>DACLRCK</role>
+   </port>
+  </interface>
+  <interface name="audio_config_export" kind="conduit_end" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>audio_config_export_SDAT</name>
+    <direction>Bidir</direction>
+    <width>1</width>
+    <role>SDAT</role>
+   </port>
+   <port>
+    <name>audio_config_export_SCLK</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>SCLK</role>
+   </port>
+  </interface>
+  <interface name="audio_clk_export" kind="conduit_end" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>audio_clk_export_clk</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="filter_select" kind="conduit_end" version="22.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>filter_sw</name>
+    <direction>Input</direction>
+    <width>2</width>
+    <role>filter_sw</role>
+   </port>
+  </interface>
+ </module>
  <module name="CLK" kind="clock_source" version="22.1" path="CLK">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -2121,6 +2610,12 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUDIO_CONFIG</moduleName>
     <slaveName>clk</slaveName>
     <name>AUDIO_CONFIG.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AudioBiquadFilter</moduleName>
+    <slaveName>clk</slaveName>
+    <name>AudioBiquadFilter.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -4072,7 +4567,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4082,7 +4577,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -60881,6 +61376,33 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_vga_sink</endConnectionPoint>
  </connection>
  <connection
+   name="AUDIO_CLOCK.audio_clk/AudioBiquadFilter.audio_pll_clk"
+   kind="clock"
+   version="22.1"
+   start="AUDIO_CLOCK.audio_clk"
+   end="AudioBiquadFilter.audio_pll_clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>AUDIO_CLOCK</startModule>
+  <startConnectionPoint>audio_clk</startConnectionPoint>
+  <endModule>AudioBiquadFilter</endModule>
+  <endConnectionPoint>audio_pll_clk</endConnectionPoint>
+ </connection>
+ <connection
    name="CLK.clk/CPU_NIOS_II.clk"
    kind="clock"
    version="22.1"
@@ -61094,6 +61616,33 @@ parameters are a RESULT of the module parameters. -->
   <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>AUDIO_CONFIG</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+   name="CLK.clk/AudioBiquadFilter.clk"
+   kind="clock"
+   version="22.1"
+   start="CLK.clk"
+   end="AudioBiquadFilter.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>CLK</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>AudioBiquadFilter</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
@@ -61311,6 +61860,140 @@ parameters are a RESULT of the module parameters. -->
   <startConnectionPoint>out_clk</startConnectionPoint>
   <endModule>VGA_CHAR_BUFFER</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+   name="AudioBiquadFilter.audio_config_pd/AUDIO_CONFIG.external_interface"
+   kind="conduit"
+   version="22.1"
+   start="AudioBiquadFilter.audio_config_pd"
+   end="AUDIO_CONFIG.external_interface">
+  <parameter name="endPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="endPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="width">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>AudioBiquadFilter</startModule>
+  <startConnectionPoint>audio_config_pd</startConnectionPoint>
+  <endModule>AUDIO_CONFIG</endModule>
+  <endConnectionPoint>external_interface</endConnectionPoint>
+ </connection>
+ <connection
+   name="AudioBiquadFilter.audio_pd/AUDIO_OUT.external_interface"
+   kind="conduit"
+   version="22.1"
+   start="AudioBiquadFilter.audio_pd"
+   end="AUDIO_OUT.external_interface">
+  <parameter name="endPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="endPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="width">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>AudioBiquadFilter</startModule>
+  <startConnectionPoint>audio_pd</startConnectionPoint>
+  <endModule>AUDIO_OUT</endModule>
+  <endConnectionPoint>external_interface</endConnectionPoint>
  </connection>
  <connection
    name="CLK.clk_reset/AUDIO_CLOCK.ref_reset"
@@ -62418,6 +63101,60 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
+   name="rst_controller.reset_out/rst_translator.in_reset"
+   kind="reset"
+   version="22.1"
+   start="rst_controller.reset_out"
+   end="rst_translator.in_reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>rst_controller</startModule>
+  <startConnectionPoint>reset_out</startConnectionPoint>
+  <endModule>rst_translator</endModule>
+  <endConnectionPoint>in_reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="rst_translator.out_reset/AudioBiquadFilter.reset"
+   kind="reset"
+   version="22.1"
+   start="rst_translator.out_reset"
+   end="AudioBiquadFilter.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>rst_translator</startModule>
+  <startConnectionPoint>out_reset</startConnectionPoint>
+  <endModule>AudioBiquadFilter</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
    name="rst_controller.reset_out/CPU_NIOS_II.reset"
    kind="reset"
    version="22.1"
@@ -63155,7 +63892,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>28</instanceCount>
+  <instanceCount>30</instanceCount>
   <name>clock_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -63163,7 +63900,7 @@ parameters are a RESULT of the module parameters. -->
   <version>22.1</version>
  </plugin>
  <plugin>
-  <instanceCount>20</instanceCount>
+  <instanceCount>21</instanceCount>
   <name>reset_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -63203,7 +63940,7 @@ parameters are a RESULT of the module parameters. -->
   <version>22.1</version>
  </plugin>
  <plugin>
-  <instanceCount>13</instanceCount>
+  <instanceCount>19</instanceCount>
   <name>conduit_end</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -63225,6 +63962,14 @@ parameters are a RESULT of the module parameters. -->
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Interrupt Sender</displayName>
   <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>AudioBiquadFilter</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IModule</subtype>
+  <displayName>Audio Biquad Filter</displayName>
+  <version>1.0</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -63443,11 +64188,19 @@ parameters are a RESULT of the module parameters. -->
   <version>22.1</version>
  </plugin>
  <plugin>
-  <instanceCount>16</instanceCount>
+  <instanceCount>18</instanceCount>
   <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
   <displayName>Clock Connection</displayName>
+  <version>22.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>2</instanceCount>
+  <name>conduit</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IConnection</subtype>
+  <displayName>Conduit Connection</displayName>
   <version>22.1</version>
  </plugin>
  <plugin>
@@ -63483,7 +64236,7 @@ parameters are a RESULT of the module parameters. -->
   <version>22.1</version>
  </plugin>
  <plugin>
-  <instanceCount>27</instanceCount>
+  <instanceCount>29</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -63491,5 +64244,5 @@ parameters are a RESULT of the module parameters. -->
   <version>22.1</version>
  </plugin>
  <reportVersion>22.1 922</reportVersion>
- <uniqueIdentifier>B2C8399DDF8C0000019E9CA37EA4</uniqueIdentifier>
+ <uniqueIdentifier>DAE7CC4C54E00000019EA1449246</uniqueIdentifier>
 </EnsembleReport>

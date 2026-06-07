@@ -124,3 +124,8 @@ ls -l /mnt/music
 # Bridge enabled?
 cat /sys/class/fpga_bridge/br1/state   # expected: enabled
 ```
+
+This is how to use minicom with UART conection!
+```bash
+sudo minicom -D /dev/ttyUSB0 -b 115200
+```

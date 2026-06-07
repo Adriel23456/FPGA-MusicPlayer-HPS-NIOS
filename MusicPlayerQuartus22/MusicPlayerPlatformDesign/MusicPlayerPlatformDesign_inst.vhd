@@ -8,6 +8,7 @@
 			audio_export_DACLRCK              : in    std_logic                     := 'X';             -- DACLRCK
 			buttons_input_export              : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                           : in    std_logic                     := 'X';             -- clk
+			filter_select_filter_sw           : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- filter_sw
 			hps_arm_h2f_mpu_events_eventi     : in    std_logic                     := 'X';             -- eventi
 			hps_arm_h2f_mpu_events_evento     : out   std_logic;                                        -- evento
 			hps_arm_h2f_mpu_events_standbywfe : out   std_logic_vector(1 downto 0);                     -- standbywfe
@@ -74,6 +75,7 @@
 			audio_export_DACLRCK              => CONNECTED_TO_audio_export_DACLRCK,              --                       .DACLRCK
 			buttons_input_export              => CONNECTED_TO_buttons_input_export,              --          buttons_input.export
 			clk_clk                           => CONNECTED_TO_clk_clk,                           --                    clk.clk
+			filter_select_filter_sw           => CONNECTED_TO_filter_select_filter_sw,           --          filter_select.filter_sw
 			hps_arm_h2f_mpu_events_eventi     => CONNECTED_TO_hps_arm_h2f_mpu_events_eventi,     -- hps_arm_h2f_mpu_events.eventi
 			hps_arm_h2f_mpu_events_evento     => CONNECTED_TO_hps_arm_h2f_mpu_events_evento,     --                       .evento
 			hps_arm_h2f_mpu_events_standbywfe => CONNECTED_TO_hps_arm_h2f_mpu_events_standbywfe, --                       .standbywfe

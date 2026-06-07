@@ -8,6 +8,7 @@ module MusicPlayerPlatformDesign (
 	audio_export_DACLRCK,
 	buttons_input_export,
 	clk_clk,
+	filter_select_filter_sw,
 	hps_arm_h2f_mpu_events_eventi,
 	hps_arm_h2f_mpu_events_evento,
 	hps_arm_h2f_mpu_events_standbywfe,
@@ -70,6 +71,7 @@ module MusicPlayerPlatformDesign (
 	input		audio_export_DACLRCK;
 	input	[3:0]	buttons_input_export;
 	input		clk_clk;
+	input	[1:0]	filter_select_filter_sw;
 	input		hps_arm_h2f_mpu_events_eventi;
 	output		hps_arm_h2f_mpu_events_evento;
 	output	[1:0]	hps_arm_h2f_mpu_events_standbywfe;

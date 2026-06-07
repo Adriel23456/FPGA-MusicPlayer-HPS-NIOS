@@ -1,28 +1,20 @@
-// Top_MusicPlayerQuartus.sv
-
 `timescale 1 ps / 1 ps
 module Top_MusicPlayerQuartus #(
     parameter int unsigned CLK_FREQ = 50_000_000
 ) (
-    // ── Clocks & Reset ──────────────────────────────────────────
     input  logic        clk,
     input  logic        reset_reset_n,
 
-    // ── Audio ────────────────────────────────────────────────────
     inout  wire         audio_config_export_SDAT,
     output logic        audio_config_export_SCLK,
     input  logic        audio_export_BCLK,
     output logic        audio_export_DACDAT,
     input  logic        audio_export_DACLRCK,
-    
-	 // ── Audio Clock MCLK (AUD_XCK PIN_G7) ───────────────────────
     output wire         audio_clk_export_clk,
 
-    // ── Buttons & Switches ───────────────────────────────────────
     input  logic [3:0]  buttons_input_export,
     input  logic        switch_input_export,
 
-    // ── VGA ──────────────────────────────────────────────────────
     output logic        vga_outputs_CLK,
     output logic        vga_outputs_HS,
     output logic        vga_outputs_VS,
@@ -32,23 +24,19 @@ module Top_MusicPlayerQuartus #(
     output logic [7:0]  vga_outputs_G,
     output logic [7:0]  vga_outputs_B,
 
-    // ── 7-Segment: MM:SS Timer ───────────────────────────────────
     output logic [6:0]  seg_min_tens,
     output logic [6:0]  seg_min_units,
     output logic [6:0]  seg_sec_tens,
     output logic [6:0]  seg_sec_units,
 
-    // ── Filter_Decoder (standalone) ──────────────────────────────
     input  logic [1:0]  filter_sw,
     output logic [6:0]  filter_seg_out,
 
-    // ── HPS MPU Events ──────────────────────────────────────────
     input  wire         hps_arm_h2f_mpu_events_eventi,
     output wire         hps_arm_h2f_mpu_events_evento,
     output wire [1:0]   hps_arm_h2f_mpu_events_standbywfe,
     output wire [1:0]   hps_arm_h2f_mpu_events_standbywfi,
 
-    // ── HPS DDR3 (auto-assigned by Quartus, do NOT pin-plan) ────
     output wire [12:0]  memory_mem_a,
     output wire [2:0]   memory_mem_ba,
     output wire         memory_mem_ck,
@@ -66,7 +54,6 @@ module Top_MusicPlayerQuartus #(
     output wire         memory_mem_dm,
     input  wire         memory_oct_rzqin,
 
-    // ── HPS Ethernet EMAC0 (auto-assigned by Quartus) ───────────
     output wire         hps_io_hps_io_emac0_inst_TX_CLK,
     output wire         hps_io_hps_io_emac0_inst_TXD0,
     output wire         hps_io_hps_io_emac0_inst_TXD1,
@@ -82,7 +69,6 @@ module Top_MusicPlayerQuartus #(
     input  wire         hps_io_hps_io_emac0_inst_RXD2,
     input  wire         hps_io_hps_io_emac0_inst_RXD3,
 
-    // ── HPS SD Card (auto-assigned by Quartus) ───────────────────
     inout  wire         hps_io_hps_io_sdio_inst_CMD,
     inout  wire         hps_io_hps_io_sdio_inst_D0,
     inout  wire         hps_io_hps_io_sdio_inst_D1,
@@ -91,29 +77,19 @@ module Top_MusicPlayerQuartus #(
     inout  wire         hps_io_hps_io_sdio_inst_D3
 );
 
-    // ────────────────────────────────────────────────────────────
-    // 25 MHz clock divider (50 MHz → 25 MHz toggle)
-    // ────────────────────────────────────────────────────────────
     logic clk_25mhz = 1'b0;
+    always_ff @(posedge clk) clk_25mhz <= ~clk_25mhz;
 
-    always_ff @(posedge clk)
-        clk_25mhz <= ~clk_25mhz;
-
-    // ────────────────────────────────────────────────────────────
-    // Internal wires: Platform ↔ MMSS_Timer
-    // ────────────────────────────────────────────────────────────
     logic [1:0] timer_ctrl_wire;
     logic [1:0] timer_status_wire;
 
-    // ────────────────────────────────────────────────────────────
-    // Platform Design (NIOS V + HPS)
-    // ────────────────────────────────────────────────────────────
+    // ── Platform Designer (filter now lives inside) ───────────────
     MusicPlayerPlatformDesign platform (
         .clk_clk                                (clk),
         .vga_clk_clk                            (clk_25mhz),
         .reset_reset_n                          (reset_reset_n),
 
-        // Audio
+        // Audio — direct connections, no interception needed
         .audio_config_export_SDAT               (audio_config_export_SDAT),
         .audio_config_export_SCLK               (audio_config_export_SCLK),
         .audio_export_BCLK                      (audio_export_BCLK),
@@ -121,15 +97,15 @@ module Top_MusicPlayerQuartus #(
         .audio_export_DACLRCK                   (audio_export_DACLRCK),
         .audio_clk_export_clk                   (audio_clk_export_clk),
 
-        // Buttons & Switches
+        // Filter switch — drives AudioBiquadFilterConduit inside PD
+        .filter_select_filter_sw                (filter_sw),
+
         .buttons_input_export                   (buttons_input_export),
         .switch_input_export                    (switch_input_export),
 
-        // Timer
         .timer_ctrl_output_export               (timer_ctrl_wire),
         .timer_status_input_export              (timer_status_wire),
 
-        // VGA
         .vga_outputs_CLK                        (vga_outputs_CLK),
         .vga_outputs_HS                         (vga_outputs_HS),
         .vga_outputs_VS                         (vga_outputs_VS),
@@ -139,13 +115,11 @@ module Top_MusicPlayerQuartus #(
         .vga_outputs_G                          (vga_outputs_G),
         .vga_outputs_B                          (vga_outputs_B),
 
-        // HPS MPU Events
         .hps_arm_h2f_mpu_events_eventi          (hps_arm_h2f_mpu_events_eventi),
         .hps_arm_h2f_mpu_events_evento          (hps_arm_h2f_mpu_events_evento),
         .hps_arm_h2f_mpu_events_standbywfe      (hps_arm_h2f_mpu_events_standbywfe),
         .hps_arm_h2f_mpu_events_standbywfi      (hps_arm_h2f_mpu_events_standbywfi),
 
-        // HPS DDR3
         .memory_mem_a                           (memory_mem_a),
         .memory_mem_ba                          (memory_mem_ba),
         .memory_mem_ck                          (memory_mem_ck),
@@ -163,34 +137,30 @@ module Top_MusicPlayerQuartus #(
         .memory_mem_dm                          (memory_mem_dm),
         .memory_oct_rzqin                       (memory_oct_rzqin),
 
-        // HPS Ethernet
-        .hps_io_hps_io_emac0_inst_TX_CLK       (hps_io_hps_io_emac0_inst_TX_CLK),
-        .hps_io_hps_io_emac0_inst_TXD0         (hps_io_hps_io_emac0_inst_TXD0),
-        .hps_io_hps_io_emac0_inst_TXD1         (hps_io_hps_io_emac0_inst_TXD1),
-        .hps_io_hps_io_emac0_inst_TXD2         (hps_io_hps_io_emac0_inst_TXD2),
-        .hps_io_hps_io_emac0_inst_TXD3         (hps_io_hps_io_emac0_inst_TXD3),
-        .hps_io_hps_io_emac0_inst_RXD0         (hps_io_hps_io_emac0_inst_RXD0),
-        .hps_io_hps_io_emac0_inst_MDIO         (hps_io_hps_io_emac0_inst_MDIO),
-        .hps_io_hps_io_emac0_inst_MDC          (hps_io_hps_io_emac0_inst_MDC),
-        .hps_io_hps_io_emac0_inst_RX_CTL       (hps_io_hps_io_emac0_inst_RX_CTL),
-        .hps_io_hps_io_emac0_inst_TX_CTL       (hps_io_hps_io_emac0_inst_TX_CTL),
-        .hps_io_hps_io_emac0_inst_RX_CLK       (hps_io_hps_io_emac0_inst_RX_CLK),
-        .hps_io_hps_io_emac0_inst_RXD1         (hps_io_hps_io_emac0_inst_RXD1),
-        .hps_io_hps_io_emac0_inst_RXD2         (hps_io_hps_io_emac0_inst_RXD2),
-        .hps_io_hps_io_emac0_inst_RXD3         (hps_io_hps_io_emac0_inst_RXD3),
+        .hps_io_hps_io_emac0_inst_TX_CLK        (hps_io_hps_io_emac0_inst_TX_CLK),
+        .hps_io_hps_io_emac0_inst_TXD0          (hps_io_hps_io_emac0_inst_TXD0),
+        .hps_io_hps_io_emac0_inst_TXD1          (hps_io_hps_io_emac0_inst_TXD1),
+        .hps_io_hps_io_emac0_inst_TXD2          (hps_io_hps_io_emac0_inst_TXD2),
+        .hps_io_hps_io_emac0_inst_TXD3          (hps_io_hps_io_emac0_inst_TXD3),
+        .hps_io_hps_io_emac0_inst_RXD0          (hps_io_hps_io_emac0_inst_RXD0),
+        .hps_io_hps_io_emac0_inst_MDIO          (hps_io_hps_io_emac0_inst_MDIO),
+        .hps_io_hps_io_emac0_inst_MDC           (hps_io_hps_io_emac0_inst_MDC),
+        .hps_io_hps_io_emac0_inst_RX_CTL        (hps_io_hps_io_emac0_inst_RX_CTL),
+        .hps_io_hps_io_emac0_inst_TX_CTL        (hps_io_hps_io_emac0_inst_TX_CTL),
+        .hps_io_hps_io_emac0_inst_RX_CLK        (hps_io_hps_io_emac0_inst_RX_CLK),
+        .hps_io_hps_io_emac0_inst_RXD1          (hps_io_hps_io_emac0_inst_RXD1),
+        .hps_io_hps_io_emac0_inst_RXD2          (hps_io_hps_io_emac0_inst_RXD2),
+        .hps_io_hps_io_emac0_inst_RXD3          (hps_io_hps_io_emac0_inst_RXD3),
 
-        // HPS SD Card
-        .hps_io_hps_io_sdio_inst_CMD           (hps_io_hps_io_sdio_inst_CMD),
-        .hps_io_hps_io_sdio_inst_D0            (hps_io_hps_io_sdio_inst_D0),
-        .hps_io_hps_io_sdio_inst_D1            (hps_io_hps_io_sdio_inst_D1),
-        .hps_io_hps_io_sdio_inst_CLK           (hps_io_hps_io_sdio_inst_CLK),
-        .hps_io_hps_io_sdio_inst_D2            (hps_io_hps_io_sdio_inst_D2),
-        .hps_io_hps_io_sdio_inst_D3            (hps_io_hps_io_sdio_inst_D3)
+        .hps_io_hps_io_sdio_inst_CMD            (hps_io_hps_io_sdio_inst_CMD),
+        .hps_io_hps_io_sdio_inst_D0             (hps_io_hps_io_sdio_inst_D0),
+        .hps_io_hps_io_sdio_inst_D1             (hps_io_hps_io_sdio_inst_D1),
+        .hps_io_hps_io_sdio_inst_CLK            (hps_io_hps_io_sdio_inst_CLK),
+        .hps_io_hps_io_sdio_inst_D2             (hps_io_hps_io_sdio_inst_D2),
+        .hps_io_hps_io_sdio_inst_D3             (hps_io_hps_io_sdio_inst_D3)
     );
 
-    // ────────────────────────────────────────────────────────────
-    // MMSS_Timer
-    // ────────────────────────────────────────────────────────────
+    // ── MMSS Timer ────────────────────────────────────────────────
     MMSS_Timer #(.CLK_FREQ(CLK_FREQ)) timer_inst (
         .clk          (clk),
         .timer_ctrl   (timer_ctrl_wire),
@@ -201,9 +171,7 @@ module Top_MusicPlayerQuartus #(
         .seg_sec_units (seg_sec_units)
     );
 
-    // ────────────────────────────────────────────────────────────
-    // Filter_Decoder (standalone)
-    // ────────────────────────────────────────────────────────────
+    // ── Filter 7-seg display (filter_sw shared with PD) ──────────
     Filter_Decoder filter_inst (
         .sw      (filter_sw),
         .seg_out (filter_seg_out)

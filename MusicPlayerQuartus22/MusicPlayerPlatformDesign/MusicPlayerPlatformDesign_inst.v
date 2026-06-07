@@ -7,6 +7,7 @@
 		.audio_export_DACLRCK              (<connected-to-audio_export_DACLRCK>),              //                       .DACLRCK
 		.buttons_input_export              (<connected-to-buttons_input_export>),              //          buttons_input.export
 		.clk_clk                           (<connected-to-clk_clk>),                           //                    clk.clk
+		.filter_select_filter_sw           (<connected-to-filter_select_filter_sw>),           //          filter_select.filter_sw
 		.hps_arm_h2f_mpu_events_eventi     (<connected-to-hps_arm_h2f_mpu_events_eventi>),     // hps_arm_h2f_mpu_events.eventi
 		.hps_arm_h2f_mpu_events_evento     (<connected-to-hps_arm_h2f_mpu_events_evento>),     //                       .evento
 		.hps_arm_h2f_mpu_events_standbywfe (<connected-to-hps_arm_h2f_mpu_events_standbywfe>), //                       .standbywfe

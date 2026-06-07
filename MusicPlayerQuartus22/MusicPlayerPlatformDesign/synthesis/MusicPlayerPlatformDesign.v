@@ -12,6 +12,7 @@ module MusicPlayerPlatformDesign (
 		input  wire        audio_export_DACLRCK,              //                       .DACLRCK
 		input  wire [3:0]  buttons_input_export,              //          buttons_input.export
 		input  wire        clk_clk,                           //                    clk.clk
+		input  wire [1:0]  filter_select_filter_sw,           //          filter_select.filter_sw
 		input  wire        hps_arm_h2f_mpu_events_eventi,     // hps_arm_h2f_mpu_events.eventi
 		output wire        hps_arm_h2f_mpu_events_evento,     //                       .evento
 		output wire [1:0]  hps_arm_h2f_mpu_events_standbywfe, //                       .standbywfe
@@ -72,6 +73,7 @@ module MusicPlayerPlatformDesign (
 	wire         vga_char_buffer_avalon_char_source_ready;                               // VGA_CONTROLLER:ready -> VGA_CHAR_BUFFER:stream_ready
 	wire         vga_char_buffer_avalon_char_source_startofpacket;                       // VGA_CHAR_BUFFER:stream_startofpacket -> VGA_CONTROLLER:startofpacket
 	wire         vga_char_buffer_avalon_char_source_endofpacket;                         // VGA_CHAR_BUFFER:stream_endofpacket -> VGA_CONTROLLER:endofpacket
+	wire         audio_clock_audio_clk_clk;                                              // AUDIO_CLOCK:audio_clk_clk -> AudioBiquadFilter:audio_pll_clk
 	wire  [31:0] cpu_nios_ii_data_master_readdata;                                       // mm_interconnect_0:CPU_NIOS_II_data_master_readdata -> CPU_NIOS_II:d_readdata
 	wire         cpu_nios_ii_data_master_waitrequest;                                    // mm_interconnect_0:CPU_NIOS_II_data_master_waitrequest -> CPU_NIOS_II:d_waitrequest
 	wire         cpu_nios_ii_data_master_debugaccess;                                    // CPU_NIOS_II:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:CPU_NIOS_II_data_master_debugaccess
@@ -195,17 +197,17 @@ module MusicPlayerPlatformDesign (
 	wire         irq_mapper_receiver2_irq;                                               // REG_BTN_INPUT:irq -> irq_mapper:receiver2_irq
 	wire         irq_mapper_receiver3_irq;                                               // REG_SW_INPUT:irq -> irq_mapper:receiver3_irq
 	wire  [31:0] cpu_nios_ii_irq_irq;                                                    // irq_mapper:sender_irq -> CPU_NIOS_II:irq
-	wire         rst_controller_reset_out_reset;                                         // rst_controller:reset_out -> [AUDIO_CONFIG:reset, AUDIO_OUT:reset, CPU_NIOS_II:reset_n, REG_BTN_INPUT:reset_n, REG_SW_INPUT:reset_n, TIMER_CTRL_OUTPUT:reset_n, TIMER_STATUS_INPUT:reset_n, UART_NIOS_II:rst_n, irq_mapper:reset, mm_interconnect_0:CPU_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
+	wire         rst_controller_reset_out_reset;                                         // rst_controller:reset_out -> [AUDIO_CONFIG:reset, AUDIO_OUT:reset, AudioBiquadFilter:reset_reset_n, CPU_NIOS_II:reset_n, REG_BTN_INPUT:reset_n, REG_SW_INPUT:reset_n, TIMER_CTRL_OUTPUT:reset_n, TIMER_STATUS_INPUT:reset_n, UART_NIOS_II:rst_n, irq_mapper:reset, mm_interconnect_0:CPU_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                     // rst_controller:reset_req -> [CPU_NIOS_II:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_001_reset_out_reset;                                     // rst_controller_001:reset_out -> [RAM_NIOS_II:reset, mm_interconnect_0:RAM_NIOS_II_reset1_reset_bridge_in_reset_reset]
 	wire         hps_arm_h2f_reset_reset;                                                // HPS_ARM:h2f_rst_n -> rst_controller_001:reset_in0
 	wire         rst_controller_002_reset_out_reset;                                     // rst_controller_002:reset_out -> [VGA_CHAR_BUFFER:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_CHAR_BUFFER_reset_reset_bridge_in_reset_reset]
 
 	MusicPlayerPlatformDesign_AUDIO_CLOCK audio_clock (
-		.ref_clk_clk        (clk_clk),              //      ref_clk.clk
-		.ref_reset_reset    (~reset_reset_n),       //    ref_reset.reset
-		.audio_clk_clk      (audio_clk_export_clk), //    audio_clk.clk
-		.reset_source_reset ()                      // reset_source.reset
+		.ref_clk_clk        (clk_clk),                   //      ref_clk.clk
+		.ref_reset_reset    (~reset_reset_n),            //    ref_reset.reset
+		.audio_clk_clk      (audio_clock_audio_clk_clk), //    audio_clk.clk
+		.reset_source_reset ()                           // reset_source.reset
 	);
 
 	MusicPlayerPlatformDesign_AUDIO_CONFIG audio_config (
@@ -218,8 +220,8 @@ module MusicPlayerPlatformDesign (
 		.writedata   (mm_interconnect_0_audio_config_avalon_av_config_slave_writedata),   //                       .writedata
 		.readdata    (mm_interconnect_0_audio_config_avalon_av_config_slave_readdata),    //                       .readdata
 		.waitrequest (mm_interconnect_0_audio_config_avalon_av_config_slave_waitrequest), //                       .waitrequest
-		.I2C_SDAT    (audio_config_export_SDAT),                                          //     external_interface.export
-		.I2C_SCLK    (audio_config_export_SCLK)                                           //                       .export
+		.I2C_SDAT    (),                                                                  //     external_interface.export
+		.I2C_SCLK    ()                                                                   //                       .export
 	);
 
 	MusicPlayerPlatformDesign_AUDIO_OUT audio_out (
@@ -232,9 +234,30 @@ module MusicPlayerPlatformDesign (
 		.writedata   (mm_interconnect_0_audio_out_avalon_audio_slave_writedata),  //                   .writedata
 		.readdata    (mm_interconnect_0_audio_out_avalon_audio_slave_readdata),   //                   .readdata
 		.irq         (irq_mapper_receiver0_irq),                                  //          interrupt.irq
-		.AUD_BCLK    (audio_export_BCLK),                                         // external_interface.export
-		.AUD_DACDAT  (audio_export_DACDAT),                                       //                   .export
-		.AUD_DACLRCK (audio_export_DACLRCK)                                       //                   .export
+		.AUD_BCLK    (),                                                          // external_interface.export
+		.AUD_DACDAT  (),                                                          //                   .export
+		.AUD_DACLRCK ()                                                           //                   .export
+	);
+
+	AudioBiquadFilterConduit #(
+		.DATA_WIDTH (16),
+		.COEF_WIDTH (18),
+		.COEF_FRAC  (14)
+	) audiobiquadfilter (
+		.clk                      (clk_clk),                         //                 clk.clk
+		.reset_reset_n            (~rst_controller_reset_out_reset), //               reset.reset_n
+		.audio_pll_clk            (audio_clock_audio_clk_clk),       //       audio_pll_clk.clk
+		.pd_audio_bclk            (),                                //            audio_pd.export
+		.pd_audio_daclrck         (),                                //                    .export
+		.pd_audio_dacdat          (),                                //                    .export
+		.pd_cfg_sclk              (),                                //     audio_config_pd.export
+		.audio_export_BCLK        (audio_export_BCLK),               //        audio_export.BCLK
+		.audio_export_DACDAT      (audio_export_DACDAT),             //                    .DACDAT
+		.audio_export_DACLRCK     (audio_export_DACLRCK),            //                    .DACLRCK
+		.audio_config_export_SDAT (audio_config_export_SDAT),        // audio_config_export.SDAT
+		.audio_config_export_SCLK (audio_config_export_SCLK),        //                    .SCLK
+		.audio_clk_export_clk     (audio_clk_export_clk),            //    audio_clk_export.clk
+		.filter_sw                (filter_select_filter_sw)          //       filter_select.filter_sw
 	);
 
 	MusicPlayerPlatformDesign_CPU_NIOS_II cpu_nios_ii (
