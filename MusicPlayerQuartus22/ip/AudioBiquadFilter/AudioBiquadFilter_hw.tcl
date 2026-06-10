@@ -54,15 +54,12 @@ add_interface audio_pll_clk clock end
 set_interface_property audio_pll_clk ENABLED true
 add_interface_port audio_pll_clk audio_pll_clk clk input 1
 
-# ── Interface 4: Internal conduit to altera_up_avalon_audio ───────────────────
-# Directions are the OPPOSITE of AUDIO_OUT's conduit:
-#   we output BCLK/DACLRCK (AUDIO_OUT needs them as inputs)
-#   we input  DACDAT        (AUDIO_OUT drives it as output)
+# ── Interface 4: Internal conduit to altera_up_avalon_audio ──────
 add_interface audio_pd conduit end
 set_interface_property audio_pd ENABLED true
-add_interface_port audio_pd pd_audio_bclk    export output 1
-add_interface_port audio_pd pd_audio_daclrck export output 1
-add_interface_port audio_pd pd_audio_dacdat  export output 1
+add_interface_port audio_pd pd_audio_bclk    bclk    output 1
+add_interface_port audio_pd pd_audio_daclrck daclrck output 1
+add_interface_port audio_pd pd_audio_dacdat  dacdat  input  1
 
 # ── Interface 5: Internal conduit to altera_up_avalon_audio_and_video_config ──
 # IMPORTANT: audio_config_export_SDAT is the same physical HDL port as in

@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 22.1 922 (Future versions may contain additional information.) -->
- <!-- 2026.06.07.02:44:44 -->
+ <!-- 2026.06.09.21:08:29 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1780821685</value>
+  <value>1781060711</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -2047,19 +2047,19 @@ parameters are a RESULT of the module parameters. -->
     <name>pd_audio_bclk</name>
     <direction>Output</direction>
     <width>1</width>
-    <role>export</role>
+    <role>bclk</role>
    </port>
    <port>
     <name>pd_audio_daclrck</name>
     <direction>Output</direction>
     <width>1</width>
-    <role>export</role>
+    <role>daclrck</role>
    </port>
    <port>
     <name>pd_audio_dacdat</name>
-    <direction>Output</direction>
+    <direction>Input</direction>
     <width>1</width>
-    <role>export</role>
+    <role>dacdat</role>
    </port>
   </interface>
   <interface name="audio_config_pd" kind="conduit_end" version="22.1">
@@ -97415,140 +97415,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="AudioBiquadFilter.audio_config_pd/AUDIO_CONFIG.external_interface"
-   kind="conduit"
-   version="22.1"
-   start="AudioBiquadFilter.audio_config_pd"
-   end="AUDIO_CONFIG.external_interface">
-  <parameter name="endPort">
-   <type>com.altera.entityinterfaces.IPort</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="endPortLSB">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="startPort">
-   <type>com.altera.entityinterfaces.IPort</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="startPortLSB">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="width">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>AudioBiquadFilter</startModule>
-  <startConnectionPoint>audio_config_pd</startConnectionPoint>
-  <endModule>AUDIO_CONFIG</endModule>
-  <endConnectionPoint>external_interface</endConnectionPoint>
- </connection>
- <connection
-   name="AudioBiquadFilter.audio_pd/AUDIO_OUT.external_interface"
-   kind="conduit"
-   version="22.1"
-   start="AudioBiquadFilter.audio_pd"
-   end="AUDIO_OUT.external_interface">
-  <parameter name="endPort">
-   <type>com.altera.entityinterfaces.IPort</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="endPortLSB">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="startPort">
-   <type>com.altera.entityinterfaces.IPort</type>
-   <value></value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="startPortLSB">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="width">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>AudioBiquadFilter</startModule>
-  <startConnectionPoint>audio_pd</startConnectionPoint>
-  <endModule>AUDIO_OUT</endModule>
-  <endConnectionPoint>external_interface</endConnectionPoint>
- </connection>
- <connection
    name="CPU_NIOS_II.irq/AUDIO_OUT.interrupt"
    kind="interrupt"
    version="22.1"
@@ -98581,14 +98447,6 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
   <displayName>Avalon Streaming Connection</displayName>
-  <version>22.1</version>
- </plugin>
- <plugin>
-  <instanceCount>2</instanceCount>
-  <name>conduit</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IConnection</subtype>
-  <displayName>Conduit Connection</displayName>
   <version>22.1</version>
  </plugin>
  <reportVersion>22.1 922</reportVersion>

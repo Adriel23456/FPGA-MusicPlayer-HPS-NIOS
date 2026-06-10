@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.06.07.02:44:44</td>
+    <td class="l">2026.06.09.21:08:29</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -1378,7 +1378,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_CPU_NIOS_II">CPU_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="10">AUDIO_CONFIG</td>
+      <td class="main" rowspan="7">AUDIO_CONFIG</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_av_config_slave</td>
@@ -1400,18 +1400,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_AudioBiquadFilter">AudioBiquadFilter</a>
-      </td>
-      <td class="from">audio_config_pd&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;external_interface</td>
      </tr>
     </table>
    </div>
@@ -1525,7 +1513,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_CPU_NIOS_II">CPU_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="12">AUDIO_OUT</td>
+      <td class="main" rowspan="9">AUDIO_OUT</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_audio_slave</td>
@@ -1553,18 +1541,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_AudioBiquadFilter">AudioBiquadFilter</a>
-      </td>
-      <td class="from">audio_pd&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;external_interface</td>
      </tr>
     </table>
    </div>
@@ -1630,7 +1606,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_AUDIO_CLOCK">AUDIO_CLOCK</a>
       </td>
       <td class="from">audio_clk&#160;&#160;</td>
-      <td class="main" rowspan="12">AudioBiquadFilter</td>
+      <td class="main" rowspan="7">AudioBiquadFilter</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;audio_pll_clk</td>
@@ -1652,35 +1628,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">audio_config_pd&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_AUDIO_CONFIG">AUDIO_CONFIG</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;external_interface</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">audio_pd&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_AUDIO_OUT">AUDIO_OUT</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;external_interface</td>
      </tr>
     </table>
    </div>

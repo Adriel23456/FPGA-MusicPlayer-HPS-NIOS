@@ -1,16 +1,16 @@
-// ---------------------------------------------------------------
-// FIX SUMMARY:
-//   1. acc_left/acc_right moved to module scope + computed in
-//      always_comb (no local vars inside always_ff).
-//   2. saturate_sample rewritten with no local logic vars and
-//      no <<< on signed literals (was causing index 12597 error).
-// ---------------------------------------------------------------
+// AudioBiquadFilter.sv
+// 01 = biquad low-pass, 10 = biquad band-pass, 11 = reverb (feedback comb
+// echo, BRAM delay line), 00 = registered bypass (the I2S wrapper also has
+// a hard serial bypass for 00).
+
 module AudioBiquadFilter #(
-    parameter int DATA_WIDTH = 16,
-    parameter int COEF_WIDTH = 18,
-    parameter int COEF_FRAC  = 14
+    parameter int DATA_WIDTH  = 16,
+    parameter int COEF_WIDTH  = 18,
+    parameter int COEF_FRAC   = 14,
+    parameter int REVERB_ADDR = 11,     // 2^11 = 2048-sample delay line
+    parameter int REVERB_DLY  = 1800    // echo delay (~150 ms @ 12 kHz DAC)
 ) (
-    input  logic clk,
+    input  logic clk,                   // BCLK
     input  logic reset_reset_n,
     input  logic [1:0] filter_mode,
     input  logic sample_valid,
@@ -21,7 +21,7 @@ module AudioBiquadFilter #(
     output logic signed [DATA_WIDTH-1:0] sample_left_out,
     output logic signed [DATA_WIDTH-1:0] sample_right_out
 );
-    // Coefficients (Q14 fixed-point)
+    // ── Coefficients (Q14) ───────────────────────────────────────
     localparam logic signed [COEF_WIDTH-1:0] LP_B0 =  18'sd1105;
     localparam logic signed [COEF_WIDTH-1:0] LP_B1 =  18'sd2210;
     localparam logic signed [COEF_WIDTH-1:0] LP_B2 =  18'sd1105;
@@ -34,102 +34,108 @@ module AudioBiquadFilter #(
     localparam logic signed [COEF_WIDTH-1:0] BP_A1 = -18'sd6058;
     localparam logic signed [COEF_WIDTH-1:0] BP_A2 =  18'sd9604;
 
-    localparam logic signed [COEF_WIDTH-1:0] EQ_B0 =  18'sd17646;
-    localparam logic signed [COEF_WIDTH-1:0] EQ_B1 = -18'sd25559;
-    localparam logic signed [COEF_WIDTH-1:0] EQ_B2 =  18'sd10596;
-    localparam logic signed [COEF_WIDTH-1:0] EQ_A1 = -18'sd25559;
-    localparam logic signed [COEF_WIDTH-1:0] EQ_A2 =  18'sd15129;
+    localparam logic signed [COEF_WIDTH-1:0] RV_G  =  18'sd9011;  // 0.55 feedback
 
-    // Delay-line state
-    logic signed [DATA_WIDTH-1:0] x1_left,  x2_left,  y1_left,  y2_left;
-    logic signed [DATA_WIDTH-1:0] x1_right, x2_right, y1_right, y2_right;
-    logic [1:0] mode_q;
+    localparam logic signed [DATA_WIDTH-1:0] SMAX = {1'b0, {(DATA_WIDTH-1){1'b1}}};
+    localparam logic signed [DATA_WIDTH-1:0] SMIN = {1'b1, {(DATA_WIDTH-1){1'b0}}};
 
-    // Active coefficient set
-    logic signed [COEF_WIDTH-1:0] b0, b1, b2, a1, a2;
-
-    // FIX 1: Accumulators at module scope, driven by always_comb below
-    logic signed [63:0] acc_left;
-    logic signed [63:0] acc_right;
-
-    // FIX 2: No local logic variables, no <<< on signed literals.
-    //   MAX =  0_111...1  sign-extended to 64 bits
-    //   MIN =  1_000...0  sign-extended to 64 bits
-    function automatic logic signed [DATA_WIDTH-1:0] saturate_sample(
-        input logic signed [63:0] value
-    );
-        if (value > $signed({{(64-DATA_WIDTH){1'b0}}, 1'b0, {(DATA_WIDTH-1){1'b1}}}))
-            saturate_sample = {1'b0, {(DATA_WIDTH-1){1'b1}}};   // +MAX
-        else if (value < $signed({{(64-DATA_WIDTH){1'b1}}, 1'b1, {(DATA_WIDTH-1){1'b0}}}))
-            saturate_sample = {1'b1, {(DATA_WIDTH-1){1'b0}}};   // -MIN
-        else
-            saturate_sample = value[DATA_WIDTH-1:0];
+    function automatic logic signed [DATA_WIDTH-1:0] sat(input logic signed [63:0] v);
+        if      (v > longint'(SMAX)) sat = SMAX;
+        else if (v < longint'(SMIN)) sat = SMIN;
+        else                         sat = v[DATA_WIDTH-1:0];
     endfunction
 
-    // Coefficient mux
+    assign sample_ready = 1'b1;
+
+    // ── Biquad state + coefficient mux ───────────────────────────
+    logic signed [DATA_WIDTH-1:0] x1l, x2l, y1l, y2l, x1r, x2r, y1r, y2r;
+    logic [1:0] mode_q;
+    logic signed [COEF_WIDTH-1:0] b0, b1, b2, a1, a2;
+
     always_comb begin
         unique case (filter_mode)
-            2'b01: begin b0=LP_B0; b1=LP_B1; b2=LP_B2; a1=LP_A1; a2=LP_A2; end
-            2'b10: begin b0=BP_B0; b1=BP_B1; b2=BP_B2; a1=BP_A1; a2=BP_A2; end
-            2'b11: begin b0=EQ_B0; b1=EQ_B1; b2=EQ_B2; a1=EQ_A1; a2=EQ_A2; end
+            2'b01:   begin b0=LP_B0; b1=LP_B1; b2=LP_B2; a1=LP_A1; a2=LP_A2; end
+            2'b10:   begin b0=BP_B0; b1=BP_B1; b2=BP_B2; a1=BP_A1; a2=BP_A2; end
             default: begin b0='0; b1='0; b2='0; a1='0; a2='0; end
         endcase
     end
 
-    // FIX 1 (cont.): Combinational accumulation — no blocking vars in always_ff
+    logic signed [63:0] acc_l, acc_r;
     always_comb begin
-        acc_left  = ($signed(b0) * $signed(sample_left_in))
-                  + ($signed(b1) * $signed(x1_left))
-                  + ($signed(b2) * $signed(x2_left))
-                  - ($signed(a1) * $signed(y1_left))
-                  - ($signed(a2) * $signed(y2_left));
-
-        acc_right = ($signed(b0) * $signed(sample_right_in))
-                  + ($signed(b1) * $signed(x1_right))
-                  + ($signed(b2) * $signed(x2_right))
-                  - ($signed(a1) * $signed(y1_right))
-                  - ($signed(a2) * $signed(y2_right));
+        acc_l = (b0 * sample_left_in)  + (b1 * x1l) + (b2 * x2l)
+              - (a1 * y1l)             - (a2 * y2l);
+        acc_r = (b0 * sample_right_in) + (b1 * x1r) + (b2 * x2r)
+              - (a1 * y1r)             - (a2 * y2r);
     end
+    wire signed [DATA_WIDTH-1:0] bq_l = sat(acc_l >>> COEF_FRAC);
+    wire signed [DATA_WIDTH-1:0] bq_r = sat(acc_r >>> COEF_FRAC);
 
-    assign sample_ready = 1'b1;
+    // ── Reverb: y[n] = sat(x[n] + g·y[n-D]), BRAM delay line ─────
+    localparam int RV_DEPTH = 1 << REVERB_ADDR;
+    logic [2*DATA_WIDTH-1:0]      rv_ram [0:RV_DEPTH-1];
+    logic [REVERB_ADDR-1:0]       rv_wr;
+    logic [2*DATA_WIDTH-1:0]      rv_rd_q;
+    localparam logic [REVERB_ADDR-1:0] RV_D = REVERB_DLY[REVERB_ADDR-1:0];
+    wire  [REVERB_ADDR-1:0]       rv_rd_addr = rv_wr - RV_D;
 
+    wire signed [DATA_WIDTH-1:0] rv_dly_l = rv_rd_q[2*DATA_WIDTH-1:DATA_WIDTH];
+    wire signed [DATA_WIDTH-1:0] rv_dly_r = rv_rd_q[DATA_WIDTH-1:0];
+
+    wire signed [DATA_WIDTH-1:0] rv_l =
+        sat(((64'(sample_left_in)  <<< COEF_FRAC) + (RV_G * rv_dly_l)) >>> COEF_FRAC);
+    wire signed [DATA_WIDTH-1:0] rv_r =
+        sat(((64'(sample_right_in) <<< COEF_FRAC) + (RV_G * rv_dly_r)) >>> COEF_FRAC);
+
+    // Continuous read (address only moves once per sample → settled long
+    // before the next sample). Writes zeros when not in reverb so the tail
+    // is flushed within one delay period — no big reset needed.
+    always_ff @(posedge clk) begin
+        rv_rd_q <= rv_ram[rv_rd_addr];
+        if (sample_valid)
+            rv_ram[rv_wr] <= (filter_mode == 2'b11 && mode_q == 2'b11)
+                             ? {rv_l, rv_r} : '0;
+    end
+    always_ff @(posedge clk or negedge reset_reset_n)
+        if (!reset_reset_n)    rv_wr <= '0;
+        else if (sample_valid) rv_wr <= rv_wr + 1'b1;
+
+    // ── Output / state update ────────────────────────────────────
     always_ff @(posedge clk or negedge reset_reset_n) begin
         if (!reset_reset_n) begin
             sample_valid_out <= 1'b0;
-            sample_left_out  <= '0;
-            sample_right_out <= '0;
-            x1_left  <= '0; x2_left  <= '0; y1_left  <= '0; y2_left  <= '0;
-            x1_right <= '0; x2_right <= '0; y1_right <= '0; y2_right <= '0;
-            mode_q   <= 2'b00;
+            sample_left_out  <= '0;  sample_right_out <= '0;
+            x1l<='0; x2l<='0; y1l<='0; y2l<='0;
+            x1r<='0; x2r<='0; y1r<='0; y2r<='0;
+            mode_q <= 2'b00;
         end else begin
-            // Clear state on mode switch
-            if (mode_q != filter_mode) begin
-                x1_left  <= '0; x2_left  <= '0; y1_left  <= '0; y2_left  <= '0;
-                x1_right <= '0; x2_right <= '0; y1_right <= '0; y2_right <= '0;
-                mode_q   <= filter_mode;
-            end
-
             sample_valid_out <= sample_valid;
 
-            if (sample_valid) begin
-                if (filter_mode == 2'b00) begin
-                    // Bypass
+            if (mode_q != filter_mode) begin
+                // flush biquad state on mode switch; pass this sample raw
+                x1l<='0; x2l<='0; y1l<='0; y2l<='0;
+                x1r<='0; x2r<='0; y1r<='0; y2r<='0;
+                mode_q <= filter_mode;
+                if (sample_valid) begin
                     sample_left_out  <= sample_left_in;
                     sample_right_out <= sample_right_in;
-                end else begin
-                    sample_left_out  <= saturate_sample(acc_left  >>> COEF_FRAC);
-                    sample_right_out <= saturate_sample(acc_right >>> COEF_FRAC);
-
-                    x2_left  <= x1_left;
-                    x1_left  <= sample_left_in;
-                    y2_left  <= y1_left;
-                    y1_left  <= saturate_sample(acc_left >>> COEF_FRAC);
-
-                    x2_right <= x1_right;
-                    x1_right <= sample_right_in;
-                    y2_right <= y1_right;
-                    y1_right <= saturate_sample(acc_right >>> COEF_FRAC);
                 end
+            end else if (sample_valid) begin
+                unique case (filter_mode)
+                    2'b00: begin
+                        sample_left_out  <= sample_left_in;
+                        sample_right_out <= sample_right_in;
+                    end
+                    2'b11: begin
+                        sample_left_out  <= rv_l;
+                        sample_right_out <= rv_r;
+                    end
+                    default: begin                  // 01 LP / 10 BP
+                        sample_left_out  <= bq_l;
+                        sample_right_out <= bq_r;
+                        x2l<=x1l; x1l<=sample_left_in;  y2l<=y1l; y1l<=bq_l;
+                        x2r<=x1r; x1r<=sample_right_in; y2r<=y1r; y1r<=bq_r;
+                    end
+                endcase
             end
         end
     end

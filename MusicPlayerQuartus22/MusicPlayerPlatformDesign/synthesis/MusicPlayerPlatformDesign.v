@@ -7,11 +7,20 @@ module MusicPlayerPlatformDesign (
 		output wire        audio_clk_export_clk,              //       audio_clk_export.clk
 		inout  wire        audio_config_export_SDAT,          //    audio_config_export.SDAT
 		output wire        audio_config_export_SCLK,          //                       .SCLK
+		inout  wire        audio_config_raw_SDAT,             //       audio_config_raw.SDAT
+		output wire        audio_config_raw_SCLK,             //                       .SCLK
 		input  wire        audio_export_BCLK,                 //           audio_export.BCLK
 		output wire        audio_export_DACDAT,               //                       .DACDAT
 		input  wire        audio_export_DACLRCK,              //                       .DACLRCK
+		input  wire        audio_raw_BCLK,                    //              audio_raw.BCLK
+		output wire        audio_raw_DACDAT,                  //                       .DACDAT
+		input  wire        audio_raw_DACLRCK,                 //                       .DACLRCK
 		input  wire [3:0]  buttons_input_export,              //          buttons_input.export
 		input  wire        clk_clk,                           //                    clk.clk
+		input  wire        config_pd_export,                  //              config_pd.export
+		output wire        filter_pd_bclk,                    //              filter_pd.bclk
+		output wire        filter_pd_daclrck,                 //                       .daclrck
+		input  wire        filter_pd_dacdat,                  //                       .dacdat
 		input  wire [1:0]  filter_select_filter_sw,           //          filter_select.filter_sw
 		input  wire        hps_arm_h2f_mpu_events_eventi,     // hps_arm_h2f_mpu_events.eventi
 		output wire        hps_arm_h2f_mpu_events_evento,     //                       .evento
@@ -220,8 +229,8 @@ module MusicPlayerPlatformDesign (
 		.writedata   (mm_interconnect_0_audio_config_avalon_av_config_slave_writedata),   //                       .writedata
 		.readdata    (mm_interconnect_0_audio_config_avalon_av_config_slave_readdata),    //                       .readdata
 		.waitrequest (mm_interconnect_0_audio_config_avalon_av_config_slave_waitrequest), //                       .waitrequest
-		.I2C_SDAT    (),                                                                  //     external_interface.export
-		.I2C_SCLK    ()                                                                   //                       .export
+		.I2C_SDAT    (audio_config_raw_SDAT),                                             //     external_interface.export
+		.I2C_SCLK    (audio_config_raw_SCLK)                                              //                       .export
 	);
 
 	MusicPlayerPlatformDesign_AUDIO_OUT audio_out (
@@ -234,9 +243,9 @@ module MusicPlayerPlatformDesign (
 		.writedata   (mm_interconnect_0_audio_out_avalon_audio_slave_writedata),  //                   .writedata
 		.readdata    (mm_interconnect_0_audio_out_avalon_audio_slave_readdata),   //                   .readdata
 		.irq         (irq_mapper_receiver0_irq),                                  //          interrupt.irq
-		.AUD_BCLK    (),                                                          // external_interface.export
-		.AUD_DACDAT  (),                                                          //                   .export
-		.AUD_DACLRCK ()                                                           //                   .export
+		.AUD_BCLK    (audio_raw_BCLK),                                            // external_interface.export
+		.AUD_DACDAT  (audio_raw_DACDAT),                                          //                   .export
+		.AUD_DACLRCK (audio_raw_DACLRCK)                                          //                   .export
 	);
 
 	AudioBiquadFilterConduit #(
@@ -247,10 +256,10 @@ module MusicPlayerPlatformDesign (
 		.clk                      (clk_clk),                         //                 clk.clk
 		.reset_reset_n            (~rst_controller_reset_out_reset), //               reset.reset_n
 		.audio_pll_clk            (audio_clock_audio_clk_clk),       //       audio_pll_clk.clk
-		.pd_audio_bclk            (),                                //            audio_pd.export
-		.pd_audio_daclrck         (),                                //                    .export
-		.pd_audio_dacdat          (),                                //                    .export
-		.pd_cfg_sclk              (),                                //     audio_config_pd.export
+		.pd_audio_bclk            (filter_pd_bclk),                  //            audio_pd.bclk
+		.pd_audio_daclrck         (filter_pd_daclrck),               //                    .daclrck
+		.pd_audio_dacdat          (filter_pd_dacdat),                //                    .dacdat
+		.pd_cfg_sclk              (config_pd_export),                //     audio_config_pd.export
 		.audio_export_BCLK        (audio_export_BCLK),               //        audio_export.BCLK
 		.audio_export_DACDAT      (audio_export_DACDAT),             //                    .DACDAT
 		.audio_export_DACLRCK     (audio_export_DACLRCK),            //                    .DACLRCK

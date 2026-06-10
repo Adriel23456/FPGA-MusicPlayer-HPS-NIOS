@@ -140,6 +140,14 @@
          type = "String";
       }
    }
+   element MusicPlayerPlatformDesign
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element RAM_NIOS_II
    {
       datum _sortIndex
@@ -353,8 +361,18 @@
    type="conduit"
    dir="end" />
  <interface
+   name="audio_config_raw"
+   internal="AUDIO_CONFIG.external_interface"
+   type="conduit"
+   dir="end" />
+ <interface
    name="audio_export"
    internal="AudioBiquadFilter.audio_export"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="audio_raw"
+   internal="AUDIO_OUT.external_interface"
    type="conduit"
    dir="end" />
  <interface
@@ -363,6 +381,16 @@
    type="conduit"
    dir="end" />
  <interface name="clk" internal="CLK.clk_in" type="clock" dir="end" />
+ <interface
+   name="config_pd"
+   internal="AudioBiquadFilter.audio_config_pd"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="filter_pd"
+   internal="AudioBiquadFilter.audio_pd"
+   type="conduit"
+   dir="end" />
  <interface
    name="filter_select"
    internal="AudioBiquadFilter.filter_select"
@@ -1518,28 +1546,6 @@
    version="22.1"
    start="VGA_CLOCK_BRIDGE.out_clk"
    end="VGA_CHAR_BUFFER.clk" />
- <connection
-   kind="conduit"
-   version="22.1"
-   start="AudioBiquadFilter.audio_config_pd"
-   end="AUDIO_CONFIG.external_interface">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
- <connection
-   kind="conduit"
-   version="22.1"
-   start="AudioBiquadFilter.audio_pd"
-   end="AUDIO_OUT.external_interface">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
  <connection
    kind="interrupt"
    version="22.1"

@@ -83,21 +83,47 @@ module Top_MusicPlayerQuartus #(
     logic [1:0] timer_ctrl_wire;
     logic [1:0] timer_status_wire;
 
-    // ── Platform Designer (filter now lives inside) ───────────────
+    // ── Audio interception wiring ─────────────────────────────────
+    // Codec is the I2S bus master: BCLK/DACLRCK come IN from the board
+    // pins and are fanned out to BOTH AUDIO_OUT (audio_raw_*) and the
+    // filter (audio_export_*). Serial audio path:
+    //   AUDIO_OUT → dacdat_raw → AudioBiquadFilter → audio_export_DACDAT pin
+    wire dacdat_raw;
+
     MusicPlayerPlatformDesign platform (
         .clk_clk                                (clk),
         .vga_clk_clk                            (clk_25mhz),
         .reset_reset_n                          (reset_reset_n),
 
-        // Audio — direct connections, no interception needed
-        .audio_config_export_SDAT               (audio_config_export_SDAT),
-        .audio_config_export_SCLK               (audio_config_export_SCLK),
+        // ── AUDIO_OUT raw conduit (export "audio_raw") ────────────
+        .audio_raw_BCLK                         (audio_export_BCLK),
+        .audio_raw_DACLRCK                      (audio_export_DACLRCK),
+        .audio_raw_DACDAT                       (dacdat_raw),
+
+        // ── Filter internal-side conduit (export "filter_pd") ─────
+        .filter_pd_dacdat                       (dacdat_raw),
+        .filter_pd_bclk                         (),      // unused: pins feed AUDIO_OUT directly
+        .filter_pd_daclrck                      (),      // unused
+
+        // ── Filter pin-side conduit → codec I2S pins ──────────────
         .audio_export_BCLK                      (audio_export_BCLK),
         .audio_export_DACDAT                    (audio_export_DACDAT),
         .audio_export_DACLRCK                   (audio_export_DACLRCK),
+
+        // ── AUDIO_CONFIG raw I2C (export "audio_config_raw") ──────
+        // This is the REAL I2C bus → board pins
+        .audio_config_raw_SDAT                  (audio_config_export_SDAT),
+        .audio_config_raw_SCLK                  (audio_config_export_SCLK),
+
+        // ── Filter's dead config passthrough — unconnected ────────
+        .audio_config_export_SDAT               (),
+        .audio_config_export_SCLK               (),
+        .config_pd_export                       (1'b0),  // filter's pd_cfg_sclk, unused
+
+        // ── MCLK (18.432 MHz from PLL via the filter component) ───
         .audio_clk_export_clk                   (audio_clk_export_clk),
 
-        // Filter switch — drives AudioBiquadFilterConduit inside PD
+        // ── Filter switch ─────────────────────────────────────────
         .filter_select_filter_sw                (filter_sw),
 
         .buttons_input_export                   (buttons_input_export),
@@ -171,7 +197,7 @@ module Top_MusicPlayerQuartus #(
         .seg_sec_units (seg_sec_units)
     );
 
-    // ── Filter 7-seg display (filter_sw shared with PD) ──────────
+    // ── Filter 7-seg display ──────────────────────────────────────
     Filter_Decoder filter_inst (
         .sw      (filter_sw),
         .seg_out (filter_seg_out)
