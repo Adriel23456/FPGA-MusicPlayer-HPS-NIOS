@@ -134,23 +134,23 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
     // Figure out the number of bits to mask off for each slave span
     // during address decoding
     // -------------------------------------------------------
-    localparam PAD0 = log2ceil(64'h80000 - 64'h40000); 
-    localparam PAD1 = log2ceil(64'h82000 - 64'h80000); 
-    localparam PAD2 = log2ceil(64'h83000 - 64'h82800); 
-    localparam PAD3 = log2ceil(64'h83010 - 64'h83000); 
-    localparam PAD4 = log2ceil(64'h83020 - 64'h83010); 
-    localparam PAD5 = log2ceil(64'h83030 - 64'h83020); 
-    localparam PAD6 = log2ceil(64'h83040 - 64'h83030); 
-    localparam PAD7 = log2ceil(64'h83050 - 64'h83040); 
-    localparam PAD8 = log2ceil(64'h83060 - 64'h83050); 
-    localparam PAD9 = log2ceil(64'h83068 - 64'h83060); 
-    localparam PAD10 = log2ceil(64'h83070 - 64'h83068); 
+    localparam PAD0 = log2ceil(64'h10000 - 64'h8000); 
+    localparam PAD1 = log2ceil(64'h12000 - 64'h10000); 
+    localparam PAD2 = log2ceil(64'h13000 - 64'h12800); 
+    localparam PAD3 = log2ceil(64'h13010 - 64'h13000); 
+    localparam PAD4 = log2ceil(64'h13020 - 64'h13010); 
+    localparam PAD5 = log2ceil(64'h13030 - 64'h13020); 
+    localparam PAD6 = log2ceil(64'h13040 - 64'h13030); 
+    localparam PAD7 = log2ceil(64'h13050 - 64'h13040); 
+    localparam PAD8 = log2ceil(64'h13060 - 64'h13050); 
+    localparam PAD9 = log2ceil(64'h13068 - 64'h13060); 
+    localparam PAD10 = log2ceil(64'h13070 - 64'h13068); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h83070;
+    localparam ADDR_RANGE = 64'h13070;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -198,68 +198,68 @@ module MusicPlayerPlatformDesign_mm_interconnect_0_router
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
 
-    // ( 0x40000 .. 0x80000 )
-    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 20'h40000   ) begin
+    // ( 0x8000 .. 0x10000 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 17'h8000   ) begin
             src_channel = 11'b00001000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
-    // ( 0x80000 .. 0x82000 )
-    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 20'h80000   ) begin
+    // ( 0x10000 .. 0x12000 )
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 17'h10000   ) begin
             src_channel = 11'b00000000100;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
     end
 
-    // ( 0x82800 .. 0x83000 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 20'h82800   ) begin
+    // ( 0x12800 .. 0x13000 )
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 17'h12800   ) begin
             src_channel = 11'b00000100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
-    // ( 0x83000 .. 0x83010 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 20'h83000   ) begin
+    // ( 0x13000 .. 0x13010 )
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 17'h13000   ) begin
             src_channel = 11'b10000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end
 
-    // ( 0x83010 .. 0x83020 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 20'h83010   ) begin
+    // ( 0x13010 .. 0x13020 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 17'h13010   ) begin
             src_channel = 11'b01000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
 
-    // ( 0x83020 .. 0x83030 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 20'h83020   ) begin
+    // ( 0x13020 .. 0x13030 )
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 17'h13020   ) begin
             src_channel = 11'b00100000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 
-    // ( 0x83030 .. 0x83040 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 20'h83030   ) begin
+    // ( 0x13030 .. 0x13040 )
+    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 17'h13030   ) begin
             src_channel = 11'b00010000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
-    // ( 0x83040 .. 0x83050 )
-    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 20'h83040   ) begin
+    // ( 0x13040 .. 0x13050 )
+    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 17'h13040   ) begin
             src_channel = 11'b00000000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 
-    // ( 0x83050 .. 0x83060 )
-    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 20'h83050   ) begin
+    // ( 0x13050 .. 0x13060 )
+    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 17'h13050   ) begin
             src_channel = 11'b00000000001;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
-    // ( 0x83060 .. 0x83068 )
-    if ( {address[RG:PAD9],{PAD9{1'b0}}} == 20'h83060   ) begin
+    // ( 0x13060 .. 0x13068 )
+    if ( {address[RG:PAD9],{PAD9{1'b0}}} == 17'h13060   ) begin
             src_channel = 11'b00000010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
     end
 
-    // ( 0x83068 .. 0x83070 )
-    if ( {address[RG:PAD10],{PAD10{1'b0}}} == 20'h83068   ) begin
+    // ( 0x13068 .. 0x13070 )
+    if ( {address[RG:PAD10],{PAD10{1'b0}}} == 17'h13068   ) begin
             src_channel = 11'b00000001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end

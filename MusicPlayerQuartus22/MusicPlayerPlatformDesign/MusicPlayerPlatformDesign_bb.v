@@ -3,11 +3,21 @@ module MusicPlayerPlatformDesign (
 	audio_clk_export_clk,
 	audio_config_export_SDAT,
 	audio_config_export_SCLK,
+	audio_config_raw_SDAT,
+	audio_config_raw_SCLK,
 	audio_export_BCLK,
 	audio_export_DACDAT,
 	audio_export_DACLRCK,
+	audio_raw_BCLK,
+	audio_raw_DACDAT,
+	audio_raw_DACLRCK,
 	buttons_input_export,
 	clk_clk,
+	config_pd_export,
+	filter_pd_bclk,
+	filter_pd_daclrck,
+	filter_pd_dacdat,
+	filter_select_filter_sw,
 	hps_arm_h2f_mpu_events_eventi,
 	hps_arm_h2f_mpu_events_evento,
 	hps_arm_h2f_mpu_events_standbywfe,
@@ -65,11 +75,21 @@ module MusicPlayerPlatformDesign (
 	output		audio_clk_export_clk;
 	inout		audio_config_export_SDAT;
 	output		audio_config_export_SCLK;
+	inout		audio_config_raw_SDAT;
+	output		audio_config_raw_SCLK;
 	input		audio_export_BCLK;
 	output		audio_export_DACDAT;
 	input		audio_export_DACLRCK;
+	input		audio_raw_BCLK;
+	output		audio_raw_DACDAT;
+	input		audio_raw_DACLRCK;
 	input	[3:0]	buttons_input_export;
 	input		clk_clk;
+	input		config_pd_export;
+	output		filter_pd_bclk;
+	output		filter_pd_daclrck;
+	input		filter_pd_dacdat;
+	input	[1:0]	filter_select_filter_sw;
 	input		hps_arm_h2f_mpu_events_eventi;
 	output		hps_arm_h2f_mpu_events_evento;
 	output	[1:0]	hps_arm_h2f_mpu_events_standbywfe;

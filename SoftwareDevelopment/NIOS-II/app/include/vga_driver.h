@@ -2,8 +2,8 @@
 #define VGA_DRIVER_H
 
 /* ---- Character Buffer for VGA Display (direct register access) ---- */
-#define VGA_CHAR_BUF_BASE   0x00080000u   /* avalon_char_buffer_slave  */
-#define VGA_CHAR_CTRL_BASE  0x00083068u   /* avalon_char_control_slave */
+#define VGA_CHAR_BUF_BASE   0x00010000u   /* avalon_char_buffer_slave  */
+#define VGA_CHAR_CTRL_BASE  0x00013068u   /* avalon_char_control_slave */
 
 /* control-slave word offsets */
 #define VGA_CTRL_REG    0                 /* Control    register */
@@ -47,7 +47,7 @@ void vga_draw_template(void);        /* draw the never-changing parts  */
 void vga_set_song_name(const char *name);
 void vga_set_artist(const char *artist);
 void vga_set_album(const char *album);
-void vga_set_duration(unsigned int total_seconds);          /* -> MM:SS */
+void vga_set_duration(unsigned int total_seconds);            /* -> MM:SS */
 void vga_set_track(unsigned int current, unsigned int total); /* -> CC/TT */
 void vga_set_state(const char *state);
 

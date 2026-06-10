@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#define NUM_BUFFERS    0x00000003u
-#define AUDIO_BUF_SIZE 0x00002000u   /* 8192 bytes */
+#define NUM_BUFFERS    0x00000003u   /* ring depth; MUST match the Nios side */
+#define AUDIO_BUF_SIZE 0x00000800u
 
 #define AUDIO_BITS_PER_SAMPLE 0x00000010u  /* 16-bit signed PCM */
 #define AUDIO_CHANNELS        0x00000002u  /* stereo */
@@ -62,12 +62,13 @@ typedef struct {
     /* current song's metadata (HPS writes on INITIAL / NEW_SONG) */
     volatile song_meta_shared_t current_meta;
 
-    /* ring of 3 buffers */
+    /* ring of NUM_BUFFERS buffers */
     volatile audio_buffer_desc_t buffers[NUM_BUFFERS];
     volatile uint8_t audio_data[NUM_BUFFERS][AUDIO_BUF_SIZE];
 } shared_audio_mem_t;
 
-/* Physical address of the shared region on the HPS side (H2F + RAM offset). */
-#define SHARED_AUDIO_MEM_PHYS  0xC0078000u
+/* Physical address of the shared region on the HPS side (H2F + RAM offset).
+ * H2F base 0xC0000000 + RAM-as-seen-by-H2F base 0x8000 + shared offset 0x6000. */
+#define SHARED_AUDIO_MEM_PHYS  0xC000E000u
 
-#endif
+#endif /* SHARED_PROTOCOL_H */

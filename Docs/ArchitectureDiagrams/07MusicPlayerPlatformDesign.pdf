@@ -5,7 +5,7 @@
   /Author   (adriel)
   /Producer (Concept Engineering GmbH)
   /Creator  (Nlview 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35)
-  /CreationDate (D:20260602093720)
+  /CreationDate (D:20260606040453)
 >>
 endobj
 2 0 obj
@@ -58,7 +58,7 @@ endobj
 endobj
 10 0 obj
 <<
-  /Length 18935
+  /Length 19149
 >>
 stream
 1 0 0 1 0 154.167 cm
@@ -68,37 +68,37 @@ stream
 0 0 2160 1660 re
 W n
 /GS gs
-1 0 0 1 220 160 cm
+1 0 0 1 140 140 cm
 q
 1.000 1.000 1.000 rg
--220 -160 2160 1661 re
+-140 -140 2160 1661 re
 f
 Q
 q
 /PCS cs
 /Shading11 scn
 168 10 m
-1602 10 l
-1602 10 l
-1605 10 l
-1608 12 l
-1610 15 l
-1610 18 l
-1610 18 l
-1610 1242 l
-1610 1242 l
-1610 1245 l
-1608 1248 l
-1605 1250 l
-1602 1250 l
-1602 1250 l
-168 1250 l
-168 1250 l
-165 1250 l
-162 1248 l
-160 1245 l
-160 1242 l
-160 1242 l
+1762 10 l
+1762 10 l
+1765 10 l
+1768 12 l
+1770 15 l
+1770 18 l
+1770 18 l
+1770 1282 l
+1770 1282 l
+1770 1285 l
+1768 1288 l
+1765 1290 l
+1762 1290 l
+1762 1290 l
+168 1290 l
+168 1290 l
+165 1290 l
+162 1288 l
+160 1285 l
+160 1282 l
+160 1282 l
 160 18 l
 160 18 l
 160 15 l
@@ -109,27 +109,27 @@ Q
 4 w
 0.067 0.067 0.267 RG
 168 10 m
-1602 10 l
+1762 10 l
 S
-1610 18 m
-1610.09 17.3367 1610.09 16.6633 1610 16 c
-1609.45 12.134 1605.87 9.44772 1602 10 c
+1770 18 m
+1770.09 17.3367 1770.09 16.6633 1770 16 c
+1769.45 12.134 1765.87 9.44772 1762 10 c
 S
-1610 18 m
-1610 1242 l
+1770 18 m
+1770 1282 l
 S
-1602 1250 m
-1602.66 1250.09 1603.34 1250.09 1604 1250 c
-1607.87 1249.45 1610.55 1245.87 1610 1242 c
+1762 1290 m
+1762.66 1290.09 1763.34 1290.09 1764 1290 c
+1767.87 1289.45 1770.55 1285.87 1770 1282 c
 S
-1602 1250 m
-168 1250 l
+1762 1290 m
+168 1290 l
 S
-160 1242 m
-159.905 1242.66 159.905 1243.34 160 1244 c
-160.552 1247.87 164.134 1250.55 168 1250 c
+160 1282 m
+159.905 1282.66 159.905 1283.34 160 1284 c
+160.552 1287.87 164.134 1290.55 168 1290 c
 S
-160 1242 m
+160 1282 m
 160 18 l
 S
 168 10 m
@@ -146,7 +146,7 @@ S
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 885 1252 cm
+1 0 0 1 965 1292 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -155,12 +155,12 @@ BT
 ET
 Q
 0.067 0.067 0.267 RG
-1620 60 m
-1610 60 l
+1780 90 m
+1770 90 l
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 1612 58 cm
+1 0 0 1 1772 88 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -168,43 +168,17 @@ BT
 (audio_clk_export) Tj
 ET
 Q
-150 340 m
-160 340 l
+150 50 m
+160 50 l
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 158 338 cm
+1 0 0 1 158 48 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
 -90 2 Td
 (audio_config_export) Tj
-ET
-Q
-150 430 m
-160 430 l
-S
-q
-0.067 0.067 0.267 rg
-1 0 0 1 158 428 cm
-BT
-/F1 10 Tf
-1 0 0 -1 0 0 Tm
--58 2 Td
-(audio_export) Tj
-ET
-Q
-150 740 m
-160 740 l
-S
-q
-0.067 0.067 0.267 rg
-1 0 0 1 158 738 cm
-BT
-/F1 10 Tf
-1 0 0 -1 0 0 Tm
--60 2 Td
-(buttons_input) Tj
 ET
 Q
 150 510 m
@@ -213,6 +187,32 @@ S
 q
 0.067 0.067 0.267 rg
 1 0 0 1 158 508 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-58 2 Td
+(audio_export) Tj
+ET
+Q
+150 780 m
+160 780 l
+S
+q
+0.067 0.067 0.267 rg
+1 0 0 1 158 778 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-60 2 Td
+(buttons_input) Tj
+ET
+Q
+150 550 m
+160 550 l
+S
+q
+0.067 0.067 0.267 rg
+1 0 0 1 158 548 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -259,12 +259,12 @@ BT
 (memory) Tj
 ET
 Q
-150 530 m
-160 530 l
+150 570 m
+160 570 l
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 158 528 cm
+1 0 0 1 158 568 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -272,12 +272,12 @@ BT
 (reset) Tj
 ET
 Q
-150 1150 m
-160 1150 l
+150 1190 m
+160 1190 l
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 158 1148 cm
+1 0 0 1 158 1188 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -285,12 +285,12 @@ BT
 (switch_input) Tj
 ET
 Q
-150 360 m
-160 360 l
+150 340 m
+160 340 l
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 158 358 cm
+1 0 0 1 158 338 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -298,30 +298,17 @@ BT
 (timer_ctrl_output) Tj
 ET
 Q
-150 390 m
-160 390 l
+150 450 m
+160 450 l
 S
 q
 0.067 0.067 0.267 rg
-1 0 0 1 158 388 cm
+1 0 0 1 158 448 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
 -82 2 Td
 (timer_status_input) Tj
-ET
-Q
-150 820 m
-160 820 l
-S
-q
-0.067 0.067 0.267 rg
-1 0 0 1 158 818 cm
-BT
-/F1 10 Tf
-1 0 0 -1 0 0 Tm
--34 2 Td
-(vga_clk) Tj
 ET
 Q
 150 860 m
@@ -333,24 +320,37 @@ q
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
+-34 2 Td
+(vga_clk) Tj
+ET
+Q
+150 900 m
+160 900 l
+S
+q
+0.067 0.067 0.267 rg
+1 0 0 1 158 898 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
 -54 2 Td
 (vga_outputs) Tj
 ET
 Q
-1600 60 m
-1610 60 l
+1760 90 m
+1770 90 l
 S
-170 340 m
-160 340 l
-S
-170 430 m
-160 430 l
-S
-170 740 m
-160 740 l
+170 50 m
+160 50 l
 S
 170 510 m
 160 510 l
+S
+170 780 m
+160 780 l
+S
+170 550 m
+160 550 l
 S
 170 260 m
 160 260 l
@@ -361,46 +361,46 @@ S
 170 280 m
 160 280 l
 S
-170 530 m
-160 530 l
+170 570 m
+160 570 l
 S
-170 1150 m
-160 1150 l
+170 1190 m
+160 1190 l
 S
-170 360 m
-160 360 l
+170 340 m
+160 340 l
 S
-170 390 m
-160 390 l
-S
-170 820 m
-160 820 l
+170 450 m
+160 450 l
 S
 170 860 m
 160 860 l
 S
+170 900 m
+160 900 l
+S
 q
 0.765 0.831 1.000 rg
-550 88 60 218 re
+570 68 60 238 re
 f
 Q
 0.000 0.000 0.133 RG
-550 88 60 218 re
+570 68 60 238 re
 S
 3 w
 0.000 0.000 0.000 RG
-561 93 m
-561 105 l
+581 73 m
+581 85 l
 S
-555 99 m
-567 99 l
+575 79 m
+587 79 l
 S
 1 w
-553 91 16 16 re
+573 71 16 16 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 580 308 cm
+1 0 0 1 600 308 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -409,12 +409,25 @@ BT
 ET
 Q
 0.000 0.000 0.133 RG
-540 260 m
-550 260 l
+560 140 m
+570 140 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 259 cm
+1 0 0 1 568 139 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-86 2 Td
+(f2h_cold_reset_req) Tj
+ET
+Q
+560 260 m
+570 260 l
+S
+q
+0.000 0.000 0.133 rg
+1 0 0 1 568 259 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -422,12 +435,12 @@ BT
 (h2f_mpu_events) Tj
 ET
 Q
-540 280 m
-550 280 l
+560 280 m
+570 280 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 279 cm
+1 0 0 1 568 279 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -435,12 +448,12 @@ BT
 (memory) Tj
 ET
 Q
-540 200 m
-550 200 l
+560 200 m
+570 200 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 199 cm
+1 0 0 1 568 199 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -448,12 +461,12 @@ BT
 (hps_io) Tj
 ET
 Q
-620 220 m
-610 220 l
+640 200 m
+630 200 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 219 cm
+1 0 0 1 632 199 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -461,12 +474,12 @@ BT
 (h2f_reset) Tj
 ET
 Q
-540 160 m
-550 160 l
+560 160 m
+570 160 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 159 cm
+1 0 0 1 568 159 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -474,12 +487,12 @@ BT
 (f2h_sdram0_clock) Tj
 ET
 Q
-540 180 m
-550 180 l
+560 180 m
+570 180 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 179 cm
+1 0 0 1 568 179 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -487,12 +500,12 @@ BT
 (f2h_sdram0_data) Tj
 ET
 Q
-540 220 m
-550 220 l
+560 220 m
+570 220 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 219 cm
+1 0 0 1 568 219 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -500,12 +513,12 @@ BT
 (h2f_axi_clock) Tj
 ET
 Q
-620 180 m
-610 180 l
+640 160 m
+630 160 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 179 cm
+1 0 0 1 632 159 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -513,12 +526,12 @@ BT
 (h2f_axi_master) Tj
 ET
 Q
-540 120 m
-550 120 l
+560 100 m
+570 100 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 119 cm
+1 0 0 1 568 99 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -526,12 +539,12 @@ BT
 (f2h_axi_clock) Tj
 ET
 Q
-540 140 m
-550 140 l
+560 120 m
+570 120 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 139 cm
+1 0 0 1 568 119 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -539,12 +552,12 @@ BT
 (f2h_axi_slave) Tj
 ET
 Q
-540 240 m
-550 240 l
+560 240 m
+570 240 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 239 cm
+1 0 0 1 568 239 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -552,12 +565,12 @@ BT
 (h2f_lw_axi_clock) Tj
 ET
 Q
-620 200 m
-610 200 l
+640 180 m
+630 180 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 199 cm
+1 0 0 1 632 179 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -567,25 +580,25 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 28 60 78 re
+1490 58 60 78 re
 f
 Q
-1430 28 60 78 re
+1490 58 60 78 re
 S
 3 w
 0.000 0.000 0.000 RG
-1441 33 m
-1441 45 l
+1501 63 m
+1501 75 l
 S
-1435 39 m
-1447 39 l
+1495 69 m
+1507 69 l
 S
 1 w
-1433 31 16 16 re
+1493 61 16 16 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1460 108 cm
+1 0 0 1 1520 138 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -594,12 +607,12 @@ BT
 ET
 Q
 0.000 0.000 0.133 RG
-1420 60 m
-1430 60 l
+1480 90 m
+1490 90 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1428 59 cm
+1 0 0 1 1488 89 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -607,12 +620,12 @@ BT
 (ref_clk) Tj
 ET
 Q
-1420 80 m
-1430 80 l
+1480 110 m
+1490 110 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1428 79 cm
+1 0 0 1 1488 109 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -620,12 +633,12 @@ BT
 (ref_reset) Tj
 ET
 Q
-1500 60 m
-1490 60 l
+1560 90 m
+1550 90 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1492 59 cm
+1 0 0 1 1552 89 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -633,12 +646,12 @@ BT
 (audio_clk) Tj
 ET
 Q
-1500 80 m
-1490 80 l
+1560 110 m
+1550 110 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1492 79 cm
+1 0 0 1 1552 109 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -648,25 +661,25 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-550 528 60 138 re
+570 568 60 138 re
 f
 Q
-550 528 60 138 re
+570 568 60 138 re
 S
 3 w
 0.000 0.000 0.000 RG
-561 533 m
-561 545 l
+581 573 m
+581 585 l
 S
-555 539 m
-567 539 l
+575 579 m
+587 579 l
 S
 1 w
-553 531 16 16 re
+573 571 16 16 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 580 668 cm
+1 0 0 1 600 708 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -675,12 +688,12 @@ BT
 ET
 Q
 0.000 0.000 0.133 RG
-540 580 m
-550 580 l
+560 620 m
+570 620 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 579 cm
+1 0 0 1 568 619 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -688,12 +701,12 @@ BT
 (clk) Tj
 ET
 Q
-540 620 m
-550 620 l
+560 660 m
+570 660 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 619 cm
+1 0 0 1 568 659 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -701,12 +714,12 @@ BT
 (reset) Tj
 ET
 Q
-620 580 m
-610 580 l
+640 620 m
+630 620 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 579 cm
+1 0 0 1 632 619 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -714,12 +727,12 @@ BT
 (data_master) Tj
 ET
 Q
-620 620 m
-610 620 l
+640 660 m
+630 660 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 619 cm
+1 0 0 1 632 659 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -727,12 +740,12 @@ BT
 (instruction_master) Tj
 ET
 Q
-620 640 m
-610 640 l
+640 680 m
+630 680 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 639 cm
+1 0 0 1 632 679 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -740,12 +753,12 @@ BT
 (irq) Tj
 ET
 Q
-620 600 m
-610 600 l
+640 640 m
+630 640 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 599 cm
+1 0 0 1 632 639 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -753,12 +766,12 @@ BT
 (debug_reset_request) Tj
 ET
 Q
-540 600 m
-550 600 l
+560 640 m
+570 640 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 548 599 cm
+1 0 0 1 568 639 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -766,12 +779,12 @@ BT
 (debug_mem_slave) Tj
 ET
 Q
-620 560 m
-610 560 l
+640 600 m
+630 600 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 612 559 cm
+1 0 0 1 632 599 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -781,14 +794,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-200 500 130 40 re
+200 540 130 40 re
 f
 Q
-200 500 130 40 re
+200 540 130 40 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 265 542 cm
+1 0 0 1 265 582 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -796,12 +809,12 @@ BT
 (CLK) Tj
 ET
 Q
-190 510 m
-200 510 l
+190 550 m
+200 550 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 202 510 cm
+1 0 0 1 202 550 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -809,12 +822,12 @@ BT
 (clk_in) Tj
 ET
 Q
-190 530 m
-200 530 l
+190 570 m
+200 570 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 202 530 cm
+1 0 0 1 202 570 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -822,12 +835,12 @@ BT
 (clk_in_reset) Tj
 ET
 Q
-340 510 m
-330 510 l
+340 550 m
+330 550 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 328 510 cm
+1 0 0 1 328 550 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -835,12 +848,12 @@ BT
 (clk) Tj
 ET
 Q
-340 530 m
-330 530 l
+340 570 m
+330 570 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 328 530 cm
+1 0 0 1 328 570 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -850,14 +863,14 @@ ET
 Q
 q
 0.765 1.000 0.996 rg
-1430 810 120 80 re
+1490 850 120 80 re
 f
 Q
-1430 810 120 80 re
+1490 850 120 80 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1490 892 cm
+1 0 0 1 1550 932 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -865,12 +878,12 @@ BT
 (VGA_CONTROLLER) Tj
 ET
 Q
-1420 840 m
-1430 840 l
+1480 880 m
+1490 880 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 840 cm
+1 0 0 1 1492 880 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -878,12 +891,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 880 m
-1430 880 l
+1480 920 m
+1490 920 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 880 cm
+1 0 0 1 1492 920 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -891,12 +904,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 820 m
-1430 820 l
+1480 860 m
+1490 860 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 820 cm
+1 0 0 1 1492 860 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -904,12 +917,12 @@ BT
 (avalon_vga_sink) Tj
 ET
 Q
-1420 860 m
-1430 860 l
+1480 900 m
+1490 900 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 860 cm
+1 0 0 1 1492 900 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -919,14 +932,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 130 150 80 re
+1490 180 150 80 re
 f
 Q
-1430 130 150 80 re
+1490 180 150 80 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1505 212 cm
+1 0 0 1 1565 262 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -934,12 +947,12 @@ BT
 (AUDIO_CONFIG) Tj
 ET
 Q
-1420 160 m
-1430 160 l
+1480 210 m
+1490 210 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 160 cm
+1 0 0 1 1492 210 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -947,12 +960,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 200 m
-1430 200 l
+1480 250 m
+1490 250 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 200 cm
+1 0 0 1 1492 250 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -960,12 +973,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 140 m
-1430 140 l
+1480 190 m
+1490 190 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 140 cm
+1 0 0 1 1492 190 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -973,12 +986,12 @@ BT
 (avalon_av_config_slave) Tj
 ET
 Q
-1420 180 m
-1430 180 l
+1480 230 m
+1490 230 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 180 cm
+1 0 0 1 1492 230 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -988,14 +1001,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 510 130 100 re
+1490 560 130 100 re
 f
 Q
-1430 510 130 100 re
+1490 560 130 100 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1495 612 cm
+1 0 0 1 1555 662 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1003,12 +1016,12 @@ BT
 (AUDIO_OUT) Tj
 ET
 Q
-1420 540 m
-1430 540 l
+1480 590 m
+1490 590 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 540 cm
+1 0 0 1 1492 590 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1016,12 +1029,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 600 m
-1430 600 l
+1480 650 m
+1490 650 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 600 cm
+1 0 0 1 1492 650 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1029,12 +1042,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 520 m
-1430 520 l
+1480 570 m
+1490 570 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 520 cm
+1 0 0 1 1492 570 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1042,12 +1055,12 @@ BT
 (avalon_audio_slave) Tj
 ET
 Q
-1420 580 m
-1430 580 l
+1480 630 m
+1490 630 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 580 cm
+1 0 0 1 1492 630 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1055,12 +1068,12 @@ BT
 (interrupt) Tj
 ET
 Q
-1420 560 m
-1430 560 l
+1480 610 m
+1490 610 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 560 cm
+1 0 0 1 1492 610 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1070,14 +1083,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 920 60 60 re
+1490 960 60 60 re
 f
 Q
-1430 920 60 60 re
+1490 960 60 60 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1460 982 cm
+1 0 0 1 1520 1022 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1085,12 +1098,12 @@ BT
 (RAM_NIOS_II) Tj
 ET
 Q
-1420 930 m
-1430 930 l
+1480 970 m
+1490 970 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 930 cm
+1 0 0 1 1492 970 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1098,12 +1111,12 @@ BT
 (clk1) Tj
 ET
 Q
-1420 970 m
-1430 970 l
+1480 1010 m
+1490 1010 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 970 cm
+1 0 0 1 1492 1010 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1111,12 +1124,12 @@ BT
 (s1) Tj
 ET
 Q
-1420 950 m
-1430 950 l
+1480 990 m
+1490 990 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 950 cm
+1 0 0 1 1492 990 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1126,14 +1139,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 640 130 100 re
+1490 690 130 100 re
 f
 Q
-1430 640 130 100 re
+1490 690 130 100 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1495 742 cm
+1 0 0 1 1555 792 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1141,12 +1154,12 @@ BT
 (REG_BTN_INPUT) Tj
 ET
 Q
-1420 650 m
-1430 650 l
+1480 700 m
+1490 700 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 650 cm
+1 0 0 1 1492 700 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1154,12 +1167,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 710 m
-1430 710 l
+1480 760 m
+1490 760 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 710 cm
+1 0 0 1 1492 760 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1167,12 +1180,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 730 m
-1430 730 l
+1480 780 m
+1490 780 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 730 cm
+1 0 0 1 1492 780 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1180,12 +1193,12 @@ BT
 (s1) Tj
 ET
 Q
-1420 670 m
-1430 670 l
+1480 720 m
+1490 720 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 670 cm
+1 0 0 1 1492 720 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1193,12 +1206,12 @@ BT
 (external_connection) Tj
 ET
 Q
-1420 690 m
-1430 690 l
+1480 740 m
+1490 740 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 690 cm
+1 0 0 1 1492 740 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1208,14 +1221,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 1120 130 100 re
+1490 1160 130 100 re
 f
 Q
-1430 1120 130 100 re
+1490 1160 130 100 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1495 1222 cm
+1 0 0 1 1555 1262 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1223,12 +1236,12 @@ BT
 (REG_SW_INPUT) Tj
 ET
 Q
-1420 1130 m
-1430 1130 l
+1480 1170 m
+1490 1170 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1130 cm
+1 0 0 1 1492 1170 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1236,12 +1249,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 1190 m
-1430 1190 l
+1480 1230 m
+1490 1230 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1190 cm
+1 0 0 1 1492 1230 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1249,12 +1262,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 1210 m
-1430 1210 l
+1480 1250 m
+1490 1250 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1210 cm
+1 0 0 1 1492 1250 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1262,12 +1275,12 @@ BT
 (s1) Tj
 ET
 Q
-1420 1150 m
-1430 1150 l
+1480 1190 m
+1490 1190 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1150 cm
+1 0 0 1 1492 1190 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1275,12 +1288,12 @@ BT
 (external_connection) Tj
 ET
 Q
-1420 1170 m
-1430 1170 l
+1480 1210 m
+1490 1210 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1170 cm
+1 0 0 1 1492 1210 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1290,14 +1303,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 240 130 80 re
+1490 290 130 80 re
 f
 Q
-1430 240 130 80 re
+1490 290 130 80 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1495 322 cm
+1 0 0 1 1555 372 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1305,12 +1318,12 @@ BT
 (TIMER_CTRL_OUTPUT) Tj
 ET
 Q
-1420 250 m
-1430 250 l
+1480 300 m
+1490 300 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 250 cm
+1 0 0 1 1492 300 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1318,12 +1331,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 290 m
-1430 290 l
+1480 340 m
+1490 340 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 290 cm
+1 0 0 1 1492 340 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1331,12 +1344,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 310 m
-1430 310 l
+1480 360 m
+1490 360 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 310 cm
+1 0 0 1 1492 360 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1344,12 +1357,12 @@ BT
 (s1) Tj
 ET
 Q
-1420 270 m
-1430 270 l
+1480 320 m
+1490 320 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 270 cm
+1 0 0 1 1492 320 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1359,14 +1372,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 400 130 80 re
+1490 420 130 80 re
 f
 Q
-1430 400 130 80 re
+1490 420 130 80 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1495 482 cm
+1 0 0 1 1555 502 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1374,12 +1387,12 @@ BT
 (TIMER_STATUS_INPUT) Tj
 ET
 Q
-1420 410 m
-1430 410 l
+1480 430 m
+1490 430 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 410 cm
+1 0 0 1 1492 430 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1387,12 +1400,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 450 m
-1430 450 l
+1480 470 m
+1490 470 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 450 cm
+1 0 0 1 1492 470 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1400,12 +1413,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 470 m
-1430 470 l
+1480 490 m
+1490 490 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 470 cm
+1 0 0 1 1492 490 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1413,12 +1426,12 @@ BT
 (s1) Tj
 ET
 Q
-1420 430 m
-1430 430 l
+1480 450 m
+1490 450 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 430 cm
+1 0 0 1 1492 450 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1428,14 +1441,14 @@ ET
 Q
 q
 0.765 0.831 1.000 rg
-1430 1010 120 80 re
+1490 1050 120 80 re
 f
 Q
-1430 1010 120 80 re
+1490 1050 120 80 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1490 1092 cm
+1 0 0 1 1550 1132 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1443,12 +1456,12 @@ BT
 (UART_NIOS_II) Tj
 ET
 Q
-1420 1040 m
-1430 1040 l
+1480 1080 m
+1490 1080 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1040 cm
+1 0 0 1 1492 1080 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1456,12 +1469,12 @@ BT
 (clk) Tj
 ET
 Q
-1420 1080 m
-1430 1080 l
+1480 1120 m
+1490 1120 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1080 cm
+1 0 0 1 1492 1120 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1469,12 +1482,12 @@ BT
 (reset) Tj
 ET
 Q
-1420 1020 m
-1430 1020 l
+1480 1060 m
+1490 1060 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1020 cm
+1 0 0 1 1492 1060 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1482,12 +1495,12 @@ BT
 (avalon_jtag_slave) Tj
 ET
 Q
-1420 1060 m
-1430 1060 l
+1480 1100 m
+1490 1100 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1432 1060 cm
+1 0 0 1 1492 1100 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1497,14 +1510,14 @@ ET
 Q
 q
 0.765 1.000 0.996 rg
-940 720 280 80 re
+940 760 280 80 re
 f
 Q
-940 720 280 80 re
+940 760 280 80 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1080 802 cm
+1 0 0 1 1080 842 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1512,17 +1525,30 @@ BT
 (VGA_CHAR_BUFFER) Tj
 ET
 Q
-930 770 m
-940 770 l
+930 810 m
+940 810 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 942 770 cm
+1 0 0 1 942 810 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
 0 -3.5 Td
 (clk) Tj
+ET
+Q
+930 830 m
+940 830 l
+S
+q
+0.000 0.000 0.133 rg
+1 0 0 1 942 830 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 -3.5 Td
+(reset) Tj
 ET
 Q
 930 790 m
@@ -1535,28 +1561,15 @@ BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
 0 -3.5 Td
-(reset) Tj
-ET
-Q
-930 750 m
-940 750 l
-S
-q
-0.000 0.000 0.133 rg
-1 0 0 1 942 750 cm
-BT
-/F1 10 Tf
-1 0 0 -1 0 0 Tm
-0 -3.5 Td
 (avalon_char_control_slave) Tj
 ET
 Q
-930 730 m
-940 730 l
+930 770 m
+940 770 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 942 730 cm
+1 0 0 1 942 770 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1564,12 +1577,12 @@ BT
 (avalon_char_buffer_slave) Tj
 ET
 Q
-1230 750 m
-1220 750 l
+1230 790 m
+1220 790 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 1218 750 cm
+1 0 0 1 1218 790 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1579,14 +1592,14 @@ ET
 Q
 q
 0.765 1.000 0.996 rg
-550 810 90 20 re
+570 850 90 20 re
 f
 Q
-550 810 90 20 re
+570 850 90 20 re
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 595 832 cm
+1 0 0 1 615 872 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -1594,12 +1607,12 @@ BT
 (VGA_CLOCK_BRIDGE) Tj
 ET
 Q
-540 820 m
-550 820 l
+560 860 m
+570 860 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 552 820 cm
+1 0 0 1 572 860 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1607,12 +1620,12 @@ BT
 (in_clk) Tj
 ET
 Q
-650 820 m
-640 820 l
+670 860 m
+660 860 l
 S
 q
 0.000 0.000 0.133 rg
-1 0 0 1 638 820 cm
+1 0 0 1 658 860 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -1621,127 +1634,141 @@ BT
 ET
 Q
 0.000 0.000 1.000 RG
-1500 60 m
-1600 60 l
+1560 90 m
+1760 90 l
 S
-170 340 m
-830 340 l
-830 180 l
-1420 180 l
+170 50 m
+850 50 l
+850 230 l
+1480 230 l
 S
 170 510 m
-190 510 l
+870 510 l
+870 610 l
+1480 610 l
 S
-170 260 m
-540 260 l
+170 570 m
+190 570 l
 S
 170 280 m
-540 280 l
+560 280 l
 S
-170 430 m
-790 430 l
-790 410 l
-1290 410 l
-1290 560 l
-1420 560 l
+170 780 m
+810 780 l
+810 710 l
+1250 710 l
+1250 720 l
+1480 720 l
 S
-170 740 m
-790 740 l
-790 670 l
-1420 670 l
+170 550 m
+190 550 l
+S
+170 260 m
+560 260 l
 S
 170 200 m
-540 200 l
+560 200 l
 S
-170 530 m
-190 530 l
+170 1190 m
+1480 1190 l
 S
-170 1150 m
-1420 1150 l
+170 900 m
+1480 900 l
 S
-170 360 m
-850 360 l
-850 270 l
-1420 270 l
+170 340 m
+810 340 l
+810 320 l
+1480 320 l
 S
-170 390 m
-1350 390 l
-1350 430 l
-1420 430 l
-S
-170 820 m
-540 820 l
+170 450 m
+1480 450 l
 S
 170 860 m
-1420 860 l
+560 860 l
 S
-620 640 m
-1290 640 l
+640 680 m
+850 680 l
+850 650 l
+1270 650 l
 S
-1290 700 m
-1400 700 l
-1400 690 l
-1420 690 l
+1270 740 m
+1480 740 l
 S
-1290 1060 m
-1420 1060 l
+1270 1100 m
+1480 1100 l
 S
 q
 0.000 0.000 1.000 rg
-1288 638 5 5 re
+1268 648 5 5 re
 f
 Q
 q
 0.000 0.000 1.000 rg
-1288 698 5 5 re
+1268 738 5 5 re
 f
 Q
 q
 0.000 0.000 1.000 rg
-1288 1058 5 5 re
+1268 1098 5 5 re
 f
 Q
-1420 580 m
-1290 580 l
-1290 1170 l
-1420 1170 l
+1480 630 m
+1270 630 l
+1270 1210 l
+1480 1210 l
 S
-540 580 m
-380 580 l
-380 70 l
-1310 70 l
+340 570 m
+360 570 l
+360 740 l
+870 740 l
 S
-1310 160 m
-1420 160 l
+q
+0.000 0.000 1.000 rg
+868 738 5 5 re
+f
+Q
+1480 110 m
+1310 110 l
+1310 1230 l
+1480 1230 l
 S
 1310 250 m
-1420 250 l
+1480 250 l
 S
-1310 410 m
-1420 410 l
+1310 340 m
+1480 340 l
 S
-1310 540 m
-1420 540 l
+1310 470 m
+1480 470 l
 S
 1310 650 m
-1420 650 l
+1480 650 l
 S
-1310 930 m
-1420 930 l
-S
-1310 1040 m
-1420 1040 l
+360 660 m
+560 660 l
 S
 q
 0.000 0.000 1.000 rg
-1308 68 5 5 re
+358 658 5 5 re
 f
 Q
-q
-0.000 0.000 1.000 rg
-1308 158 5 5 re
-f
-Q
+930 830 m
+870 830 l
+870 670 l
+1310 670 l
+S
+1310 760 m
+1480 760 l
+S
+1310 920 m
+1480 920 l
+S
+1310 990 m
+1480 990 l
+S
+1310 1120 m
+1480 1120 l
+S
 q
 0.000 0.000 1.000 rg
 1308 248 5 5 re
@@ -1749,12 +1776,12 @@ f
 Q
 q
 0.000 0.000 1.000 rg
-1308 408 5 5 re
+1308 338 5 5 re
 f
 Q
 q
 0.000 0.000 1.000 rg
-1308 538 5 5 re
+1308 468 5 5 re
 f
 Q
 q
@@ -1764,32 +1791,120 @@ f
 Q
 q
 0.000 0.000 1.000 rg
-1308 928 5 5 re
+1308 668 5 5 re
 f
 Q
 q
 0.000 0.000 1.000 rg
-1308 1038 5 5 re
+1308 758 5 5 re
 f
 Q
-340 510 m
-380 510 l
+q
+0.000 0.000 1.000 rg
+1308 918 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1308 988 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1308 1118 5 5 re
+f
+Q
+560 620 m
+380 620 l
+380 30 l
+870 30 l
+870 90 l
+1350 90 l
+1350 1170 l
+1480 1170 l
+S
+1350 90 m
+1480 90 l
+S
+1350 210 m
+1480 210 l
+S
+1350 300 m
+1480 300 l
+S
+1350 430 m
+1480 430 l
+S
+1350 590 m
+1480 590 l
+S
+1350 700 m
+1480 700 l
+S
+1350 970 m
+1480 970 l
+S
+1350 1080 m
+1480 1080 l
+S
+q
+0.000 0.000 1.000 rg
+1348 88 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 208 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 298 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 428 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 588 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 698 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 968 5 5 re
+f
+Q
+q
+0.000 0.000 1.000 rg
+1348 1078 5 5 re
+f
+Q
+340 550 m
+380 550 l
 S
 380 240 m
-540 240 l
+560 240 l
 S
 380 220 m
-540 220 l
+560 220 l
 S
 380 160 m
-540 160 l
+560 160 l
 S
-380 120 m
-540 120 l
+380 100 m
+560 100 l
 S
 q
 0.000 0.000 1.000 rg
-378 508 5 5 re
+378 548 5 5 re
 f
 Q
 q
@@ -1809,239 +1924,146 @@ f
 Q
 q
 0.000 0.000 1.000 rg
-378 118 5 5 re
+378 98 5 5 re
 f
 Q
-1420 60 m
-1310 60 l
-1310 1130 l
-1420 1130 l
+930 810 m
+890 810 l
+890 870 l
+1250 870 l
+1250 880 l
+1480 880 l
 S
-340 530 m
-360 530 l
-360 720 l
-830 720 l
+670 860 m
+890 860 l
 S
 q
 0.000 0.000 1.000 rg
-828 718 5 5 re
-f
-Q
-1420 80 m
-1330 80 l
-1330 1190 l
-1420 1190 l
-S
-1330 200 m
-1420 200 l
-S
-1330 290 m
-1420 290 l
-S
-1330 450 m
-1420 450 l
-S
-1330 600 m
-1420 600 l
-S
-360 620 m
-540 620 l
-S
-q
-0.000 0.000 1.000 rg
-358 618 5 5 re
-f
-Q
-930 790 m
-830 790 l
-830 690 l
-1330 690 l
-S
-1330 710 m
-1420 710 l
-S
-1330 880 m
-1420 880 l
-S
-1330 950 m
-1420 950 l
-S
-1330 1080 m
-1420 1080 l
-S
-q
-0.000 0.000 1.000 rg
-1328 198 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 288 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 448 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 598 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 688 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 708 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 878 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 948 5 5 re
-f
-Q
-q
-0.000 0.000 1.000 rg
-1328 1078 5 5 re
-f
-Q
-930 770 m
-850 770 l
-850 840 l
-1420 840 l
-S
-650 820 m
-850 820 l
-S
-q
-0.000 0.000 1.000 rg
-848 818 5 5 re
+888 858 5 5 re
 f
 Q
 [7 2 1 2] 3 d
 3 w
 0.000 0.467 1.000 RG
-540 600 m
-380 600 l
-380 700 l
-810 700 l
+560 640 m
+400 640 l
+400 550 l
+830 550 l
 S
-810 710 m
-1270 710 l
+640 620 m
+830 620 l
 S
-1270 730 m
-1420 730 l
+640 660 m
+830 660 l
 S
-1270 970 m
-1420 970 l
+830 690 m
+1330 690 l
 S
-1270 1020 m
-1420 1020 l
+1330 780 m
+1480 780 l
+S
+1330 1010 m
+1480 1010 l
+S
+1330 1060 m
+1480 1060 l
 S
 q
 0.000 0.467 1.000 rg
-1267 307 7 7 re
+1327 357 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-1267 467 7 7 re
+1327 487 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-1267 517 7 7 re
+1327 567 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-1267 707 7 7 re
+1327 687 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-1267 727 7 7 re
+1327 777 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-1267 967 7 7 re
+1327 1007 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-1267 1017 7 7 re
+1327 1057 7 7 re
 f
 Q
-620 180 m
-810 180 l
-810 750 l
-930 750 l
+640 160 m
+830 160 l
+830 790 l
+930 790 l
 S
-620 580 m
-810 580 l
-S
-620 620 m
-810 620 l
-S
-810 730 m
-930 730 l
+830 770 m
+930 770 l
 S
 q
 0.000 0.467 1.000 rg
-807 577 7 7 re
+827 547 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-807 617 7 7 re
+827 617 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-807 697 7 7 re
+827 657 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-807 707 7 7 re
+827 687 7 7 re
 f
 Q
 q
 0.000 0.467 1.000 rg
-807 727 7 7 re
+827 767 7 7 re
 f
 Q
-1420 140 m
-1270 140 l
-1270 1210 l
-1420 1210 l
+1480 190 m
+1330 190 l
+1330 1250 l
+1480 1250 l
 S
-1270 310 m
-1420 310 l
+1330 360 m
+1480 360 l
 S
-1270 470 m
-1420 470 l
+1330 490 m
+1480 490 l
 S
-1270 520 m
-1420 520 l
+1330 570 m
+1480 570 l
 S
 [] 0 d
 1 w
 0.000 0.000 1.000 RG
-1230 750 m
-1250 750 l
-1250 820 l
-1420 820 l
+1230 790 m
+1290 790 l
+1290 860 l
+1480 860 l
+S
+560 140 m
+400 140 l
+400 530 l
+810 530 l
+810 640 l
+640 640 l
 S
 endstream
 endobj
@@ -2060,7 +2082,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign MusicPlayerPlatformDesign)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 95 243 518 565]
+  /Dest   [9 0 R /FitR 75 237 539 570]
   /Parent 13 0 R
   /Next   15 0 R
 >>
@@ -2069,7 +2091,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.AUDIO_CLOCK AUDIO_CLOCK)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 441 536 483 560]
+  /Dest   [9 0 R /FitR 436 534 477 558]
   /Parent 13 0 R
   /Prev   14 0 R
   /Next   16 0 R
@@ -2079,7 +2101,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.AUDIO_CONFIG AUDIO_CONFIG)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 509 490 534]
+  /Dest   [9 0 R /FitR 444 502 485 526]
   /Parent 13 0 R
   /Prev   15 0 R
   /Next   17 0 R
@@ -2089,7 +2111,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.AUDIO_OUT AUDIO_OUT)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 407 485 437]
+  /Dest   [9 0 R /FitR 444 399 480 429]
   /Parent 13 0 R
   /Prev   16 0 R
   /Next   18 0 R
@@ -2099,7 +2121,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.CLK CLK)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 134 425 172 439]
+  /Dest   [9 0 R /FitR 113 420 152 434]
   /Parent 13 0 R
   /Prev   17 0 R
   /Next   19 0 R
@@ -2109,7 +2131,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.CPU_NIOS_II CPU_NIOS_II)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 204 392 272 432]
+  /Dest   [9 0 R /FitR 188 387 257 427]
   /Parent 13 0 R
   /Prev   18 0 R
   /Next   20 0 R
@@ -2119,7 +2141,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.HPS_ARM HPS_ARM)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 205 485 263 545]
+  /Dest   [9 0 R /FitR 188 490 248 555]
   /Parent 13 0 R
   /Prev   19 0 R
   /Next   21 0 R
@@ -2129,7 +2151,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.RAM_NIOS_II RAM_NIOS_II)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 312 469 331]
+  /Dest   [9 0 R /FitR 444 307 464 326]
   /Parent 13 0 R
   /Prev   20 0 R
   /Next   22 0 R
@@ -2139,7 +2161,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.REG_BTN_INPUT REG_BTN_INPUT)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 373 485 403]
+  /Dest   [9 0 R /FitR 444 366 480 396]
   /Parent 13 0 R
   /Prev   21 0 R
   /Next   23 0 R
@@ -2149,7 +2171,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.REG_SW_INPUT REG_SW_INPUT)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 250 485 280]
+  /Dest   [9 0 R /FitR 444 245 480 275]
   /Parent 13 0 R
   /Prev   22 0 R
   /Next   24 0 R
@@ -2159,7 +2181,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.TIMER_CTRL_OUTPUT TIMER_CTRL_OUTPUT)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 481 485 506]
+  /Dest   [9 0 R /FitR 444 474 480 498]
   /Parent 13 0 R
   /Prev   23 0 R
   /Next   25 0 R
@@ -2169,7 +2191,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.TIMER_STATUS_INPUT TIMER_STATUS_INPUT)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 440 486 465]
+  /Dest   [9 0 R /FitR 444 440 481 465]
   /Parent 13 0 R
   /Prev   24 0 R
   /Next   26 0 R
@@ -2179,7 +2201,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.UART_NIOS_II UART_NIOS_II)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 284 483 308]
+  /Dest   [9 0 R /FitR 444 278 477 303]
   /Parent 13 0 R
   /Prev   25 0 R
   /Next   27 0 R
@@ -2189,7 +2211,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.VGA_CHAR_BUFFER VGA_CHAR_BUFFER)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 323 358 400 383]
+  /Dest   [9 0 R /FitR 303 353 380 378]
   /Parent 13 0 R
   /Prev   26 0 R
   /Next   28 0 R
@@ -2199,7 +2221,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.VGA_CLOCK_BRIDGE VGA_CLOCK_BRIDGE)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 221 350 254 360]
+  /Dest   [9 0 R /FitR 206 345 238 354]
   /Parent 13 0 R
   /Prev   27 0 R
   /Next   29 0 R
@@ -2209,7 +2231,7 @@ endobj
 <<
   /Title  (MusicPlayerPlatformDesign.VGA_CONTROLLER VGA_CONTROLLER)
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 449 335 483 360]
+  /Dest   [9 0 R /FitR 444 330 477 354]
   /Parent 13 0 R
   /Prev   28 0 R
 >>
@@ -2254,9 +2276,9 @@ endobj
 endobj
 33 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(MASTER\)AUDIO_CLOCK.audio_clk,\(MASTER\)MusicPlayerPlatformDesign.audio_clk_export\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(MASTER\)MusicPlayerPlatformDesign.audio_clk_export,\(MASTER\)AUDIO_CLOCK.audio_clk\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 470 552 495 552]
+  /Dest   [9 0 R /FitR 465 550 516 550]
   /Parent 32 0 R
   /Next   34 0 R
 >>
@@ -2265,7 +2287,7 @@ endobj
 <<
   /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)AUDIO_CONFIG.external_interface,\(SLAVE\)MusicPlayerPlatformDesign.audio_config_export\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 480 449 522]
+  /Dest   [9 0 R /FitR 108 513 444 560]
   /Parent 32 0 R
   /Prev   33 0 R
   /Next   35 0 R
@@ -2273,9 +2295,9 @@ endobj
 endobj
 35 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)CLK.clk_in,\(SLAVE\)MusicPlayerPlatformDesign.clk\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)AUDIO_OUT.external_interface,\(SLAVE\)MusicPlayerPlatformDesign.audio_export\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 437 134 437]
+  /Dest   [9 0 R /FitR 108 416 444 442]
   /Parent 32 0 R
   /Prev   34 0 R
   /Next   36 0 R
@@ -2283,9 +2305,9 @@ endobj
 endobj
 36 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)HPS_ARM.h2f_mpu_events,\(SLAVE\)MusicPlayerPlatformDesign.hps_arm_h2f_mpu_events\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)CLK.clk_in_reset,\(SLAVE\)MusicPlayerPlatformDesign.reset\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 501 223 501]
+  /Dest   [9 0 R /FitR 108 426 113 426]
   /Parent 32 0 R
   /Prev   35 0 R
   /Next   37 0 R
@@ -2295,7 +2317,7 @@ endobj
 <<
   /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)HPS_ARM.memory,\(SLAVE\)MusicPlayerPlatformDesign.memory\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 496 223 496]
+  /Dest   [9 0 R /FitR 108 501 208 501]
   /Parent 32 0 R
   /Prev   36 0 R
   /Next   38 0 R
@@ -2303,9 +2325,9 @@ endobj
 endobj
 38 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.audio_export,\(SLAVE\)AUDIO_OUT.external_interface\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.buttons_input,\(SLAVE\)REG_BTN_INPUT.external_connection\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 423 449 462]
+  /Dest   [9 0 R /FitR 108 372 444 391]
   /Parent 32 0 R
   /Prev   37 0 R
   /Next   39 0 R
@@ -2313,9 +2335,9 @@ endobj
 endobj
 39 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.buttons_input,\(SLAVE\)REG_BTN_INPUT.external_connection\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.clk,\(SLAVE\)CLK.clk_in\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 377 449 396]
+  /Dest   [9 0 R /FitR 108 431 113 431]
   /Parent 32 0 R
   /Prev   38 0 R
   /Next   40 0 R
@@ -2323,9 +2345,9 @@ endobj
 endobj
 40 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.hps_io,\(SLAVE\)HPS_ARM.hps_io\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.hps_arm_h2f_mpu_events,\(SLAVE\)HPS_ARM.h2f_mpu_events\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 516 223 516]
+  /Dest   [9 0 R /FitR 108 506 208 506]
   /Parent 32 0 R
   /Prev   39 0 R
   /Next   41 0 R
@@ -2333,9 +2355,9 @@ endobj
 endobj
 41 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.reset,\(SLAVE\)CLK.clk_in_reset\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.hps_io,\(SLAVE\)HPS_ARM.hps_io\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 431 134 431]
+  /Dest   [9 0 R /FitR 108 521 208 521]
   /Parent 32 0 R
   /Prev   40 0 R
   /Next   42 0 R
@@ -2345,7 +2367,7 @@ endobj
 <<
   /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.switch_input,\(SLAVE\)REG_SW_INPUT.external_connection\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 272 449 272]
+  /Dest   [9 0 R /FitR 108 267 444 267]
   /Parent 32 0 R
   /Prev   41 0 R
   /Next   43 0 R
@@ -2353,9 +2375,9 @@ endobj
 endobj
 43 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.timer_ctrl_output,\(SLAVE\)TIMER_CTRL_OUTPUT.external_connection\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.vga_outputs,\(SLAVE\)VGA_CONTROLLER.external_interface\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 475 449 498]
+  /Dest   [9 0 R /FitR 108 342 444 342]
   /Parent 32 0 R
   /Prev   42 0 R
   /Next   44 0 R
@@ -2363,9 +2385,9 @@ endobj
 endobj
 44 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)MusicPlayerPlatformDesign.timer_status_input,\(SLAVE\)TIMER_STATUS_INPUT.external_connection\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)TIMER_CTRL_OUTPUT.external_connection,\(SLAVE\)MusicPlayerPlatformDesign.timer_ctrl_output\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 457 449 468]
+  /Dest   [9 0 R /FitR 108 485 444 491]
   /Parent 32 0 R
   /Prev   43 0 R
   /Next   45 0 R
@@ -2373,9 +2395,9 @@ endobj
 endobj
 45 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)VGA_CLOCK_BRIDGE.in_clk,\(SLAVE\)MusicPlayerPlatformDesign.vga_clk\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)TIMER_STATUS_INPUT.external_connection,\(SLAVE\)MusicPlayerPlatformDesign.timer_status_input\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 357 223 357]
+  /Dest   [9 0 R /FitR 108 457 444 457]
   /Parent 32 0 R
   /Prev   44 0 R
   /Next   46 0 R
@@ -2383,9 +2405,9 @@ endobj
 endobj
 46 0 obj
 <<
-  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)VGA_CONTROLLER.external_interface,\(SLAVE\)MusicPlayerPlatformDesign.vga_outputs\))
+  /Title  (EXPORT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)VGA_CLOCK_BRIDGE.in_clk,\(SLAVE\)MusicPlayerPlatformDesign.vga_clk\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 128 347 449 347]
+  /Dest   [9 0 R /FitR 108 352 208 352]
   /Parent 32 0 R
   /Prev   45 0 R
   /Next   47 0 R
@@ -2393,9 +2415,9 @@ endobj
 endobj
 47 0 obj
 <<
-  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)REG_BTN_INPUT.irq,\(MASTER\)CPU_NIOS_II.irq,\(SLAVE\)UART_NIOS_II.irq,\(SLAVE\)REG_SW_INPUT.irq,\(SLAVE\)AUDIO_OUT.interrupt\))
+  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)AUDIO_OUT.interrupt,\(MASTER\)CPU_NIOS_II.irq,\(SLAVE\)REG_SW_INPUT.irq,\(SLAVE\)REG_BTN_INPUT.irq,\(SLAVE\)UART_NIOS_II.irq\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 244 267 449 419]
+  /Dest   [9 0 R /FitR 228 262 444 411]
   /Parent 32 0 R
   /Prev   46 0 R
   /Next   48 0 R
@@ -2403,9 +2425,9 @@ endobj
 endobj
 48 0 obj
 <<
-  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)REG_SW_INPUT.clk,\(SLAVE\)CPU_NIOS_II.clk,\(SLAVE\)TIMER_CTRL_OUTPUT.clk,\(SLAVE\)TIMER_STATUS_INPUT.clk,\(SLAVE\)HPS_ARM.h2f_lw_axi_clock,\(SLAVE\)REG_BTN_INPUT.clk,\(SLAVE\)HPS_ARM.f2h_axi_clock,\(SLAVE\)HPS_ARM.f2h_sdram0_clock,\(SLAVE\)RAM_NIOS_II.clk1,\(SLAVE\)HPS_ARM.h2f_axi_clock,\(SLAVE\)AUDIO_CONFIG.clk,\(MASTER\)CLK.clk,\(SLAVE\)UART_NIOS_II.clk,\(SLAVE\)AUDIO_CLOCK.ref_clk,\(SLAVE\)AUDIO_OUT.clk\))
+  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)CPU_NIOS_II.reset,\(SLAVE\)REG_BTN_INPUT.reset,\(SLAVE\)RAM_NIOS_II.reset1,\(SLAVE\)UART_NIOS_II.reset,\(SLAVE\)AUDIO_CLOCK.ref_reset,\(SLAVE\)VGA_CONTROLLER.reset,\(SLAVE\)TIMER_CTRL_OUTPUT.reset,\(SLAVE\)AUDIO_OUT.reset,\(SLAVE\)AUDIO_CONFIG.reset,\(SLAVE\)TIMER_STATUS_INPUT.reset,\(SLAVE\)REG_SW_INPUT.reset,\(MASTER\)CLK.clk_reset,\(SLAVE\)VGA_CHAR_BUFFER.reset\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 172 277 449 552]
+  /Dest   [9 0 R /FitR 151 257 444 545]
   /Parent 32 0 R
   /Prev   47 0 R
   /Next   49 0 R
@@ -2413,9 +2435,9 @@ endobj
 endobj
 49 0 obj
 <<
-  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)TIMER_CTRL_OUTPUT.reset,\(SLAVE\)AUDIO_CLOCK.ref_reset,\(MASTER\)CLK.clk_reset,\(SLAVE\)TIMER_STATUS_INPUT.reset,\(SLAVE\)AUDIO_CONFIG.reset,\(SLAVE\)RAM_NIOS_II.reset1,\(SLAVE\)UART_NIOS_II.reset,\(SLAVE\)CPU_NIOS_II.reset,\(SLAVE\)REG_SW_INPUT.reset,\(SLAVE\)REG_BTN_INPUT.reset,\(SLAVE\)AUDIO_OUT.reset,\(SLAVE\)VGA_CHAR_BUFFER.reset,\(SLAVE\)VGA_CONTROLLER.reset\))
+  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)HPS_ARM.f2h_axi_clock,\(SLAVE\)HPS_ARM.f2h_sdram0_clock,\(SLAVE\)TIMER_CTRL_OUTPUT.clk,\(SLAVE\)AUDIO_CONFIG.clk,\(SLAVE\)UART_NIOS_II.clk,\(SLAVE\)CPU_NIOS_II.clk,\(SLAVE\)REG_BTN_INPUT.clk,\(SLAVE\)REG_SW_INPUT.clk,\(SLAVE\)HPS_ARM.h2f_axi_clock,\(SLAVE\)AUDIO_CLOCK.ref_clk,\(MASTER\)CLK.clk,\(SLAVE\)TIMER_STATUS_INPUT.clk,\(SLAVE\)RAM_NIOS_II.clk1,\(SLAVE\)HPS_ARM.h2f_lw_axi_clock,\(SLAVE\)AUDIO_OUT.clk\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 172 262 449 547]
+  /Dest   [9 0 R /FitR 152 272 444 565]
   /Parent 32 0 R
   /Prev   48 0 R
   /Next   50 0 R
@@ -2423,9 +2445,9 @@ endobj
 endobj
 50 0 obj
 <<
-  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)VGA_CHAR_BUFFER.clk,\(SLAVE\)VGA_CONTROLLER.clk,\(MASTER\)VGA_CLOCK_BRIDGE.out_clk\))
+  /Title  (FAN_OUT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)VGA_CONTROLLER.clk,\(MASTER\)VGA_CLOCK_BRIDGE.out_clk,\(SLAVE\)VGA_CHAR_BUFFER.clk\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 252 352 449 370]
+  /Dest   [9 0 R /FitR 236 346 444 365]
   /Parent 32 0 R
   /Prev   49 0 R
   /Next   51 0 R
@@ -2433,9 +2455,9 @@ endobj
 endobj
 51 0 obj
 <<
-  /Title  (INTERCONNECT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)VGA_CHAR_BUFFER.avalon_char_buffer_slave,\(SLAVE\)UART_NIOS_II.avalon_jtag_slave,\(SLAVE\)TIMER_STATUS_INPUT.s1,\(SLAVE\)CPU_NIOS_II.debug_mem_slave,\(SLAVE\)TIMER_CTRL_OUTPUT.s1,\(MASTER\)HPS_ARM.h2f_axi_master,\(SLAVE\)VGA_CHAR_BUFFER.avalon_char_control_slave,\(SLAVE\)REG_SW_INPUT.s1,\(MASTER\)CPU_NIOS_II.data_master,\(SLAVE\)AUDIO_CONFIG.avalon_av_config_slave,\(SLAVE\)REG_BTN_INPUT.s1,\(MASTER\)CPU_NIOS_II.instruction_master,\(SLAVE\)AUDIO_OUT.avalon_audio_slave,\(SLAVE\)RAM_NIOS_II.s1\))
+  /Title  (INTERCONNECT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)AUDIO_CONFIG.avalon_av_config_slave,\(SLAVE\)TIMER_STATUS_INPUT.s1,\(SLAVE\)AUDIO_OUT.avalon_audio_slave,\(SLAVE\)UART_NIOS_II.avalon_jtag_slave,\(SLAVE\)CPU_NIOS_II.debug_mem_slave,\(MASTER\)CPU_NIOS_II.data_master,\(SLAVE\)REG_BTN_INPUT.s1,\(SLAVE\)TIMER_CTRL_OUTPUT.s1,\(SLAVE\)RAM_NIOS_II.s1,\(SLAVE\)REG_SW_INPUT.s1,\(SLAVE\)VGA_CHAR_BUFFER.avalon_char_buffer_slave,\(MASTER\)HPS_ARM.h2f_axi_master,\(MASTER\)CPU_NIOS_II.instruction_master,\(SLAVE\)VGA_CHAR_BUFFER.avalon_char_control_slave\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 182 256 450 532]
+  /Dest   [9 0 R /FitR 166 251 445 532]
   /Parent 32 0 R
   /Prev   50 0 R
   /Next   52 0 R
@@ -2445,9 +2467,19 @@ endobj
 <<
   /Title  (POINT_TO_POINT<net_container>MusicPlayerPlatformDesign</net_container>\(MASTER\)VGA_CHAR_BUFFER.avalon_char_source,\(SLAVE\)VGA_CONTROLLER.avalon_vga_sink\))
   /C      [0.0 0.0 0.4]
-  /Dest   [9 0 R /FitR 400 357 449 375]
+  /Dest   [9 0 R /FitR 380 352 444 370]
   /Parent 32 0 R
   /Prev   51 0 R
+  /Next   53 0 R
+>>
+endobj
+53 0 obj
+<<
+  /Title  (POINT_TO_POINT<net_container>MusicPlayerPlatformDesign</net_container>\(SLAVE\)HPS_ARM.f2h_cold_reset_req,\(MASTER\)CPU_NIOS_II.debug_reset_request\))
+  /C      [0.0 0.0 0.4]
+  /Dest   [9 0 R /FitR 167 408 272 537]
+  /Parent 32 0 R
+  /Prev   52 0 R
 >>
 endobj
 32 0 obj
@@ -2457,13 +2489,13 @@ endobj
   /F      1
   /Parent 12 0 R
   /First  33 0 R
-  /Last   52 0 R
-  /Count  20
+  /Last   53 0 R
+  /Count  21
   /Prev   31 0 R
-  /Next   53 0 R
+  /Next   54 0 R
 >>
 endobj
-53 0 obj
+54 0 obj
 <<
   /Title  (netBundles)
   /C      [0.0 0.4 0.0]
@@ -2482,7 +2514,7 @@ endobj
   /Dest   [9 0 R /Fit]
   /Parent 7 0 R
   /First  13 0 R
-  /Last   53 0 R
+  /Last   54 0 R
   /Count  5
 >>
 endobj
@@ -2493,7 +2525,7 @@ endobj
   /Shading <<
     /ShadingType 2
     /ColorSpace /DeviceRGB
-    /Coords [501.067 565.4 123.767 247.133]
+    /Coords [521.6 570.533 103.233 242]
     /Extend [true true]
     /Function <<
       /FunctionType 2
@@ -2519,67 +2551,68 @@ endobj
 >>
 endobj
 xref
-0 54
+0 55
 0000000000 65535 f 
 0000000009 00000 n 
 0000000207 00000 n 
-0000019886 00000 n 
+0000020100 00000 n 
 0000000357 00000 n 
 0000000484 00000 n 
 0000000632 00000 n 
-0000031565 00000 n 
-0000031517 00000 n 
+0000032074 00000 n 
+0000032026 00000 n 
 0000000756 00000 n 
 0000000896 00000 n 
-0000031185 00000 n 
-0000031028 00000 n 
-0000023169 00000 n 
-0000019986 00000 n 
-0000020169 00000 n 
-0000020368 00000 n 
-0000020569 00000 n 
-0000020764 00000 n 
-0000020947 00000 n 
-0000021146 00000 n 
-0000021337 00000 n 
-0000021536 00000 n 
-0000021739 00000 n 
-0000021940 00000 n 
-0000022151 00000 n 
-0000022364 00000 n 
-0000022565 00000 n 
-0000022772 00000 n 
-0000022981 00000 n 
-0000023330 00000 n 
-0000023501 00000 n 
-0000030696 00000 n 
-0000023676 00000 n 
-0000023957 00000 n 
-0000024266 00000 n 
-0000024538 00000 n 
-0000024841 00000 n 
-0000025120 00000 n 
-0000025419 00000 n 
-0000025724 00000 n 
-0000026003 00000 n 
-0000026283 00000 n 
-0000026586 00000 n 
-0000026899 00000 n 
-0000027214 00000 n 
-0000027503 00000 n 
-0000027806 00000 n 
-0000028154 00000 n 
-0000028787 00000 n 
-0000029377 00000 n 
-0000029683 00000 n 
-0000030407 00000 n 
-0000030869 00000 n 
+0000031698 00000 n 
+0000031541 00000 n 
+0000023383 00000 n 
+0000020200 00000 n 
+0000020383 00000 n 
+0000020582 00000 n 
+0000020783 00000 n 
+0000020978 00000 n 
+0000021161 00000 n 
+0000021360 00000 n 
+0000021551 00000 n 
+0000021750 00000 n 
+0000021953 00000 n 
+0000022154 00000 n 
+0000022365 00000 n 
+0000022578 00000 n 
+0000022779 00000 n 
+0000022986 00000 n 
+0000023195 00000 n 
+0000023544 00000 n 
+0000023715 00000 n 
+0000031209 00000 n 
+0000023890 00000 n 
+0000024171 00000 n 
+0000024480 00000 n 
+0000024779 00000 n 
+0000025059 00000 n 
+0000025338 00000 n 
+0000025643 00000 n 
+0000025915 00000 n 
+0000026218 00000 n 
+0000026497 00000 n 
+0000026800 00000 n 
+0000027103 00000 n 
+0000027416 00000 n 
+0000027731 00000 n 
+0000028020 00000 n 
+0000028368 00000 n 
+0000028958 00000 n 
+0000029591 00000 n 
+0000029897 00000 n 
+0000030621 00000 n 
+0000030927 00000 n 
+0000031382 00000 n 
 trailer
 <<
-  /Size 54
+  /Size 55
   /Info 1 0 R
   /Root 2 0 R
 >>
 startxref
-31647
+32156
 %%EOF

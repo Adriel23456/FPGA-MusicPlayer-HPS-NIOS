@@ -3,11 +3,21 @@
 			audio_clk_export_clk              : out   std_logic;                                        -- clk
 			audio_config_export_SDAT          : inout std_logic                     := 'X';             -- SDAT
 			audio_config_export_SCLK          : out   std_logic;                                        -- SCLK
+			audio_config_raw_SDAT             : inout std_logic                     := 'X';             -- SDAT
+			audio_config_raw_SCLK             : out   std_logic;                                        -- SCLK
 			audio_export_BCLK                 : in    std_logic                     := 'X';             -- BCLK
 			audio_export_DACDAT               : out   std_logic;                                        -- DACDAT
 			audio_export_DACLRCK              : in    std_logic                     := 'X';             -- DACLRCK
+			audio_raw_BCLK                    : in    std_logic                     := 'X';             -- BCLK
+			audio_raw_DACDAT                  : out   std_logic;                                        -- DACDAT
+			audio_raw_DACLRCK                 : in    std_logic                     := 'X';             -- DACLRCK
 			buttons_input_export              : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                           : in    std_logic                     := 'X';             -- clk
+			config_pd_export                  : in    std_logic                     := 'X';             -- export
+			filter_pd_bclk                    : out   std_logic;                                        -- bclk
+			filter_pd_daclrck                 : out   std_logic;                                        -- daclrck
+			filter_pd_dacdat                  : in    std_logic                     := 'X';             -- dacdat
+			filter_select_filter_sw           : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- filter_sw
 			hps_arm_h2f_mpu_events_eventi     : in    std_logic                     := 'X';             -- eventi
 			hps_arm_h2f_mpu_events_evento     : out   std_logic;                                        -- evento
 			hps_arm_h2f_mpu_events_standbywfe : out   std_logic_vector(1 downto 0);                     -- standbywfe
@@ -69,11 +79,21 @@
 			audio_clk_export_clk              => CONNECTED_TO_audio_clk_export_clk,              --       audio_clk_export.clk
 			audio_config_export_SDAT          => CONNECTED_TO_audio_config_export_SDAT,          --    audio_config_export.SDAT
 			audio_config_export_SCLK          => CONNECTED_TO_audio_config_export_SCLK,          --                       .SCLK
+			audio_config_raw_SDAT             => CONNECTED_TO_audio_config_raw_SDAT,             --       audio_config_raw.SDAT
+			audio_config_raw_SCLK             => CONNECTED_TO_audio_config_raw_SCLK,             --                       .SCLK
 			audio_export_BCLK                 => CONNECTED_TO_audio_export_BCLK,                 --           audio_export.BCLK
 			audio_export_DACDAT               => CONNECTED_TO_audio_export_DACDAT,               --                       .DACDAT
 			audio_export_DACLRCK              => CONNECTED_TO_audio_export_DACLRCK,              --                       .DACLRCK
+			audio_raw_BCLK                    => CONNECTED_TO_audio_raw_BCLK,                    --              audio_raw.BCLK
+			audio_raw_DACDAT                  => CONNECTED_TO_audio_raw_DACDAT,                  --                       .DACDAT
+			audio_raw_DACLRCK                 => CONNECTED_TO_audio_raw_DACLRCK,                 --                       .DACLRCK
 			buttons_input_export              => CONNECTED_TO_buttons_input_export,              --          buttons_input.export
 			clk_clk                           => CONNECTED_TO_clk_clk,                           --                    clk.clk
+			config_pd_export                  => CONNECTED_TO_config_pd_export,                  --              config_pd.export
+			filter_pd_bclk                    => CONNECTED_TO_filter_pd_bclk,                    --              filter_pd.bclk
+			filter_pd_daclrck                 => CONNECTED_TO_filter_pd_daclrck,                 --                       .daclrck
+			filter_pd_dacdat                  => CONNECTED_TO_filter_pd_dacdat,                  --                       .dacdat
+			filter_select_filter_sw           => CONNECTED_TO_filter_select_filter_sw,           --          filter_select.filter_sw
 			hps_arm_h2f_mpu_events_eventi     => CONNECTED_TO_hps_arm_h2f_mpu_events_eventi,     -- hps_arm_h2f_mpu_events.eventi
 			hps_arm_h2f_mpu_events_evento     => CONNECTED_TO_hps_arm_h2f_mpu_events_evento,     --                       .evento
 			hps_arm_h2f_mpu_events_standbywfe => CONNECTED_TO_hps_arm_h2f_mpu_events_standbywfe, --                       .standbywfe

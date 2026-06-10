@@ -2,12 +2,12 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 4, 2026 12:36:12 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1780598172700</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 9, 2026 9:37:25 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1781062645005</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp</BspGeneratedLocation>
         <BspSettingsFile>/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/bsp/settings.bsp</BspSettingsFile>
         <SopcDesignFile>/media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign.sopcinfo</SopcDesignFile>
-        <SystemFileHash>9c888ab3a44fe538daed8d242ef6cf66d8b31fed724ad0af391fd6a28c</SystemFileHash>
+        <SystemFileHash>308f633afa36569c7333fd9dafe5181fa5be1c5f649f7527426d6b56917493</SystemFileHash>
         <JdiFile>default</JdiFile>
         <Cpu>CPU_NIOS_II</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
@@ -901,61 +901,61 @@
         </Setting>
         <MemoryMap>
                 <slaveDescriptor>RAM_NIOS_II</slaveDescriptor>
-                <addressRange>0x00040000 - 0x0007FFFF</addressRange>
-                <addressSpan>262144</addressSpan>
+                <addressRange>0x00008000 - 0x0000FFFF</addressRange>
+                <addressSpan>32768</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>VGA_CHAR_BUFFER_avalon_char_buffer_slave</slaveDescriptor>
-                <addressRange>0x00080000 - 0x00081FFF</addressRange>
+                <addressRange>0x00010000 - 0x00011FFF</addressRange>
                 <addressSpan>8192</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>TIMER_CTRL_OUTPUT</slaveDescriptor>
-                <addressRange>0x00083000 - 0x0008300F</addressRange>
+                <addressRange>0x00013000 - 0x0001300F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>TIMER_STATUS_INPUT</slaveDescriptor>
-                <addressRange>0x00083010 - 0x0008301F</addressRange>
+                <addressRange>0x00013010 - 0x0001301F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>REG_SW_INPUT</slaveDescriptor>
-                <addressRange>0x00083020 - 0x0008302F</addressRange>
+                <addressRange>0x00013020 - 0x0001302F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>REG_BTN_INPUT</slaveDescriptor>
-                <addressRange>0x00083030 - 0x0008303F</addressRange>
+                <addressRange>0x00013030 - 0x0001303F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>AUDIO_CONFIG</slaveDescriptor>
-                <addressRange>0x00083040 - 0x0008304F</addressRange>
+                <addressRange>0x00013040 - 0x0001304F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>AUDIO_OUT</slaveDescriptor>
-                <addressRange>0x00083050 - 0x0008305F</addressRange>
+                <addressRange>0x00013050 - 0x0001305F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>UART_NIOS_II</slaveDescriptor>
-                <addressRange>0x00083060 - 0x00083067</addressRange>
+                <addressRange>0x00013060 - 0x00013067</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>VGA_CHAR_BUFFER_avalon_char_control_slave</slaveDescriptor>
-                <addressRange>0x00083068 - 0x0008306F</addressRange>
+                <addressRange>0x00013068 - 0x0001306F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>

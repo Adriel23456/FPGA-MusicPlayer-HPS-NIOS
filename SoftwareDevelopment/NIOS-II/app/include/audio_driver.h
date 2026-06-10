@@ -4,11 +4,51 @@
 #include <stdint.h>
 #include "system.h"
 
+#ifndef REG32
+#define REG32(addr)  (*(volatile uint32_t *)(uintptr_t)(addr))
+#endif
+
 #define AUDIO_OUT_IRQ_NUM   3
 
-/* AIS bit in the AV config status register confirms auto-init completed. */
-#define AV_CONFIG_STATUS  ((volatile unsigned int *)(AUDIO_CONFIG_BASE + 4))
-#define AV_AIS_BIT        (1u << 8)
+/* =====================================================================
+ *  AUDIO CORE register map (altera_up_avalon_audio, base AUDIO_OUT_BASE).
+ *  Four 32-bit registers; byte offset = word index * 4.
+ * ===================================================================== */
+#define AUDIO_CONTROL_REG    REG32(AUDIO_OUT_BASE + 0x0)   /* RW */
+#define AUDIO_FIFOSPACE_REG  REG32(AUDIO_OUT_BASE + 0x4)   /* RO */
+#define AUDIO_LEFTDATA_REG   REG32(AUDIO_OUT_BASE + 0x8)   /* WO: left write FIFO  */
+#define AUDIO_RIGHTDATA_REG  REG32(AUDIO_OUT_BASE + 0xC)   /* WO: right write FIFO */
+
+/* Control register bits */
+#define AUDIO_CTRL_CR        (1u << 2)   /* clear read FIFOs   */
+#define AUDIO_CTRL_CW        (1u << 3)   /* clear write FIFOs  */
+#define AUDIO_CTRL_WI        (1u << 9)   /* write-interrupt enable */
+
+/* Fifospace register: free words per write channel (8 bits each) */
+#define AUDIO_FIFOSPACE_WSRC_OFST  16    /* right channel free words */
+#define AUDIO_FIFOSPACE_WSLC_OFST  24    /* left  channel free words */
+#define AUDIO_FIFOSPACE_BYTE_MSK   0xFFu
+
+/* =====================================================================
+ *  AUDIO/VIDEO CONFIG core register map (base AUDIO_CONFIG_BASE).
+ *  Drives the WM8731 codec over I2C.
+ * ===================================================================== */
+#define AVCFG_CONTROL_REG    REG32(AUDIO_CONFIG_BASE + 0x0)   /* RW */
+#define AVCFG_STATUS_REG     REG32(AUDIO_CONFIG_BASE + 0x4)   /* RO */
+#define AVCFG_ADDRESS_REG    REG32(AUDIO_CONFIG_BASE + 0x8)   /* WO: codec reg index */
+#define AVCFG_DATA_REG       REG32(AUDIO_CONFIG_BASE + 0xC)   /* WO: codec reg value */
+
+#define AVCFG_CTRL_RESET     (1u << 0)   /* assert core reset + codec auto-init */
+#define AVCFG_STATUS_RDY     (1u << 1)   /* core ready for a new transfer */
+#define AVCFG_STATUS_AIS     (1u << 8)   /* auto-init sequence complete */
+
+/* WM8731 codec register indices (I2C) */
+#define CODEC_REG_LEFT_HP        0x02u
+#define CODEC_REG_RIGHT_HP       0x03u
+#define CODEC_REG_ANALOG_PATH    0x04u
+#define CODEC_REG_DIGITAL_PATH   0x05u
+#define CODEC_REG_SAMPLING       0x08u
+#define CODEC_REG_ACTIVE         0x09u
 
 /* =====================================================================
  *  PER-RATE CONFIGURATION
@@ -47,8 +87,8 @@
 #define STEP_16K         87950u
 
 /* ---- 8 kHz ---- */
-#define CODEC_REG8_8K    0x00Eu   /* WM8731 reg8: ADC8K_DAC8K */
-#define STEP_8K          (1u << 16)   /* 65536 = 1:1, bit-exact */
+#define CODEC_REG8_8K    0x00Eu        /* WM8731 reg8: ADC8K_DAC8K */
+#define STEP_8K          (1u << 16)    /* 65536 = 1:1, bit-exact */
 
 typedef enum {
     RATE_44K1 = 44100,

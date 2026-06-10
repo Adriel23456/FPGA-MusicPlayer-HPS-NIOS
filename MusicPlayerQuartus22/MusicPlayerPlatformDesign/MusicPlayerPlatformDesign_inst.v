@@ -2,11 +2,21 @@
 		.audio_clk_export_clk              (<connected-to-audio_clk_export_clk>),              //       audio_clk_export.clk
 		.audio_config_export_SDAT          (<connected-to-audio_config_export_SDAT>),          //    audio_config_export.SDAT
 		.audio_config_export_SCLK          (<connected-to-audio_config_export_SCLK>),          //                       .SCLK
+		.audio_config_raw_SDAT             (<connected-to-audio_config_raw_SDAT>),             //       audio_config_raw.SDAT
+		.audio_config_raw_SCLK             (<connected-to-audio_config_raw_SCLK>),             //                       .SCLK
 		.audio_export_BCLK                 (<connected-to-audio_export_BCLK>),                 //           audio_export.BCLK
 		.audio_export_DACDAT               (<connected-to-audio_export_DACDAT>),               //                       .DACDAT
 		.audio_export_DACLRCK              (<connected-to-audio_export_DACLRCK>),              //                       .DACLRCK
+		.audio_raw_BCLK                    (<connected-to-audio_raw_BCLK>),                    //              audio_raw.BCLK
+		.audio_raw_DACDAT                  (<connected-to-audio_raw_DACDAT>),                  //                       .DACDAT
+		.audio_raw_DACLRCK                 (<connected-to-audio_raw_DACLRCK>),                 //                       .DACLRCK
 		.buttons_input_export              (<connected-to-buttons_input_export>),              //          buttons_input.export
 		.clk_clk                           (<connected-to-clk_clk>),                           //                    clk.clk
+		.config_pd_export                  (<connected-to-config_pd_export>),                  //              config_pd.export
+		.filter_pd_bclk                    (<connected-to-filter_pd_bclk>),                    //              filter_pd.bclk
+		.filter_pd_daclrck                 (<connected-to-filter_pd_daclrck>),                 //                       .daclrck
+		.filter_pd_dacdat                  (<connected-to-filter_pd_dacdat>),                  //                       .dacdat
+		.filter_select_filter_sw           (<connected-to-filter_select_filter_sw>),           //          filter_select.filter_sw
 		.hps_arm_h2f_mpu_events_eventi     (<connected-to-hps_arm_h2f_mpu_events_eventi>),     // hps_arm_h2f_mpu_events.eventi
 		.hps_arm_h2f_mpu_events_evento     (<connected-to-hps_arm_h2f_mpu_events_evento>),     //                       .evento
 		.hps_arm_h2f_mpu_events_standbywfe (<connected-to-hps_arm_h2f_mpu_events_standbywfe>), //                       .standbywfe

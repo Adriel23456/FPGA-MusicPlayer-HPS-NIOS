@@ -220,7 +220,7 @@ nios2-app-generate-makefile \
     --elf-name main.elf \
     --src-files "${SRCS[@]}" \
     --inc-rdir "$APP_DIR/include" \
-    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0x78000"
+    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0xE000"
 
 [ $? -ne 0 ] && echo "ERROR: Makefile generation failed" && exit 1
 
@@ -293,7 +293,7 @@ nios2-app-generate-makefile \
     --elf-name main.elf \
     --src-files "${SRCS[@]}" \
     --inc-rdir "$APP_DIR/include" \
-    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0x78000"
+    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0xE000"
 
 echo ""
 echo "Makefile updated successfully!"
@@ -331,8 +331,8 @@ make -C "$APP_DIR"
 
 # Cleanup
 rm -rf "$APP_DIR/obj"
-rm -f  "$APP_DIR/main.map" "$APP_DIR/main.objdump"
-echo "[OK] Cleaned obj/, main.map, main.objdump"
+rm -f  "$APP_DIR/main.objdump"
+echo "[OK] Cleaned obj/, main.objdump"
 
 echo ""
 echo "Build successful!"

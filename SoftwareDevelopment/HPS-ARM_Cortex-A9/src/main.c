@@ -11,9 +11,9 @@
 #define DEFAULT_MUSIC_DIR "/mnt/music"
 #define POLL_SLEEP_US     1000u
 
-/* declared in hps_fpga_comm.c */
+/* defined in hps_fpga_comm.c */
 extern volatile sig_atomic_t g_bus_fault;
-extern sigjmp_buf             g_bus_jmp;
+extern sigjmp_buf            g_bus_jmp;
 
 int main(int argc, char *argv[])
 {
@@ -26,15 +26,11 @@ int main(int argc, char *argv[])
     if (!shared) { hps_fpga_close(); return 1; }
 
     hps_stream_init_shared(shared);
-
-    if (hps_stream_load_playlist(shared, music_dir) != 0)
-        printf("[HPS] no songs in %s (will still serve events)\n", music_dir);
-
-    printf("[HPS] streamer up. songs=%u dir=%s\n", shared->song_count, music_dir);
+    hps_stream_load_playlist(shared, music_dir);
 
     for (;;) {
+        /* recover from a bus fault by remapping the shared region */
         if (sigsetjmp(g_bus_jmp, 1) != 0) {
-            fprintf(stderr, "[HPS] bus fault during poll, remapping...\n");
             hps_fpga_close();
             if (hps_fpga_init(SHARED_AUDIO_MEM_PHYS, sizeof(shared_audio_mem_t)) != 0)
                 return 1;
@@ -42,6 +38,7 @@ int main(int argc, char *argv[])
             hps_stream_init_shared(shared);
             continue;
         }
+
         hps_stream_handle_nios_events(shared);
         hps_stream_try_fill_next_buffer(shared);
         usleep(POLL_SLEEP_US);

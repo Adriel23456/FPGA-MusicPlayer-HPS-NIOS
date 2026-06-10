@@ -49,7 +49,7 @@ nios2-app-generate-makefile \
     --elf-name main.elf \
     --src-files "${SRCS[@]}" \
     --inc-rdir "$APP_DIR/include" \
-    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0x78000"
+    --set APP_LDFLAGS_USER "-Wl,--defsym,__alt_stack_pointer=0xE000"
 
 echo ""
 echo "Makefile updated successfully!"

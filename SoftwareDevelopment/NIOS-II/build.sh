@@ -21,8 +21,8 @@ make -C "$APP_DIR"
 
 # Cleanup
 rm -rf "$APP_DIR/obj"
-rm -f  "$APP_DIR/main.map" "$APP_DIR/main.objdump"
-echo "[OK] Cleaned obj/, main.map, main.objdump"
+rm -f  "$APP_DIR/main.objdump"
+echo "[OK] Cleaned obj/, main.objdump"
 
 echo ""
 echo "Build successful!"

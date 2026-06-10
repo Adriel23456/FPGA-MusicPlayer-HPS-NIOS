@@ -90,7 +90,6 @@ ACDS_VERSION := 22.1
 ELF := main.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/lib/debug_uart.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/main.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/audio_driver.c
 C_SRCS += /media/adriel/Extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/SoftwareDevelopment/NIOS-II/app/src/irq_controller.c
@@ -147,7 +146,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-APP_LDFLAGS_USER := -Wl,--defsym,__alt_stack_pointer=0x78000
+APP_LDFLAGS_USER := -Wl,--defsym,__alt_stack_pointer=0xE000
 
 
 #END GENERATED
