@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# open_shell.sh
+# 00Shell.sh
 # Opens the Nios II Command Shell in the SAME folder
 # as this script. Run from anywhere.
 # ============================================================
