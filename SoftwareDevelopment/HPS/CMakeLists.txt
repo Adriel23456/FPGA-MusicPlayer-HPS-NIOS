@@ -1,33 +1,23 @@
-# ==============================================================
-# CMakeLists.txt  (root)
-# ==============================================================
-#cmake_minimum_required(VERSION 3.10)
-#project(librobot VERSION 6.0.1 LANGUAGES C)
+# CMakeLists.txt (root)
+cmake_minimum_required(VERSION 3.10)
+project(hps-music-player VERSION 1.0.0 LANGUAGES C)
 
-# ── Hardware: low-level utilities ─────────────────────────────
-#add_subdirectory(lib/hardware/sysfs)
-#add_subdirectory(lib/hardware/gpio)
-#add_subdirectory(lib/hardware/i2c)
-#add_subdirectory(lib/hardware/process)
-#add_subdirectory(lib/hardware/pwm)
+# Project headers + the shared contract header (same file the Nios includes).
+# Adjust the common path if your tree differs.
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include
+)
 
-# ── Hardware: component drivers ───────────────────────────────
-#add_subdirectory(lib/hardware/ventilator)
-#add_subdirectory(lib/hardware/led)
-#add_subdirectory(lib/hardware/ultrasonic)
-#add_subdirectory(lib/hardware/motor)
-#add_subdirectory(lib/hardware/mpu6050)
-#add_subdirectory(lib/hardware/audio)
+add_executable(hps_music_player
+    src/main.c
+    src/fpga_mem.c
+    src/hps_fpga_comm.c
+    src/hps_audio_streamer.c
+    src/wav_reader.c
+)
 
-# ── Applications ──────────────────────────────────────────────
-#add_subdirectory(src/test)
-#add_subdirectory(src/app)
+# _DEFAULT_SOURCE for usleep/dirent; warnings on.
+target_compile_definitions(hps_music_player PRIVATE _DEFAULT_SOURCE)
+target_compile_options(hps_music_player PRIVATE -O2 -Wall)
 
-# ── Static web assets → /usr/share/robot/www ─────────────────
-#install(DIRECTORY www/ DESTINATION share/robot/www)
-
-# ── Packaging ────────────────────────────────────────────────
-#set(CPACK_SOURCE_GENERATOR "TGZ")
-#set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${PROJECT_VERSION}")
-#set(CPACK_SOURCE_IGNORE_FILES "/build/;${CPACK_SOURCE_IGNORE_FILES}")
-#include(CPack)
+install(TARGETS hps_music_player DESTINATION bin)

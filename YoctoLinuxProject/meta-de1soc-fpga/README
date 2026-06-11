@@ -1,0 +1,80 @@
+This README file contains information on the contents of the meta-de1soc-fpga layer.
+
+Please see the corresponding sections below for details.
+
+Purpose
+=======
+
+Programs the FPGA fabric automatically at every Linux boot — no JTAG, no
+Quartus Programmer, no manual step. A couple of seconds into boot the fabric
+is configured with the music-player system (Nios II + shared RAM + bridges)
+and the hps_music_player daemon can start against live hardware.
+
+Contents
+========
+
+  conf/layer.conf
+  recipes-bsp/fpga-autoload/fpga-autoload.bb
+  recipes-bsp/fpga-autoload/files/
+      soc_system.rbf       Compiled FPGA bitstream (raw binary format,
+                           generated from the Quartus .sof)
+      fpga-load.dtbo       Device tree overlay that triggers the FPGA
+                           manager to program the rbf
+      fpga-load.service    systemd oneshot unit that applies the overlay
+
+How it works
+============
+
+fpga-load.service runs early (After=local-fs.target, DefaultDependencies=no)
+and is ordered Before=hps_music_player.service, guaranteeing the fabric is
+operating before the daemon maps the bridge window. It applies the overlay
+through configfs:
+
+  mkdir -p /sys/kernel/config/device-tree/overlays/fpga
+  cat /lib/firmware/fpga-load.dtbo > .../overlays/fpga/dtbo
+
+The kernel FPGA manager then loads /lib/firmware/soc_system.rbf referenced
+by the overlay. Verify on the board:
+
+  cat /sys/class/fpga_manager/fpga0/state   # operating
+  cat /sys/class/fpga_bridge/br1/state      # enabled
+  systemctl status fpga-load.service        # active (exited)
+
+Requires the HPS-FPGA bridge nodes enabled in the DTB (done by the
+post-build DTB patch step) and iomem=relaxed on the kernel command line.
+
+Updating the bitstream
+======================
+
+1. Recompile the hardware in Quartus (with the embedded Nios II firmware,
+   see 09MakeSof.sh) and convert the .sof to .rbf:
+
+     quartus_cpf -c -o bitstream_compression=on output_files/<project>.sof soc_system.rbf
+
+2. Replace recipes-bsp/fpga-autoload/files/soc_system.rbf
+3. Rebuild:  bitbake fpga-autoload -c cleansstate && bitbake fpga-autoload
+             bitbake core-image-minimal
+
+Dependencies
+============
+
+  URI: https://github.com/altera-fpga/gsrd-socfpga.git
+  branch: scarthgap
+
+  (provides the poky, meta-intel-fpga, and supporting layers this layer
+   builds on top of; no other project layers are required)
+
+Adding the meta-de1soc-fpga layer to your build
+===============================================
+
+Run 'bitbake-layers add-layer meta-de1soc-fpga'
+
+Then install the recipe in conf/local.conf:
+
+  IMAGE_INSTALL:append = " fpga-autoload"
+
+Patches
+=======
+
+This is a project-internal layer for the DE1-SoC FPGA Music Player
+(TEC Computer Engineering). It is not submitted upstream.

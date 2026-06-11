@@ -1,0 +1,150 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dd:/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+valtera_up_audio_bit_counter
+Z0 !s110 1779767573
+!i10b 1
+!s100 Y<0?6SeUIjSH>LA3k<6XK3
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IB<adkDEDKVdW^NN;Uad3H0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 d/mnt/extra/Escritorio/FPGA-MusicPlayer-HPS-NIOS/MusicPlayerQuartus22/MusicPlayerPlatformDesign/testbench/mentor
+Z4 w1779766495
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_bit_counter.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_bit_counter.v
+!i122 6
+L0 30 99
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1779767573.000000
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_bit_counter.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_bit_counter.v|-work|AUDIO_OUT|
+!i113 1
+Z7 o-work AUDIO_OUT
+Z8 tCvgOpt 0
+valtera_up_audio_in_deserializer
+R0
+!i10b 1
+!s100 IZCah=eeYcBh6LiZ9m;9<2
+R1
+I^W<_VmeViehf>IgL?=C@c0
+R2
+R3
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_in_deserializer.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_in_deserializer.v
+!i122 7
+L0 28 204
+R5
+r1
+!s85 0
+31
+R6
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_in_deserializer.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_in_deserializer.v|-work|AUDIO_OUT|
+!i113 1
+R7
+R8
+valtera_up_audio_out_serializer
+R0
+!i10b 1
+!s100 a413V>TSBfaG:^bU<2JDn2
+R1
+Ik1XAFjTK`:ljfP]6IjOjj3
+R2
+R3
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_out_serializer.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_out_serializer.v
+!i122 8
+L0 28 213
+R5
+r1
+!s85 0
+31
+R6
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_out_serializer.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_audio_out_serializer.v|-work|AUDIO_OUT|
+!i113 1
+R7
+R8
+valtera_up_clock_edge
+R0
+!i10b 1
+!s100 EEi=]`=8H4W[mNN2V@T0Q0
+R1
+I:UGiDSA=XRaQ8TnLFEO>d1
+R2
+R3
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_clock_edge.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_clock_edge.v
+!i122 9
+L0 29 87
+R5
+r1
+!s85 0
+31
+R6
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_clock_edge.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_clock_edge.v|-work|AUDIO_OUT|
+!i113 1
+R7
+R8
+valtera_up_sync_fifo
+R0
+!i10b 1
+!s100 mD4dOi0C]A6IXih4mEDkM1
+R1
+IJU@0J_V8PL?11lD1Ro9mK3
+R2
+R3
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_sync_fifo.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_sync_fifo.v
+!i122 10
+L0 28 124
+R5
+r1
+!s85 0
+31
+R6
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_sync_fifo.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/altera_up_sync_fifo.v|-work|AUDIO_OUT|
+!i113 1
+R7
+R8
+vMusicPlayerPlatformDesign_AUDIO_OUT
+R0
+!i10b 1
+!s100 kj@m]:T867:cF4d?JIeU@2
+R1
+IiEUeZK5]0E`kYFZJX0gNT2
+R2
+R3
+R4
+8./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_OUT.v
+F./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_OUT.v
+!i122 11
+L0 30 234
+R5
+r1
+!s85 0
+31
+R6
+!s107 ./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_OUT.v|
+!s90 -reportprogress|300|./../MusicPlayerPlatformDesign_tb/simulation/submodules/MusicPlayerPlatformDesign_AUDIO_OUT.v|-work|AUDIO_OUT|
+!i113 1
+R7
+R8
+n@music@player@platform@design_@a@u@d@i@o_@o@u@t

@@ -1,0 +1,13 @@
+[Unit]
+Description=Load FPGA fabric (Nios music player)
+DefaultDependencies=no
+After=local-fs.target
+Before=hps_music_player.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sh -c 'mkdir -p /sys/kernel/config/device-tree/overlays/fpga && cat /lib/firmware/fpga-load.dtbo > /sys/kernel/config/device-tree/overlays/fpga/dtbo'
+
+[Install]
+WantedBy=multi-user.target

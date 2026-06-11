@@ -1,0 +1,67 @@
+This README file contains information on the contents of the meta-de1soc-handoff layer.
+
+Please see the corresponding sections below for details.
+
+Purpose
+=======
+
+Adapts the GSRD (built for the Altera Cyclone V SoCDK) to the Terasic
+DE1-SoC hardware. Two fixes, both applied automatically at build time:
+
+1. U-Boot/SPL DDR3 handoff — the DE1-SoC DDR3 has no ECC and uses a 32-bit
+   interface, unlike the SoCDK defaults. Without this patch the Yocto SPL
+   hangs at DDR initialization.
+2. Kernel /dev/mem access — enables the config needed for userspace mmap()
+   of the HPS-FPGA bridge window (used by hps_music_player and fpga-mem-test).
+
+No recipe from this layer is listed in IMAGE_INSTALL: both are .bbappend
+files that apply automatically once the layer is registered.
+
+Contents
+========
+
+  conf/layer.conf
+  recipes-bsp/u-boot/u-boot-socfpga_v2026.01.bbappend
+  recipes-bsp/u-boot/u-boot-socfpga/
+      0001-DE1-SoC-disable-ECC-set-IFWIDTH-32.patch
+                           Disables DDR ECC and sets IFWIDTH=32 in the
+                           sdram handoff for the DE1-SoC DDR3 layout
+  recipes-kernel/linux/linux-socfpga-lts_%.bbappend
+  recipes-kernel/linux/linux-socfpga-lts/
+      devmem.cfg           Kernel config fragment enabling unrestricted
+                           /dev/mem (paired with iomem=relaxed in the
+                           kernel command line)
+
+Note on the SPL
+===============
+
+Even with the ECC/IFWIDTH patch, the most reliable DDR bring-up on the
+DE1-SoC is the Terasic-provided SPL from their prebuilt image, calibrated
+for the exact board DDR3 layout. The flashing procedure therefore writes
+the Terasic SPL to SD partition 3 (see the build & flash guides). This
+layer's U-Boot patch keeps the Yocto-built U-Boot consistent with the
+board either way.
+
+Dependencies
+============
+
+  URI: https://github.com/altera-fpga/gsrd-socfpga.git
+  branch: scarthgap
+
+  (provides the u-boot-socfpga and linux-socfpga-lts recipes that the
+   .bbappend files in this layer extend)
+
+Adding the meta-de1soc-handoff layer to your build
+==================================================
+
+Run 'bitbake-layers add-layer meta-de1soc-handoff'
+
+Nothing else — the .bbappend files take effect on the next
+'bitbake core-image-minimal'. If the GSRD bumps the U-Boot version past
+v2026.01, rename the .bbappend to match (or use a % wildcard).
+
+Patches
+=======
+
+This is a project-internal layer for the DE1-SoC FPGA Music Player
+(TEC Computer Engineering). It is not submitted upstream.

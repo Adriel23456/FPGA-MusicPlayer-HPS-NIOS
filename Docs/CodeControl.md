@@ -13,27 +13,23 @@ master
 ## Branches
 
 ### `master`
-- **Purpose:** Production-ready releases only. Nothing is pushed here directly.
+- **Purpose:** Production-ready releases only. Never pushed to directly.
 - **Receives PRs from:** `develop/**` branches exclusively.
-- **PR Approval:** **1 approval required** before merge.
+- **PR approval:** **1 approval required** before merge.
 - **Tagging:** Every merge into `master` is tagged with a semantic version (e.g., `v1.0.0`, `v1.1.0`).
 
----
-
 ### `develop/**`
-- **Purpose:** Represents a major Scrum epic or sprint goal (e.g., `develop/audio-pipeline`, `develop/vga-display`).
+- **Purpose:** One branch per Scrum epic or sprint goal (e.g., `develop/audio-pipeline`, `develop/vga-display`).
 - **Receives PRs from:** `feature/**`, `bugfix/**`, and `task/**` branches.
-- **PR Approval:** **No approval required** — merge freely once your work is done and CI passes.
-- **Lifetime:** Lives until the epic is complete, then merged into `master`.
-
----
+- **PR approval:** None — merge once the work is done and CI passes.
+- **Lifetime:** Lives until the epic is complete, then merges into `master`.
 
 ### `feature/**`, `bugfix/**`, `task/**`
-- **Purpose:** Day-to-day implementation tied to a Scrum issue.
+- **Purpose:** Day-to-day work, each branch tied to a single Scrum issue.
   - `feature/**` → new functionality (user story).
   - `bugfix/**` → defect fix.
   - `task/**` → maintenance, refactor, docs, chore.
-- **PRs:** Always open a PR to the relevant `develop/**` branch when ready.
+- **PRs:** Always target the relevant `develop/**` branch.
 
 ---
 
@@ -67,10 +63,10 @@ master  ← tagged release
 
 ## Naming Convention
 
-All names lowercase, hyphen-separated, descriptive, and reference the Scrum issue ID when applicable.
+All names lowercase, hyphen-separated, and descriptive.
 
 ### `develop/**` (epic-level)
-Tied to a Scrum **epic** or **sprint goal**. Use a short epic identifier:
+Tied to a Scrum **epic** or **sprint goal** — use a short epic identifier:
 
 ```
 develop/<epic-name>
@@ -85,7 +81,7 @@ develop/nios-mmio
 ```
 
 ### `feature/**`, `bugfix/**`, `task/**` (issue-level)
-Tied to a single Scrum **issue**. Include the issue ID and a short slug:
+Tied to a single Scrum **issue** — include the issue ID and a short slug:
 
 ```
 feature/<issue-id>-<short-description>
@@ -105,16 +101,28 @@ task/19-refactor-mmio-macros
 
 ---
 
+## Issue Traceability
+
+> **Commits do NOT reference issue IDs. Pull Requests DO.**
+
+- **Commits** describe the change itself — type, scope, and what/why. They
+  carry **no** `Refs #` / `Closes #` footers and no issue numbers.
+- **Pull Requests** are the traceability point: the issue ID goes in the PR
+  **title** (`(#<issue-id>)`) and the PR **description** (`Closes #<issue-id>`).
+- Since a branch maps to exactly one issue and a PR closes it, every commit
+  is traceable through its PR — duplicating the ID per commit adds noise,
+  not information.
+
+---
+
 ## Commit Message Convention
 
-Follow **Conventional Commits**. Format:
+Follow **Conventional Commits**:
 
 ```
 <type>(<scope>): <short summary>
 
 <optional body — what & why, not how>
-
-<optional footer — issue refs, breaking changes>
 ```
 
 ### Types
@@ -139,8 +147,9 @@ Follow **Conventional Commits**. Format:
 ### Rules
 
 - Summary in **imperative mood**, lowercase, no trailing period, ≤72 chars.
-- Reference the Scrum issue in the footer: `Refs #42` or `Closes #42`.
 - One logical change per commit.
+- **No issue references in commits** — traceability lives in the PR
+  (see *Issue Traceability* above).
 
 ### Examples
 
@@ -149,20 +158,14 @@ feat(wav): parse 16-bit PCM headers at 8/16/44.1 kHz
 
 Adds parser to extract sample rate, channel count, and data offset
 from RIFF/WAVE headers. Required for HPS-side metadata extraction.
-
-Closes #42
 ```
 
 ```
 fix(7seg): clamp MM:SS display when track exceeds 59:59
-
-Refs #63
 ```
 
 ```
 refactor(mmio): consolidate filter control registers into a struct
-
-Refs #71
 ```
 
 ```
@@ -175,7 +178,7 @@ build(pd): regenerate qsys with NIOS II /e core and on-chip RAM
 
 ### Title
 
-Mirror the commit convention:
+Mirrors the commit format, **plus the issue ID**:
 
 ```
 <type>(<scope>): <short summary> (#<issue-id>)
@@ -218,7 +221,8 @@ Closes #<issue-id>
 
 ## Checklist
 - [ ] Branch named per convention
-- [ ] Commits follow Conventional Commits
+- [ ] Commits follow Conventional Commits (no issue IDs in commits)
+- [ ] Issue ID present in PR title and "Linked Issue"
 - [ ] No secrets or board-specific paths hardcoded
 - [ ] Documentation updated if behavior changed
 ```
@@ -226,7 +230,8 @@ Closes #<issue-id>
 ### PR Rules
 
 - Keep PRs **small and focused** — one issue, one PR when possible.
-- All commits **squashed** is acceptable for `feature/**` → `develop/**`; **merge commit** preferred for `develop/**` → `master` to preserve epic history.
+- **Squash** is acceptable for `feature/**` → `develop/**`; **merge commit**
+  preferred for `develop/**` → `master` to preserve epic history.
 - CI must pass before merging into `develop/**` or `master`.
 - A PR into `master` must list every issue closed in the epic.
 
@@ -235,8 +240,8 @@ Closes #<issue-id>
 ## Scrum Integration
 
 - **Epics** → one `develop/**` branch.
-- **User stories** → `feature/**` branch.
-- **Bugs** → `bugfix/**` branch.
-- **Tasks/chores** → `task/**` branch.
-- Every branch and PR references the Jira/GitHub issue ID.
-- Sprint-end: open PR from active `develop/**` into `master`, tag a release.
+- **User stories** → `feature/**` branches.
+- **Bugs** → `bugfix/**` branches.
+- **Tasks/chores** → `task/**` branches.
+- Issue IDs appear in **branch names and PRs only** — never in commits.
+- Sprint-end: open a PR from the active `develop/**` into `master` and tag a release.

@@ -6,15 +6,22 @@
 # ---- Quartus generated directories ----
 db/
 incremental_db/
-output_files/
-simulation/
+# Ignore everything in output_files
+output_files/*
+
+# But keep UVM / TB source files
+!output_files/tb*.sv
+!output_files/uvm*.sv
+
+# Ignore personal files
+personal*
+personal**/
+
+work/
 greybox_tmp/
-hps_isw_handoff/
-hps_sdram*/
 .qsys_edit/
 
 # ---- Platform Designer / Qsys generated ----
-*.sopcinfo
 *_generation_script*
 *_inst.v
 *_inst.vhd
@@ -68,9 +75,7 @@ desktop.ini
 
 # ---- Synthesis / build outputs ----
 *.qar
-*.sof
 *.pof
-*.rbf
 *.jam
 *.jbc
 *.svf
@@ -102,3 +107,4 @@ desktop.ini
 # Keep documentation
 !README*
 !*.md
+build/
